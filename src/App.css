@@ -55,13 +55,6 @@ a,
 a:hover {
   color: white;
 }
-.intro {
-  font-weight: 600;
-  font-size: 1.4em;
-  width: 100%;
-  padding: 0 2.5em 0 2.5em;
-  text-align: center;
-}
 #start-survey-button {
   background-color: var(--primary-color);
   color: black;
@@ -139,10 +132,6 @@ a:hover {
   width: 100%;
 }
 
-.home-header {
-  margin-top: -2.5em;
-  margin-bottom: 2em;
-}
 .controls {
   width: var(--min-window-width);
   z-index: 2;
@@ -239,11 +228,6 @@ a:hover {
   width: 52%;
   overflow-y: auto;
 }
-.registration-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 .registration-form-wrapper {
   height: 100%;
   padding: 0 0.8em 0.8em 0.8em;
@@ -254,26 +238,12 @@ a:hover {
     margin-bottom: 2em;
   }
 }
-.login {
-  margin-top: 3em;
-  padding-left: 0.6em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 #get-participant-id {
   background-color: var(--primary-color);
   color: black;
   font-weight: 600;
   outline: none;
   margin: 0 1.1em 1em 0;
-}
-.signup {
-  margin-top: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 /* ************************************  */
@@ -293,18 +263,6 @@ a:hover {
   align-items: center;
   height: fit-content;
 }
-.participant-id-field {
-  padding-bottom: 0.5em;
-}
-
-.welcome {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .vertical-section:last-of-type {
   border-right: none;
 }
@@ -930,12 +888,6 @@ textarea::-webkit-scrollbar-thumb {
   justify-content: space-around;
   margin-bottom: 0.5em;
 }
-.additionalText {
-  margin-top: 1em;
-  font-size: 1.15em;
-  font-weight: bolder;
-  color: #358d0f;
-}
 .confirmation-dialog-button {
   background-color: #0275d8;
   color: white;
@@ -952,10 +904,6 @@ textarea::-webkit-scrollbar-thumb {
   height: calc(100vh - var(--header-height) - var(--footer-height));
   width: 100%;
   overflow-y: auto;
-}
-
-.btn {
-  text-align: center;
 }
 .highlight {
   border: #f15d22 solid 2px;

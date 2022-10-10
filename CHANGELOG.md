@@ -121,3 +121,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add initial internal version for the HOST-XAI application
+
+## [1.0.6] - 2021-04-08
+
+### Added
+
+- Create separate styling for Home page ([#6](https://github.com/simulamet-host/huldra-internal/issues/6))
+- Create new folders for separate css files - assets/css
+- Create common.css file for common css
+- Create home.css file for homepage css
+
+### Changed
+- Move homepage css from app.css file to home.css
+- Move few common css file from app.css file to common.css
+- Update homepage add new css link, update class name

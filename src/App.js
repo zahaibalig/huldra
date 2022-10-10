@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import "./assets/css/common.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Survey from "./major-components/survey";
 import Warning from "./major-components/warning";

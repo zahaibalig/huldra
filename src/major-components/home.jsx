@@ -7,6 +7,7 @@ import axios from "axios";
 import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
 import { pushToBucket } from "../utils/cloudStorage";
 import GenericButton from "../minor-components/genericButton";
+import "../assets/css/home.css";
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   const { firebaseConfig, rootDirectory, REACT_APP_general } =
     useContext(AppContext); // todo: firebaseConfig should include rootDirectory
@@ -75,18 +76,18 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   };
   return (
     <div className="welcome">
-      <div className="home-header">
+      <div className="header-top">
         <h2>
           {(REACT_APP_home && REACT_APP_home["title"]) ||
             (REACT_APP_general && REACT_APP_general["appName"])}
         </h2>
-        <div className="intro">
+        <div className="home-intro">
           {REACT_APP_home && REACT_APP_home["introText"]}
         </div>
       </div>
-      <div className="registration-wrapper">
-        <div className="login">
-          <div className="participant-id-field">
+      <div className="home-registration-wrapper">
+        <div className="home-login">
+          <div className="home-participant-id-field">
             <input
               autoComplete="off"
               onChange={(e) => {
@@ -108,8 +109,8 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
             label="Start survey"
           />
         </div>
-        <div className="signup">
-          <p className="signup-message">
+        <div className="home-signup">
+          <p className="home-signup-message">
             {REACT_APP_home && REACT_APP_home["signupText"]}
           </p>
           <GenericButton
@@ -120,7 +121,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
             iconClassName="fa fa-user-plus  mr-2"
             label="Get participant ID"
           />
-          <span className="additionalText">
+          <span className="home-additional-text">
             {REACT_APP_home && REACT_APP_home["additionalText"]}
           </span>
         </div>

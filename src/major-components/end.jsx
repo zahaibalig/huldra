@@ -14,7 +14,7 @@ const End = ({
   });
   return (
     <div className="welcome">
-      <div className="home-header">
+      <div className="header-top">
         <h2>{REACT_APP_end && REACT_APP_end["title"]}</h2>
       </div>
       <span style={{ fontSize: "1.5em", padding: "1em", fontWeight: "bold" }}>
