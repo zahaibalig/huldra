@@ -1,0 +1,6 @@
+.background {
+    height: 100%;
+    overflow-y: auto;
+    text-align: left;
+    padding: 0 0.8em 0.8em 0.8em;
+}
