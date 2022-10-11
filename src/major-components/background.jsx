@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useCallback } from "react";
 import "../assets/css/background.css";
 import GenericBackgroundSection from "../minor-components/genericBackgroundSection";
+import "../assets/css/background.css";
 const Background = ({ history, REACT_APP_background }) => {
   const [finishStatus, setfinishStatus] = useState(false);
 
