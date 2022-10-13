@@ -135,3 +135,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move homepage css from app.css file to home.css
 - Move few common css file from app.css file to common.css
 - Update homepage add new css link, update class name
+
+## [2.1.0] - 2022-10-13
+
+### Added
+- Create separate styling for Demonstration page ([#10](https://github.com/simulamet-host/huldra-internal/issues/10))
+
+### Changed
+- Move demonstration css from app.css file to demonstration.css
