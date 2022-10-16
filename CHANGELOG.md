@@ -5,7 +5,18 @@ All notable changes to the `internal` branch will be documented in this file, pe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2022-04-08
+## [2.0.2] - 2022-04-17
+### Added
+
+- Create summaryAndFeedback.css for all the styling in summaryAndFeedback.jsx, summary.jsx, and feedbackForm.jsx
+
+### Changed
+
+- summaryAndFeedback.jsx, and its children summary.jsx and feedbackForm.jsx now imports all styling from summaryAndFeedback.css
+- Change all ID to classes
+- Change class names to follow global styling rules 
+
+## [2.0.1] - 2022-10-13
 ### Added
 
 - Create a seperate styling sheet for all the styling in the end.jsx component
@@ -14,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - end.jsx now imports all styling from end.css
 
-## [2.0.0] - 2022-04-13
+## [2.0.0] - 2022-10-10
 
 ### Added
 
