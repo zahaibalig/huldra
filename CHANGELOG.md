@@ -122,7 +122,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add initial internal version for the HOST-XAI application
 
-## [1.0.6] - 2022-10-10
+## [2.0.1] - 2022-10-10
 
 ### Added
 
@@ -136,11 +136,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move few common css file from app.css file to common.css
 - Update homepage add new css link, update class name
 
-## [1.0.7] - 2022-10-11
+## [2.0.2] - 2022-10-11
 
 ### Added
 
-- Create separate styling for Demonstration page ([#10](https://github.com/simulamet-host/huldra-internal/issues/10))
+- Create separate styling for Background page ([#10](https://github.com/simulamet-host/huldra-internal/issues/10))
 
 ### Changed
 - Refactor background.jsx for updating style
@@ -149,3 +149,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor config.json for updating style
 - Move background, genericBackgroundSection, genericBackgroundSubSection pages css from app.css to background.css file
 - Move few css from app.css to common.css those are used in multiple files
+
+## [2.0.3] - 2022-10-13
+
+### Added
+- Create separate styling for Demonstration page ([#10](https://github.com/simulamet-host/huldra-internal/issues/10))
+
+### Changed
+- Move demonstration css from app.css file to demonstration.css

@@ -2,10 +2,11 @@ import React from "react";
 import ParagraphWithList from "../minor-components/paragraphWithList";
 import RankedImage from "../minor-components/rankedImage";
 import RankedVideo from "../minor-components/rankedVideo";
+import "../assets/css/demonstration.css";
 
 const Demonstration = ({ REACT_APP_demonstration }) => {
   return (
-    <div className="demonstration-sections-wrapper">
+    <div className="demonstration-wrapper">
       {(REACT_APP_demonstration["textBefore"] ||
         REACT_APP_demonstration["textAfter"] ||
         REACT_APP_demonstration["listOptions"]) && (
