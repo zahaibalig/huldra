@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "../assets/css/end.css";
 
 const End = ({
   history,
@@ -13,8 +14,8 @@ const End = ({
     }, REACT_APP_end && REACT_APP_end["redirectTimeout"]);
   });
   return (
-    <div className="welcome">
-      <div className="header-top">
+    <div className="end-welcome">
+      <div className="end-header">
         <h2>{REACT_APP_end && REACT_APP_end["title"]}</h2>
       </div>
       <span style={{ fontSize: "1.5em", padding: "1em", fontWeight: "bold" }}>
