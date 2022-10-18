@@ -157,3 +157,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Move demonstration css from app.css file to demonstration.css
+
+## [2.0.4] - 2022-10-13
+### Added
+
+- Create a seperate styling sheet for all the styling in the end.jsx component
+- Create a seperate styling sheet for all the styling in the warning.jsx component
+
+### Changed
+
+- end.jsx now imports all styling from end.css
+- warning.jsx now imports all styling from warning.css
