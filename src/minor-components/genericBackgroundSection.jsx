@@ -3,8 +3,8 @@ import GenericBackgroundSubSection from "./genericBackgroundSubSection";
 const GenericBackgroundSection = ({
   sectionTitle,
   sectionText,
-  sectionClassName = "section",
-  sectionTitleClassName = "section-title",
+  sectionClassName = "background-section",
+  sectionTitleClassName = "background-section-title",
   sectionTextClassName = "background-text-content",
   sectionContent,
 }) => {

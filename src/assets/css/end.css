@@ -1,0 +1,12 @@
+.end-welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.end-header{
+    margin-top: -2.5em;
+    margin-bottom: 2em;
+}
