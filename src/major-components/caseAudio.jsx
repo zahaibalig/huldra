@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import CaseAudioColumnLeft from "./caseAudioColumnLeft";
 import CaseAudioColumnRight from "./caseAudioColumnRight";
 import { AppContext } from "../context/appContext";
+import "../assets/css/caseAudio.css";
 
 const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
@@ -60,11 +61,11 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
     setDisableNextButton(false);
   };
   return (
-    <div className="sections-wrapper">
+    <div className="audio-wrapper">
       <CaseAudioColumnLeft
         title={`${REACT_APP_caseAudio["caseAudioColumnLeft"].label} ${caseId}/${totalCases}`}
-        className="survey-box-video-left"
-        textClassName="background-text-content"
+        className="audio-survey-box-left"
+        textClassName="audio-background-content-alignment"
         sectionAudioAUrl={choiceA}
         sectionAudioBUrl={choiceB}
         sectionAudioHeight={
@@ -93,20 +94,20 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
         sectionHasButton={true}
       />
       <CaseAudioColumnRight
-        className="survey-box-video-right"
+        className="audio-survey-box-right"
         title={REACT_APP_caseAudio["caseAudioColumnRight"].title}
         text={REACT_APP_caseAudio["caseAudioColumnRight"].text}
-        textClassName="background-text-content"
+        textClassName="audio-background-content-alignment"
         topSectionImageHasRank={true}
         topSectionImageRank={1}
-        topSectionImageClassName="scaled-image-fit-height"
-        topSectionClassName="generic-image-section"
-        bottomSectionClassName="generic-image-section"
+        topSectionImageClassName="audio-scaled-image-fit-height"
+        topSectionClassName="audio-generic-image-section"
+        bottomSectionClassName="audio-generic-image-section"
         bottomSectionImageHasRank={true}
         bottomSectionImageRank={2}
-        bottomSectionImageClassName="scaled-image-fit-height"
-        topSectionTextRankClassName="video-text-rank-section"
-        bottomSectionTextRankClassName="video-text-rank-section"
+        bottomSectionImageClassName="audio-scaled-image-fit-height"
+        topSectionTextRankClassName="audio-text-rank-section"
+        bottomSectionTextRankClassName="audio-text-rank-section"
         topSectionImageHasTextRank={true}
         topSectionImageRankText={first}
         bottomSectionImageHasTextRank={true}
