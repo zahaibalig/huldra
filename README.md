@@ -7,7 +7,7 @@ Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), 
 
 ## How to deploy from scratch
 
-### Set up a Firebase project
+### 1. Set up a Firebase project
 
 Currenty Huldra uses Google Firebase to store assets and responses (we may support other types of servers in the future).
 
@@ -17,14 +17,14 @@ Currenty Huldra uses Google Firebase to store assets and responses (we may suppo
 - Click the **</>** icon to create a web app.
 - Once it is created, the project configuration page is open, where you can see Firebase connection parameters, such as apiKey and appId. Save this for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
 
-### Upload assets
+### 2. Upload assets
 
 Huldra uses assets in Firebase Storage to automatically generate survey pages.
 
 - In Firebase console, find **Storage** in **All Products**.
 - You can create holders here. Huldra reads assets from `gallery` folder by default (this may become configurable in the future), so upload your assets (images, audios or videos) in that folder.
 
-### Run on your local computer
+### 3. Run on your local computer
 
 You need to have [Node.js](https://nodejs.org/) installed on your computer.
 
@@ -42,13 +42,13 @@ REACT_APP_FIREBASE_STORAGE_BUCKET="foobar.appspot.com"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="dev"
 ````
 
-Don't use the keys here because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of **Set up a Firebase project**.
+Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of **Set up a Firebase project**.
 
 For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="dev"`
 
 - Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
-### Deploy to a server
+### 4. Deploy to a server
 
 You can delopy Huldra to servers that support Node.js, such as [Heroku](https://heroku.com/), [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/).
 
@@ -60,14 +60,14 @@ For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter th
 
 # More About Huldra
 
-## 1. Assets
+## Assets
 
 Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases. Please prefix all your cases with their correspnding types (`audio-lorem`, `video-ipsum`, `hybrid-amet`, `image-sit`). The assets to be used have to adhere to the following naming convention:
 - Main asset: `caseLabel`.*
 - Option A: `caseLabel-a`.*
 - Option B: `caseLabel-b`.*
 
-## 1a. Directories Tree
+### Directories Tree
 
 ```
 gallery
@@ -87,7 +87,7 @@ gallery
 |       └───image-sit-a.jpeg
 |       └───image-sit-b.jpeg
 ```
-## 1b. Supported File Extensions
+### Supported File Extensions
 
 | Audio Format | Support |
 | ------------- | ------------- |
@@ -114,23 +114,23 @@ gallery
 | `JPEG`  | ✅   |
 | `PNG`  | ✅  |
 
-## 2. Configuration
+## Configuration
 
 Update configuration parameters in the `src/config.json` file as needed, to customize your instance.
 Note that you can also specify configuration parameters through the Heroku interface (e.g., if you do not want to make any code changes).
 
-## 3. Outputs
+## Outputs
 
 You can retrieve participant response files from your S3 bucket (`<root directory>` -> `responses`) at your convenience.
 
-## 4. References
+## References
 * [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887)
 * [Automatic thumbnail selection for soccer videos using machine learning](https://dl.acm.org/doi/abs/10.1145/3524273.3528182)
 * [HOST-ATS: automatic thumbnail selection with dashboard-controlled ML pipeline and dynamic user survey](https://dl.acm.org/doi/abs/10.1145/3524273.3532908)
 * [Visual explanations for polyp detection: How medical doctors assess intrinsic versus extrinsic explanations
 ](https://arxiv.org/abs/2204.00617)
 
- ## 5. Citation
+ ## Citation
  If you find our work useful for your research, please include the following citation:
 ```
 @inproceedings{Hammou2022,
