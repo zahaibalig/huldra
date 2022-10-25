@@ -825,18 +825,6 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 /* wrapper around genericImageSections for ranking*/
-.ranking-wrapper {
-  display: "flex";
-  flex-direction: "column";
-  align-items: "center";
-  justify-content: "center";
-  width: 100%;
-  overflow: hidden;
-  position: "relative";
-  bottom: "2em";
-  height: 100%;
-}
-
 .footer-link {
   color: black;
 }

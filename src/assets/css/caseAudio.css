@@ -63,3 +63,16 @@
     align-items: center;
     font-weight: bold;
 }
+
+/* Main class name was 'ranking-wrapper' used in several files 'caseAudio, caseVideo, caseAudioColumnRight, caseVideoColumnRight, caseHybridColumnRight, caseImageColumnRight' */
+.audio-ranking-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    bottom: 2em;
+    height: 100%;
+}
