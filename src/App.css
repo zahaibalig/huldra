@@ -25,10 +25,29 @@
 }
 
 /* It will go to caseImage.css file */
-image-generic-section {
+.image-generic-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
+}
+
+.generic-image-section-button {
+  margin-top: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* It will go to caseVideo.css file */
+.generic-video-section-button {
+  margin-top: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 

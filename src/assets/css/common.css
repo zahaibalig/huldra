@@ -43,3 +43,8 @@
 .rank-text {
     font-size: 100px;
 }
+.required-field {
+    color: red;
+    margin-right: 0.2em;
+    font-weight: bold;
+}
