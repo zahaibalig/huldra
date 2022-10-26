@@ -2,9 +2,9 @@ import React, { useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/appContext";
 import { getFirebaseApp } from "../utils/firebase";
 import Modal from "@material-ui/core/Modal";
-import CaseHybridColumnLeft from "./caseHybridColumnLeft";
-import CaseHybridColumnMiddle from "./caseHybridColumnMiddle";
-import CaseHybridColumnRight from "./caseHybridColumnRight";
+import CaseHybridColumnLeft from "../major-components/caseHybridColumnLeft";
+import CaseHybridColumnMiddle from "../major-components/caseHybridColumnMiddle";
+import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
 import Popup from "../minor-components/popup";
 
 const CaseHybrid = ({
@@ -28,24 +28,19 @@ const CaseHybrid = ({
   const pagesOrder = JSON.parse(
     localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
   );
-  const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.mp4`;
-  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
+  const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }.mp4`;
+  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
 
-  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
+  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
 
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
 
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
 
   useEffect(() => {
     setDisableNextButton(true);
@@ -92,7 +87,7 @@ const CaseHybrid = ({
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    /* TODO: read the corresponding string for the answers item in the output 
+    /* TODO: read the corresponding string for the answers item in the output
       json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
     /*      toastSuccess(
         "Both explanations have been viewed.",

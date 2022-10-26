@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import "./assets/css/common.css";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Survey from "./major-components/survey";
+import Survey from "./pages/survey";
 import Warning from "./major-components/warning";
 import { fetchConfigVariablesBatch } from "./utils/handleConfigVars";
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
         "REACT_APP_caseOrder",
       ])
     );
-    function handleResize() {}
+    function handleResize() { }
     window.addEventListener("resize", handleResize);
   }, []);
   return (
