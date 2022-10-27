@@ -52,9 +52,9 @@
     font-weight: lighter;
 }
 .input-radio-disabled-text {
-    width: 8em;
-    height: 2em;
-    margin-left: 0.5em
+    width: 8em !important;
+    height: 2em !important;
+    margin-left: 0.5em !important;
 }
 .warning-message {
     font-size: 1.5em;
