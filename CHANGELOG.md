@@ -5,7 +5,16 @@ All notable changes to the `internal` branch will be documented in this file, pe
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.2] - 2022-04-17
+## [2.0.2] - 2022-10-27
+### Added
+
+- Create caseImage.css for all the styling in caseImage.jsx, and its children
+
+### Changed
+- caseImage.jsx now imports all styling from caseImage.css and common.css
+- Change all ID to classes
+- Change class names to follow global styling rules 
+## [2.0.2] - 2022-10-17
 ### Added
 
 - Create summaryAndFeedback.css for all the styling in summaryAndFeedback.jsx, summary.jsx, and feedbackForm.jsx
