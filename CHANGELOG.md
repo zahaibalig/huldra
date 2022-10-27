@@ -168,3 +168,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - end.jsx now imports all styling from end.css
 - warning.jsx now imports all styling from warning.css
+
+## [2.0.5] - 2022-10-27
+### Added
+
+- Create summaryAndFeedback.css for all the styling in summaryAndFeedback.jsx, summary.jsx, and feedbackForm.jsx
+### Changed
+
+- summaryAndFeedback.jsx, and its children summary.jsx and feedbackForm.jsx now imports all styling from summaryAndFeedback.css
+- Change all ID to classes
+- Change class names to follow global styling rules 
