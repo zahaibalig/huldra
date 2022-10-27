@@ -1,7 +1,7 @@
 import React from "react";
 const Asterisk = () => {
   return (
-    <i className="required-field">*</i>
+    <i className="asterisk-required-field">*</i>
   );
 };
 export default Asterisk;

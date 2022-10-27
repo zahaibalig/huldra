@@ -15,6 +15,15 @@
   justify-self: center;
 }
 
+.generic-audio-section-button{
+  margin-top: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 /* It will go to caseVideo.css file */
 .video-generic-section {
   display: flex;
@@ -31,7 +40,6 @@
   align-items: flex-start;
   width: 100%;
 }
-
 .generic-image-section-button {
   margin-top: 0.8em;
   display: flex;

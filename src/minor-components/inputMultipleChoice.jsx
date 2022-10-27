@@ -33,7 +33,7 @@ const InputMultipleChoice = ({
         )}{" "}
         {label}{" "}
         {optional && (
-          <span className="optional-text">
+          <span className="input-multiple-choice-optional-text">
             (optional)
           </span>
         )}{" "}

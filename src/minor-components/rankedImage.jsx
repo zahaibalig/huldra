@@ -33,7 +33,7 @@ const RankedImage = ({
       )}
       {hasTextRank ? (
         <div onClick={onClick} className={rankTextSectionClassName}>
-          <span className="rank-text">{rankText}</span>
+          <span className="ranked-image-rank-text">{rankText}</span>
         </div>
       ) : (
         <img
