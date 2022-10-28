@@ -116,6 +116,13 @@ a:hover {
   height: 100%;
   padding: 0.8em;
 }
+.sections-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 .controls {
   width: var(--min-window-width);
   z-index: 2;
@@ -257,7 +264,15 @@ a:hover {
   display: flex;
   justify-content: center;
 }
-
+.generic-image-section {
+  display: flex;
+  justify-content: center;
+  height: 50%;
+}
+.scaled-image-fit-height {
+  width: auto;
+  height: 100%;
+}
 .scaled-image-fit-width {
   width: 100%;
   height: auto;
@@ -825,6 +840,17 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 /* wrapper around genericImageSections for ranking*/
+.ranking-wrapper {
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "center";
+  width: 100%;
+  overflow: hidden;
+  position: "relative";
+  bottom: "2em";
+  height: 100%;
+}
 .footer-link {
   color: black;
 }
