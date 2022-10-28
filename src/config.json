@@ -228,11 +228,6 @@
   },
   "REACT_APP_caseOrder": {
     "cases": [
-      "0819d3ca-4951-4127-a06a-9d61bc43e0e1",
-      "hybrid-test",
-      "audio-ogg",
-      "Video-test",
-      "audio-valid"
     ],
     "shuffle": "categorized"
   },
