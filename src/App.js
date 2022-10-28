@@ -3,7 +3,7 @@ import "./App.css";
 import "./assets/css/common.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Survey from "./pages/survey";
-import Warning from "./major-components/warning";
+import Warning from "./pages/warning";
 import { fetchConfigVariablesBatch } from "./utils/handleConfigVars";
 const App = () => {
   const [innerWidth] = useState(window.innerWidth);
