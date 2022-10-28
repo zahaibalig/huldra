@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import CaseVideoColumnLeft from "./caseVideoColumnLeft";
-import CaseVideoColumnRight from "./caseVideoColumnRight";
+import CaseVideoColumnLeft from "../major-components/caseVideoColumnLeft";
+import CaseVideoColumnRight from "../major-components/caseVideoColumnRight";
 import { AppContext } from "../context/appContext";
 
 const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
@@ -35,12 +35,10 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
 
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.mp4`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.mp4`;
+  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.mp4`;
+  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.mp4`;
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(
       localStorage.getItem("CaseStudyAnswers")
