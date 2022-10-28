@@ -2,6 +2,8 @@ import React from "react";
 import Summary from "./summary";
 import FeedbackForm from "./feedbackForm";
 import { generateFeedbackFormValidationScheme } from "../utils/inputValidation";
+import "../assets/css/summaryAndFeedback.css";
+
 const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
   generateFeedbackFormValidationScheme(
     REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions
