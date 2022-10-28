@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import CaseAudioColumnLeft from "./caseAudioColumnLeft";
-import CaseAudioColumnRight from "./caseAudioColumnRight";
+import CaseAudioColumnLeft from "../major-components/caseAudioColumnLeft";
+import CaseAudioColumnRight from "../major-components/caseAudioColumnRight";
 import { AppContext } from "../context/appContext";
 
 const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
@@ -35,12 +35,10 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
 
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.mp3`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.mp3`;
+  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.mp3`;
+  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.mp3`;
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(
       localStorage.getItem("CaseStudyAnswers")
