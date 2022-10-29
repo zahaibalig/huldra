@@ -1,3 +1,14 @@
+.home-welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.home-header {
+    margin-top: -2.5em;
+    margin-bottom: 2em;
+}
 .home-intro {
     font-weight: 600;
     font-size: 1.4em;
@@ -16,6 +27,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#home-get-participant-id {
+    background-color: var(--primary-color);
+    color: black;
+    font-weight: 600;
+    outline: none;
+    margin: 0 1.1em 1em 0;
 }
 .home-participant-id-field {
     padding-bottom: 0.5em;
