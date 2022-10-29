@@ -16,13 +16,13 @@ const Summary = ({
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
 
   return (
-    <div className="answers-wrapper">
+    <div className="summary-wrapper">
       <h3>{title}</h3>
       <div className="summary-and-feedback-text-content">{text}</div>
-      <div className="headers">
-        <p className="case-header">{label}</p>
-        <p className="case-header">A</p>
-        <p className="case-header">B</p>
+      <div className="summary-cases-wrapper">
+        <p className="summary-case-header">{label}</p>
+        <p className="summary-case-header">A</p>
+        <p className="summary-case-header">B</p>
       </div>
 
       {_.range(1, casesCount + 1)
@@ -40,9 +40,9 @@ const Summary = ({
           }-b-thumbnail.png`;
 
           return (
-            <div key={item} className="case-answer">
+            <div key={item} className="summary-case-answer">
               <div className={highlightClassName}>
-                <span className="case-label">{item}</span>
+                <span className="summary-case-label">{item}</span>
               </div>
               <div className={highlightClassName}>
                 <RankedImage
@@ -60,8 +60,8 @@ const Summary = ({
                         }.png`
                   }
                   alternativeText={`case`}
-                  wrapperClassName="ranked-image-wrapper-summary"
-                  className="scaled-image-fit-height-summary"
+                  wrapperClassName="summary-ranked-image-wrapper-summary"
+                  className="summary-scaled-image-fit-height-summary"
                 />
               </div>
               <div className={highlightClassName}>
@@ -80,8 +80,8 @@ const Summary = ({
                         }-a.png`
                   }
                   alternativeText={`A`}
-                  wrapperClassName="ranked-image-wrapper-summary"
-                  className="scaled-image-fit-height-summary"
+                  wrapperClassName="summary-ranked-image-wrapper-summary"
+                  className="summary-scaled-image-fit-height-summary"
                 />
               </div>
               <div className={highlightClassName}>
@@ -100,8 +100,8 @@ const Summary = ({
                         }-b.png`
                   }
                   alternativeText={`B`}
-                  wrapperClassName="ranked-image-wrapper-summary"
-                  className="scaled-image-fit-height-summary"
+                  wrapperClassName="summary-ranked-image-wrapper-summary"
+                  className="summary-scaled-image-fit-height-summary"
                 />
               </div>
             </div>

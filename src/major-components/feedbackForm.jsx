@@ -3,6 +3,7 @@ import InputTextArea from "../minor-components/inputTextArea";
 import InputLikert from "../minor-components/inputLikert";
 import InputMultipleChoice from "../minor-components/inputMultipleChoice";
 import { handleTextFieldChange } from "../utils/handleTextFieldChange";
+
 const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
   const components = {
     text: InputTextArea,
@@ -16,7 +17,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
     <div className="feedback-form-wrapper">
       <h3>{title}</h3>
       <div className="summary-and-feedback-text-content">{text} </div>
-      <form id="feedback-form">
+      <form className="feedback-form">
         {/* TODO: CHECK FONT WEIGHT, INVESTIGATE WAYS TO PASS ADITIONAL STYLING PARAMETERS INTO
         APP.CSS */}
 
