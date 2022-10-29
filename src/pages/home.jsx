@@ -75,8 +75,8 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
       });
   };
   return (
-    <div className="welcome">
-      <div className="header-top">
+    <div className="home-welcome">
+      <div className="home-header">
         <h2>
           {(REACT_APP_home && REACT_APP_home["title"]) ||
             (REACT_APP_general && REACT_APP_general["appName"])}
@@ -117,7 +117,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
             onClick={handleRedirectToRegistration}
             hasIcon={true}
             className="btn"
-            id="get-participant-id"
+            id="home-get-participant-id"
             iconClassName="fa fa-user-plus  mr-2"
             label="Get participant ID"
           />
