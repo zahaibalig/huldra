@@ -7,9 +7,9 @@ import {
   listFiles,
 } from "../utils/firebase";
 import { getCaseJsonFile } from "../utils/urlHandler";
-import CaseImageColumnMiddle from "./caseImageColumnMiddle";
-import CaseImageColumnleft from "./caseImageColumnLeft";
-import CaseImageColumnRight from "./caseImageColumnRight";
+import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
+import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
+import CaseImageColumnRight from "../major-components/caseImageColumnRight";
 import Modal from "@material-ui/core/Modal";
 import Popup from "../minor-components/popup";
 import "../assets/css/caseImage.css";
@@ -36,24 +36,18 @@ const CaseImage = ({
   const pagesOrder = JSON.parse(
     localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
   );
-  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
-  const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
+  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
+  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
+  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }.png`;
+  const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }.png`;
   useEffect(() => {
     setDisableNextButton(true);
     setSubscribed(true);
@@ -133,7 +127,7 @@ const CaseImage = ({
       first !== empty ||
       (openedChoiceA === true && openedChoiceB === true)
     ) {
-      /* TODO: read the corresponding string for the answers item in the output 
+      /* TODO: read the corresponding string for the answers item in the output
       json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
 
       const CaseStudyAnswers = JSON.parse(
@@ -244,24 +238,24 @@ const CaseImage = ({
           leftImageThumbnailUrl={originalThumbnail}
           leftImageTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupA[
-              "leftImageTitle"
+            "leftImageTitle"
             ]
           }
           rightImageHighResUrl={choiceAHighRes}
           rightImageThumbnailUrl={choiceAThumbnail}
           rightImageTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupA[
-              "rightImageTitle"
+            "rightImageTitle"
             ]
           }
           descriptionTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupA[
-              "descriptionTitle"
+            "descriptionTitle"
             ]
           }
           descriptionText={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupA[
-              "descriptionText"
+            "descriptionText"
             ]
           }
           popupType="withoutGallery"
@@ -280,24 +274,24 @@ const CaseImage = ({
           leftImageThumbnailUrl={originalThumbnail}
           leftImageTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupB[
-              "leftImageTitle"
+            "leftImageTitle"
             ]
           }
           rightImageHighResUrl={choiceBHighRes}
           rightImageThumbnailUrl={choiceBThumbnail}
           rightImageTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupB[
-              "rightImageTitle"
+            "rightImageTitle"
             ]
           }
           descriptionTitle={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupB[
-              "descriptionTitle"
+            "descriptionTitle"
             ]
           }
           descriptionText={
             REACT_APP_caseImage["caseImageColumnMiddle"].popupB[
-              "descriptionText"
+            "descriptionText"
             ]
           }
           popupType="withGallery"

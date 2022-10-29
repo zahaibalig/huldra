@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
-import CaseVideoColumnLeft from "./caseVideoColumnLeft";
-import CaseVideoColumnRight from "./caseVideoColumnRight";
+import CaseAudioColumnLeft from "../major-components/caseAudioColumnLeft";
+import CaseAudioColumnRight from "../major-components/caseAudioColumnRight";
 import { AppContext } from "../context/appContext";
+import "../assets/css/caseAudio.css";
 
-const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
+const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const pagesOrder = JSON.parse(
@@ -35,19 +36,17 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
 
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.mp4`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.mp4`;
+  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.mp3`;
+  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.mp3`;
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(
       localStorage.getItem("CaseStudyAnswers")
     );
     const newAnswers = { ...CaseStudyAnswers };
 
-    if (choice === "video A") {
+    if (choice === "audio A") {
       newAnswers[caseId] = ["A", "B"];
       setFirst("A");
       setSecond("B");
@@ -60,53 +59,53 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     setDisableNextButton(false);
   };
   return (
-    <div className="sections-wrapper">
-      <CaseVideoColumnLeft
-        title={`${REACT_APP_caseVideo["caseVideoColumnLeft"].label} ${caseId}/${totalCases}`}
-        className="survey-box-video-left"
-        textClassName="background-text-content"
-        sectionVideoAUrl={choiceA}
-        sectionVideoBUrl={choiceB}
-        sectionVideoHeight={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoHeight
+    <div className="audio-wrapper">
+      <CaseAudioColumnLeft
+        title={`${REACT_APP_caseAudio["caseAudioColumnLeft"].label} ${caseId}/${totalCases}`}
+        className="audio-survey-box-left"
+        textClassName="audio-background-content-alignment"
+        sectionAudioAUrl={choiceA}
+        sectionAudioBUrl={choiceB}
+        sectionAudioHeight={
+          REACT_APP_caseAudio["caseAudioColumnLeft"].sectionAudioHeight
         }
-        sectionVideoWidth={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoWidth
+        sectionAudioWidth={
+          REACT_APP_caseAudio["caseAudioColumnLeft"].sectionAudioWidth
         }
-        sectionVideoClassName="video"
-        rightSectionVideoLabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].rightSectionVideoLabel
+        sectionAudioClassName="video"
+        rightSectionAudioLabel={
+          REACT_APP_caseAudio["caseAudioColumnLeft"].rightSectionAudioLabel
         }
-        leftSectionVideoLabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].leftSectionVideoLabel
+        leftSectionAudioLabel={
+          REACT_APP_caseAudio["caseAudioColumnLeft"].leftSectionAudioLabel
         }
         rightSectionButtonOnClick={() => {
-          selectAsFirst("video B");
+          selectAsFirst("audio B");
         }}
         leftSectionButtonOnClick={() => {
-          selectAsFirst("video A");
+          selectAsFirst("audio A");
         }}
         sectionButtonlabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionButtonlabel
+          REACT_APP_caseAudio["caseAudioColumnLeft"].sectionButtonlabel
         }
         sectionButtonClassName="btn control"
         sectionHasButton={true}
       />
-      <CaseVideoColumnRight
-        className="survey-box-video-right"
-        title={REACT_APP_caseVideo["caseVideoColumnRight"].title}
-        text={REACT_APP_caseVideo["caseVideoColumnRight"].text}
-        textClassName="background-text-content"
+      <CaseAudioColumnRight
+        className="audio-survey-box-right"
+        title={REACT_APP_caseAudio["caseAudioColumnRight"].title}
+        text={REACT_APP_caseAudio["caseAudioColumnRight"].text}
+        textClassName="audio-background-content-alignment"
         topSectionImageHasRank={true}
         topSectionImageRank={1}
-        topSectionImageClassName="scaled-image-fit-height"
-        topSectionClassName="generic-image-section"
-        bottomSectionClassName="generic-image-section"
+        topSectionImageClassName="audio-scaled-image-fit-height"
+        topSectionClassName="audio-generic-image-section"
+        bottomSectionClassName="audio-generic-image-section"
         bottomSectionImageHasRank={true}
         bottomSectionImageRank={2}
-        bottomSectionImageClassName="scaled-image-fit-height"
-        topSectionTextRankClassName="video-text-rank-section"
-        bottomSectionTextRankClassName="video-text-rank-section"
+        bottomSectionImageClassName="audio-scaled-image-fit-height"
+        topSectionTextRankClassName="audio-text-rank-section"
+        bottomSectionTextRankClassName="audio-text-rank-section"
         topSectionImageHasTextRank={true}
         topSectionImageRankText={first}
         bottomSectionImageHasTextRank={true}
@@ -116,4 +115,4 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
   );
 };
 
-export default CaseVideo;
+export default CaseAudio;
