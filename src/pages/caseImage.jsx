@@ -12,6 +12,8 @@ import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
 import CaseImageColumnRight from "../major-components/caseImageColumnRight";
 import Modal from "@material-ui/core/Modal";
 import Popup from "../minor-components/popup";
+import "../assets/css/caseImage.css";
+import "../assets/css/common.css";
 
 const CaseImage = ({
   caseId /* todo:rename to avoid confusion with case uuid */,
@@ -148,24 +150,24 @@ const CaseImage = ({
   };
 
   return (
-    <div className="sections-wrapper">
+    <div className="case-image-section-wrapper">
       <CaseImageColumnleft
         title={`${REACT_APP_caseImage["caseImageColumnLeft"].label} ${caseId}/${totalCases}`}
         text={caseDescription}
         sectionImageUrl={originalHighRes}
-        className="survey-box"
-        textClassName="background-text-content"
-        sectionImageClassName="case-wrapper"
+        className="case-image-column"
+        textClassName="case-image-background-text"
+        sectionImageClassName="case-image-image-wrapper"
         sectionButtonClassName="btn control"
       />
       <CaseImageColumnMiddle
-        className="survey-box"
         title={REACT_APP_caseImage["caseImageColumnMiddle"].title}
         text={REACT_APP_caseImage["caseImageColumnMiddle"].text}
-        textClassName="background-text-content"
-        leftSectionClassName="caseAlternativesSection"
+        className="case-image-column"
+        textClassName="case-image-background-text"
+        leftSectionClassName="case-image-alternative-section"
         leftSectionImageUrl={choiceAThumbnail}
-        leftSectionImageClassName="explanation-background-image"
+        leftSectionImageClassName="case-image-explanation-background-image"
         leftSectionTitle={
           REACT_APP_caseImage["caseImageColumnMiddle"].leftSectionTitle
         }
@@ -190,14 +192,14 @@ const CaseImage = ({
         leftSectionTextWithIconsHasRightIcon={true}
         leftSectionTextWithIconsRightIconClassName="fa fa-check viewed"
         leftSectionShowTextWithIcons={openedChoiceA === true || first !== empty}
-        leftSectionTextWithIconsClassName="top-margined"
-        rightSectionClassName="caseAlternativesSection"
+        leftSectionTextWithIconsClassName="case-image-text-with-icons"
+        rightSectionClassName="case-image-alternative-section"
         rightSectionButtonClassName="btn control"
         rightSectionButtonlabel={
           REACT_APP_caseImage["caseImageColumnMiddle"].rightSectionButtonlabel
         }
         rightSectionImageUrl={choiceBThumbnail}
-        rightSectionImageClassName="explanation-background-image"
+        rightSectionImageClassName="case-image-explanation-background-image"
         rightSectionTitle={
           REACT_APP_caseImage["caseImageColumnMiddle"].rightSectionTitle
         }
@@ -221,10 +223,10 @@ const CaseImage = ({
         rightSectionShowTextWithIcons={
           openedChoiceB === true || first !== empty
         }
-        rightSectionTextWithIconsClassName="top-margined"
+        rightSectionTextWithIconsClassName="case-image-text-with-icons"
       />
       <Modal
-        className="modal"
+        className="case-image-modal"
         open={openChoiceA}
         onClose={() => setOpenChoiceA(false)}>
         <Popup
@@ -260,7 +262,7 @@ const CaseImage = ({
         />
       </Modal>
       <Modal
-        className="modal"
+        className="case-image-modal"
         open={openChoiceB}
         onClose={() => setOpenChoiceB(false)}>
         <Popup
@@ -298,7 +300,7 @@ const CaseImage = ({
       </Modal>
       {casePageType === "ranking" && (
         <CaseImageColumnRight
-          className="survey-box"
+          className="case-image-column"
           title={
             REACT_APP_caseImage &&
             REACT_APP_caseImage["caseImageColumnRight"].title
@@ -307,16 +309,16 @@ const CaseImage = ({
             REACT_APP_caseImage &&
             REACT_APP_caseImage["caseImageColumnRight"].text
           }
-          textClassName="background-text-content"
-          topSectionClassName="generic-image-section"
+          textClassName="case-image-background-text"
+          topSectionClassName="case-image-generic-image-section"
           /* TODO */ /* topSectionClassName */
           topSectionImageUrl={first}
-          topSectionImageClassName="scaled-image-fit-height "
+          topSectionImageClassName="case-image-scaled-image-fit-height"
           topSectionImageHasRank={true}
           topSectionImageRank={1}
-          bottomSectionClassName="generic-image-section"
+          bottomSectionClassName="case-image-generic-image-section"
           bottomSectionImageUrl={second}
-          bottomSectionImageClassName="scaled-image-fit-height "
+          bottomSectionImageClassName="case-image-scaled-image-fit-height"
           bottomSectionImageHasRank={true}
           bottomSectionImageRank={2}
         />
