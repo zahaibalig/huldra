@@ -24,6 +24,8 @@ Huldra uses assets in Firebase Storage to automatically generate survey pages.
 - In Firebase console, find **Storage** in **All Products**.
 - You can create holders here. Huldra reads assets from `gallery` folder by default (this may become configurable in the future), so upload your assets (images, audios or videos) in that folder.
 
+See [Assets](#assets) below for details about assets.
+
 ### 3. Run on your local computer
 
 You need to have [Node.js](https://nodejs.org/) installed on your computer.
@@ -60,12 +62,33 @@ For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter th
 
 # More About Huldra
 
+## Configuration
+
+Update configuration parameters in the `src/config.json` file as needed, to customize your instance.
+Note that you can also specify configuration parameters through the Heroku interface (e.g., if you do not want to make any code changes).
+
 ## Assets
 
-Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases. Please prefix all your cases with their correspnding types (`audio-lorem`, `video-ipsum`, `hybrid-amet`, `image-sit`). The assets to be used have to adhere to the following naming convention:
-- Main asset: `caseLabel`.*
-- Option A: `caseLabel-a`.*
-- Option B: `caseLabel-b`.*
+### Overview
+Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases.
+
+If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these case;
+if empty, the app fetches all cases from Firebase.
+
+"shuffle": "categorized": the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio)
+"shuffle": "full": all the cases are shuffled
+
+If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+
+### Naming convention
+The assets have to adhere to the following naming convention:
+
+- Folder: `<type>-<label>`
+- Main asset: `<type>-<label>.<extension>`
+- Option A: `<type>-<label>-a.<extension>`
+- Option B: `<type>-<label>-b.<extension>`
+
+`<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
 
 ### Directories Tree
 
@@ -86,7 +109,11 @@ gallery
 |       └───image-sit.jpeg
 |       └───image-sit-a.jpeg
 |       └───image-sit-b.jpeg
+|       └───image-sit.json
 ```
+
+For an image case, a json file is also necessary. An image case needs 4 files minimum.
+
 ### Supported File Extensions
 
 | Audio Format | Support |
@@ -114,14 +141,9 @@ gallery
 | `JPEG`  | ✅   |
 | `PNG`  | ✅  |
 
-## Configuration
-
-Update configuration parameters in the `src/config.json` file as needed, to customize your instance.
-Note that you can also specify configuration parameters through the Heroku interface (e.g., if you do not want to make any code changes).
-
 ## Outputs
 
-You can retrieve participant response files from your S3 bucket (`<root directory>` -> `responses`) at your convenience.
+You can retrieve participant response files from your Firebase storage bucket (`<root directory>` -> `responses`) at your convenience.
 
 ## References
 * [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887)
