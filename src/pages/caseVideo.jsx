@@ -59,11 +59,11 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     setDisableNextButton(false);
   };
   return (
-    <div className="video-wrapper">
+    <div className="video-sections-wrapper">
       <CaseVideoColumnLeft
         title={`${REACT_APP_caseVideo["caseVideoColumnLeft"].label} ${caseId}/${totalCases}`}
         className="video-survey-box-left"
-        textClassName="video-background-content-justify"
+        textClassName="video-background-content"
         sectionVideoAUrl={choiceA}
         sectionVideoBUrl={choiceB}
         sectionVideoHeight={
@@ -95,7 +95,7 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
         className="video-survey-box-right"
         title={REACT_APP_caseVideo["caseVideoColumnRight"].title}
         text={REACT_APP_caseVideo["caseVideoColumnRight"].text}
-        textClassName="video-background-content-justify"
+        textClassName="video-background-content"
         topSectionImageHasRank={true}
         topSectionImageRank={1}
         topSectionImageClassName="video-scaled-image-fit-height"

@@ -1,5 +1,5 @@
 /* Main class name was 'sections-wrapper' which is used in multiple files 'caseAudio, caseVideo, caseHybrid, caseImage' */
-.video-wrapper {
+.video-sections-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@
 }
 
 /* Main class name was 'background-text-content' and it should be a generic class which is used throughout the application */
-.video-background-content-justify {
+.video-background-content {
     text-align: justify;
 }
 
