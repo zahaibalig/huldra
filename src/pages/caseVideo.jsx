@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import CaseVideoColumnLeft from "../major-components/caseVideoColumnLeft";
 import CaseVideoColumnRight from "../major-components/caseVideoColumnRight";
 import { AppContext } from "../context/appContext";
+import "../assets/css/caseVideo.css";
 
 const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
@@ -58,11 +59,11 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     setDisableNextButton(false);
   };
   return (
-    <div className="sections-wrapper">
+    <div className="video-sections-wrapper">
       <CaseVideoColumnLeft
         title={`${REACT_APP_caseVideo["caseVideoColumnLeft"].label} ${caseId}/${totalCases}`}
-        className="survey-box-video-left"
-        textClassName="background-text-content"
+        className="video-survey-box-left"
+        textClassName="video-background-content"
         sectionVideoAUrl={choiceA}
         sectionVideoBUrl={choiceB}
         sectionVideoHeight={
@@ -91,18 +92,18 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
         sectionHasButton={true}
       />
       <CaseVideoColumnRight
-        className="survey-box-video-right"
+        className="video-survey-box-right"
         title={REACT_APP_caseVideo["caseVideoColumnRight"].title}
         text={REACT_APP_caseVideo["caseVideoColumnRight"].text}
-        textClassName="background-text-content"
+        textClassName="video-background-content"
         topSectionImageHasRank={true}
         topSectionImageRank={1}
-        topSectionImageClassName="scaled-image-fit-height"
-        topSectionClassName="generic-image-section"
-        bottomSectionClassName="generic-image-section"
+        topSectionImageClassName="video-scaled-image-fit-height"
+        topSectionClassName="video-generic-image-section"
+        bottomSectionClassName="video-generic-image-section"
         bottomSectionImageHasRank={true}
         bottomSectionImageRank={2}
-        bottomSectionImageClassName="scaled-image-fit-height"
+        bottomSectionImageClassName="video-scaled-image-fit-height"
         topSectionTextRankClassName="video-text-rank-section"
         bottomSectionTextRankClassName="video-text-rank-section"
         topSectionImageHasTextRank={true}
