@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/appContext";
 import { getFirebaseApp } from "../utils/firebase";
-import Modal from "@material-ui/core/Modal";
+import Modal from '@mui/material/Modal';
 import CaseHybridColumnLeft from "../major-components/caseHybridColumnLeft";
 import CaseHybridColumnMiddle from "../major-components/caseHybridColumnMiddle";
 import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
