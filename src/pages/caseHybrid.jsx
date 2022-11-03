@@ -7,7 +7,6 @@ import CaseHybridColumnMiddle from "../major-components/caseHybridColumnMiddle";
 import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
 import Popup from "../minor-components/popup";
 import "../assets/css/caseHybrid.css";
-import "../assets/css/common.css";
 
 const CaseHybrid = ({
   caseId = 5,
