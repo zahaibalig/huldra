@@ -6,6 +6,7 @@ import CaseHybridColumnLeft from "../major-components/caseHybridColumnLeft";
 import CaseHybridColumnMiddle from "../major-components/caseHybridColumnMiddle";
 import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
 import Popup from "../minor-components/popup";
+import "../assets/css/caseHybrid.css";
 
 const CaseHybrid = ({
   caseId = 5,
@@ -113,24 +114,24 @@ const CaseHybrid = ({
     setDisableNextButton(false);
   };
   return (
-    <div className="sections-wrapper">
+    <div className="case-hybrid-section-wrapper">
       <CaseHybridColumnLeft
         title={`${REACT_APP_caseHybrid["caseHybridColumnLeft"].label} ${caseId}/${totalCases}`}
         text="This is a sample video clip showing a goal event."
-        className="survey-box"
-        textClassName="background-text-content-left"
+        className="case-hybrid-column"
+        textClassName="case-hybrid-text-content-left"
         sectionVideoUrl={videoUrl}
-        sectionImageClassName="case-wrapper"
+        sectionImageClassName="case-hybrid-image-wrapper"
         sectionButtonClassName="btn control"
       />
       <CaseHybridColumnMiddle
-        className="survey-box"
         title={REACT_APP_caseHybrid["caseHybridColumnMiddle"].title}
         text={REACT_APP_caseHybrid["caseHybridColumnMiddle"].text}
-        textClassName="background-text-content"
-        leftSectionClassName="caseAlternativesSection"
+        className="case-hybrid-column"
+        textClassName="case-hybrid-text"
+        leftSectionClassName="case-hybrid-alternative-section"
         leftSectionImageUrl={choiceAThumbnail}
-        leftSectionImageClassName="scaled-image-fit-width-hybrid"
+        leftSectionImageClassName="case-hybrid-scaled-image-fit-width"
         leftSectionTitle={
           REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionTitle
         }
@@ -154,14 +155,14 @@ const CaseHybrid = ({
         leftSectionTextWithIconsHasRightIcon={true}
         leftSectionTextWithIconsRightIconClassName="fa fa-check viewed"
         leftSectionShowTextWithIcons={openedChoiceA === true || first !== empty}
-        leftSectionTextWithIconsClassName="top-margined"
-        rightSectionClassName="caseAlternativesSection"
+        leftSectionTextWithIconsClassName="case-hybrid-text-with-icons"
+        rightSectionClassName="case-hybrid-alternative-section"
         rightSectionButtonClassName="btn control"
         rightSectionButtonlabel={
           REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionButtonlabel
         }
         rightSectionImageUrl={choiceBThumbnail}
-        rightSectionImageClassName="scaled-image-fit-width-hybrid"
+        rightSectionImageClassName="case-hybrid-scaled-image-fit-width"
         rightSectionTitle={
           REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionTitle
         }
@@ -183,7 +184,7 @@ const CaseHybrid = ({
         rightSectionShowTextWithIcons={
           openedChoiceB === true || first !== empty
         }
-        rightSectionTextWithIconsClassName="top-margined"
+        rightSectionTextWithIconsClassName="case-hybrid-text-with-icons"
       />
       <Modal
         className="modal"
@@ -213,7 +214,7 @@ const CaseHybrid = ({
       </Modal>
       {casePageType === "ranking" && (
         <CaseHybridColumnRight
-          className="survey-box"
+          className="case-hybrid-column"
           title={
             REACT_APP_caseHybrid &&
             REACT_APP_caseHybrid["caseHybridColumnRight"].title
@@ -222,15 +223,15 @@ const CaseHybrid = ({
             REACT_APP_caseHybrid &&
             REACT_APP_caseHybrid["caseHybridColumnRight"].text
           }
-          textClassName="background-text-content"
-          topSectionClassName="generic-image-section"
+          textClassName="case-hybrid-text"
+          topSectionClassName="case-hybrid-generic-image-section"
           topSectionImageUrl={first}
-          topSectionImageClassName="scaled-image-fit-height "
+          topSectionImageClassName="case-hybrid-scaled-image-fit-height"
           topSectionImageHasRank={true}
           topSectionImageRank={1}
-          bottomSectionClassName="generic-image-section"
+          bottomSectionClassName="case-hybrid-generic-image-section"
           bottomSectionImageUrl={second}
-          bottomSectionImageClassName="scaled-image-fit-height "
+          bottomSectionImageClassName="case-hybrid-scaled-image-fit-height"
           bottomSectionImageHasRank={true}
           bottomSectionImageRank={2}
         />

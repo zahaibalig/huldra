@@ -27,10 +27,10 @@ const CaseHybridColumnLeft = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div className={"video-section-centered"}>
+      <div className={"case-hybrid-video-section-centered"}>
         <GenericVideoSection
-          className={"video-section-centered"}
-          videoClassName={"video"}
+          className={"case-hybrid-video-section-centered"}
+          videoClassName={"case-hybrid-video"}
           hasButton={false}
           videoUrl={sectionVideoUrl}
           videoWidth="400px"
