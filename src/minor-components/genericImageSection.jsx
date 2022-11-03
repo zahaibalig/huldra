@@ -49,7 +49,7 @@ const GenericImageSection = ({
         rankTextSectionClassName={textRankClassName}
       />
       {hasButton && (
-        <div className="generic-image-section-button">
+        <div className="case-image-generic-section-button">
           {" "}
           <GenericButton
             className={buttonClassName}

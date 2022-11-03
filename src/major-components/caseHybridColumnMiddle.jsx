@@ -60,7 +60,7 @@ const CaseHybridColumnMiddle = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div className="hybrid-generic-image-section">
+      <div className="case-hybrid-column-middle-generic-image-section">
         <GenericImageSection
           title={leftSectionTitle}
           imageClassName={leftSectionImageClassName}
