@@ -1,4 +1,6 @@
+
 import React from "react";
+
 import Likert from "react-likert-scale";
 import Icon from "./icon";
 import Asterisk from "./asterisk";
