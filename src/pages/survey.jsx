@@ -28,7 +28,7 @@ import ProtectedRoute from "../minor-components/protectedRoute";
 import Header from "../minor-components/header";
 import { pushToBucket } from "../utils/cloudStorage";
 import { logSessionEvent } from "../utils/localStorage";
-import Modal from "@material-ui/core/Modal";
+import Modal from '@mui/material/Modal';
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { getFolderReference, fetchCases } from "../utils/firebase";
