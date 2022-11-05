@@ -22,7 +22,7 @@ const InputTextField = ({
         )}{" "}
         {label}{" "}
         {optional && (
-          <span className="optional-text">
+          <span className="input-text-field-optional-text">
             (optional)
           </span>
         )}{" "}
