@@ -10,7 +10,7 @@ import { getCaseJsonFile } from "../utils/urlHandler";
 import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
 import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
 import CaseImageColumnRight from "../major-components/caseImageColumnRight";
-import Modal from "@material-ui/core/Modal";
+import Modal from '@mui/material/Modal';
 import Popup from "../minor-components/popup";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
