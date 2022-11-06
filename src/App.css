@@ -419,6 +419,9 @@ fieldset.likertScale {
   flex-direction: column;
   align-items: flex-start;
 }
+fieldset.likertScale .likertIndicator {
+  cursor: pointer;
+}
 .form-check-label {
   text-align: left;
 }

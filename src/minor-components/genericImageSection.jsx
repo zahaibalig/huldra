@@ -49,15 +49,7 @@ const GenericImageSection = ({
         rankTextSectionClassName={textRankClassName}
       />
       {hasButton && (
-        <div
-          style={{
-            marginTop: "0.8em",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}>
+        <div className="case-image-generic-section-button">
           {" "}
           <GenericButton
             className={buttonClassName}

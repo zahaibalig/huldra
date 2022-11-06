@@ -60,7 +60,7 @@ const RadioInput = ({
             <input
               disabled={disableTextField[index]}
               onChange={(e) => onTextChange(e.currentTarget.value)}
-              style={{ width: "8em", height: "2em", marginLeft: "0.5em" }}
+              className="input-radio-disabled-text"
               type="text"
             />
           )}

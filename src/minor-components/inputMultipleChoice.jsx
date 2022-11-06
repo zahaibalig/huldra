@@ -33,7 +33,7 @@ const InputMultipleChoice = ({
         )}{" "}
         {label}{" "}
         {optional && (
-          <span style={{ fontWeight: "lighter", marginRight: "0.5em" }}>
+          <span className="input-multiple-choice-optional-text">
             (optional)
           </span>
         )}{" "}

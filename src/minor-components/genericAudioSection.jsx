@@ -49,15 +49,7 @@ const GenericAudioSection = ({
         label={audioLabel}
       />
       {hasButton && (
-        <div
-          style={{
-            marginTop: "0.8em",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}>
+        <div className="generic-audio-section-button">
           {" "}
           <GenericButton
             className={buttonClassName}

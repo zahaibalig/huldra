@@ -34,14 +34,7 @@ const CaseAudioColumnLeft = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-          justifySelf: "center",
-        }}>
+      <div className="audio-generic-section">
         <GenericAudioSection
           hasButton={sectionHasButton}
           className={sectionClassName}

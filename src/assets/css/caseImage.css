@@ -60,4 +60,20 @@
 .case-image-scaled-image-fit-height {
     width: auto;
     height: 100%;
-  }
+}
+
+.case-image-column-middle-generic-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.case-image-generic-section-button {
+    margin-top: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
