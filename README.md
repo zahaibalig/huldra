@@ -9,13 +9,13 @@ Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), 
 
 ### 1. Set up a Firebase project
 
-Currenty Huldra uses Google Firebase to store assets and responses (we may support other types of servers in the future).
+Currenty Huldra uses Google Firebase to store assets and responses (we may support other types of storage solutions in the future).
 
 - Login to https://firebase.google.com/ with your Google account.
 - Click **Go to console**.
 - Click **+ Add project** and follow the prompts to create a project.
 - Click the **</>** icon to create a web app.
-- Once it is created, the project configuration page is open, where you can see Firebase connection parameters, such as apiKey and appId. Save this for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
+- Once the web app is created, open the project configuration page, where you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
  - In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
 
 ### 2. Upload assets
@@ -23,7 +23,7 @@ Currenty Huldra uses Google Firebase to store assets and responses (we may suppo
 Huldra uses assets in Firebase Storage to automatically generate survey pages.
 
 - In Firebase console, find **Storage** in **All Products**.
-- You can create holders here. Huldra reads assets from `gallery` folder by default (this may become configurable in the future), so upload your assets (images, audios or videos) in that folder.
+- You can create folders in your storage bucket. Huldra reads assets from the `gallery` folder by default, so upload your assets (images, audio and/or video clips) in this folder.
 
 See [Assets](#assets) below for details about assets.
 
@@ -55,9 +55,9 @@ For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you li
 
 You can delopy Huldra to servers that support Node.js, such as [Heroku](https://heroku.com/), [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/).
 
-For Heroku, you can set Firebase connection parameters in the Heroku interface as config vars for your app (from the project page: **Settings** -> **Config Vars**). See [Heroku's documantation](https://devcenter.heroku.com/articles/github-integration) if you need help on how to deploy to Heorku from GitHub.
+For Heroku, you can set Firebase connection parameters in the Heroku interface as config vars for your app (from the project page: **Settings** -> **Config Vars**). See [Heroku's documantation](https://devcenter.heroku.com/articles/github-integration) if you need help on how to deploy to Heroku from GitHub.
 
-For Netlify, you can set variables under **Site settings** - **Build & deploy** -> **Environment** > **Environment variables**.
+For Netlify, you can set variables under **Site settings** -> **Build & deploy** -> **Environment** -> **Environment variables**.
 
 For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
 
