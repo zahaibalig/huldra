@@ -68,7 +68,7 @@ const Summary = ({
                 <RankedImage
                   path={
                     casePrefix === "video"
-                      ? /* `${videoPlaceholderIconPath}` */ thumbnailPathA
+                      ? `${videoPlaceholderIconPath}`
                       : casePrefix === "audio"
                       ? `${audioPlaceholderIconPath}`
                       : casePrefix === "hybrid"
@@ -88,7 +88,7 @@ const Summary = ({
                 <RankedImage
                   path={
                     casePrefix === "video"
-                      ? /* `${videoPlaceholderIconPath}` */ thumbnailPathB
+                      ? `${videoPlaceholderIconPath}`
                       : casePrefix === "audio"
                       ? `${audioPlaceholderIconPath}`
                       : casePrefix === "hybrid"
