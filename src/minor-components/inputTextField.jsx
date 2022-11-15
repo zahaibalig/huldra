@@ -22,7 +22,7 @@ const InputTextField = ({
         )}{" "}
         {label}{" "}
         {optional && (
-          <span style={{ fontWeight: "lighter", marginRight: "0.5em" }}>
+          <span className="input-text-field-optional-text">
             (optional)
           </span>
         )}{" "}

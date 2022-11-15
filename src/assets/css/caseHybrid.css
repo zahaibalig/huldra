@@ -85,3 +85,11 @@
     bottom: "2em";
     height: 100%;
 }
+
+.case-hybrid-column-middle-generic-image-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+

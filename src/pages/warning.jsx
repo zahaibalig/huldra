@@ -7,7 +7,7 @@ const Warning = ({ REACT_APP_warning }) => {
             <div className="warning-header">
                 <h2>{REACT_APP_warning && REACT_APP_warning["title"]}</h2>
             </div>
-            <span style={{ fontSize: "1.5em", padding: "1em", fontWeight: "bold" }}>
+            <span className="warning-message">
         {REACT_APP_warning && REACT_APP_warning["warningMessage"]}
       </span>
         </div>

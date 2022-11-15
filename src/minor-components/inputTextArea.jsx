@@ -22,7 +22,7 @@ const InputTextArea = ({
           />
         )}{" "}
         {label}{" "}
-        {optional && <span style={{ fontWeight: "lighter" }}>(optional)</span>}{" "}
+        {optional && <span className="input-text-area-optional-text">(optional)</span>}{" "}
         {!optional && <Asterisk />}
       </label>
       <textarea type={type} id={id} onChange={onChange} />

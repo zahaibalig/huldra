@@ -55,6 +55,35 @@ textarea::-webkit-scrollbar-thumb {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: #9c9393;
 }
+.input-multiple-choice-optional-text {
+    font-weight: 400;
+    margin-right: 0.5em;
+}
+.ranked-image-rank-text {
+    font-size: 100px;
+}
+.asterisk-required-field {
+    color: red;
+    margin-right: 0.2em;
+    font-weight: bold;
+}
+.input-text-area-optional-text {
+    font-weight: lighter;
+}
+.input-radio-disabled-text {
+    width: 8em !important;
+    height: 2em !important;
+    margin-left: 0.5em !important;
+}
+.warning-message {
+    font-size: 1.5em;
+    padding: 1em;
+    font-weight: bold
+}
+.input-text-field-optional-text {
+    font-weight: lighter;
+    margin-right: 0.5em;
+}
 .App {
     text-align: center;
     font-family: "Arial MT", sans-serif;

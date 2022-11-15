@@ -34,14 +34,7 @@ const CaseVideoColumnLeft = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-          justifySelf: "center",
-        }}>
+      <div className="video-generic-section">
         <GenericVideoSection
           className={sectionClassName}
           text={sectionText}

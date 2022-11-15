@@ -49,15 +49,7 @@ const GenericVideoSection = ({
         label={videoLabel}
       />
       {hasButton && (
-        <div
-          style={{
-            marginTop: "0.8em",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}>
+        <div className="generic-video-section-button">
           {" "}
           <GenericButton
             className={buttonClassName}
