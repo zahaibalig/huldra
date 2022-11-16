@@ -118,6 +118,10 @@ const Survey = ({
         "req-error"
       );
     }
+    if (history.location.pathname === "/survey/summary-and-feedback"){
+      setOpenEndDialog(true);
+      localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
+    }
   });
   /* TODO: Unify the implementatino of hot keys across the app */
   /* HOTKEYS FOR CASE PAGE */
@@ -269,8 +273,9 @@ const Survey = ({
     );
     if (!FeedbackFormAnswers) {
       toastError("Please verify mandatory fields.", "top-center", "req-error");
-    } else {
-      let hasError = validateFeedbackForm(
+    } 
+    else {
+      const hasError = validateFeedbackForm(
         REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
         FeedbackFormAnswers
       ).hasError;
@@ -280,9 +285,8 @@ const Survey = ({
           "top-center",
           "req-error"
         );
-      } else {
-        setOpenEndDialog(true);
-      }
+      } 
+      setOpenEndDialog(true);
     }
   };
 
@@ -346,14 +350,12 @@ const Survey = ({
       logSessionEvent("Next", `Case${casesCount}`, PageLocator);
       pushToBucket();
       history.push(`/survey/summary-and-feedback`);
-    } else {
+    }
       /* TODO: INTEGRATE handleEndSurvey METHOD */
       /*  else if (history.location.pathname === "/survey/summary-and-feedback") { */
       /*  logSessionEvent("End Survey", `Summary and Feedback`, PageLocator); */
 
       /*   } */
-      return;
-    }
   };
   const handlePrevious = () => {
     getCurrentPageIndex();
@@ -707,7 +709,9 @@ const Survey = ({
               onActiveYearsChange={onActiveYearsChange}
               setTermsOfUse={setTermsOfUse}
               setNotifications={setNotifications}
+              // not used in regisration.jsx
               disableRegistration={disableRegistration}
+              // not used in regisration.jsx
               getParticipantId={getParticipantId}
               onNameChange={onNameChange}
               onEmailChange={onEmailChange}
