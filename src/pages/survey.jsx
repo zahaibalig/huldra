@@ -273,9 +273,8 @@ const Survey = ({
     );
     if (!FeedbackFormAnswers) {
       toastError("Please verify mandatory fields.", "top-center", "req-error");
-    } 
-    else {
-      const hasError = validateFeedbackForm(
+    } else {
+      let hasError = validateFeedbackForm(
         REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
         FeedbackFormAnswers
       ).hasError;
@@ -285,8 +284,9 @@ const Survey = ({
           "top-center",
           "req-error"
         );
-      } 
-      setOpenEndDialog(true);
+      } else {
+        setOpenEndDialog(true);
+      }
     }
   };
 
@@ -350,12 +350,14 @@ const Survey = ({
       logSessionEvent("Next", `Case${casesCount}`, PageLocator);
       pushToBucket();
       history.push(`/survey/summary-and-feedback`);
-    }
+    } else {
       /* TODO: INTEGRATE handleEndSurvey METHOD */
       /*  else if (history.location.pathname === "/survey/summary-and-feedback") { */
       /*  logSessionEvent("End Survey", `Summary and Feedback`, PageLocator); */
 
       /*   } */
+      return;
+    }
   };
   const handlePrevious = () => {
     getCurrentPageIndex();
@@ -709,9 +711,7 @@ const Survey = ({
               onActiveYearsChange={onActiveYearsChange}
               setTermsOfUse={setTermsOfUse}
               setNotifications={setNotifications}
-              // not used in regisration.jsx
               disableRegistration={disableRegistration}
-              // not used in regisration.jsx
               getParticipantId={getParticipantId}
               onNameChange={onNameChange}
               onEmailChange={onEmailChange}
