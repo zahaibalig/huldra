@@ -68,16 +68,29 @@ For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter th
 Update configuration parameters in the `src/config.json` file as needed, to customize your instance.
 Note that you can also specify configuration parameters through the Heroku interface (e.g., if you do not want to make any code changes).
 
+### Color scheme
+Add the following to `src/config.json` to specify a color scheme.
+
+```
+  "REACT_APP_color": {
+    "themeColor" : "green"
+  },
+```
+
+Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
+
+If no color is specified, the default color is blue.
+
 ## Assets
 
 ### Overview
 Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases.
 
-If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these case;
+If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these cases;
 if empty, the app fetches all cases from Firebase.
 
-"shuffle": "categorized": the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio)
-"shuffle": "full": all the cases are shuffled
+`"shuffle": "categorized"`: the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio)
+`"shuffle": "full"`: all the cases are shuffled
 
 If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
 
