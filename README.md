@@ -15,7 +15,7 @@ Currenty Huldra uses Google Firebase to store assets and responses (we may suppo
 - Click **Go to console**.
 - Click **+ Add project** and follow the prompts to create a project.
 - Click the **</>** icon to create a web app.
-- Once the web app is created, open the project configuration page, where you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
+- Once the web app is created, the project configuration page will be opened automatically. Here you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
  - In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
 
 ### 2. Upload assets
@@ -172,6 +172,6 @@ You can retrieve participant response files from your Firebase storage bucket (`
 ### Keyboard shortcuts
 `Enter`: imitates the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
 
-`Shift + Enter`: skip to the next case without answering the current one
+`Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)
 
-`Shift + F`: on the registration page (Get participant ID), fill out the form and make the "Start Survey" button clickable
+`Shift + F`: on the registration page which opens after clicking `Get participant ID`, automatically fill out the form and make the "Start Survey" button clickable (applicable fields are filled with the string "NA", in order to facilitate the filtering of such development/test/debug responses from Firebase later on)
