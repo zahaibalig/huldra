@@ -119,6 +119,10 @@ const Survey = ({
         "req-error"
       );
     }
+    if (history.location.pathname === "/survey/summary-and-feedback"){
+      setOpenEndDialog(true);
+      localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
+    }
   });
   /* TODO: Unify the implementatino of hot keys across the app */
   /* HOTKEYS FOR CASE PAGE */
