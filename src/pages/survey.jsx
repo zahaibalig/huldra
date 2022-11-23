@@ -49,6 +49,7 @@ const Survey = ({
   REACT_APP_footer,
   REACT_APP_header,
   REACT_APP_caseOrder,
+  REACT_APP_color,
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
@@ -591,6 +592,7 @@ const Survey = ({
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
           leftIcon2ClassName="fa fa-clone ml-3 form-tooltip"
+          backgroundColor={REACT_APP_color && REACT_APP_color["backgroundColor"]}
           /* TODO: CHECK ALTERNATIVES FOR THIS METHOD */
           leftIcon1OnClick={() => {
             return;
@@ -795,6 +797,7 @@ const Survey = ({
         rightButtonClassName={rightButtonClassName}
         disableLeftButton={disableLeftButton}
         disableRightButton={disableRightButton}
+        backgroundColor={REACT_APP_color && REACT_APP_color["backgroundColor"]}
       />
     </div>
   );

@@ -16,9 +16,10 @@ const Header = ({
   rightIcon2ClassName,
   rightIcon1OnClick,
   rightIcon2OnClick,
+  backgroundColor,
 }) => {
   return (
-    <div className="header">
+    <div className={`${backgroundColor} header`}>
       <ReactTooltip
         className="custom-form-tooltip"
         multiline={false}

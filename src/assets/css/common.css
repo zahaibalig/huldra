@@ -14,6 +14,21 @@ a:hover {
 .btn {
     text-align: center;
 }
+.green {
+    background-color: green !important;
+}
+.red {
+    background-color: red !important;
+}
+.yellow {
+    background-color: yellow !important;
+}
+.blue {
+    background-color: blue !important;
+}
+.orange {
+    background-color: orange !important;
+}
 .control {
     width: 160px;
     border: #ffffff solid 0.15em;

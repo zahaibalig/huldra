@@ -27,6 +27,7 @@ const App = () => {
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
         "REACT_APP_caseOrder",
+        "REACT_APP_color"
       ])
     );
     function handleResize() { }
@@ -47,6 +48,7 @@ const App = () => {
                 REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -60,6 +62,7 @@ const App = () => {
                 REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -74,6 +77,7 @@ const App = () => {
                 }
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -87,6 +91,7 @@ const App = () => {
                 }
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -105,6 +110,7 @@ const App = () => {
                 }
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -119,6 +125,7 @@ const App = () => {
                 REACT_APP_outputJson={configuration}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
@@ -129,6 +136,7 @@ const App = () => {
                 {...props}
                 REACT_APP_end={configuration["REACT_APP_end"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
+                REACT_APP_color={configuration["REACT_APP_color"]}
               />
             )}
           />
