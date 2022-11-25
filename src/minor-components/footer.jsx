@@ -15,10 +15,9 @@ const Footer = ({
   onRightButtonClick,
   rightButtonClassName,
   rightButtonLabel,
-  backgroundColor,
 }) => {
   return (
-    <footer className={backgroundColor}>
+    <footer>
       <div className="controls">
         <GenericButton
           className={leftButtonClassName}

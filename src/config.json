@@ -304,7 +304,7 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "backgroundColor" : "orange"
+    "themeColor" : "green"
   },
   "REACT_APP_footer": {
     "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
