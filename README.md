@@ -81,6 +81,15 @@ Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
 
 If no color is specified, the default color is blue.
 
+The values of the colors are:
+
+- default blue: $\color{#38c3f2}{■}$#38c3f2
+- green: $\color{#6db784}{■}$#6db784;
+- purple: $\color{#9b45b2}{■}$#9b45b2;
+- yellow: $\color{#f9e45b}{■}$#f9e45b;
+- teal: $\color{#2b6777}{■}$#2b6777;
+- orange: $\color{#eb6b40}{■}$#eb6b40;
+
 ## Assets
 
 ### Overview
