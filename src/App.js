@@ -27,13 +27,14 @@ const App = () => {
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
         "REACT_APP_caseOrder",
+        "REACT_APP_color"
       ])
     );
     function handleResize() { }
     window.addEventListener("resize", handleResize);
   }, []);
-  return (
-    <div className="App">
+    return (
+    <div className={`App theme-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]}`}>
       {innerWidth < 1200 ? (
         <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
       ) : (

@@ -14,6 +14,21 @@ a:hover {
 .btn {
     text-align: center;
 }
+.theme-color-green {
+    --primary-color: #6db784;
+}
+.theme-color-purple {
+    --primary-color: #9b45b2;
+}
+.theme-color-yellow {
+    --primary-color: #f9e45b;
+}
+.theme-color-teal{
+    --primary-color: #2b6777;
+}
+.theme-color-orange {
+    --primary-color: #eb6b40;
+}
 .control {
     width: 160px;
     border: #ffffff solid 0.15em;
