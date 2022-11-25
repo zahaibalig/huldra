@@ -14,19 +14,19 @@ a:hover {
 .btn {
     text-align: center;
 }
-.theme-green {
+.theme-color-green {
     --primary-color: #6db784;
 }
-.theme-purple {
+.theme-color-purple {
     --primary-color: #9b45b2;
 }
-.theme-yellow {
+.theme-color-yellow {
     --primary-color: #f9e45b;
 }
-.theme-teal{
+.theme-color-teal{
     --primary-color: #2b6777;
 }
-.theme-orange {
+.theme-color-orange {
     --primary-color: #eb6b40;
 }
 .control {

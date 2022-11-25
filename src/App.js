@@ -34,7 +34,7 @@ const App = () => {
     window.addEventListener("resize", handleResize);
   }, []);
     return (
-    <div className={`App theme-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]}`}>
+    <div className={`App theme-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]}`}>
       {innerWidth < 1200 ? (
         <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
       ) : (
