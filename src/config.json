@@ -303,6 +303,9 @@
     "FeedbackFormAnswers",
     "SessionInfo"
   ],
+  "REACT_APP_color": {
+    "themeColor" : ""
+  },
   "REACT_APP_footer": {
     "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
     "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
