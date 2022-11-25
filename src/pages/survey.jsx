@@ -49,7 +49,6 @@ const Survey = ({
   REACT_APP_footer,
   REACT_APP_header,
   REACT_APP_caseOrder,
-  REACT_APP_color,
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
