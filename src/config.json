@@ -233,6 +233,7 @@
   },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
+      "display": false,
       "title": "Summary of cases",
       "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
       "label": "Case",

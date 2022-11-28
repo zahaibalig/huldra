@@ -4,12 +4,24 @@ import FeedbackForm from "../major-components/feedbackForm";
 import { generateFeedbackFormValidationScheme } from "../utils/inputValidation";
 import "../assets/css/summaryAndFeedback.css";
 
+
 const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
   generateFeedbackFormValidationScheme(
     REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions
   );
-
-  return (
+  if (REACT_APP_summaryAndFeedback["summary"].display === false){
+    return(
+        <FeedbackForm
+        title={REACT_APP_summaryAndFeedback["feedbackForm"].title}
+        text={REACT_APP_summaryAndFeedback["feedbackForm"].text}
+        feedbackFormQuestions={
+          REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions
+        }
+        />
+    );
+  }
+  else{
+    return (
     <div className="summary-and-feedback-wrapper">
       <Summary
         title={REACT_APP_summaryAndFeedback["summary"].title}
@@ -36,7 +48,8 @@ const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
         }
       />
     </div>
-  );
+    );
+  };
 };
 
 export default SummaryAndFeedback;
