@@ -212,6 +212,16 @@ const Survey = ({
     leftButtonClassName = "hidden-button";
     rightButtonClassName = "hidden-button";
   }
+
+  // use configuration parameter to allow/disallow revisiting previous answers
+  const allowRevisitingAnswers = REACT_APP_general["allowRevisitingAnswers"];
+  // only works on case pages and the summary-and-feedback page
+  if (history.location.pathname.startsWith('/survey/case') || history.location.pathname === "/survey/summary-and-feedback") {
+    if (allowRevisitingAnswers === false) {
+      leftButtonClassName = "hidden-button";
+    }
+  }
+
   /* TODO: CLEAN UP THESE VARIABLES */
   let pageIsRegistration = history.location.pathname === "/survey/registration";
   let pageIsEndPage = history.location.pathname === "/survey/end";
