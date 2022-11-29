@@ -110,7 +110,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
- }, [history.location.pathname, disableNextButton]);
+ }, [disableNextButton]);
 
   /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
