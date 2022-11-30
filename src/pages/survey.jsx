@@ -101,6 +101,17 @@ const Survey = ({
     return () => setSubscribed(false);
   }, [setCasesCount, getCasesCount, subscribed]);
 
+  // use configuration parameter to allow/disallow proceeding to the next page without answering
+  useEffect(() => {
+    // only works on case pages
+    if (history.location.pathname.startsWith('/survey/case')) {
+      const allowProceedingWithoutAnswering = REACT_APP_general["allowProceedingWithoutAnswering"];
+      if (allowProceedingWithoutAnswering) {
+        setDisableNextButton(false);
+      }
+    }
+ }, [disableNextButton]);
+
   /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
     if (history.location.pathname === "/survey/registration") {
