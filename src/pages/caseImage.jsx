@@ -59,6 +59,12 @@ const CaseImage = ({
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);
 
+      setOpenChoiceA(false);
+      setOpenedChoiceA(false);
+
+      setOpenChoiceB(false);
+      setOpenedChoiceB(false);
+
       if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "A") {
         setFirst(choiceAThumbnail);
         setSecond(choiceBThumbnail);
