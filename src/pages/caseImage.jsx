@@ -10,6 +10,7 @@ import { getCaseJsonFile } from "../utils/urlHandler";
 import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
 import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
 import CaseImageColumnRight from "../major-components/caseImageColumnRight";
+import { useLocation } from 'react-router-dom';
 import Modal from '@mui/material/Modal';
 import Popup from "../minor-components/popup";
 import "../assets/css/caseImage.css";
@@ -48,6 +49,21 @@ const CaseImage = ({
     }.png`;
   const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
     }.png`;
+
+  const useLocationChange = (action) => {
+    const location = useLocation()
+    React.useEffect(() => { action(location) }, [location])
+  };
+
+  useLocationChange((location) => {
+    setOpenChoiceA(false);
+    setOpenedChoiceA(false);
+
+    setOpenChoiceB(false);
+    setOpenedChoiceB(false);
+  });
+
+
   useEffect(() => {
     setDisableNextButton(true);
     setSubscribed(true);
@@ -58,12 +74,6 @@ const CaseImage = ({
     );
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);
-
-      setOpenChoiceA(false);
-      setOpenedChoiceA(false);
-
-      setOpenChoiceB(false);
-      setOpenedChoiceB(false);
 
       if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "A") {
         setFirst(choiceAThumbnail);
