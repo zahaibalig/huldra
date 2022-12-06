@@ -323,6 +323,7 @@
   "REACT_APP_general": {
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
+    "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false
   }
 }
