@@ -37,17 +37,17 @@ You need to have [Node.js](https://nodejs.org/) installed on your computer.
 
 ````
 REACT_APP_FIREBASE_API_KEY="Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp"
-REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_AUTH_DOMAIN="foobar.firebaseapp.com"
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID="1234567890"
 REACT_APP_FIREBASE_PROJECT_ID="foobar"
 REACT_APP_FIREBASE_STORAGE_BUCKET="foobar.appspot.com"
-REACT_APP_FIREBASE_ROOT_DIRECTORY="dev"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="1234567890"
+REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
+REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ````
 
 Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of **Set up a Firebase project**.
 
-For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="dev"`
+For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `/dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` in the file. Don't forget to place a forward slash at the start of the path.
 
 - Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
@@ -61,12 +61,24 @@ For Netlify, you can set variables under **Site settings** -> **Build & deploy**
 
 For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
 
+## Other issues about deployment
+### CORS error messages from Firabase
+You can change Firebase settings to suit your needs.
+
+If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). Here is a guide on how to do it: https://stackoverflow.com/a/71193349/802678
+
 # More About Huldra
 
 ## Configuration
+You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
 
-Update configuration parameters in the `src/config.json` file as needed, to customize your instance.
-Note that you can also specify configuration parameters through the Heroku interface (e.g., if you do not want to make any code changes).
+The syntax of `.env` is as follows:
+
+```
+todo
+```
+
+When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see **Deploy to a server** for more), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
 ### Color scheme
 Add the following to `src/config.json` to specify a color scheme.
