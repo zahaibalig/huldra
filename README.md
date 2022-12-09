@@ -72,12 +72,6 @@ If you see CORS error messages from Firabase in the console, that means you must
 ## Configuration
 You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
 
-The syntax of `.env` is as follows:
-
-```
-todo
-```
-
 When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see **Deploy to a server** for more), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
 ### Color scheme
