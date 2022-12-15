@@ -325,6 +325,7 @@
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false,
-    "allowProceedingWithoutViewDetailsMandatory": false
+    "caseImageViewDetailsMandatory": true,
+    "caseHybridViewDetailsMandatory": true
   }
 }

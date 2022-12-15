@@ -80,6 +80,17 @@ const CaseHybridColumnMiddle = ({
           imageHasRank={leftSectionImageHasRank}
           imageRank={leftSectionImageRank}
           imageOnClick={leftSectionImageOnClick}
+          textWithIconsHasLeftIcon={leftSectionTextWithIconsHasLeftIcon}
+          textWithIconLeftIconClassName={
+            leftSectionTextWithIconLeftIconClassName
+          }
+          textWithIconsLabel={leftSectionTextWithIconsLabel}
+          textWithIconsHasRightIcon={leftSectionTextWithIconsHasRightIcon}
+          textWithIconsRightIconClassName={
+            leftSectionTextWithIconsRightIconClassName
+          }
+          textWithIconsClassName={leftSectionTextWithIconsClassName}
+          showTextWithIcons={leftSectionShowTextWithIcons}
         />
         <GenericImageSection
           title={rightSectionTitle}
@@ -100,6 +111,17 @@ const CaseHybridColumnMiddle = ({
           imageHasRank={rightSectionImageHasRank}
           imageRank={rightSectionImageRank}
           imageOnClick={rightSectionImageOnClick}
+          textWithIconsHasLeftIcon={rightSectionTextWithIconsHasLeftIcon}
+          textWithIconLeftIconClassName={
+            rightSectionTextWithIconLeftIconClassName
+          }
+          textWithIconsLabel={rightSectionTextWithIconsLabel}
+          textWithIconsHasRightIcon={rightSectionTextWithIconsHasRightIcon}
+          textWithIconsRightIconClassName={
+            rightSectionTextWithIconsRightIconClassName
+          }
+          textWithIconsClassName={rightSectionTextWithIconsClassName}
+          showTextWithIcons={rightSectionShowTextWithIcons}
         />
       </div>
     </div>

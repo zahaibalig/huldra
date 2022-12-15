@@ -134,15 +134,15 @@ const CaseImage = ({
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    const allowProceedingWithoutViewDetailsMandatory = REACT_APP_general["allowProceedingWithoutViewDetailsMandatory"];
+    const caseImageViewDetailsMandatory = REACT_APP_general["caseImageViewDetailsMandatory"];
 
     if (
-        allowProceedingWithoutViewDetailsMandatory === false && (first === empty && (openedChoiceA === false || openedChoiceB === false))
+        caseImageViewDetailsMandatory === true && (first === empty && (openedChoiceA === false || openedChoiceB === false))
     ) {
       //Show warning only when we don't have a ranking AND  at least one of the flags is still set to false.
       toastInfo("Please see both explanations.", "top-center", "select-error");
     } else if (
-        allowProceedingWithoutViewDetailsMandatory === true || (first !== empty || (openedChoiceA === true && openedChoiceB === true))
+        caseImageViewDetailsMandatory === false || (first !== empty || (openedChoiceA === true && openedChoiceB === true))
     ) {
       /* TODO: read the corresponding string for the answers item in the output
       json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
