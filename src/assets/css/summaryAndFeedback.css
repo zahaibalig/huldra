@@ -110,3 +110,7 @@
     width: 9em;
     height: auto;
 }
+
+.highlightImage {
+    border: var(--button-color) 6px solid;
+}
