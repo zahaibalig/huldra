@@ -324,6 +324,7 @@
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
-    "allowProceedingWithoutAnswering": false
+    "allowProceedingWithoutAnswering": false,
+    "allowProceedingWithoutViewDetailsMandatory": false
   }
 }
