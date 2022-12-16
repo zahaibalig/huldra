@@ -3,6 +3,8 @@ import Likert from "react-likert-scale";
 import Icon from "./icon";
 import Asterisk from "./asterisk";
 import { generateLikertScheme } from "../utils/generateLikertScheme";
+import { pushToBucket } from "../utils/cloudStorage";
+
 const InputLikert = ({
   label,
   id,
@@ -40,6 +42,7 @@ const InputLikert = ({
             `${likertQuestions[index].label}`
           ] = `${val.value}/${likertOptions.responses.length}`;
           localStorage.setItem("FeedbackFormAnswers", JSON.stringify(answers));
+          pushToBucket();
         };
         return <Likert {...likertOptions} key={index} />;
       })}

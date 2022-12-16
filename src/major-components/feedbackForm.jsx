@@ -10,9 +10,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
     likert: InputLikert,
     mc: InputMultipleChoice,
   };
-  useEffect(() => {
-    localStorage.removeItem("FeedbackFormAnswers");
-  }, []);
+
   return (
     <div className="feedback-form-wrapper">
       <h3>{title}</h3>

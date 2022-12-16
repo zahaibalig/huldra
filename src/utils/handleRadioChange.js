@@ -1,3 +1,5 @@
+import { pushToBucket } from "../utils/cloudStorage";
+
 /* TODO: MAKE INTO A GENERIC FUNCTION WHICH CAN BE USED BY ANY COMPONENT */
 const handleRadioChange = (e, field1, field2) => {
   const FeedbackFormAnswers = JSON.parse(
@@ -20,5 +22,6 @@ const handleRadioChange = (e, field1, field2) => {
       JSON.stringify(FeedbackFormAnswers)
     );
   }
+  pushToBucket();
 };
 export { handleRadioChange };
