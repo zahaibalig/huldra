@@ -499,7 +499,7 @@ const Survey = ({
           ); // todo: add a fallback in config.json url to fetch all the  cases
         localStorage.clear();
         let uuid = uuidv4();
-        copy(uuid);
+        //copy(uuid);
         let ParticipantInfo = {
           ParticipantId: uuid,
           Name: name,
