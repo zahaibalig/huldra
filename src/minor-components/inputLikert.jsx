@@ -15,6 +15,24 @@ const InputLikert = ({
   optional = false,
   likertQuestions,
 }) => {
+
+  // get the offset of the saved answer from local storage, so as to repopulate the answer
+  const getSavedAnswerOffset = (index) => {
+    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
+    if (!FeedbackFormAnswers) {
+      return false;
+    }
+    const label = likertQuestions[index].label;
+    const answer = FeedbackFormAnswers[label];
+    if (!answer) {
+      return false;
+    }
+    const value = answer.split('/')[0];
+    // the value starts from 1 but an js array starts from 0
+    const offset = value - 1;
+    return offset;
+  };
+
   return (
     <div id={id} className={likertWrapperClassName}>
       <label className={titleClassName}>
@@ -30,6 +48,12 @@ const InputLikert = ({
       {likertQuestions.map((e, index = 0) => {
         let likertOptions = { ...likertQuestions[index] };
         likertOptions.responses = generateLikertScheme(likertOptions.size);
+
+        const savedAnswerOffset = getSavedAnswerOffset(index);
+        if (savedAnswerOffset) {
+          likertOptions.responses[savedAnswerOffset].checked = true;
+        }
+
         likertOptions.onChange = (val) => {
           const FeedbackFormAnswers = JSON.parse(
             localStorage.getItem("FeedbackFormAnswers")
