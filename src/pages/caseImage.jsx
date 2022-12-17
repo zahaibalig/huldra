@@ -29,8 +29,7 @@ const CaseImage = ({
   const [openChoiceB, setOpenChoiceB] = useState(false);
   const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
   const [galleryImages, setGalleryImages] = useState([]);
-  const { rootDirectory, disableNextButton, setDisableNextButton } =
-    useContext(AppContext);
+  const { rootDirectory, disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
@@ -135,19 +134,15 @@ const CaseImage = ({
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    console.log("First:", first);
-    console.log("openedChoiceA:", openedChoiceA);
-    console.log("openedChoiceB:", openedChoiceB);
+    const caseImageViewDetailsMandatory = REACT_APP_general["caseImageViewDetailsMandatory"];
 
     if (
-      first === empty &&
-      (openedChoiceA === false || openedChoiceB === false)
+        caseImageViewDetailsMandatory === true && (first === empty && (openedChoiceA === false || openedChoiceB === false))
     ) {
       //Show warning only when we don't have a ranking AND  at least one of the flags is still set to false.
       toastInfo("Please see both explanations.", "top-center", "select-error");
     } else if (
-      first !== empty ||
-      (openedChoiceA === true && openedChoiceB === true)
+        caseImageViewDetailsMandatory === false || (first !== empty || (openedChoiceA === true && openedChoiceB === true))
     ) {
       /* TODO: read the corresponding string for the answers item in the output
       json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
@@ -201,9 +196,8 @@ const CaseImage = ({
           selectAsFirst("choiceA");
         }}
         leftSectionButtonOnClick={() => {
-          console.log("Clicked!!");
-          setOpenChoiceA(true);
-          setOpenedChoiceA(true);
+            setOpenChoiceA(true);
+            setOpenedChoiceA(true);
         }}
         leftSectionHasButton={true}
         leftSectionTextWithIconsHasLeftIcon={false}
@@ -213,7 +207,7 @@ const CaseImage = ({
         }
         leftSectionTextWithIconsHasRightIcon={true}
         leftSectionTextWithIconsRightIconClassName="fa fa-check viewed"
-        leftSectionShowTextWithIcons={openedChoiceA === true || first !== empty}
+        leftSectionShowTextWithIcons={openedChoiceA === true}
         leftSectionTextWithIconsClassName="case-image-text-with-icons"
         rightSectionClassName="case-image-alternative-section"
         rightSectionButtonClassName="btn control"
@@ -226,8 +220,6 @@ const CaseImage = ({
           REACT_APP_caseImage["caseImageColumnMiddle"].rightSectionTitle
         }
         rightSectionButtonOnClick={() => {
-          console.log("Clicked!!");
-
           setOpenChoiceB(true);
           setOpenedChoiceB(true);
         }}
@@ -243,7 +235,7 @@ const CaseImage = ({
         rightSectionTextWithIconsHasRightIcon={true}
         rightSectionTextWithIconsRightIconClassName="fa fa-check viewed"
         rightSectionShowTextWithIcons={
-          openedChoiceB === true || first !== empty
+          openedChoiceB === true
         }
         rightSectionTextWithIconsClassName="case-image-text-with-icons"
       />
