@@ -3,15 +3,20 @@ const handleTextFieldChange = (e, config) => {
   let FeedbackFormAnswers = JSON.parse(
     localStorage.getItem("FeedbackFormAnswers")
   );
-  if (!FeedbackFormAnswers) {
-    FeedbackFormAnswers = {};
+  // if the user writes something and then deletes it, we remove it from the localStorage too
+  if (e.currentTarget.value === "") {
+    delete FeedbackFormAnswers[config.id];
+  } else {
+    if (!FeedbackFormAnswers) {
+      FeedbackFormAnswers = {};
+    }
+    const answer = {
+      questionType: config.questionType,
+      label: config.label,
+      answer: e.currentTarget.value,
+    };
+    FeedbackFormAnswers[config.id] = answer;
   }
-  const answer = {
-    questionType: config.questionType,
-    label: config.label,
-    answer: e.currentTarget.value,
-  };
-  FeedbackFormAnswers[config.id] = answer;
 
   localStorage.setItem(
     "FeedbackFormAnswers",

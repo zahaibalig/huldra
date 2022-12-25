@@ -24,9 +24,9 @@ const generateFeedbackFormValidationScheme = (questionsArray) => {
               ] = `required|between:1,${l.size}|number`)
           );
       } else if (e.questionType === "text") {
-        feedbackFormValidationScheme[e.outputJsonLabelText] = "required|min:1";
+        feedbackFormValidationScheme[e.id] = "required|min:1";
       } else if (e.questionType === "mc") {
-        feedbackFormValidationScheme[e.outputJsonLabelRadioOptionId] =
+        feedbackFormValidationScheme[e.id] =
           "required|min:1";
       }
       return null;
