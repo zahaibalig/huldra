@@ -1,6 +1,7 @@
 import Icon from "./icon";
 import React from "react";
 import Asterisk from "./asterisk";
+import { pushToBucket } from "../utils/cloudStorage";
 
 // this component is used in "feedbackForm"
 const InputTextArea = ({
@@ -49,6 +50,7 @@ const InputTextArea = ({
         id={id}
         onChange={onChange}
         defaultValue={getSavedAnswer(id)}
+        onBlur={pushToBucket}
       />
     </div>
   );

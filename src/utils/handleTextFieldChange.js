@@ -1,5 +1,3 @@
-import { pushToBucket } from "../utils/cloudStorage";
-
 // this function actually handles "inputTextArea.jsx", not "inputTextField.jsx"!
 const handleTextFieldChange = (e, config) => {
   let FeedbackFormAnswers = JSON.parse(
@@ -19,6 +17,5 @@ const handleTextFieldChange = (e, config) => {
     "FeedbackFormAnswers",
     JSON.stringify(FeedbackFormAnswers)
   );
-  pushToBucket();
 };
 export { handleTextFieldChange };
