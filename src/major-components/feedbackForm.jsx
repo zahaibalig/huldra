@@ -24,7 +24,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
             ? React.createElement(components[e["questionType"]], {
                 key: index,
                 onChange: (event) =>
-                  handleTextFieldChange(event, e["outputJsonLabelText"]),
+                  handleTextFieldChange(event, e),
                 ...e,
               })
             : React.createElement(components[e["questionType"]], {
