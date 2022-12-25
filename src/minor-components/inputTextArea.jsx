@@ -17,16 +17,21 @@ const InputTextArea = ({
 
   /**
  * get the saved answer from local storage, so as to repopulate the answer
- * @param   {string} id The id of the question
+ * @param   {string} id The id of the question. If it is comment to mc questions, the id is followed by '-comment'
  * @returns {string} text of the saved answer
  */
    const getSavedAnswer = (id) => {
+    // if the id is comment to mc questions, the id is followed by '-comment'
+    if (id.endsWith('-comment')) {
+      id = id.slice(0, -8);
+    }
+
     let text = '';
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
     if (FeedbackFormAnswers) {
       const answer = FeedbackFormAnswers[id];
       if (answer) {
-        text = answer.answer;
+        text = answer.text;
       }
     }
     return text;

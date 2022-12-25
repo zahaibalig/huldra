@@ -16,10 +16,10 @@ const InputMultipleChoice = ({
   tooltipMessage,
   labelClassName = "radio-question",
   wrapperClassName = "feedback-text-input",
-  hasCommentBox = true,
+  hasCommentBox = false,
   commentBoxClassName = "feedback-text-input",
-  commentBoxLabel = "Comments",
-  outputJsonLabelText,
+  commentBoxLabel = "Comment to the multiple choice question.",
+  commentBoxOptional = true,
 }) => {
 
   /**
@@ -87,10 +87,10 @@ const InputMultipleChoice = ({
       })}
       {hasCommentBox === true && (
         <InputTextArea
-          id="1"
+          id={`${id}-comment`}
           label={commentBoxLabel}
-          onChange={(e) => handleTextFieldChange(e, outputJsonLabelText)}
-          optional={true}
+          onChange={(e) => handleTextFieldChange(e, config)}
+          optional={commentBoxOptional}
           showTooltip={false}
           className={commentBoxClassName}
         />
