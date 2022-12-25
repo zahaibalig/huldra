@@ -1,7 +1,7 @@
 import { pushToBucket } from "../utils/cloudStorage";
 
 /* TODO: MAKE INTO A GENERIC FUNCTION WHICH CAN BE USED BY ANY COMPONENT */
-const handleRadioChange = (e, field1, field2, id, index) => {
+const handleRadioChange = (e, id, index, config) => {
   let FeedbackFormAnswers = JSON.parse(
     localStorage.getItem("FeedbackFormAnswers")
   );
@@ -9,9 +9,10 @@ const handleRadioChange = (e, field1, field2, id, index) => {
     FeedbackFormAnswers = {};
   }
   const answer = {
-    option_index: index,
-    [field1]: e.target.id,
-    [field2]: e.currentTarget.innerText,
+    questionType: config.questionType,
+    label: config.label,
+    optionIndex: index,
+    optionText: e.currentTarget.innerText,
   };
   FeedbackFormAnswers[id] = answer;
 

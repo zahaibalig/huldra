@@ -1,7 +1,8 @@
 import { pushToBucket } from "../utils/cloudStorage";
 
+// this function actually handles "inputTextArea.jsx", not "inputTextField.jsx"!
 const handleTextFieldChange = (e, config) => {
-  const FeedbackFormAnswers = JSON.parse(
+  let FeedbackFormAnswers = JSON.parse(
     localStorage.getItem("FeedbackFormAnswers")
   );
   if (!FeedbackFormAnswers) {

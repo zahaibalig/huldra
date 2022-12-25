@@ -50,7 +50,8 @@ const InputLikert = ({
         likertOptions.responses = generateLikertScheme(likertOptions.size);
 
         const savedAnswerOffset = getSavedAnswerOffset(index);
-        if (savedAnswerOffset) {
+        // the returned value could be 0, so we need to check for !== false
+        if (savedAnswerOffset !== false) {
           likertOptions.responses[savedAnswerOffset].checked = true;
         }
 

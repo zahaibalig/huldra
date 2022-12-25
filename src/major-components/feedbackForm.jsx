@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InputTextArea from "../minor-components/inputTextArea";
 import InputLikert from "../minor-components/inputLikert";
 import InputMultipleChoice from "../minor-components/inputMultipleChoice";
@@ -29,6 +29,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
               })
             : React.createElement(components[e["questionType"]], {
                 key: index,
+                config: e,
                 ...e,
               });
         })}

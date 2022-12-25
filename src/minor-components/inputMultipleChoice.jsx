@@ -7,6 +7,7 @@ import { handleRadioChange } from "../utils/handleRadioChange";
 import { handleTextFieldChange } from "../utils/handleTextFieldChange";
 
 const InputMultipleChoice = ({
+  config,
   label,
   id,
   choices,
@@ -19,8 +20,6 @@ const InputMultipleChoice = ({
   commentBoxClassName = "feedback-text-input",
   commentBoxLabel = "Comments",
   outputJsonLabelText,
-  outputJsonLabelRadioOptionId,
-  outputJsonLabelRadioText,
 }) => {
 
   /**
@@ -34,7 +33,7 @@ const InputMultipleChoice = ({
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
     if (FeedbackFormAnswers) {
       const answer = FeedbackFormAnswers[id];
-      if (answer && index === answer.option_index) {
+      if (answer && index === answer.optionIndex) {
         checked = 'checked';
       }
     }
@@ -69,10 +68,9 @@ const InputMultipleChoice = ({
             onChange={(e) =>
               handleRadioChange(
                 e,
-                outputJsonLabelRadioOptionId,
-                outputJsonLabelRadioText,
                 id,
-                index
+                index,
+                config
               )
             }>
             <Input
