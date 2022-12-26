@@ -43,6 +43,7 @@ const InputLikert = ({
           />
         )}{" "}
         {label}
+        {optional && <span className="input-likert-optional-text"> (optional)</span>}{" "}
         {!optional && <Asterisk />}
       </label>
       {likertQuestions.map((e, index = 0) => {

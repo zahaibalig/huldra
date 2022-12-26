@@ -3,7 +3,7 @@ import React from "react";
 import Asterisk from "./asterisk";
 import { pushToBucket } from "../utils/cloudStorage";
 
-// this component is used in "feedbackForm"
+// this component is used in both "registration" and "feedbackForm"!
 const InputTextArea = ({
   id,
   label,
@@ -12,7 +12,7 @@ const InputTextArea = ({
   showTooltip,
   tooltipMessage,
   type = "text",
-  className = "input-wrapper",
+  className = "feedback-text-input",
 }) => {
 
   /**
@@ -47,7 +47,7 @@ const InputTextArea = ({
           />
         )}{" "}
         {label}{" "}
-        {optional && <span className="input-text-area-optional-text">(optional)</span>}{" "}
+        {optional && <span className="input-text-area-optional-text"> (optional)</span>}{" "}
         {!optional && <Asterisk />}
       </label>
       <textarea
