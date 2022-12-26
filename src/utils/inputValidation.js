@@ -34,6 +34,14 @@ const generateFeedbackFormValidationScheme = (questionsArray) => {
   return feedbackFormValidationScheme;
 };
 const validateFeedbackForm = (configs, input) => {
+  // get the real answer from input, because it has other information like "questionType" and "label". Otherwise, if the user writes something and then deletes it, the validation will pass even if the answer is empty.
+  Object.entries(input).forEach(([key, value]) => {
+    if (value.questionType === "text") {
+      input[key] = value.text;
+    } else if (value.questionType === "mc") {
+      input[key] = value.optionText;
+    }
+  });
   return V.validate(input, generateFeedbackFormValidationScheme(configs));
 };
 
