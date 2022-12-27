@@ -3,7 +3,7 @@
     --primary-color: #38c3f2;
     --secondary-color: #fdb913;
     --confirm-color: #427a51;
-
+    --button-color: #ffbd03;
     --header-height: 3.5em;
     --footer-height: 3.5em;
 }
@@ -13,6 +13,21 @@ a:hover {
 }
 .btn {
     text-align: center;
+}
+.button-color-blue{
+    --button-color: #4681f4
+}
+.button-color-green{
+    --button-color: #33b249
+}
+.button-color-purple{
+    --button-color: #a881af
+}
+.button-color-pink{
+    --button-color: #dd7973
+}
+.button-color-yellow{
+    --button-color: #ffbd03
 }
 .theme-color-green {
     --primary-color: #6db784;
@@ -32,7 +47,7 @@ a:hover {
 .control {
     width: 160px;
     border: #ffffff solid 0.15em;
-    background-color: #fdb913;
+    background-color: var(--button-color);
     font-weight: 600;
     text-align: center;
 }

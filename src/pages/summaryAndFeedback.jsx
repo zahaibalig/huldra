@@ -24,6 +24,7 @@ const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
     return (
     <div className="summary-and-feedback-wrapper">
       <Summary
+        highlightAnswers={REACT_APP_summaryAndFeedback["summary"].highlightAnswers}
         title={REACT_APP_summaryAndFeedback["summary"].title}
         text={REACT_APP_summaryAndFeedback["summary"].text}
         label={REACT_APP_summaryAndFeedback["summary"].label}

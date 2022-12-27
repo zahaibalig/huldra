@@ -234,6 +234,7 @@
   "REACT_APP_summaryAndFeedback": {
     "summary": {
       "display": true,
+      "highlightAnswers": true,
       "title": "Summary of cases",
       "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
       "label": "Case",
@@ -302,7 +303,8 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "themeColor" : ""
+    "themeColor" : "",
+    "buttonColor": ""
   },
   "REACT_APP_footer": {
     "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
@@ -321,6 +323,8 @@
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
-    "allowProceedingWithoutAnswering": false
+    "allowProceedingWithoutAnswering": false,
+    "caseImageViewDetailsMandatory": true,
+    "caseHybridViewDetailsMandatory": true
   }
 }

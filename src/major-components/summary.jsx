@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState} from "react";
 import { AppContext } from "../context/appContext";
 import _ from "lodash";
 import RankedImage from "../minor-components/rankedImage";
 
 const Summary = ({
+  highlightAnswers,
   highlightClassName = "option",
   title,
   text,
@@ -14,6 +15,24 @@ const Summary = ({
 }) => {
   const { casesCount } = useContext(AppContext);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
+  const [getAnswers, setAnswers] = useState({});
+
+  useEffect(() => {
+    const caseStudyAnswers = JSON.parse(
+      localStorage.getItem("CaseStudyAnswers")
+    );
+    setAnswers(caseStudyAnswers);
+  }, []);
+  
+  const imageClassName = (caseNumber, option) =>{
+    const answer = getAnswers[caseNumber];
+    if (answer !== undefined && highlightAnswers === true){
+      if (answer[0] === option){
+          return "summary-scaled-image-fit-height-summary highlight-image";
+      }
+    }
+    return "summary-scaled-image-fit-height-summary";
+  };
 
   return (
     <div className="summary-wrapper">
@@ -81,8 +100,8 @@ const Summary = ({
                   }
                   alternativeText={`A`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
-                  className="summary-scaled-image-fit-height-summary"
-                />
+                  className={imageClassName(item, "A")}
+                  />
               </div>
               <div className={highlightClassName}>
                 <RankedImage
@@ -101,7 +120,7 @@ const Summary = ({
                   }
                   alternativeText={`B`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
-                  className="summary-scaled-image-fit-height-summary"
+                  className={imageClassName(item, "B")}
                 />
               </div>
             </div>
