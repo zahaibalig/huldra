@@ -34,6 +34,11 @@ beforeEach(
   }
 );
 
+// mock the useLocation hook
+jest.mock('react-router-dom', () => ({
+  useLocation: jest.fn(),
+}));
+
 test('clicking the "View Details" button in the caseImage page (case 1) shows a pop-up', async () => {
   const CaseOrder = '["image-xai","hybrid-soccer","video-countdown","audio-ogg","audio-flac","audio-wma","audio-aiff"]';
   Storage.prototype.getItem = jest.fn().mockReturnValue(CaseOrder);
