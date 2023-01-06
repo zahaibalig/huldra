@@ -25,7 +25,7 @@ const Summary = ({
   }, []);
   
   const imageClassName = (caseNumber, option) =>{
-    const answer = getAnswers[caseNumber];
+    const answer = getAnswers[caseNumber] == null ? undefined : getAnswers[caseNumber];
     if (answer !== undefined && highlightAnswers === true){
       if (answer[0] === option){
           return "summary-scaled-image-fit-height-summary highlight-image";
