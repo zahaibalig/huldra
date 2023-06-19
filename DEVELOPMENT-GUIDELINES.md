@@ -28,7 +28,7 @@
 
 ### Code Syntax, Logging, and Requirements
 
-- We will start using [lint](https://en.wikipedia.org/wiki/Lint_(software) for syntax and style checks on our codebase very soon 
+- We will start using [lint](https://en.wikipedia.org/wiki/Lint_(software)) for syntax and style checks on our codebase very soon 
 - All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any) 
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
@@ -62,16 +62,18 @@
 - Provide an assesment of the code as diligently as possible, and feel free to ask for as many changes as necessary
 - It is the responsibility of the developer who is making the PR to merge it into the development branch, however if you merge the PR, make sure to delete the associated branch afterwards (and inform the developer)
 
+<!---
 ### Testing
 
 (TBC)
+-->
 
 ### Versioning and Releases
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
 
-(TBC)
+<!-- (TBC) -->
 
 
 ## Additional Notes
