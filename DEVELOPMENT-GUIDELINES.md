@@ -18,11 +18,11 @@
 ### Use of Branches
 
 - We use the `dev` branch for development (protected branch: merge possible only after PR with at least 1 review)
-- We use the `master` branch for releases (protected branch: merge possible only by selected users) 
+- We use the `main` branch for releases (protected branch: merge possible only by selected users) 
 - We currently employ no staging or release candidate branch
 - The development branch `dev` should always compile and pass all tests
 - All development should begin in branches created from `dev`
-- Branches should be named according to the issue or feature they target, e.g., `release-guidelines`, `bugfix-issue-123`, `new-feature-multiple-uuids`, `improvement-db-analysis`
+- Branches should be named according to the issue or feature they target, e.g., `release-guidelines`, `bugfix/issue-123`, `new-feature/multiple-uuids`, `improvement/db-analysis`
 - Regularly merge `dev` into your feature branch to avoid conflicts later on, especially if you take multiple days to complete your branch
 - Check the [full list of branches](https://github.com/simulamet-host/huldra-internal/branches/all) from time to time to delete unused/stale branches that you have created
 
