@@ -23,10 +23,11 @@ const Summary = ({
     );
     setAnswers(caseStudyAnswers);
   }, []);
-  
+
   const imageClassName = (caseNumber, option) =>{
-    const answer = getAnswers[caseNumber] == null ? undefined : getAnswers[caseNumber];
-    if (answer !== undefined && highlightAnswers === true){
+    if (getAnswers !== null && getAnswers[caseNumber] !== undefined && highlightAnswers === true){
+      const answer = getAnswers[caseNumber];
+      // highlight the option selected by the user
       if (answer[0] === option){
           return "summary-scaled-image-fit-height-summary highlight-image";
       }
