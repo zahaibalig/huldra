@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import InputTextArea from "../minor-components/inputTextArea";
 import InputLikert from "../minor-components/inputLikert";
 import InputMultipleChoice from "../minor-components/inputMultipleChoice";
@@ -10,9 +10,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
     likert: InputLikert,
     mc: InputMultipleChoice,
   };
-  useEffect(() => {
-    localStorage.removeItem("FeedbackFormAnswers");
-  }, []);
+
   return (
     <div className="feedback-form-wrapper">
       <h3>{title}</h3>
@@ -26,11 +24,12 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
             ? React.createElement(components[e["questionType"]], {
                 key: index,
                 onChange: (event) =>
-                  handleTextFieldChange(event, e["outputJsonLabelText"]),
+                  handleTextFieldChange(event, e),
                 ...e,
               })
             : React.createElement(components[e["questionType"]], {
                 key: index,
+                config: e,
                 ...e,
               });
         })}

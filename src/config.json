@@ -251,16 +251,13 @@
           "id": "Q1",
           "label": "Example free form text question.",
           "optional": false,
-          "showTooltip": false,
-          "className": "feedback-text-input",
-          "outputJsonLabelText": "Example_Text"
+          "showTooltip": false
         },
-
         {
           "questionType": "likert",
+          "id": "Q2",
           "label": "Example likert question block.",
           "optional": false,
-          "id": "Q2",
           "likertQuestions": [
             {
               "question": "Example likert question 1.",
@@ -281,12 +278,12 @@
         },
         {
           "questionType": "mc",
-          "label": "Example multiple choice question.",
           "id": "Q3",
+          "label": "Example multiple choice question.",
+          "optional": false,
           "choices": ["Example choice 1.", "Example choice 2."],
-          "outputJsonLabelRadioOptionId": "Example_MultipleChoice_OptionId",
-          "outputJsonLabelRadioText": "Example_MultipleChoice_Text",
-          "outputJsonLabelText": "Example_MultipleChoice_Detail"
+          "hasCommentBox": true,
+          "commentBoxLabel": "Comment to the multiple choice question Q3."
         }
       ]
     }

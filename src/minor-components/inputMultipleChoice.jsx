@@ -7,6 +7,7 @@ import { handleRadioChange } from "../utils/handleRadioChange";
 import { handleTextFieldChange } from "../utils/handleTextFieldChange";
 
 const InputMultipleChoice = ({
+  config,
   label,
   id,
   choices,
@@ -15,13 +16,30 @@ const InputMultipleChoice = ({
   tooltipMessage,
   labelClassName = "radio-question",
   wrapperClassName = "feedback-text-input",
-  hasCommentBox = true,
+  hasCommentBox = false,
   commentBoxClassName = "feedback-text-input",
-  commentBoxLabel = "Comments",
-  outputJsonLabelText,
-  outputJsonLabelRadioOptionId,
-  outputJsonLabelRadioText,
+  commentBoxLabel = "Comment to the multiple choice question.",
+  commentBoxOptional = true,
 }) => {
+
+  /**
+ * get the saved answer from local storage, so as to repopulate the answer
+ * @param   {string} id The id of the question
+ * @param   {number} index The index of the option. The first option is 0
+ * @returns {string|null} 'checked' if this option is checked, null if not
+ */
+  const getSavedAnswer = (id, index) => {
+    let checked = null;
+    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
+    if (FeedbackFormAnswers) {
+      const answer = FeedbackFormAnswers[id];
+      if (answer && index === answer.optionIndex) {
+        checked = 'checked';
+      }
+    }
+    return checked;
+  };
+
   return (
     <div className={wrapperClassName}>
       <label htmlFor={id} className={labelClassName}>
@@ -40,6 +58,9 @@ const InputMultipleChoice = ({
         {!optional && <Asterisk />}
       </label>
       {choices.map((element, index) => {
+
+        const checked = getSavedAnswer(id, index);
+
         return (
           <FormGroup
             key={index}
@@ -47,14 +68,16 @@ const InputMultipleChoice = ({
             onChange={(e) =>
               handleRadioChange(
                 e,
-                outputJsonLabelRadioOptionId,
-                outputJsonLabelRadioText
+                id,
+                index,
+                config
               )
             }>
             <Input
               id={`${id}-radio-option${index}`}
               type="radio"
               name={`${id}-radio`}
+              defaultChecked={checked}
             />
             <Label check for={`${id}-radio-option${index}`}>
               {element}{" "}
@@ -64,10 +87,10 @@ const InputMultipleChoice = ({
       })}
       {hasCommentBox === true && (
         <InputTextArea
-          id="1"
+          id={`${id}-comment`}
           label={commentBoxLabel}
-          onChange={(e) => handleTextFieldChange(e, outputJsonLabelText)}
-          optional={true}
+          onChange={(e) => handleTextFieldChange(e, config)}
+          optional={commentBoxOptional}
           showTooltip={false}
           className={commentBoxClassName}
         />

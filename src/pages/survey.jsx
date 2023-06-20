@@ -291,23 +291,19 @@ const Survey = ({
   const handleEndSurvey = () => {
     const FeedbackFormAnswers = JSON.parse(
       localStorage.getItem("FeedbackFormAnswers")
-    );
-    if (!FeedbackFormAnswers) {
-      toastError("Please verify mandatory fields.", "top-center", "req-error");
+    ) || {};
+    let hasError = validateFeedbackForm(
+      REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
+      FeedbackFormAnswers
+    ).hasError;
+    if (hasError) {
+      toastError(
+        "Please verify mandatory fields.",
+        "top-center",
+        "req-error"
+      );
     } else {
-      let hasError = validateFeedbackForm(
-        REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
-        FeedbackFormAnswers
-      ).hasError;
-      if (hasError) {
-        toastError(
-          "Please verify mandatory fields.",
-          "top-center",
-          "req-error"
-        );
-      } else {
-        setOpenEndDialog(true);
-      }
+      setOpenEndDialog(true);
     }
   };
 

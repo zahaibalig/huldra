@@ -100,6 +100,9 @@ textarea::-webkit-scrollbar-thumb {
 .input-text-area-optional-text {
     font-weight: lighter;
 }
+.input-likert-optional-text {
+    font-weight: lighter;
+}
 .input-radio-disabled-text {
     width: 8em !important;
     height: 2em !important;

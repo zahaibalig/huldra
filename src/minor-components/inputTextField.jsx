@@ -2,6 +2,7 @@ import React from "react";
 import Asterisk from "./asterisk";
 import Icon from "./icon";
 
+// this component is used in "registration"
 const InputTextField = ({
   id,
   label,
