@@ -72,10 +72,7 @@
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
-
-<!-- 
 - See `RELEASE-GUIDELINES.md` for further details
--->
 
 
 ## Additional Notes
