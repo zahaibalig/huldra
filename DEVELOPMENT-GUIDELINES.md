@@ -32,6 +32,10 @@
 - All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any) 
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
+<!---
+- Use the Huldra uniform logging framework as frequently as appropriate for your code
+- Update requirements and guideline documents whenever your code introduces new dependencies
+-->
 
 ### Issue Tracking
 
@@ -64,8 +68,8 @@
 
 <!---
 ### Testing
-
-(TBC)
+- All unit tests must pass on a feature branch before creating a PR towards `dev`
+- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
 -->
 
 ### Versioning and Releases
