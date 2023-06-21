@@ -5,18 +5,19 @@
 
 This documentation provides a comprehensive guide to the parameters in the config file. It describes each parameter and its purpose. Make sure to follow the instructions and guidelines mentioned for each parameter.
 
-  
 
 ## Table of Contents
 
  1. [REACT_APP_warning](#react-app-warning)
 	 - [warningMessage](#warning-message)
 	 - [title](#title)
+-  [Use](#react-app-warning-use)
 2. [REACT_APP_home](#react-app-home)
 	 - [title](#home-title)
 	  - [introText](#intro-text)
 	  - [signupText](#signup-text)
 	  - [additionalText](#additional-text)
+-  [Use](#react-app-home-use) 
 3. [REACT_APP_registration](#react-app-registration)
 	 - [Q1](#q1)
 		 - [label](#q1-label)
@@ -44,6 +45,27 @@ This documentation provides a comprehensive guide to the parameters in the confi
 		 - [label](#q8-label)
 	 - [Q9](#q9)
 		 - [label](#q9-label)
+-  [Use](#react-app-registration-use) 
+3. [REACT_APP_background](#react-app-background)
+	 - [sectionTitle](#section-title)
+	 - [sectionText](#section-text)
+	 - 	 [sectionClassName](#section-class-name)
+	 - 	 [sectionTitleClassName](#section-title-class-name)
+	 - [sectionTextClassName](#section-text-class-name)
+	 - [sectionContent](#section-content)
+		 - [title](#subsection-title)
+		 - [sectionText](#subsection-text)
+		 - [className](#subsection-class-name)
+		 - [imagePath](#subsection-image-path)
+		 - [imageClassName](#subsection-image-class-name)
+		 - [imageAlternativeText](#subsection-image-alternative-text)
+		 - [descriptionClassName](#subsection-description-class-name)
+		 -  [titleClassName](#subsection-title-class-name)
+		 -  [textClassName](#subsection-text-class-name)
+	-  [Use](#react-app-background-use) 
+	-  [Styling Classes](#styling-classes) 
+
+
 
 
 
@@ -79,7 +101,7 @@ This documentation provides a comprehensive guide to the parameters in the confi
 
 -  **Description**: The heading of actual message displayed to the user when the screen resolution is less than 1200 x 800 is defined by this element. 
 
-### Usage
+### React App Warning Use
 
 ```json
 "REACT_APP_warning": {
@@ -140,7 +162,7 @@ This documentation provides a comprehensive guide to the parameters in the confi
 
 
 
-### Usage
+### React App Home Use
 
 ```json
 "REACT_APP_home": {
@@ -394,16 +416,16 @@ This documentation provides a comprehensive guide to the parameters in the confi
 
 -  **Description**: Element to describe the label/heading of the 8th question. 
 
-### Q8
+### Q9
 
--  **Exact Name**: `Q8`
+-  **Exact Name**: `Q9`
 
 -  **Type**: container element
 -  **mandatory**: yes
 
--  **Description**:  Element used to display the 8th question on the registration page
+-  **Description**:  Element used to display the 9th question on the registration page
 
-### Q8 Label
+### Q9 Label
 
 -  **Exact Name**: `label`
 
@@ -411,10 +433,10 @@ This documentation provides a comprehensive guide to the parameters in the confi
 -  **mandatory**: no
 
 
--  **Description**: Element to describe the label/heading of the 8th question. 
+-  **Description**: Element to describe the label/heading of the 9th question. 
 
 
-### Usage
+### React App Registration Use
 
 ```json
 "REACT_APP_registration": {
@@ -492,10 +514,396 @@ This documentation provides a comprehensive guide to the parameters in the confi
 }
 ```
 
+  
+
+## React App Background
+
+  
+
+-  **Exact Name**: `REACT_APP_background`
+
+  
+
+-  **Type**: container array element
+
+-  **mandatory**: yes
+
+  
+
+-  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
+
+  
+
+### Section-Title
+
+  
+
+-  **Exact Name**: `sectionTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+
+-  **Description**: Title of the section is defined with this property.
+
+  
+
+### Section-Text
+
+  
+
+-  **Exact Name**: `sectionText`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Text of the section is defined with this property.
+
+  
+  
+
+### Section Class Name
+
+  
+
+-  **Exact Name**: `sectionClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Section Title Class Name
+
+  
+
+-  **Exact Name**: `sectionTitleClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+
+### Section Text Class Name
+
+  
+
+-  **Exact Name**: `sectionTextClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+## Section Content
+
+  
+
+-  **Exact Name**: `sectionContent`
+
+  
+
+-  **Type**: container array element
+
+-  **mandatory**: yes
+
+  
+
+-  **Description**: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
+
+  
+  
+
+### Subsection Title
+
+  
+
+-  **Exact Name**: `title`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Title of the subsection is defined by this property.
+
+  
+
+### Subsection Text
+
+  
+
+-  **Exact Name**: `sectionText`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Text of the subsection is defined by this property.
+
+  
+  
+
+### Subsection Class Name
+
+  
+
+-  **Exact Name**: `className`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Subsection Image Path
+
+  
+
+-  **Exact Name**: `imagePath`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Define the path of the image on firebase to here to display the image on subsection.
+
+  
+
+### Subsection Image Class Name
+
+  
+
+-  **Exact Name**: `imageClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Subsection Image Alternative Text
+
+  
+
+-  **Exact Name**: `imageAlternativeText`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Alternative text to be displayed, if the image is not available is defined here.
+
+  
+
+### Subsection Description Class Name
+
+  
+
+-  **Exact Name**: `descriptionClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Subsection Title Class Name
+
+  
+
+-  **Exact Name**: `titleClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+
+### Subsection Text Class Name
+
+  
+
+-  **Exact Name**: `textClassName`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+  
+
+-  **Description**: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 
 
+### React App Background Use
 
+```json
+"REACT_APP_background": [
+    {
+      "sectionTitle": "Background",
+      "sectionText": "Lorem ipsum dolor ",
+      "sectionClassName": "background-section",
+      "sectionTitleClassName": "background-section-title",
+      "sectionTextClassName": "background-text-content",
+      "sectionContent": [
+        {
+          "title": "Sample Subsection Title",
+          "text": "Lorem ipsum dolor ",
+          "className": "background-single-block",
+          "imagePath": "/gallery/sample-image.png",
+          "imageClassName": "explanation-background-image",
+          "imageAlternativeText": "sample-image",
+          "descriptionClassName": "background-single-block-description-content",
+          "titleClassName": "background-single-block-description-label",
+          "textClassName": "background-text-content"
+        }
+      ]
+    }
+  ]
+```
+### Styling Classes
 
+```json
+".background {
+    height: 100%;
+    overflow-y: auto;
+    text-align: left;
+    padding: 0 0.8em 0.8em 0.8em;
+}
 
+.background-section-title {
+    font-weight: 700;
+    font-size: 1.5em;
+}
 
+.background-section {
+    margin-top: 2em;
+}
 
+.background-single-block {
+    margin-left: 1.3em;
+    margin-top: 2em;
+    align-items: flex-start;
+    display: flex;
+}
+
+.background-single-block-description-content {
+    padding-left: 0.8em;
+    height: 100%;
+}
+
+.background-single-block-description-label {
+    font-weight: 700;
+    font-size: 1em;
+}
+
+.background::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 0.4em;
+    background-color: #f5f5f5;
+}
+
+.background::-webkit-scrollbar {
+    width: 0.3em;
+    background-color: #f5f5f5;
+}
+
+.background::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #9c9393;
+}
+
+.background-text-content {
+    text-align: justify;
+}"
+```
