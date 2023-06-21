@@ -62,8 +62,27 @@ This documentation provides a comprehensive guide to the parameters in the confi
 		 - [descriptionClassName](#subsection-description-class-name)
 		 -  [titleClassName](#subsection-title-class-name)
 		 -  [textClassName](#subsection-text-class-name)
-	-  [Use](#react-app-background-use) 
-	-  [Styling Classes](#styling-classes) 
+-  [Use](#react-app-background-use) 
+-  [Styling Classes](#styling-classes) 
+4. [REACT_APP_demonstration](#react-app-demonstration)
+	 - [textBefore](#text-before)
+	 - [textAfter](#text-after)
+	 - 	[hasImage](#has-image)
+	 - [imagePath](#image-path)
+	 - [imageClassName](#image-class-name)
+	 - [hasVideo](#has-video)
+	 - [videoPath](#video-path)
+	 - [videoHeight](#video-height)
+	 - [videoWidth](#video-width)
+	 - [hasAudio](#has-audio)
+	 - [audioPath](#audio-path)
+	 - [audioHeight](#audio-height)
+	 - [audioWidth](#audio-width)
+ - [Use](#react-app-demonstration-use) 
+
+	 
+
+
 
 
 
@@ -724,7 +743,7 @@ This documentation provides a comprehensive guide to the parameters in the confi
   
   
 
--  **Description**: Define the path of the image on firebase to here to display the image on subsection.
+-  **Description**: Define the path of the image located on firebase to here to display the image on subsection.
 
   
 
@@ -906,4 +925,239 @@ This documentation provides a comprehensive guide to the parameters in the confi
 .background-text-content {
     text-align: justify;
 }"
+```
+
+
+### React App Demonstration
+
+  
+
+-  **Exact Name**: `REACT_APP_demonstration`
+
+  
+
+-  **Type**: parent array element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
+
+### Text Before
+
+  
+
+-  **Exact Name**: `textBefore`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Text written on line 1 can be configured here
+
+### Text After
+
+  
+
+-  **Exact Name**: `textAfter`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Text written on line 2 can be configured here
+
+
+### Has Image
+
+  
+
+-  **Exact Name**: `hasImage`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: A bool. Set it true to display an image on the demonstartion page.
+
+
+### Image Path
+
+  
+
+-  **Exact Name**: `imagePath`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the path of the image located on firebase to here to display the image on the demonstartion page. Note: hasImage bool has to be set true in order to put the image on the demonstartion page
+
+
+### Image Class Name
+
+  
+
+-  **Exact Name**: `imageClassName`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
+
+ 
+### Has Video
+
+  
+
+-  **Exact Name**: `hasVideo`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: A bool. Set it true to display a video on the demonstartion page.
+
+
+
+### Video Path
+
+  
+
+-  **Exact Name**: `videoPath`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the path of the video on firebase to here to display the video on the demonstartion page. Note: hasVideo bool has to be set true in order to put the video on the demonstartion page
+
+
+### Video Height
+
+  
+
+-  **Exact Name**: `videoHeight`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the height of the video player in px.
+
+### Video Width
+
+  
+
+-  **Exact Name**: `videoWidth`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the width of the video player in px.
+
+### Has Audio
+
+  
+
+-  **Exact Name**: `hasAudio`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: A bool. Set it true to put an audio on the demonstartion page.
+
+### Audio Path
+
+  
+
+-  **Exact Name**: `audioPath`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the path of the audio on firebase to here to put the audio on the demonstartion page. Note: hasAudio bool has to be set true in order to put the audio on the demonstartion page.
+
+### Audio Height
+
+  
+
+-  **Exact Name**: `audioHeight`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the height of the audio player in px.
+
+### Audio Width
+
+  
+
+-  **Exact Name**: `audioWidth`
+
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: Define the width of the audio player in px.
+
+### React App Demonstration Use
+
+```json
+  "REACT_APP_demonstration": [
+    {
+      "textBefore": "You can have a demonstration page with a single image.",
+      "textAfter": "You can use this page to describe how the rest of the survey works.",
+      "hasImage": true,
+      "imagePath": "/gallery/sample-image.png",
+      "imageClassName": "demonstration-image"
+    },
+    {
+      "textBefore": "You can have a demonstration page with a single video player (custom size).",
+      "textAfter": "You can use this page to run a video check, or to display a tutorial video showing how the rest of the survey works.",
+      "hasVideo": true,
+      "videoPath": "/gallery/countdown.mp4",
+      "videoHeight": "300px",
+      "videoWidth": "450px"
+    },
+    {
+      "textBefore": "You can have a demonstration page with a single audio player (custom size).",
+      "textAfter": "You can use this page to run a sound check, or to play a tutorial audio describing how the rest of the survey works.",
+      "hasAudio": true,
+      "audioPath": "/gallery/audio-sample.mp3",
+      "audioHeight": "300px",
+      "audioWidth": "450px"
+    }
+  ]
 ```
