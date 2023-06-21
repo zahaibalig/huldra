@@ -14,7 +14,7 @@
 - **Source branch:** pre-releases are made from `main`
 - **Version tag:**  pre-releases use version tags in `vX.Y.Z-T` format[^2]
 
-[^2]: Releases are referred to in `[X.Y.Z(-T)] - yyyy-mm-dd` format in CHANGELOG.md, where `yyyy`, `mm`, and `dd` are the year, month, day of release respectively.
+[^2]: Releases are referred to in `[X.Y.Z(-T)] - yyyy-mm-dd` format in `CHANGELOG.md`, where `yyyy`, `mm`, and `dd` are the year, month, day of release respectively.
 
 ### Regular Releases
 
@@ -32,8 +32,8 @@
 - Go through the issues tagged with the relevant milestone, make sure all are closed
 - Go through all closed PRs associated with the release
 - Update internal notes on dependencies and/or installation and/or configuration if necessary
-- Check and update VERSION.md
-- Update CHANGELOG.md
+- Check and update `VERSION.md`
+- Update `CHANGELOG.md`
 - [If source branch is `dev`] Merge `dev` into `main`[^3]
 - [If necessary] make further changes in `main`
 - Make the release from `main` using an appropriate version tag
