@@ -1,4 +1,5 @@
 ﻿
+
 # Configuration File Documentation
 
   
@@ -79,6 +80,32 @@ This documentation provides a comprehensive guide to the parameters in the confi
 	 - [audioHeight](#audio-height)
 	 - [audioWidth](#audio-width)
  - [Use](#react-app-demonstration-use) 
+4. [REACT_APP_caseImage](#react-app-case-image)
+	 - [caseImageColumnLeft](#case-image-column-left)
+		 - [label](#case-image-column-left-label)
+	 - [caseImageColumnMiddle](#case-image-column-middle)
+		 - [title](#case-image-column-middle-title)
+		 - [text](#case-image-column-middle-text)
+		 - [leftSectionTitle](#case-image-column-middle-left-section-title)
+		 - [leftSectionButtonlabel](#case-image-column-middle-left-section-button-label)
+		 - [leftSectionTextWithIconsLabel](#case-image-column-middle-left-section-text-with-icons-label)
+		 - [rightSectionTitle](#case-image-column-middle-right-section-title)
+		 - [rightSectionButtonlabel](#case-image-column-middle-right-section-button-label)
+		 - [rightSectionTextWithIconsLabel](#case-image-column-middle-right-section-text-with-icons-label)
+		 - [popupA](#case-image-column-middle-popupa)
+		 - [popupB](#case-image-column-middle-popupb)
+			 - [mainTitle](#case-image-column-middle-popupa-main-title)
+			 - [leftImageTitle](#case-image-column-middle-popupa-left-image-title)
+			 - [rightImageTitle](#case-image-column-middle-popupa-right-image-title)
+			 - [descriptionTitle](#case-image-column-middle-popupa-description-title)
+			 - [descriptionText](#case-image-column-middle-popupa-description-text)
+			 - [gallerySubstring](#case-image-column-middle-popupb-gallery-substring)
+    - [caseImageColumnRight](#case-image-column-right)
+        - [title](#case-image-column-right-title)
+        - [text](#case-image-column-right-text)
+
+
+ - [Use](#react-app-case-image-use) 
 
 	 
 
@@ -1160,4 +1187,401 @@ This documentation provides a comprehensive guide to the parameters in the confi
       "audioWidth": "450px"
     }
   ]
+```
+
+
+### React App Case Image
+
+  
+
+-  **Exact Name**: `REACT_APP_caseImage`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images. 
+
+### Case Image Column Left
+
+  
+
+-  **Exact Name**: `caseImageColumnLeft`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the left column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Left Label
+
+  
+
+-  **Exact Name**: `label`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the heading on the left column of case image page.
+
+
+### Case Image Column Middle
+
+  
+
+-  **Exact Name**: `caseImageColumnMiddle`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the middle column of case image page. The middle coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Middle Title
+
+  
+
+-  **Exact Name**: `title`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the heading on the middle column of case image page.
+
+
+### Case Image Column Middle Text
+
+  
+
+-  **Exact Name**: `text`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the descriptive text on the middle column of case image page.
+
+
+### Case Image Column Middle Left Section Title
+
+  
+
+-  **Exact Name**: `leftSectionTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the heading text over the left image on the middle column of case image page.
+
+### Case Image Column Middle Left Section Button Label
+
+  
+
+-  **Exact Name**: `leftSectionButtonlabel`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the text of the button located below the left image on the middle column of case image page.
+
+### Case Image Column Middle Left Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `leftSectionTextWithIconsLabel`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the text below the button located below the left image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+
+### Case Image Column Middle Right Section Title
+
+  
+
+-  **Exact Name**: `rightSectionTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the heading text over the right image on the middle column of case image page.
+
+### Case Image Column Middle Right Section Button Label
+
+  
+
+-  **Exact Name**: `rightSectionButtonlabel`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the text of the button located below the right image on the middle column of case image page.
+
+### Case Image Column Middle Right Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `rightSectionTextWithIconsLabel`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+
+
+
+### Case Image Column Middle PopupA
+
+  
+
+-  **Exact Name**: `popupA`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
+
+### Case Image Column Middle PopupB
+
+  
+
+-  **Exact Name**: `popupB`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
+
+
+### Case Image Column Middle Popup Main Title
+
+  
+
+-  **Exact Name**: `mainTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: 
+When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+
+
+
+### Case Image Column Middle Popup Left Image Title
+
+  
+
+-  **Exact Name**: `leftImageTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+
+### Case Image Column Middle Popup Right Image Title
+
+  
+
+-  **Exact Name**: `leftImageTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the third image, which is the right one among the two small images, on the popup.
+
+### Case Image Column Middle Popup Description Title
+
+  
+
+-  **Exact Name**: `descriptionTitle`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**:
+When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+
+
+### Case Image Column Middle Popup Description Text
+
+  
+
+-  **Exact Name**: `descriptionText`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+
+### Case Image Column Middle PopupB Gallery Substring
+
+  
+
+-  **Exact Name**: `descriptionText`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). NOTE: This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
+
+### Case Image Column Right
+
+  
+
+-  **Exact Name**: `caseImageColumnRight`
+
+  
+
+-  **Type**: parent element
+
+-  **mandatory**: yes
+
+  
+-  **Description**: This element is used to configure the right column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Right Title
+
+  
+
+-  **Exact Name**: `label`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the heading on the right column of case image page.
+
+
+### Case Image Column Right text
+
+  
+
+-  **Exact Name**: `label`
+
+  
+
+-  **Type**: child element
+
+-  **mandatory**: no
+
+  
+-  **Description**: This element is used to configure the text description on the right column of case image page.
+
+
+
+### React App Case Image Use
+
+```json
+  "REACT_APP_caseImage": {
+    "caseImageColumnLeft": { "label": "Case" },
+    "caseImageColumnMiddle": {
+      "title": "Answer Options",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "leftSectionTitle": "Option A",
+      "leftSectionButtonlabel": "View details",
+      "leftSectionTextWithIconsLabel": "Viewed",
+      "rightSectionTitle": "Option B",
+      "rightSectionButtonlabel": "View details",
+      "rightSectionTextWithIconsLabel": "Viewed",
+      "popupA": {
+        "mainTitle": "Sample Title for Popup A",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option A",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet, ."
+      },
+      "popupB": {
+        "mainTitle": "Sample Title for Popup B",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option B",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet,.",
+        "gallerySubstring": "similar"
+      }
+    },
+    "caseImageColumnRight": {
+      "title": "Your Answer",
+      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
+    }
+  }
 ```
