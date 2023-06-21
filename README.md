@@ -67,7 +67,7 @@ You can change Firebase settings to suit your needs.
 
 If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
 
-# More About Huldra
+# More about Huldra
 
 ## Configuration
 You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
@@ -120,7 +120,7 @@ The assets have to adhere to the following naming convention:
 
 `<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
 
-### Directories Tree
+### Directory tree
 
 ```
 gallery
@@ -144,7 +144,7 @@ gallery
 
 For an image case, a json file is also necessary. An image case needs 4 files minimum.
 
-### Supported File Extensions
+### Supported file extensions
 
 | Audio Format | Support |
 | ------------- | ------------- |
@@ -198,13 +198,13 @@ You can retrieve participant response files from your Firebase storage bucket (`
 }
 ```
 
-## Internal only
+# Internal only
 
-### Guidelines
+## Guidelines
 - `DEVELOPMENT-GUIDELINES.md`
 - `RELEASE-GUIDELINES.md`
 
-### Keyboard shortcuts
+## Keyboard shortcuts
 `Enter`: imitates the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
 
 `Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)
