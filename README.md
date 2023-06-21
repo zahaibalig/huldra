@@ -86,7 +86,7 @@ You can add the following to `src/config.json` to specify a color scheme.
 
 Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
 
-If no color is specified, the default themeColor is blue, the default buttonColor is orange.
+If no color/an invalid value is specified, the default themeColor is `blue`, the default buttonColor is `yellow`.
 
 The values of the colors are:
 
