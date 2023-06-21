@@ -22,8 +22,8 @@
 - We currently employ no staging or release candidate branch
 - The development branch `dev` should always compile and pass all tests
 - All development should begin in branches created from `dev`
-- Branches should be named according to the issue or feature they target, e.g., `release-guidelines`, `bugfix/issue-123`, `new-feature/multiple-uuids`, `improvement/db-analysis`
-- Regularly merge `dev` into your feature branch to avoid conflicts later on, especially if you take multiple days to complete your branch
+- Feature branches should be named according to the issue or feature they target, e.g., `release-guidelines`, `bugfix/issue-123`, `new-feature/multiple-uuids`, `improvement/db-analysis`
+- Regularly merge `dev` into your feature branch to avoid conflicts later on, especially if you take multiple days to complete your task
 - Check the [full list of branches](https://github.com/simulamet-host/huldra-internal/branches/all) from time to time to delete unused/stale branches that you have created
 
 ### Code Syntax, Logging, and Requirements
@@ -72,10 +72,7 @@
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
-
-<!-- 
 - See `RELEASE-GUIDELINES.md` for further details
--->
 
 
 ## Additional Notes
