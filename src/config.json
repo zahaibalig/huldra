@@ -325,6 +325,12 @@
     "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false,
     "caseImageViewDetailsMandatory": true,
+    "storage": {
+      "assetsStorageType": ["local", "firebase"],
+      "assetsStoragePath": ["/src/assets/gallery", "/dev/gallery"],
+      "responsesStorageType": "firebase",
+      "responsesStoragePath": "/dev"
+    },
     "caseHybridViewDetailsMandatory": true
   }
 }

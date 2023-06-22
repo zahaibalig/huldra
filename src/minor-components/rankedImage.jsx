@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getImageDownloadUrl } from "../utils/firebase";
+import getAsset from "../utils/loadAssets";
+
 const RankedImage = ({
   path = "/gallery/empty.png",
   alternativeText = "Image",
@@ -14,14 +15,13 @@ const RankedImage = ({
 }) => {
   const [imagePath, setImagePath] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  useEffect(() => {
+  useEffect(async () => {
     setSubscribed(true);
-    (async () => {
-      subscribed &&
-        (await getImageDownloadUrl(path).then((res) => setImagePath(res)));
-    })();
+    const imagePath = await getAsset(path);
+    setImagePath(imagePath);
     return () => setSubscribed(false);
   }, [path, subscribed]);
+
   return (
     <div className={wrapperClassName ? wrapperClassName : "ranked-image"}>
       {hasRank && (
