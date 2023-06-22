@@ -1,8 +1,6 @@
 import configuration from "../config.json";
 const fetchConfigVariable = (param) => {
-  return process.env[param] !== undefined
-    ? process.env[param]
-    : configuration[param];
+  return process.env[param] !== undefined ? process.env[param] : configuration[param];
 };
 const fetchConfigVariablesBatch = (parameters) => {
   let result = {};
@@ -18,8 +16,4 @@ const fetchConfigVariableValues = (parameter) => {
     : fetchConfigVariable(parameter);
 };
 
-export {
-  fetchConfigVariable,
-  fetchConfigVariablesBatch,
-  fetchConfigVariableValues,
-};
+export { fetchConfigVariable, fetchConfigVariablesBatch, fetchConfigVariableValues };
