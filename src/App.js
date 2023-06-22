@@ -27,15 +27,21 @@ const App = () => {
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
         "REACT_APP_caseOrder",
-        "REACT_APP_color"
+        "REACT_APP_color",
       ])
     );
-    function handleResize() { }
+    function handleResize() {}
     window.addEventListener("resize", handleResize);
   }, []);
-    return (
-    <div className={`App theme-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]}
-    button-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["buttonColor"]}`}>
+  return (
+    <div
+      className={`App theme-color-${
+        configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]
+      }
+    button-color-${
+      configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["buttonColor"]
+    }`}
+    >
       {innerWidth < 1200 ? (
         <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
       ) : (
@@ -71,9 +77,7 @@ const App = () => {
               <Survey
                 {...props}
                 REACT_APP_background={configuration["REACT_APP_background"]}
-                REACT_APP_demonstration={
-                  configuration["REACT_APP_demonstration"]
-                }
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
@@ -84,9 +88,7 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_demonstration={
-                  configuration["REACT_APP_demonstration"]
-                }
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
@@ -102,9 +104,7 @@ const App = () => {
                 REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}
                 REACT_APP_caseHybrid={configuration["REACT_APP_caseHybrid"]}
                 REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                REACT_APP_demonstration={
-                  configuration["REACT_APP_demonstration"]
-                }
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
@@ -115,9 +115,7 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_summaryAndFeedback={
-                  configuration["REACT_APP_summaryAndFeedback"]
-                }
+                REACT_APP_summaryAndFeedback={configuration["REACT_APP_summaryAndFeedback"]}
                 REACT_APP_outputJson={configuration}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
