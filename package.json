@@ -34,13 +34,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix",
+    "format": "prettier --write .",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -60,9 +58,19 @@
       "node_modules/(?!(react-likert-scale|axios|react-toastify)/)"
     ]
   },
+  "lint-staged": {
+    "src/**/*.{js, jsx, html, css, md}":  ["prettier --write", "eslint --fix"]
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
-    "@testing-library/user-event": "^14.4.3"
+    "@testing-library/user-event": "^14.4.3",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "husky": "^8.0.0"
   }
 }
