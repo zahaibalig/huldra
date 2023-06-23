@@ -5,20 +5,19 @@
 ### Software Repository
 
 - In consistency with other Simula Metropolitan Center for Digital Engineering (SimulaMet) Department of Holistic Systems (HOST) internal repositories, we are currently using the name `huldra-internal` for the software repository, the codebase has no dependency on the name/address of the repository
-- Those who have access to the repository and project board: members of the SimulaMet-HOST GitHub organization (admin access), Huldra master students (write access), and Huldra interns (write access) 
+- Those who have access to the repository and project board: members of the SimulaMet-HOST GitHub organization (admin access), Huldra master students (write access), and Huldra interns (write access)
 
 ### Documentation
 
 - This repository includes a `README.md` file, which refers to all other relevant documentation
 - Format cheat sheets for all documentation can be found [here](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax) and [here](https://guides.github.com/features/mastering-markdown/)
 
-
 ## Development
 
 ### Use of Branches
 
 - We use the `dev` branch for development (protected branch: merge possible only after PR with at least 1 review)
-- We use the `main` branch for releases (protected branch: merge possible only by selected users) 
+- We use the `main` branch for releases (protected branch: merge possible only by selected users)
 - We currently employ no staging or release candidate branch
 - The development branch `dev` should always compile and pass all tests
 - All development should begin in branches created from `dev`
@@ -28,19 +27,25 @@
 
 ### Code Syntax, Logging, and Requirements
 
-- We will start using [lint](https://en.wikipedia.org/wiki/Lint_(software)) for syntax and style checks on our codebase very soon 
-- All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any) 
+- We will start using [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase very soon
+- This project uses eslint as linter and prettier as a formatting tool and husky pre-commit hook
+- Use double quotes for strings, specially if the string contains quotes inside.
+- Run `npm lint` or `npm lint:fix` to lint the codebase with eslint.
+- Run `npm format` to format the code according to the defined style of the project
+- All changed code will be linted and formatted automatically before commit.
+- Unix line ending (LF) is preferable.
+- All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any)
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
 <!---
 - Use the Huldra uniform logging framework as frequently as appropriate for your code
 - Update requirements and guideline documents whenever your code introduces new dependencies
--->
+  -->
 
 ### Issue Tracking
 
 - We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
-- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels) 
+- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
 - We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
 
 ### Commits
@@ -77,7 +82,6 @@
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
 - See `RELEASE-GUIDELINES.md` for further details
-
 
 ## Additional Notes
 
