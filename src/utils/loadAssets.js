@@ -1,5 +1,5 @@
 import { fetchConfigVariable } from "../utils/handleConfigVars";
-import { getImageDownloadUrl } from "../utils/firebase";
+import { getAssetDownloadUrl } from "../utils/firebase";
 
 const getAssetFromLocal = (path) => {
   // if path begins with a slash, remove it
@@ -19,7 +19,7 @@ const getAssetFromLocal = (path) => {
 };
 
 const getAssetFromFirebase = async (path) => {
-  let url = await getImageDownloadUrl(path);
+  let url = await getAssetDownloadUrl(path);
   return url;
 }
 

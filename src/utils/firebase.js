@@ -84,7 +84,7 @@ const listFiles = async (path, substring) => {
 const getFolderReference = (path) => {
   return getStorageReference().child(path);
 };
-const getImageDownloadUrl = async (path) => {
+const getAssetDownloadUrl = async (path) => {
   let appendedPath = REACT_APP_FIREBASE_ROOT_DIRECTORY.concat(path);
   let imagePath;
   let split = appendedPath.split("/");
@@ -238,7 +238,7 @@ export {
   getStorageReference,
   listfolders,
   getFolderReference,
-  getImageDownloadUrl,
+  getAssetDownloadUrl,
   getFileDownloadUrl,
   fetchJsonAttributeValue,
   listFiles,
