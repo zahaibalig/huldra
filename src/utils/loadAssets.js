@@ -40,7 +40,6 @@ const getAsset = async (path) => {
     config.responsesStorageType = REACT_APP_general.storage.responsesStorageType || defaults.responsesStorageType;
     config.responsesStoragePath = REACT_APP_general.storage.responsesStoragePath || defaults.responsesStoragePath;
   }
-  console.log(config);
 
   let url = getAssetFromLocal(path);
   if (!url) {

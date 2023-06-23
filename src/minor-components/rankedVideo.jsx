@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { getImageDownloadUrl } from "../utils/firebase";
+import getAsset from "../utils/loadAssets";
 
 const RankedVideo = ({ url, width, height, className, label }) => {
   const [videoUrl, setVideoUrl] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  useEffect(() => {
+  useEffect(async () => {
     setSubscribed(true);
-    (async () => {
-      subscribed &&
-        (await getImageDownloadUrl(url).then((res) => setVideoUrl(res)));
-    })();
+    const videoUrl = await getAsset(url);
+    setVideoUrl(videoUrl);
     return () => setSubscribed(false);
   }, [url, subscribed]);
   return (
