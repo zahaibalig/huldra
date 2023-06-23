@@ -3,9 +3,27 @@
 # Configuration File Documentation
 
   
+# Configuration File Documentation
 
-This documentation provides a comprehensive guide to the parameters in the config file. It describes each parameter and its purpose. Make sure to follow the instructions and guidelines mentioned for each parameter.
+  
+The HULDRA framework comprises eight pages, i.e., Warning_, Home, Registration, Background, Demonstration, Case, Summary and Feedback Page.
+Summary about the configurable pages:
+- Warning Page: Error page to communicate users if there is a problem.
+- Home Page: Landing page, where the users can log in with an existing participant id or can go to the registration page.
+- Background Page: A page that can be configured to show the background or information about the study._
+- Demonstration Page: Page where media checks can be performed._
+- Case Pages: Pages where survey questions are shown._
+- Summary and Feedback Page: Page which displays the summary of the questions and collects feedback on it._
+- End Page: The last page displayed when users complete the survey_
 
+  
+Please refer this paper to understand more about these pages on HULDRA: https://dl.acm.org/doi/pdf/10.1145/3524273.3532887
+
+  
+
+All of these pages are configurable using a config.json file. This documentation provides a comprehensive guide to the parameters in the config file. It describes each parameter and its purpose. Make sure to follow the instructions and guidelines mentioned for each parameter.
+
+The names in the table of content directly refer to the name of the configurable property. The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures. 
 
 ## Table of Contents
 
