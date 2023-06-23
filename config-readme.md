@@ -1,8 +1,6 @@
 ﻿
 
-# Configuration File Documentation
 
-  
 # Configuration File Documentation
 
   
@@ -27,17 +25,18 @@ The names in the table of content directly refer to the name of the configurable
 
 ## Table of Contents
 
- 1. [REACT_APP_warning](#react-app-warning)
-	 - [warningMessage](#warning-message)
-	 - [title](#title)
--  [Use](#react-app-warning-use)
-2. [REACT_APP_home](#react-app-home)
+ 1. [REACT_APP_warning](#react_app_warning)
+	[Example](#example-react_app_warning)
+	- [warningMessage](#warning-message)
+	- [title](#title)
+2. [REACT_APP_home](#react_app_home)
+	[Example](#example-react_app_home)
 	 - [title](#home-title)
 	  - [introText](#intro-text)
 	  - [signupText](#signup-text)
 	  - [additionalText](#additional-text)
--  [Use](#react-app-home-use) 
-3. [REACT_APP_registration](#react-app-registration)
+3. [REACT_APP_registration](#react_app_registration)
+	[Example](#example-react_app_registration)
 	 - [Q1](#q1)
 		 - [label](#q1-label)
 	 - [Q2](#q2)
@@ -64,8 +63,8 @@ The names in the table of content directly refer to the name of the configurable
 		 - [label](#q8-label)
 	 - [Q9](#q9)
 		 - [label](#q9-label)
--  [Use](#react-app-registration-use) 
-3. [REACT_APP_background](#react-app-background)
+4. [REACT_APP_background](#react_app_background)
+	[Example](#example-react_app_background)
 	 - [sectionTitle](#section-title)
 	 - [sectionText](#section-text)
 	 - 	 [sectionClassName](#section-class-name)
@@ -81,9 +80,9 @@ The names in the table of content directly refer to the name of the configurable
 		 - [descriptionClassName](#subsection-description-class-name)
 		 -  [titleClassName](#subsection-title-class-name)
 		 -  [textClassName](#subsection-text-class-name)
--  [Use](#react-app-background-use) 
--  [Styling Classes](#styling-classes) 
-4. [REACT_APP_demonstration](#react-app-demonstration)
+-  [Styling Classes](#styling-classes)
+5. [REACT_APP_demonstration](#react_app_demonstration)
+	[Example](#example-react_app_demonstration)
 	 - [textBefore](#text-before)
 	 - [textAfter](#text-after)
 	 - 	[hasImage](#has-image)
@@ -97,8 +96,9 @@ The names in the table of content directly refer to the name of the configurable
 	 - [audioPath](#audio-path)
 	 - [audioHeight](#audio-height)
 	 - [audioWidth](#audio-width)
- - [Use](#react-app-demonstration-use) 
-4. [REACT_APP_caseImage](#react-app-case-image)
+
+6. [REACT_APP_caseImage](#react_app_caseimage)
+	[Example](#example-react_app_caseimage)
 	 - [caseImageColumnLeft](#case-image-column-left)
 		 - [label](#case-image-column-left-label)
 	 - [caseImageColumnMiddle](#case-image-column-middle)
@@ -122,9 +122,6 @@ The names in the table of content directly refer to the name of the configurable
         - [title](#case-image-column-right-title)
         - [text](#case-image-column-right-text)
 
-
- - [Use](#react-app-case-image-use) 
-
 	 
 
 
@@ -137,35 +134,10 @@ The names in the table of content directly refer to the name of the configurable
 
   
 
-## React App Warning
-
--  **Exact Name**: `REACT_APP_warning`
-
--  **Type**: container element
--  **mandatory**: no
-
--  **Description**: When the user's screen resolution is less than 1200 x 800, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
-
-### Warning Message
-
--  **Exact Name**: `warningMessage`
-
--  **Type**: child element
--  **mandatory**: no
-
--  **Description**: The actual message displayed to the user when the screen resolution is less than 1200 x 800 is defined by this element. 
-
-### Title
-
--  **Exact Name**: `title`
-
--  **Type**: child element
--  **mandatory**: no
+## REACT_APP_warning
 
 
--  **Description**: The heading of actual message displayed to the user when the screen resolution is less than 1200 x 800 is defined by this element. 
-
-### React App Warning Use
+### Example REACT_APP_warning  
 
 ```json
 "REACT_APP_warning": {
@@ -173,60 +145,22 @@ The names in the table of content directly refer to the name of the configurable
 "title": "Huldra"
 }
 ```
+-  **Exact Name**: `REACT_APP_warning`
+-  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
 
-## React App Home
+### Warning Message
+-  **Exact Name**: `warningMessage`
+-  **Description**: The actual message displayed to the user when there is a rendering error is defined by this element. 
 
--  **Exact Name**: `REACT_APP_home`
-
--  **Type**: container element
--   **mandatory**: no
-
-
--  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
-
-### Home Title
-
+### Title
 -  **Exact Name**: `title`
-
--  **Type**: child element
--  **mandatory**: no
+-  **Description**: The heading of actual message displayed to the user when there is a rendering error is defined by this element. 
 
 
--  **Description**: This element is used to show the title on the home page.
-
-### Intro Text
-
--  **Exact Name**: `introText`
-
--  **Type**: child element
--  **mandatory**: no
+## REACT_APP_home
 
 
--  **Description**: This element is used to configure the introduction text shown at the home page
-- 
-### Signup Text
-
--  **Exact Name**: `signupText`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: This element is used to configure the subheading, signup text shown at the home page
-
-### Additional Text
-
--  **Exact Name**: `additionalText`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: This element configures the additional text shown on the home page.
-
-
-
-### React App Home Use
+### Example REACT_APP_home
 
 ```json
 "REACT_APP_home": {
@@ -238,269 +172,35 @@ The names in the table of content directly refer to the name of the configurable
 ```
 
 
-## React App Registration
+-  **Exact Name**: `REACT_APP_home`
+-  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
 
--  **Exact Name**: `REACT_APP_registration`
+### Home Title
 
--  **Type**: container element
--  **mandatory**: no
+-  **Exact Name**: `title`
+-  **Description**: This element is used to show the title on the home page.
 
--  **Description**:  The components of these element are used to configure the regestration page. Nine diffrerent questions can be configured. If you are creating a REACT_APP_registration element, make sure to include all the 9 questions inside. 
+### Intro Text
 
-### Q1
+-  **Exact Name**: `introText`
+-  **Description**: This element is used to configure the introduction text shown at the home page
 
--  **Exact Name**: `Q1`
 
--  **Type**: container element
--  **mandatory**: yes
+### Signup Text
 
--  **Description**:  Element used to display the 1st question on the registration page
+-  **Exact Name**: `signupText`
+-  **Description**: This element is used to configure the subheading, signup text shown at the home page
 
-### Q1 Label
+### Additional Text
 
--  **Exact Name**: `label`
+-  **Exact Name**: `additionalText`
+-  **Description**: This element configures the additional text shown on the home page.
 
--  **Type**: child element
--  **mandatory**: no
 
 
--  **Description**: Element to describe the label/heading of the 1st question. 
+## REACT_APP_registration
 
-### Q2
-
--  **Exact Name**: `Q2`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 2nd question on the registration page
-
-### Q2 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 2nd question. 
-
-### Q3
-
--  **Exact Name**: `Q3`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 3rd question on the registration page
-
-### Q3 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 3rd question. 
-
-### Q3 Show Tooltip
-
--  **Exact Name**: `showTooltip`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q3 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the tooltip.
-
-
-### Q4
-
--  **Exact Name**: `Q4`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 4th question on the registration page
-
-### Q4 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 4th question. 
-
-### Q5
-
--  **Exact Name**: `Q5`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 5th question on the registration page
-
-### Q5 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 5th question. 
-
-### Q5 Show Tooltip
-
--  **Exact Name**: `showTooltip`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q5 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q6
-
--  **Exact Name**: `Q6`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 6th question on the registration page
-
-### Q6 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 6th question. 
-
-### Q6 Show Tooltip
-
--  **Exact Name**: `showTooltip`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q6 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q7
-
--  **Exact Name**: `Q7`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 7th question on the registration page
-
-### Q7 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 7th question. 
-
-### Q7 Show Tooltip
-
--  **Exact Name**: `showTooltip`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q7 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q8
-
--  **Exact Name**: `Q8`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 8th question on the registration page
-
-### Q8 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 8th question. 
-
-### Q9
-
--  **Exact Name**: `Q9`
-
--  **Type**: container element
--  **mandatory**: yes
-
--  **Description**:  Element used to display the 9th question on the registration page
-
-### Q9 Label
-
--  **Exact Name**: `label`
-
--  **Type**: child element
--  **mandatory**: no
-
-
--  **Description**: Element to describe the label/heading of the 9th question. 
-
-
-### React App Registration Use
+### Example REACT_APP_registration
 
 ```json
 "REACT_APP_registration": {
@@ -580,315 +280,149 @@ The names in the table of content directly refer to the name of the configurable
 
   
 
-## React App Background
 
-  
+-  **Exact Name**: `REACT_APP_registration`
 
--  **Exact Name**: `REACT_APP_background`
+-  **Description**:  The components of these element are used to configure the regestration page. Nine diffrerent questions can be configured. If you are creating a REACT_APP_registration element, make sure to include all the 9 questions inside. 
 
-  
+### Q1
 
--  **Type**: container array element
+-  **Exact Name**: `Q1`
+-  **Description**:  Element used to display the 1st question on the registration page
 
--  **mandatory**: yes
+### Q1 Label
 
-  
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 1st question. 
 
--  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
+### Q2
 
-  
+-  **Exact Name**: `Q2`
+-  **Description**:  Element used to display the 2nd question on the registration page
 
-### Section-Title
+### Q2 Label
 
-  
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 2nd question. 
 
--  **Exact Name**: `sectionTitle`
+### Q3
 
-  
+-  **Exact Name**: `Q3`
+-  **Description**:  Element used to display the 3rd question on the registration page
 
--  **Type**: child element
+### Q3 Label
 
--  **mandatory**: no
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 3rd question. 
 
-  
+### Q3 Show Tooltip
 
--  **Description**: Title of the section is defined with this property.
+-  **Exact Name**: `showTooltip`
+-  **Description**: A bool to set whether to show the tooltip for the question or not. 
 
-  
+### Q3 Tooltip Message
 
-### Section-Text
+-  **Exact Name**: `tooltipMessage`
+-  **Description**: Element to describe the label/heading of the tooltip.
 
-  
 
--  **Exact Name**: `sectionText`
+### Q4
 
-  
+-  **Exact Name**: `Q4`
+-  **Description**:  Element used to display the 4th question on the registration page
 
--  **Type**: child element
+### Q4 Label
 
--  **mandatory**: no
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 4th question. 
 
-  
-  
+### Q5
 
--  **Description**: Text of the section is defined with this property.
+-  **Exact Name**: `Q5`
+-  **Description**:  Element used to display the 5th question on the registration page
 
-  
-  
+### Q5 Label
 
-### Section Class Name
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 5th question. 
 
-  
+### Q5 Show Tooltip
 
--  **Exact Name**: `sectionClassName`
+-  **Exact Name**: `showTooltip`
+-  **Description**: A bool to set whether to show the tooltip for the question or not. 
 
-  
+### Q5 Tooltip Message
 
--  **Type**: child element
+-  **Exact Name**: `tooltipMessage`
+-  **Description**: Element to describe the label/heading of the tooltip.
 
--  **mandatory**: no
+### Q6
 
-  
-  
+-  **Exact Name**: `Q6`
+-  **Description**:  Element used to display the 6th question on the registration page
 
--  **Description**: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+### Q6 Label
 
-  
-  
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 6th question. 
 
-### Section Title Class Name
+### Q6 Show Tooltip
 
-  
+-  **Exact Name**: `showTooltip`
+-  **Description**: A bool to set whether to show the tooltip for the question or not. 
 
--  **Exact Name**: `sectionTitleClassName`
+### Q6 Tooltip Message
 
-  
+-  **Exact Name**: `tooltipMessage`
+-  **Description**: Element to describe the label/heading of the tooltip.
 
--  **Type**: child element
+### Q7
 
--  **mandatory**: no
+-  **Exact Name**: `Q7`
+-  **Description**:  Element used to display the 7th question on the registration page
 
-  
-  
+### Q7 Label
 
--  **Description**: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 7th question. 
 
-  
+### Q7 Show Tooltip
 
-### Section Text Class Name
+-  **Exact Name**: `showTooltip`
+-  **Description**: A bool to set whether to show the tooltip for the question or not. 
 
-  
+### Q7 Tooltip Message
 
--  **Exact Name**: `sectionTextClassName`
+-  **Exact Name**: `tooltipMessage`
+-  **Description**: Element to describe the label/heading of the tooltip.
 
-  
+### Q8
 
--  **Type**: child element
+-  **Exact Name**: `Q8`
+-  **Description**:  Element used to display the 8th question on the registration page
 
--  **mandatory**: no
+### Q8 Label
 
-  
-  
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 8th question. 
 
--  **Description**: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+### Q9
 
-  
-  
+-  **Exact Name**: `Q9`
+-  **Description**:  Element used to display the 9th question on the registration page
 
-## Section Content
+### Q9 Label
 
-  
+-  **Exact Name**: `label`
+-  **Description**: Element to describe the label/heading of the 9th question. 
 
--  **Exact Name**: `sectionContent`
 
-  
 
--  **Type**: container array element
 
--  **mandatory**: yes
+## REACT_APP_background
 
-  
 
--  **Description**: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
-
-  
-  
-
-### Subsection Title
-
-  
-
--  **Exact Name**: `title`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Title of the subsection is defined by this property.
-
-  
-
-### Subsection Text
-
-  
-
--  **Exact Name**: `sectionText`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Text of the subsection is defined by this property.
-
-  
-  
-
-### Subsection Class Name
-
-  
-
--  **Exact Name**: `className`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Subsection Image Path
-
-  
-
--  **Exact Name**: `imagePath`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Define the path of the image located on firebase to here to display the image on subsection.
-
-  
-
-### Subsection Image Class Name
-
-  
-
--  **Exact Name**: `imageClassName`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Subsection Image Alternative Text
-
-  
-
--  **Exact Name**: `imageAlternativeText`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Alternative text to be displayed, if the image is not available is defined here.
-
-  
-
-### Subsection Description Class Name
-
-  
-
--  **Exact Name**: `descriptionClassName`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Subsection Title Class Name
-
-  
-
--  **Exact Name**: `titleClassName`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-
-### Subsection Text Class Name
-
-  
-
--  **Exact Name**: `textClassName`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
-  
-
--  **Description**: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-
-### React App Background Use
+### Example REACT_APP_background
 
 ```json
 "REACT_APP_background": [
@@ -914,6 +448,147 @@ The names in the table of content directly refer to the name of the configurable
     }
   ]
 ```
+  
+
+-  **Exact Name**: `REACT_APP_background`
+
+-  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
+
+  
+
+### Section-Title
+
+-  **Exact Name**: `sectionTitle`
+-  **Description**: Title of the section is defined with this property.
+  
+
+### Section-Text
+
+  
+
+-  **Exact Name**: `sectionText`
+-  **Description**: Text of the section is defined with this property.
+
+  
+  
+
+### Section Class Name
+
+  
+
+-  **Exact Name**: `sectionClassName`
+-  **Description**: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Section Title Class Name
+
+-  **Exact Name**: `sectionTitleClassName`
+-  **Description**: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+
+### Section Text Class Name
+
+  
+
+-  **Exact Name**: `sectionTextClassName`
+-  **Description**: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+## Section Content
+
+  
+
+-  **Exact Name**: `sectionContent`
+-  **Description**: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
+
+  
+  
+
+### Subsection Title
+
+  
+
+-  **Exact Name**: `title`
+-  **Description**: Title of the subsection is defined by this property.
+
+  
+
+### Subsection Text
+
+  
+
+-  **Exact Name**: `sectionText`
+-  **Description**: Text of the subsection is defined by this property.
+
+  
+  
+
+### Subsection Class Name
+
+  
+
+-  **Exact Name**: `className`
+-  **Description**: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Subsection Image Path
+
+  
+-  **Exact Name**: `imagePath`
+-  **Description**: Define the path of the image located on firebase to here to display the image on subsection.
+
+  
+
+### Subsection Image Class Name
+
+-  **Exact Name**: `imageClassName`
+-  **Description**: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+### Subsection Image Alternative Text
+
+  
+
+-  **Exact Name**: `imageAlternativeText` 
+-  **Description**: Alternative text to be displayed, if the image is not available is defined here.
+
+  
+
+### Subsection Description Class Name
+
+  
+
+-  **Exact Name**: `descriptionClassName`
+-  **Description**: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+  
+
+### Subsection Title Class Name
+
+  
+
+-  **Exact Name**: `titleClassName`
+-  **Description**: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+  
+
+### Subsection Text Class Name
+
+  
+
+-  **Exact Name**: `textClassName`
+-  **Description**: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
+
+
+
 ### Styling Classes
 
 ```json
@@ -973,211 +648,11 @@ The names in the table of content directly refer to the name of the configurable
 ```
 
 
-### React App Demonstration
+### REACT_APP_demonstration
 
-  
 
--  **Exact Name**: `REACT_APP_demonstration`
 
-  
-
--  **Type**: parent array element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
-
-### Text Before
-
-  
-
--  **Exact Name**: `textBefore`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Text written on line 1 can be configured here
-
-### Text After
-
-  
-
--  **Exact Name**: `textAfter`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Text written on line 2 can be configured here
-
-
-### Has Image
-
-  
-
--  **Exact Name**: `hasImage`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: A bool. Set it true to display an image on the demonstartion page.
-
-
-### Image Path
-
-  
-
--  **Exact Name**: `imagePath`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the path of the image located on firebase to here to display the image on the demonstartion page. Note: hasImage bool has to be set true in order to put the image on the demonstartion page
-
-
-### Image Class Name
-
-  
-
--  **Exact Name**: `imageClassName`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
-
- 
-### Has Video
-
-  
-
--  **Exact Name**: `hasVideo`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: A bool. Set it true to display a video on the demonstartion page.
-
-
-
-### Video Path
-
-  
-
--  **Exact Name**: `videoPath`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the path of the video on firebase to here to display the video on the demonstartion page. Note: hasVideo bool has to be set true in order to put the video on the demonstartion page
-
-
-### Video Height
-
-  
-
--  **Exact Name**: `videoHeight`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the height of the video player in px.
-
-### Video Width
-
-  
-
--  **Exact Name**: `videoWidth`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the width of the video player in px.
-
-### Has Audio
-
-  
-
--  **Exact Name**: `hasAudio`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: A bool. Set it true to put an audio on the demonstartion page.
-
-### Audio Path
-
-  
-
--  **Exact Name**: `audioPath`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the path of the audio on firebase to here to put the audio on the demonstartion page. Note: hasAudio bool has to be set true in order to put the audio on the demonstartion page.
-
-### Audio Height
-
-  
-
--  **Exact Name**: `audioHeight`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the height of the audio player in px.
-
-### Audio Width
-
-  
-
--  **Exact Name**: `audioWidth`
-
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: Define the width of the audio player in px.
-
-### React App Demonstration Use
+### Example REACT_APP_demonstration
 
 ```json
   "REACT_APP_demonstration": [
@@ -1208,367 +683,112 @@ The names in the table of content directly refer to the name of the configurable
 ```
 
 
-### React App Case Image
+  
+
+-  **Exact Name**: `REACT_APP_demonstration`
+-  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
+
+### Text Before
+-  **Exact Name**: `textBefore`
+-  **Description**: Text written on line 1 can be configured here
+
+### Text After
+
+-  **Exact Name**: `textAfter`
+-  **Description**: Text written on line 2 can be configured here
+
+
+### Has Image
 
   
+
+-  **Exact Name**: `hasImage`
+-  **Description**: A bool. Set it true to display an image on the demonstartion page.
+
+
+### Image Path
+
+  
+
+-  **Exact Name**: `imagePath`
+-  **Description**: Define the path of the image located on firebase to here to display the image on the demonstartion page. Note: hasImage bool has to be set true in order to put the image on the demonstartion page
+
+
+### Image Class Name
+
+  
+
+-  **Exact Name**: `imageClassName`
+-  **Description**: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
+
+ 
+### Has Video
+
+  
+
+-  **Exact Name**: `hasVideo`
+-  **Description**: A bool. Set it true to display a video on the demonstartion page.
+
+
+
+### Video Path
+
+  
+
+-  **Exact Name**: `videoPath`
+-  **Description**: Define the path of the video on firebase to here to display the video on the demonstartion page. Note: hasVideo bool has to be set true in order to put the video on the demonstartion page
+
+
+### Video Height
+
+  
+
+-  **Exact Name**: `videoHeight`  
+-  **Description**: Define the height of the video player in px.
+
+### Video Width
+
+  
+
+-  **Exact Name**: `videoWidth`  
+-  **Description**: Define the width of the video player in px.
+
+### Has Audio
+
+  
+
+-  **Exact Name**: `hasAudio`
+-  **Description**: A bool. Set it true to put an audio on the demonstartion page.
+
+### Audio Path
+
+  
+
+-  **Exact Name**: `audioPath`
+-  **Description**: Define the path of the audio on firebase to here to put the audio on the demonstartion page. Note: hasAudio bool has to be set true in order to put the audio on the demonstartion page.
+
+### Audio Height
+
+  
+
+-  **Exact Name**: `audioHeight`
+-  **Description**: Define the height of the audio player in px.
+
+### Audio Width
+
+  
+
+-  **Exact Name**: `audioWidth`
+-  **Description**: Define the width of the audio player in px.
+
+
+### REACT_APP_caseImage
+
 
 -  **Exact Name**: `REACT_APP_caseImage`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
 -  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images. 
 
-### Case Image Column Left
-
-  
-
--  **Exact Name**: `caseImageColumnLeft`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the left column of case image page. The left coulumn can be configured acording to the parameter(s) below:
-
-### Case Image Column Left Label
-
-  
-
--  **Exact Name**: `label`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the heading on the left column of case image page.
-
-
-### Case Image Column Middle
-
-  
-
--  **Exact Name**: `caseImageColumnMiddle`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the middle column of case image page. The middle coulumn can be configured acording to the parameter(s) below:
-
-### Case Image Column Middle Title
-
-  
-
--  **Exact Name**: `title`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the heading on the middle column of case image page.
-
-
-### Case Image Column Middle Text
-
-  
-
--  **Exact Name**: `text`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the descriptive text on the middle column of case image page.
-
-
-### Case Image Column Middle Left Section Title
-
-  
-
--  **Exact Name**: `leftSectionTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the heading text over the left image on the middle column of case image page.
-
-### Case Image Column Middle Left Section Button Label
-
-  
-
--  **Exact Name**: `leftSectionButtonlabel`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the text of the button located below the left image on the middle column of case image page.
-
-### Case Image Column Middle Left Section Text With Icons Label
-
-  
-
--  **Exact Name**: `leftSectionTextWithIconsLabel`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the text below the button located below the left image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
-
-### Case Image Column Middle Right Section Title
-
-  
-
--  **Exact Name**: `rightSectionTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the heading text over the right image on the middle column of case image page.
-
-### Case Image Column Middle Right Section Button Label
-
-  
-
--  **Exact Name**: `rightSectionButtonlabel`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the text of the button located below the right image on the middle column of case image page.
-
-### Case Image Column Middle Right Section Text With Icons Label
-
-  
-
--  **Exact Name**: `rightSectionTextWithIconsLabel`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
-
-
-
-### Case Image Column Middle PopupA
-
-  
-
--  **Exact Name**: `popupA`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
-
-### Case Image Column Middle PopupB
-
-  
-
--  **Exact Name**: `popupB`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
-
-
-### Case Image Column Middle Popup Main Title
-
-  
-
--  **Exact Name**: `mainTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: 
-When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
-
-
-
-### Case Image Column Middle Popup Left Image Title
-
-  
-
--  **Exact Name**: `leftImageTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
-
-### Case Image Column Middle Popup Right Image Title
-
-  
-
--  **Exact Name**: `leftImageTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the third image, which is the right one among the two small images, on the popup.
-
-### Case Image Column Middle Popup Description Title
-
-  
-
--  **Exact Name**: `descriptionTitle`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**:
-When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
-
-
-### Case Image Column Middle Popup Description Text
-
-  
-
--  **Exact Name**: `descriptionText`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
-
-### Case Image Column Middle PopupB Gallery Substring
-
-  
-
--  **Exact Name**: `descriptionText`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). NOTE: This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
-
-### Case Image Column Right
-
-  
-
--  **Exact Name**: `caseImageColumnRight`
-
-  
-
--  **Type**: parent element
-
--  **mandatory**: yes
-
-  
--  **Description**: This element is used to configure the right column of case image page. The left coulumn can be configured acording to the parameter(s) below:
-
-### Case Image Column Right Title
-
-  
-
--  **Exact Name**: `label`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the heading on the right column of case image page.
-
-
-### Case Image Column Right text
-
-  
-
--  **Exact Name**: `label`
-
-  
-
--  **Type**: child element
-
--  **mandatory**: no
-
-  
--  **Description**: This element is used to configure the text description on the right column of case image page.
-
-
-
-### React App Case Image Use
-
+### Example REACT_APP_caseImage
 ```json
   "REACT_APP_caseImage": {
     "caseImageColumnLeft": { "label": "Case" },
@@ -1603,3 +823,169 @@ When the button below the any of the smaller image on the middle column of the c
     }
   }
 ```
+
+  
+
+### Case Image Column Left  
+
+-  **Exact Name**: `caseImageColumnLeft`
+-  **Description**: This element is used to configure the left column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Left Label
+
+  
+
+-  **Exact Name**: `label`
+-  **Description**: This element is used to configure the heading on the left column of case image page.
+
+
+### Case Image Column Middle
+
+  
+
+-  **Exact Name**: `caseImageColumnMiddle`  
+-  **Description**: This element is used to configure the middle column of case image page. The middle coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Middle Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to configure the heading on the middle column of case image page.
+
+
+### Case Image Column Middle Text
+
+  
+
+-  **Exact Name**: `text`
+-  **Description**: This element is used to configure the descriptive text on the middle column of case image page.
+
+
+### Case Image Column Middle Left Section Title
+
+  
+
+-  **Exact Name**: `leftSectionTitle`
+-  **Description**: This element is used to configure the heading text over the left image on the middle column of case image page.
+
+### Case Image Column Middle Left Section Button Label
+
+  
+
+-  **Exact Name**: `leftSectionButtonlabel`  
+-  **Description**: This element is used to configure the text of the button located below the left image on the middle column of case image page.
+
+### Case Image Column Middle Left Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `leftSectionTextWithIconsLabel`
+-  **Description**: This element is used to configure the text below the button located below the left image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+
+### Case Image Column Middle Right Section Title
+
+  
+
+-  **Exact Name**: `rightSectionTitle`
+-  **Description**: This element is used to configure the heading text over the right image on the middle column of case image page.
+
+### Case Image Column Middle Right Section Button Label
+
+  
+
+-  **Exact Name**: `rightSectionButtonlabel`  
+-  **Description**: This element is used to configure the text of the button located below the right image on the middle column of case image page.
+
+### Case Image Column Middle Right Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `rightSectionTextWithIconsLabel`
+-  **Description**: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+
+
+
+### Case Image Column Middle PopupA
+
+  
+
+-  **Exact Name**: `popupA`
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
+
+### Case Image Column Middle PopupB
+
+  
+
+-  **Exact Name**: `popupB`
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
+
+
+### Case Image Column Middle Popup Main Title
+
+  
+
+-  **Exact Name**: `mainTitle`
+-  **Description**: 
+When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+
+
+
+### Case Image Column Middle Popup Left Image Title
+
+  
+
+-  **Exact Name**: `leftImageTitle`
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+
+### Case Image Column Middle Popup Right Image Title
+
+  
+
+-  **Exact Name**: `leftImageTitle`
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the third image, which is the right one among the two small images, on the popup.
+
+### Case Image Column Middle Popup Description Title
+
+  
+
+-  **Exact Name**: `descriptionTitle`
+-  **Description**:
+When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+
+
+### Case Image Column Middle Popup Description Text
+
+  
+
+-  **Exact Name**: `descriptionText`
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+
+### Case Image Column Middle PopupB Gallery Substring
+
+  
+
+-  **Exact Name**: `descriptionText`
+-  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). NOTE: This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
+
+### Case Image Column Right
+
+  
+
+-  **Exact Name**: `caseImageColumnRight`
+-  **Description**: This element is used to configure the right column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+
+### Case Image Column Right Title
+
+  
+
+-  **Exact Name**: `label`
+-  **Description**: This element is used to configure the heading on the right column of case image page.
+
+
+### Case Image Column Right text
+
+  
+
+-  **Exact Name**: `label`
+-  **Description**: This element is used to configure the text description on the right column of case image page.
+
+
