@@ -25,7 +25,7 @@
 - Regularly merge `dev` into your feature branch to avoid conflicts later on, especially if you take multiple days to complete your task
 - Check the [full list of branches](https://github.com/simulamet-host/huldra-internal/branches/all) from time to time to delete unused/stale branches that you have created
 
-### Code Syntax, Logging, and Requirements
+### Code Syntax, Logging, Styling and Requirements
 
 - We will start using [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase very soon
 - This project uses eslint as linter and prettier as a formatting tool and husky pre-commit hook
