@@ -26,17 +26,17 @@ The names in the table of content directly refer to the name of the configurable
 ## Table of Contents
 
  1. [REACT_APP_warning](#react_app_warning)
-	[Example](#example-react_app_warning)
+    - [Example](#example-react_app_warning)
 	- [warningMessage](#warning-message)
 	- [title](#title)
 2. [REACT_APP_home](#react_app_home)
-	[Example](#example-react_app_home)
+	- [Example](#example-react_app_home)
 	 - [title](#home-title)
 	  - [introText](#intro-text)
 	  - [signupText](#signup-text)
 	  - [additionalText](#additional-text)
 3. [REACT_APP_registration](#react_app_registration)
-	[Example](#example-react_app_registration)
+	- [Example](#example-react_app_registration)
 	 - [Q1](#q1)
 		 - [label](#q1-label)
 	 - [Q2](#q2)
@@ -64,7 +64,7 @@ The names in the table of content directly refer to the name of the configurable
 	 - [Q9](#q9)
 		 - [label](#q9-label)
 4. [REACT_APP_background](#react_app_background)
-	[Example](#example-react_app_background)
+	- [Example](#example-react_app_background)
 	 - [sectionTitle](#section-title)
 	 - [sectionText](#section-text)
 	 - 	 [sectionClassName](#section-class-name)
@@ -80,9 +80,9 @@ The names in the table of content directly refer to the name of the configurable
 		 - [descriptionClassName](#subsection-description-class-name)
 		 -  [titleClassName](#subsection-title-class-name)
 		 -  [textClassName](#subsection-text-class-name)
--  [Styling Classes](#styling-classes)
+    -  [Styling Classes](#styling-classes)
 5. [REACT_APP_demonstration](#react_app_demonstration)
-	[Example](#example-react_app_demonstration)
+	- [Example](#example-react_app_demonstration)
 	 - [textBefore](#text-before)
 	 - [textAfter](#text-after)
 	 - 	[hasImage](#has-image)
@@ -96,9 +96,8 @@ The names in the table of content directly refer to the name of the configurable
 	 - [audioPath](#audio-path)
 	 - [audioHeight](#audio-height)
 	 - [audioWidth](#audio-width)
-
 6. [REACT_APP_caseImage](#react_app_caseimage)
-	[Example](#example-react_app_caseimage)
+	- [Example](#example-react_app_caseimage)
 	 - [caseImageColumnLeft](#case-image-column-left)
 		 - [label](#case-image-column-left-label)
 	 - [caseImageColumnMiddle](#case-image-column-middle)
@@ -121,14 +120,69 @@ The names in the table of content directly refer to the name of the configurable
     - [caseImageColumnRight](#case-image-column-right)
         - [title](#case-image-column-right-title)
         - [text](#case-image-column-right-text)
+7. [REACT_APP_caseHybrid](#react_app_casehybrid)
+    - [Example](#example-react_app_casehybrid)
+    - [caseHybridColumnLeft](#case-hybrid-column-left)
+        - [label](#case-hybrid-column-left-label)
+    - [caseHybridColumnMiddle](#case-hybrid-column-middle)
+        - [title](#case-hybrid-column-middle-title)
+        - [text](#case-hybrid-column-middle-text)
+        - [leftSectionTitle](#case-hybrid-column-middle-left-section-title)
+        - [leftSectionButtonlabel](#case-hybrid-column-middle-left-section-button-label)
+        - [leftSectionTextWithIconsLabel](#case-hybrid-column-middle-left-section-text-with-icons-label)
+        - [rightSectionTitle](#case-hybrid-column-middle-right-section-title)
+        - [rightSectionButtonlabel](#case-hybrid-column-middle-right-section-button-label)
+        - [rightSectionTextWithIconsLabel](#case-hybrid-column-middle-right-section-text-with-icons-label)
+        - [popupA](#case-hybrid-column-middle-popupa)
+            - [mainTitle](#case-hybrid-column-middle-popupa-main-title)
+            - [leftImageTitle](#case-hybrid-column-middle-popup-left-image-title)
+            - [rightImageTitle](#case-hybrid-column-middle-popup-right-image-title)
+            - [descriptionTitle](#case-hybrid-column-middle-popup-description-title)
+            - [descriptionText](#case-hybrid-column-middle-popup-description-text)
+        - [popupB](#case-hybrid-column-middle-popupb)
+            - [mainTitle](#case-hybrid-column-middle-popupa-main-title)
+            - [leftImageTitle](#case-hybrid-column-middle-popup-left-image-title)
+            - [rightImageTitle](#case-hybrid-column-middle-popup-right-image-title)
+            - [descriptionTitle](#case-hybrid-column-middle-popup-description-title)
+            - [descriptionText](#case-hybrid-column-middle-popup-description-text)
+            - [gallerySubstring](#case-hybrid-column-middle-popupb-gallery-substring)
+    - [caseHybridColumnRight](#case-hybrid-column-right)
+        - [title](#case-hybrid-column-right-title)
+        - [text](#case-hybrid-column-right-text)
 
-	 
 
-
-
-
-
-
+ "REACT_APP_caseHybrid": {
+    "caseHybridColumnLeft": { "label": "Case" },
+    "caseHybridColumnMiddle": {
+      "title": "Answer Options",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
+      "leftSectionTitle": "Option A",
+      "leftSectionButtonlabel": "View details",
+      "leftSectionTextWithIconsLabel": "Viewed",
+      "rightSectionTitle": "Option B",
+      "rightSectionButtonlabel": "View details",
+      "rightSectionTextWithIconsLabel": "Viewed",
+      "popupA": {
+        "mainTitle": "Sample Title for Popup A",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option A",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus."
+      },
+      "popupB": {
+        "mainTitle": "Sample Title for Popup B",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option B",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
+        "gallerySubstring": "similar"
+      }
+    },
+    "caseHybridColumnRight": {
+      "title": "Your Answer",
+      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
+    }
+  },
 
 
 
