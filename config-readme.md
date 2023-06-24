@@ -164,6 +164,61 @@ The names in the table of content directly refer to the name of the configurable
     - [caseAudioColumnRight](#case-audio-column-right)
         - [title](#case-audio-column-right-title)
         - [text](#case-audio-column-right-text)
+10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
+    - [Example](#example-react_app_summaryandfeedback)
+    - [summary](#summary)
+        - [display](#summary-display)
+        - [highlightAnswers](#summary-highlightanswers)
+        - [title](#summary-title)
+        - [text](#summary-text)
+        - [label](#summary-label)
+        - [videoPlaceholderIconPath](#summary-videoplaceholdericonPath)
+        - [audioPlaceholderIconPath](#summary-audioplaceholdericonPath)
+        - [imagePlaceholderIconPath](#summary-imageplaceholdericonPath)
+    - [feedbackForm](#feedbackform)
+        - [title](#feedbackform-title)
+        - [text](#feedbacform-text)
+        - [label](#feedbackform-label)
+        - [feedbackFormQuestions](#feedbackform-feedbackformquestions)
+            - [questionType](#feedbackformquestions-questiontype)
+            - [id](#feedbackformquestions-id)
+            - [label](#feedbackformquestions-label)
+            - [likertQuestions](#feedbackformquestions-likertquestions)
+                - [question](#feedbackformquestions-likertquestions-question)
+                - [size](#feedbackformquestions-likertquestions-size)
+                - [label](#feedbackformquestions-likertquestions-label)
+            - [choices](#feedbackformquestions-choices)
+            - [hasCommentBox](#feedbackformquestions-hascommentbox)
+            - [commentBoxLabel](#feedbackformquestions-commentboxlabel)
+
+
+
+
+## REACT_APP_home
+
+
+### Example REACT_APP_home
+
+```json
+"REACT_APP_home": {
+"title": "Huldra: Sample Title",
+"introText": "This is a sample subtitle or introduction text.",
+"signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
+"additionalText": "Please view this application in full-screen mode."
+}
+```
+
+
+-  **Exact Name**: `REACT_APP_home`
+-  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
+
+### Home Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to show the title on the home page.
+
+
+
   
 ## REACT_APP_warning
 
@@ -1253,10 +1308,6 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 
-
-
-
-
 ### Case Video Column Right
 
 -  **Exact Name**: `caseVideoColumnRight`
@@ -1363,3 +1414,196 @@ When the  button below the any of the smaller image on the middle column of the 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case audio page.
 
+
+
+
+### REACT_APP_summaryAndFeedback
+
+-  **Exact Name**: `REACT_APP_summaryAndFeedback`
+-  **Description**: This tag is used to configure the summary and feedback page. The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback. This page can be modified by the following parameters.
+
+### Example REACT_APP_summaryAndFeedback  
+
+```json
+  "REACT_APP_summaryAndFeedback": {
+    "summary": {
+      "display": true,
+      "highlightAnswers": true,
+      "title": "Summary of cases",
+      "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
+      "label": "Case",
+      "videoPlaceholderIconPath": "/gallery/video-placeholder.png",
+      "audioPlaceholderIconPath": "/gallery/audio-placeholder.png",
+      "imagePlaceholderIconPath": "/gallery/empty.png"
+    },
+    "feedbackForm": {
+      "title": "Overall feedback",
+      "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
+      "feedbackFormQuestions": [
+        {
+          "questionType": "text",
+          "id": "Q1",
+          "label": "Example free form text question.",
+          "optional": false,
+          "showTooltip": false
+        },
+        {
+          "questionType": "likert",
+          "id": "Q2",
+          "label": "Example likert question block.",
+          "optional": false,
+          "likertQuestions": [
+            {
+              "question": "Example likert question 1.",
+              "size": 10,
+              "label": "Likert_Question_1"
+            },
+            {
+              "question": "Example likert question 2.",
+              "size": 10,
+              "label": "Likert_Question_2"
+            },
+            {
+              "question": "Example likert question 3.",
+              "size": 10,
+              "label": "Likert_Question_3"
+            }
+          ]
+        },
+        {
+          "questionType": "mc",
+          "id": "Q3",
+          "label": "Example multiple choice question.",
+          "optional": false,
+          "choices": [
+            "Example choice 1.",
+            "Example choice 2."
+          ],
+          "hasCommentBox": true,
+          "commentBoxLabel": "Comment to the multiple choice question Q3."
+        },
+        {
+          "questionType": "mc",
+          "id": "Q4",
+          "label": "Example multiple choice question.",
+          "optional": false,
+          "choices": [
+            "Example varun 1.",
+            "Example varun 2."
+          ],
+          "hasCommentBox": true,
+          "commentBoxLabel": "varun to the multiple choice question Q3."
+        }
+      ]
+    }
+  }
+```
+
+
+### Summary
+-  **Exact Name**: `summary`
+-  **Description**: This tag is used to configure the left column, i.e., the summary column of the page. The following paramaters can be used to modify the summary column of the page.
+
+### Summary display
+-  **Exact Name**: `display`
+-  **Description**: It is a bool value, setting this value to false will not show the summary coulumn, it will only show the feedback form.
+
+
+### Summary highlightAnswers
+-  **Exact Name**: `highlightAnswers`
+-  **Description**: It is a bool value, setting this value to false will not show the highlight the answer's that users has selected for the questions.
+
+### Summary title
+-  **Exact Name**: `title`
+-  **Description**: The element is used to define the heading of the summary column.
+
+### Summary text
+-  **Exact Name**: `title`
+-  **Description**: The element is used to define the text below the heading of the summary column.
+
+### Summary label
+-  **Exact Name**: `label`
+-  **Description**: The element is used to define the heading below the text of the summary column.
+
+### Summary videoPlaceholderIconPath
+-  **Exact Name**: `videoPlaceholderIconPath`
+-  **Description**: For questions containing videos, instead of full videos, a thumbnail is shown. That thumbnail location can be set here.
+
+### Summary audioPlaceholderIconPath
+-  **Exact Name**: `audioPlaceholderIconPath`
+-  **Description**: For questions containing audios, instead of full audio players, a thumbnail is shown. That thumbnail location can be set here.
+
+### Summary imagePlaceholderIconPath
+-  **Exact Name**: `imagePlaceholderIconPath`
+-  **Description**: For questions containing audios or videos or hybrid cases, the image representing those cases can be configured here by giving it's location.
+
+### feedbackForm
+-  **Exact Name**: `feedbackForm`
+-  **Description**: This tag is used to configure the right column, i.e., the feedback column of the page. The following paramaters can be used to modify the feedback form.
+
+### feedbackForm title
+-  **Exact Name**: `title`
+-  **Description**: You can configure the heading of the feedback form with this element.
+
+### feedbackForm text
+-  **Exact Name**: `text`
+-  **Description**: You can configure the text below the heading of the feedback form with this element.
+
+### feedbackForm feedbackFormQuestions
+-  **Exact Name**: `feedbackFormQuestions`
+-  **Description**: Questions can be added in the feedback from through this element. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user.
+
+
+### feedbackFormQuestions questionType
+-  **Exact Name**: `questionType`
+-  **Description**: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
+
+### feedbackFormQuestions id
+-  **Exact Name**: `id`
+-  **Description**: The unique identifier of the question. Can be understood as question number.
+
+### feedbackFormQuestions label
+-  **Exact Name**: `label`
+-  **Description**: The question can be defined/written with this label.
+
+
+### feedbackFormQuestions optional
+-  **Exact Name**: `optional`
+-  **Description**: A bool value. When set to false, the question becomes mandatory to answer.
+
+
+### feedbackFormQuestions likertQuestions
+-  **Exact Name**: `likertQuestions`
+-  **Description**: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. likertQuestions can be configured by the following parameters:
+
+
+### feedbackFormQuestions likertQuestions question
+
+-  **Exact Name**: `question`
+-  **Description**: As the name suggest the questions is defined here.
+
+### feedbackFormQuestions likertQuestions size
+
+-  **Exact Name**: `size`
+-  **Description**: The size of the likert scale, corresponding to the question is defined by this element.
+
+### feedbackFormQuestions likertQuestions label
+
+-  **Exact Name**: `label`
+-  **Description**: The text over the likert scale which can be used to describe or give instructions to the user is written here.
+
+
+### feedbackFormQuestions choices
+
+-  **Exact Name**: `choices`
+-  **Description**: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
+
+
+### feedbackFormQuestions hasCommentBox
+-  **Exact Name**: `hasCommentBox`
+-  **Description**: A bool field. Set it to true to display a comment box to take textual input from the user.
+
+
+### feedbackFormQuestions commentBoxLabel
+-  **Exact Name**: `commentBoxLabel`
+-  **Description**: The heading of the comment box is defined by this field.
