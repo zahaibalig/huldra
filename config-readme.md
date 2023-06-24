@@ -140,10 +140,31 @@ The names in the table of content directly refer to the name of the configurable
     - [caseHybridColumnRight](#case-hybrid-column-right)
         - [title](#case-hybrid-column-right-title)
         - [text](#case-hybrid-column-right-text)
-
-
+8. [REACT_APP_caseVideo](#react_app_casevideo)
+    - [Example](#example-react_app_casevideo)
+    - [caseVideoColumnLeft](#case-video-column-left)
+        - [label](#case-video-column-left-label)
+        - [sectionVideoHeight](#case-video-column-left-section-video-height)
+        - [sectionVideoWidth](#case-video-column-left-section-video-width)
+        - [rightSectionVideoLabel](#case-video-column-left-rightsectionvideolabel)
+        - [leftSectionVideoLabel](#case-video-column-left-leftsectionvideolabel)
+        - [sectionButtonlabel](#case-video-column-left-section-button-label)
+    - [caseVideoColumnRight](#case-video-column-right)
+        - [title](#case-video-column-right-title)
+        - [text](#case-video-column-right-text) 
+9. [REACT_APP_caseAudio](#react_app_caseaudio)
+    - [Example](#example-react_app_caseaudio)
+    - [caseAudioColumnLeft](#case-audio-column-left)
+        - [label](#case-audio-column-left-label)
+        - [sectionAudioHeight](#case-audio-column-left-section-audio-height)
+        - [sectionAudioWidth](#case-audio-column-left-section-audio-width)
+        - [rightSectionAudioLabel](#case-audio-column-left-rightsectionaudiolabel)
+        - [leftSectionAudioLabel](#case-audio-column-left-leftsectionaudiolabel)
+        - [sectionButtonlabel](#case-audio-column-left-section-button-label)
+    - [caseAudioColumnRight](#case-audio-column-right)
+        - [title](#case-audio-column-right-title)
+        - [text](#case-audio-column-right-text)
   
-
 ## REACT_APP_warning
 
 
@@ -839,7 +860,7 @@ The names in the table of content directly refer to the name of the configurable
 ### Case Image Column Left  
 
 -  **Exact Name**: `caseImageColumnLeft`
--  **Description**: This element is used to configure the left column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the left column of case image page. The left column can be configured acording to the parameter(s) below:
 
 ### Case Image Column Left Label
 
@@ -854,7 +875,7 @@ The names in the table of content directly refer to the name of the configurable
   
 
 -  **Exact Name**: `caseImageColumnMiddle`  
--  **Description**: This element is used to configure the middle column of case image page. The middle coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the middle column of case image page. The middle column can be configured acording to the parameter(s) below:
 
 ### Case Image Column Middle Title
 
@@ -981,7 +1002,7 @@ When the button below the any of the smaller image on the middle column of the c
   
 
 -  **Exact Name**: `caseImageColumnRight`
--  **Description**: This element is used to configure the right column of case image page. The right coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the right column of case image page. The right column can be configured acording to the parameter(s) below:
 
 ### Case Image Column Right Title
 
@@ -998,8 +1019,6 @@ When the button below the any of the smaller image on the middle column of the c
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case image page.
 
-
-Varun
 
 
 ### REACT_APP_caseHybrid
@@ -1049,7 +1068,7 @@ Varun
 ### Case Hybrid Column Left  
 
 -  **Exact Name**: `caseHybridColumnLeft`
--  **Description**: This element is used to configure the left column of case hybrid page. The left coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the left column of case hybrid page. The left column can be configured acording to the parameter(s) below:
 
 ### Case Hybrid Column Left Label
 
@@ -1061,7 +1080,7 @@ Varun
 
  
 -  **Exact Name**: `caseHybridColumnMiddle`  
--  **Description**: This element is used to configure the middle column of case hybrid page. The middle coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the middle column of case hybrid page. The middle column can be configured acording to the parameter(s) below:
 
 ### Case Hybrid Column Middle Title
 
@@ -1149,7 +1168,7 @@ When the  button below the any of the smaller image on the middle column of the 
   
 
 -  **Exact Name**: `caseHybridColumnRight`
--  **Description**: This element is used to configure the right column of case image page. The right coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the right column of case image page. The right column can be configured acording to the parameter(s) below:
 
 ### Case Hybrid Column Right Title
 
@@ -1166,4 +1185,181 @@ When the  button below the any of the smaller image on the middle column of the 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case image page.
 
+
+### REACT_APP_caseVideo
+
+
+-  **Exact Name**: `REACT_APP_caseVideo`
+-  **Description**: This element is used to configure the Video Case page, where a user can rank 2 videos. 
+
+### Example REACT_APP_caseVideo
+```json
+  "REACT_APP_caseVideo": {
+    "caseVideoColumnLeft": {
+      "label": "Case",
+      "sectionVideoHeight": "200px",
+      "sectionVideoWidth": "410px",
+      "rightSectionVideoLabel": "Video Clip B",
+      "leftSectionVideoLabel": "Video Clip A",
+      "sectionButtonlabel": "Select"
+    },
+    "caseVideoColumnRight": {
+      "title": "Your Answer",
+      "text": "Please select one of the video clips to place it on top. The top video clip is your preferred option for this case."
+    }
+  },
+```
+
+  
+
+### Case Video Column Left  
+
+-  **Exact Name**: `caseVideoColumnLeft`
+-  **Description**: This element is used to configure the left column of case video page. The left column can be configured acording to the parameter(s) below:
+
+### Case Video Column Left Label
+
+-  **Exact Name**: `label`
+-  **Description**: This element is used to configure the heading on the left column of case Video page.
+- 
+### Case Video Column Left Section Video Height
+
+-  **Exact Name**: `sectionVideoHeight`
+-  **Description**: This element is used to configure the height of the video players on the left column of case video page.
+
+
+### Case Video Column Left Section Video Width
+
+-  **Exact Name**: `sectionVideoWidth`
+-  **Description**: This element is used to configure the width of the video players on the left column of case video page.
+
+### Case Video Column Left rightSectionVideoLabel
+
+-  **Exact Name**: `rightSectionVideoLabel`
+-  **Description**: This element is used to configure the heading of the right video on the left column of case video page.
+
+
+
+### Case Video Column Left leftSectionVideoLabel
+
+-  **Exact Name**: `leftSectionVideoLabel`
+-  **Description**: This element is used to configure the heading of the left video on the left column of case video page.
+
+
+### Case Video Column Left Section Button Label
+
+-  **Exact Name**: `sectionButtonlabel`
+-  **Description**: This element is used to configure the label of the buttons below the videos  on the left column of case video page.
+
+
+
+
+
+
+
+### Case Video Column Right
+
+-  **Exact Name**: `caseVideoColumnRight`
+-  **Description**: This element is used to configure the right column of case video page. The right column can be configured acording to the parameter(s) below:
+
+### Case Video Column Right Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to configure the heading on the right column of case video page.
+
+
+### Case Video Column Right Text
+  
+
+-  **Exact Name**: `text`
+-  **Description**: This element is used to configure the text description on the right column of case video page.
+
+
+### REACT_APP_caseAudio
+
+
+-  **Exact Name**: `REACT_APP_caseAudio`
+-  **Description**: This element is used to configure the Audio Case page, where a user can rank 2 audios. 
+
+### Example REACT_APP_caseAudio
+```json
+  "REACT_APP_caseAudio": {
+    "caseAudioColumnLeft": {
+      "label": "Case",
+      "sectionAudioHeight": "200px",
+      "sectionAudioWidth": "410px",
+      "rightSectionAudioLabel": "Audio Clip B",
+      "leftSectionAudioLabel": "Audio Clip A",
+      "sectionButtonlabel": "Select"
+    },
+    "caseAudioColumnRight": {
+      "title": "Your Answer",
+      "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
+    }
+  },
+```
+
+  
+
+### Case Audio Column Left  
+
+-  **Exact Name**: `caseAudioColumnLeft`
+-  **Description**: This element is used to configure the left column of case audio page. The left column can be configured acording to the parameter(s) below:
+
+### Case Audio Column Left Label
+
+-  **Exact Name**: `label`
+-  **Description**: This element is used to configure the heading on the left column of case Audio page.
+- 
+### Case Audio Column Left Section Audio Height
+
+-  **Exact Name**: `sectionAudioHeight`
+-  **Description**: This element is used to configure the height of the audio players on the left column of case audio page.
+
+
+### Case Audio Column Left Section Audio Width
+
+-  **Exact Name**: `sectionAudioWidth`
+-  **Description**: This element is used to configure the width of the audio players on the left column of case audio page.
+
+### Case Audio Column Left rightSectionAudioLabel
+
+-  **Exact Name**: `rightSectionAudioLabel`
+-  **Description**: This element is used to configure the heading of the right audio on the left column of case audio page.
+
+
+
+### Case Audio Column Left leftSectionAudioLabel
+
+-  **Exact Name**: `leftSectionAudioLabel`
+-  **Description**: This element is used to configure the heading of the left audio on the left column of case audio page.
+
+
+### Case Audio Column Left Section Button Label
+
+-  **Exact Name**: `sectionButtonlabel`
+-  **Description**: This element is used to configure the label of the buttons below the audios  on the left column of case audio page.
+
+
+
+
+
+
+
+### Case Audio Column Right
+
+-  **Exact Name**: `caseAudioColumnRight`
+-  **Description**: This element is used to configure the right column of case audio page. The right column can be configured acording to the parameter(s) below:
+
+### Case Audio Column Right Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to configure the heading on the right column of case audio page.
+
+
+### Case Audio Column Right Text
+  
+
+-  **Exact Name**: `text`
+-  **Description**: This element is used to configure the text description on the right column of case audio page.
 
