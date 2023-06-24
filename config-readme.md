@@ -1,6 +1,7 @@
 ﻿
 
 
+
 # Configuration File Documentation
 
   
@@ -111,7 +112,7 @@ The names in the table of content directly refer to the name of the configurable
 		 - [rightSectionTextWithIconsLabel](#case-image-column-middle-right-section-text-with-icons-label)
 		 - [popupA](#case-image-column-middle-popupa)
 		 - [popupB](#case-image-column-middle-popupb)
-			 - [mainTitle](#case-image-column-middle-popupa-main-title)
+			 - [mainTitle](#case-image-column-middle-popup-main-title)
 			 - [leftImageTitle](#case-image-column-middle-popup-left-image-title)
 			 - [rightImageTitle](#case-image-column-middle-popup-right-image-title)
 			 - [descriptionTitle](#case-image-column-middle-popup-description-title)
@@ -134,56 +135,11 @@ The names in the table of content directly refer to the name of the configurable
         - [rightSectionButtonlabel](#case-hybrid-column-middle-right-section-button-label)
         - [rightSectionTextWithIconsLabel](#case-hybrid-column-middle-right-section-text-with-icons-label)
         - [popupA](#case-hybrid-column-middle-popupa)
-            - [mainTitle](#case-hybrid-column-middle-popupa-main-title)
-            - [leftImageTitle](#case-hybrid-column-middle-popup-left-image-title)
-            - [rightImageTitle](#case-hybrid-column-middle-popup-right-image-title)
-            - [descriptionTitle](#case-hybrid-column-middle-popup-description-title)
-            - [descriptionText](#case-hybrid-column-middle-popup-description-text)
         - [popupB](#case-hybrid-column-middle-popupb)
-            - [mainTitle](#case-hybrid-column-middle-popupa-main-title)
-            - [leftImageTitle](#case-hybrid-column-middle-popup-left-image-title)
-            - [rightImageTitle](#case-hybrid-column-middle-popup-right-image-title)
-            - [descriptionTitle](#case-hybrid-column-middle-popup-description-title)
-            - [descriptionText](#case-hybrid-column-middle-popup-description-text)
-            - [gallerySubstring](#case-hybrid-column-middle-popupb-gallery-substring)
+            - [mainTitle](#case-hybrid-column-middle-popup-main-title)
     - [caseHybridColumnRight](#case-hybrid-column-right)
         - [title](#case-hybrid-column-right-title)
         - [text](#case-hybrid-column-right-text)
-
-
- "REACT_APP_caseHybrid": {
-    "caseHybridColumnLeft": { "label": "Case" },
-    "caseHybridColumnMiddle": {
-      "title": "Answer Options",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
-      "leftSectionTitle": "Option A",
-      "leftSectionButtonlabel": "View details",
-      "leftSectionTextWithIconsLabel": "Viewed",
-      "rightSectionTitle": "Option B",
-      "rightSectionButtonlabel": "View details",
-      "rightSectionTextWithIconsLabel": "Viewed",
-      "popupA": {
-        "mainTitle": "Sample Title for Popup A",
-        "leftImageTitle": "Original",
-        "rightImageTitle": "Option A",
-        "descriptionTitle": "Description",
-        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus."
-      },
-      "popupB": {
-        "mainTitle": "Sample Title for Popup B",
-        "leftImageTitle": "Original",
-        "rightImageTitle": "Option B",
-        "descriptionTitle": "Description",
-        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
-        "gallerySubstring": "similar"
-      }
-    },
-    "caseHybridColumnRight": {
-      "title": "Your Answer",
-      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
-    }
-  },
-
 
 
   
@@ -1025,13 +981,13 @@ When the button below the any of the smaller image on the middle column of the c
   
 
 -  **Exact Name**: `caseImageColumnRight`
--  **Description**: This element is used to configure the right column of case image page. The left coulumn can be configured acording to the parameter(s) below:
+-  **Description**: This element is used to configure the right column of case image page. The right coulumn can be configured acording to the parameter(s) below:
 
 ### Case Image Column Right Title
 
   
 
--  **Exact Name**: `label`
+-  **Exact Name**: `title`
 -  **Description**: This element is used to configure the heading on the right column of case image page.
 
 
@@ -1039,7 +995,175 @@ When the button below the any of the smaller image on the middle column of the c
 
   
 
+-  **Exact Name**: `text`
+-  **Description**: This element is used to configure the text description on the right column of case image page.
+
+
+Varun
+
+
+### REACT_APP_caseHybrid
+
+
+-  **Exact Name**: `REACT_APP_caseHybrid`
+-  **Description**: This element is used to configure the Hybrid Case page, where a user can view a video, compare two image options, and provide their answer in the right column.
+
+### Example REACT_APP_caseHybrid
+```json
+    "REACT_APP_caseHybrid": {
+    "caseHybridColumnLeft": { "label": "Case" },
+    "caseHybridColumnMiddle": {
+      "title": "Answer Options",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
+      "leftSectionTitle": "Option A",
+      "leftSectionButtonlabel": "View details",
+      "leftSectionTextWithIconsLabel": "Viewed",
+      "rightSectionTitle": "Option B",
+      "rightSectionButtonlabel": "View details",
+      "rightSectionTextWithIconsLabel": "Viewed",
+      "popupA": {
+        "mainTitle": "Sample Title for Popup A",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option A",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus."
+      },
+      "popupB": {
+        "mainTitle": "Sample Title for Popup B",
+        "leftImageTitle": "Original",
+        "rightImageTitle": "Option B",
+        "descriptionTitle": "Description",
+        "descriptionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
+        "gallerySubstring": "similar"
+      }
+    },
+    "caseHybridColumnRight": {
+      "title": "Your Answer",
+      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
+    }
+  },
+```
+
+  
+
+### Case Hybrid Column Left  
+
+-  **Exact Name**: `caseHybridColumnLeft`
+-  **Description**: This element is used to configure the left column of case hybrid page. The left coulumn can be configured acording to the parameter(s) below:
+
+### Case Hybrid Column Left Label
+
 -  **Exact Name**: `label`
+-  **Description**: This element is used to configure the heading on the left column of case hybrid page.
+
+
+### Case Hybrid Column Middle
+
+ 
+-  **Exact Name**: `caseHybridColumnMiddle`  
+-  **Description**: This element is used to configure the middle column of case hybrid page. The middle coulumn can be configured acording to the parameter(s) below:
+
+### Case Hybrid Column Middle Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to configure the heading on the middle column of case hybrid page.
+
+
+### Case Hybrid Column Middle Text
+
+  
+
+-  **Exact Name**: `text`
+-  **Description**: This element is used to configure the descriptive text on the middle column of case hybrid page.
+
+
+### Case Hybrid Column Middle Left Section Title
+
+  
+
+-  **Exact Name**: `leftSectionTitle`
+-  **Description**: This element is used to configure the heading text over the left image on the middle column of case hybrid page.
+
+### Case Hybrid Column Middle Left Section Button Label
+
+  
+
+-  **Exact Name**: `leftSectionButtonlabel`  
+-  **Description**: This element is used to configure the text of the button located below the left image on the middle column of case hybrid page.
+
+### Case Hybrid Column Middle Left Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `leftSectionTextWithIconsLabel`
+-  **Description**: This element is used to configure the text below the button located below the left image on the middle column of case hybrid page. This text is only visible when the user has clicked on the mentioned button.
+
+### Case Hybrid Column Middle Right Section Title
+
+
+-  **Exact Name**: `rightSectionTitle`
+-  **Description**: This element is used to configure the heading text over the right image on the middle column of case hybrid page.
+
+### Case Hybrid Column Middle Right Section Button Label
+
+  
+
+-  **Exact Name**: `rightSectionButtonlabel`  
+-  **Description**: This element is used to configure the text of the button located below the right image on the middle column of case hybrid page.
+
+### Case Hybrid Column Middle Right Section Text With Icons Label
+
+  
+
+-  **Exact Name**: `rightSectionTextWithIconsLabel`
+-  **Description**: This element is used to configure the text below the button located below the right image on the middle column of case hybrid page. This text is only visible when the user has clicked on the mentioned button.
+
+
+
+### Case Hybrid Column Middle PopupA
+
+  
+
+-  **Exact Name**: `popupA`
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case H\hybrid page.
+
+### Case Hybrid Column Middle PopupB
+
+  
+
+-  **Exact Name**: `popupB`
+-  **Description**: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case hybrid page.
+
+
+### Case Hybrid Column Middle Popup Main Title
+
+  
+
+-  **Exact Name**: `mainTitle`
+-  **Description**: 
+When the  button below the any of the smaller image on the middle column of the case hybrid page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+
+
+### Case Hybrid Column Right
+
+  
+
+-  **Exact Name**: `caseHybridColumnRight`
+-  **Description**: This element is used to configure the right column of case image page. The right coulumn can be configured acording to the parameter(s) below:
+
+### Case Hybrid Column Right Title
+
+  
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to configure the heading on the right column of case hybrid page.
+
+
+### Case Hybrid Column Right Text
+
+  
+
+-  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case image page.
 
 
