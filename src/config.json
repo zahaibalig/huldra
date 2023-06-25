@@ -227,8 +227,7 @@
     }
   },
   "REACT_APP_caseOrder": {
-    "cases": [
-    ],
+    "cases": [],
     "shuffle": "categorized"
   },
   "REACT_APP_summaryAndFeedback": {
@@ -303,7 +302,7 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "themeColor" : "",
+    "themeColor": "",
     "buttonColor": ""
   },
   "REACT_APP_footer": {

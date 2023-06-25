@@ -18,9 +18,7 @@ const End = ({
       <div className="end-header">
         <h2>{REACT_APP_end && REACT_APP_end["title"]}</h2>
       </div>
-      <span className="end-message">
-        {REACT_APP_end && REACT_APP_end["endMessage"]}
-      </span>
+      <span className="end-message">{REACT_APP_end && REACT_APP_end["endMessage"]}</span>
     </div>
   );
 };

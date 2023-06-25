@@ -21,20 +21,19 @@ const InputMultipleChoice = ({
   commentBoxLabel = "Comment to the multiple choice question.",
   commentBoxOptional = true,
 }) => {
-
   /**
- * get the saved answer from local storage, so as to repopulate the answer
- * @param   {string} id The id of the question
- * @param   {number} index The index of the option. The first option is 0
- * @returns {string|null} 'checked' if this option is checked, null if not
- */
+   * get the saved answer from local storage, so as to repopulate the answer
+   * @param   {string} id The id of the question
+   * @param   {number} index The index of the option. The first option is 0
+   * @returns {string|null} 'checked' if this option is checked, null if not
+   */
   const getSavedAnswer = (id, index) => {
     let checked = null;
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
     if (FeedbackFormAnswers) {
       const answer = FeedbackFormAnswers[id];
       if (answer && index === answer.optionIndex) {
-        checked = 'checked';
+        checked = "checked";
       }
     }
     return checked;
@@ -44,35 +43,17 @@ const InputMultipleChoice = ({
     <div className={wrapperClassName}>
       <label htmlFor={id} className={labelClassName}>
         {showTooltip && (
-          <Icon
-            tooltipMessage={tooltipMessage}
-            className="fa fa-info-circle form-tooltip ml-1"
-          />
+          <Icon tooltipMessage={tooltipMessage} className="fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
         {label}{" "}
-        {optional && (
-          <span className="input-multiple-choice-optional-text">
-            (optional)
-          </span>
-        )}{" "}
+        {optional && <span className="input-multiple-choice-optional-text">(optional)</span>}{" "}
         {!optional && <Asterisk />}
       </label>
       {choices.map((element, index) => {
-
         const checked = getSavedAnswer(id, index);
 
         return (
-          <FormGroup
-            key={index}
-            check
-            onChange={(e) =>
-              handleRadioChange(
-                e,
-                id,
-                index,
-                config
-              )
-            }>
+          <FormGroup key={index} check onChange={(e) => handleRadioChange(e, id, index, config)}>
             <Input
               id={`${id}-radio-option${index}`}
               type="radio"

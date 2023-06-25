@@ -59,7 +59,10 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{js, jsx, html, css, md}":  ["prettier --write", "eslint --fix"]
+    "src/**/*.{js, jsx, html, css, md}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
