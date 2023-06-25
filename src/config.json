@@ -224,6 +224,10 @@
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
     }
   },
+  "REACT_APP_caseOrder": {
+    "cases": [],
+    "shuffle": "categorized"
+  },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
       "display": true,
@@ -286,9 +290,8 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-    "REACT_APP_caseOrder": {
-    "cases": [
-    ],
+  "REACT_APP_caseOrder": {
+    "cases": [],
     "shuffle": "categorized"
   },
   "REACT_APP_outputJson": [
@@ -301,7 +304,7 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "themeColor" : "",
+    "themeColor": "",
     "buttonColor": ""
   },
   "REACT_APP_footer": {

@@ -23,8 +23,7 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
           return e.questionType === "text"
             ? React.createElement(components[e["questionType"]], {
                 key: index,
-                onChange: (event) =>
-                  handleTextFieldChange(event, e),
+                onChange: (event) => handleTextFieldChange(event, e),
                 ...e,
               })
             : React.createElement(components[e["questionType"]], {

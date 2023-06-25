@@ -11,8 +11,7 @@ const TextWithIcons = ({
   return (
     <div className={className}>
       {hasLeftIcon && <Icon className={leftIconClassName} />}
-      <span> {label}</span>{" "}
-      {hasRightIcon && <Icon className={rightIconClassName} />}
+      <span> {label}</span> {hasRightIcon && <Icon className={rightIconClassName} />}
     </div>
   );
 };

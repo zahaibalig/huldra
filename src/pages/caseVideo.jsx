@@ -13,19 +13,14 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   useEffect(() => {
     localStorage.setItem("PageLocator", caseId);
-    const CaseStudyAnswers = JSON.parse(
-      localStorage.getItem("CaseStudyAnswers")
-    );
+    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);
 
       if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "A") {
         setFirst("A");
         setSecond("B");
-      } else if (
-        CaseStudyAnswers[caseId] &&
-        CaseStudyAnswers[caseId][0] === "B"
-      ) {
+      } else if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "B") {
         setFirst("B");
         setSecond("A");
       }
@@ -36,14 +31,10 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
 
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-a.mp4`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-b.mp4`;
+  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.mp4`;
+  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.mp4`;
   const selectAsFirst = (choice) => {
-    const CaseStudyAnswers = JSON.parse(
-      localStorage.getItem("CaseStudyAnswers")
-    );
+    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     const newAnswers = { ...CaseStudyAnswers };
 
     if (choice === "video A") {
@@ -66,28 +57,18 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
         textClassName="video-background-content"
         sectionVideoAUrl={choiceA}
         sectionVideoBUrl={choiceB}
-        sectionVideoHeight={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoHeight
-        }
-        sectionVideoWidth={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoWidth
-        }
+        sectionVideoHeight={REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoHeight}
+        sectionVideoWidth={REACT_APP_caseVideo["caseVideoColumnLeft"].sectionVideoWidth}
         sectionVideoClassName="video"
-        rightSectionVideoLabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].rightSectionVideoLabel
-        }
-        leftSectionVideoLabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].leftSectionVideoLabel
-        }
+        rightSectionVideoLabel={REACT_APP_caseVideo["caseVideoColumnLeft"].rightSectionVideoLabel}
+        leftSectionVideoLabel={REACT_APP_caseVideo["caseVideoColumnLeft"].leftSectionVideoLabel}
         rightSectionButtonOnClick={() => {
           selectAsFirst("video B");
         }}
         leftSectionButtonOnClick={() => {
           selectAsFirst("video A");
         }}
-        sectionButtonlabel={
-          REACT_APP_caseVideo["caseVideoColumnLeft"].sectionButtonlabel
-        }
+        sectionButtonlabel={REACT_APP_caseVideo["caseVideoColumnLeft"].sectionButtonlabel}
         sectionButtonClassName="btn control"
         sectionHasButton={true}
       />

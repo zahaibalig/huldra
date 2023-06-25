@@ -1,12 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-const ProtectedRoute = ({
-  path,
-  component: Component,
-  render,
-  routeIsAllowed,
-  ...rest
-}) => {
+const ProtectedRoute = ({ path, component: Component, render, routeIsAllowed, ...rest }) => {
   return (
     <Route
       {...rest}
