@@ -1468,14 +1468,25 @@ When the  button below the any of the smaller image on the middle column of the 
 -  **Description**: The heading of the comment box is defined by this field.
 -->
 
+
 ## REACT_APP_end
-<!---
+
+The end page is the final page of the survey, which is displayed after users complete the survey and submit their responses. 
+The end page is configured using the `REACT_APP_end` block in the `config.json` file. 
+
+### Parameters
+
+The `REACT_APP_homepage` block contains 3 elements.
+- `title`: This element is used to show the title on the end page.
+- `endMessage`: This element is used to show the last message below title on the end page.
+- `redirectTimeout`: The end page stays for a certain duration and then the user is redirected to the homepage. You can configure the time user stays at the end page in miliseconds here.
+
+### Visual Overview
+
 ![endpage](./readme-assets/endpage.png)
 
--  **Exact Name**: `REACT_APP_end`
--  **Description**: This element is used to configure the end page of the HULDRA framework.
+### Sample Config
 
-### Example REACT_APP_end
 ```json
   "REACT_APP_end": {
     "title": "",
@@ -1485,25 +1496,6 @@ When the  button below the any of the smaller image on the middle column of the 
 ```
 
 
-
-### REACT_APP_end Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to show the title on the end page.
-
-
-
-### REACT_APP_end endMessage
-
--  **Exact Name**: `endMessage`
--  **Description**: This element is used to show the last message below title on the end page.
-
-
-### REACT_APP_end redirectTimeout
-
--  **Exact Name**: `redirectTimeout`
--  **Description**: The end page stays for a certain duration and then the user is redirected to the home page. You can configure the time user stays at the end page in miliseconds here.
--->
 
 ## REACT_APP_footer
 <!---
