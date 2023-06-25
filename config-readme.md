@@ -18,7 +18,9 @@ Summary about the configurable pages:
   
 Please refer this paper to understand more about these pages on HULDRA: https://dl.acm.org/doi/pdf/10.1145/3524273.3532887
 
-  
+
+![overview of pages](./readme-assets/documentation-main.png)
+
 
 All of these pages are configurable using a config.json file. This documentation provides a comprehensive guide to the parameters in the config file. It describes each parameter and its purpose. Make sure to follow the instructions and guidelines mentioned for each parameter.
 
@@ -214,6 +216,9 @@ The names in the table of content directly refer to the name of the configurable
 
 ## REACT_APP_home
 
+![plot](./readme-assets/homepage.png)
+-  **Exact Name**: `REACT_APP_home`
+-  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
 
 ### Example REACT_APP_home
 
@@ -227,8 +232,6 @@ The names in the table of content directly refer to the name of the configurable
 ```
 
 
--  **Exact Name**: `REACT_APP_home`
--  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
 
 ### Home Title
 
@@ -239,9 +242,13 @@ The names in the table of content directly refer to the name of the configurable
 
   
 ## REACT_APP_warning
+![overview of pages](./readme-assets/warning.png)
 
+-  **Exact Name**: `REACT_APP_warning`
+-  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
 
 ### Example REACT_APP_warning  
+
 
 ```json
 "REACT_APP_warning": {
@@ -249,8 +256,7 @@ The names in the table of content directly refer to the name of the configurable
 "title": "Huldra"
 }
 ```
--  **Exact Name**: `REACT_APP_warning`
--  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
+
 
 ### Warning Message
 -  **Exact Name**: `warningMessage`
@@ -524,10 +530,13 @@ The names in the table of content directly refer to the name of the configurable
 
 
 ## REACT_APP_background
+![plot](./readme-assets/background.png)
 
+-  **Exact Name**: `REACT_APP_background`
+
+-  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
 
 ### Example REACT_APP_background
-
 ```json
 "REACT_APP_background": [
     {
@@ -554,9 +563,6 @@ The names in the table of content directly refer to the name of the configurable
 ```
   
 
--  **Exact Name**: `REACT_APP_background`
-
--  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
 
   
 
@@ -755,6 +761,8 @@ The names in the table of content directly refer to the name of the configurable
 ### REACT_APP_demonstration
 
 
+-  **Exact Name**: `REACT_APP_demonstration`
+-  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
 
 ### Example REACT_APP_demonstration
 
@@ -789,8 +797,6 @@ The names in the table of content directly refer to the name of the configurable
 
   
 
--  **Exact Name**: `REACT_APP_demonstration`
--  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
 
 ### Text Before
 -  **Exact Name**: `textBefore`
@@ -890,7 +896,11 @@ The names in the table of content directly refer to the name of the configurable
 
 
 -  **Exact Name**: `REACT_APP_caseImage`
--  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images. 
+-  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images.
+
+![Case Image](./readme-assets/caseimage.png)
+![Case Image popup](./readme-assets/caseimagepopup.png)
+
 
 ### Example REACT_APP_caseImage
 ```json
@@ -1096,11 +1106,16 @@ When the button below the any of the smaller image on the middle column of the c
 
 ### REACT_APP_caseHybrid
 
+![Case Image](./readme-assets/casehybrid.png)
+![Case Image](./readme-assets/casehybridpopup.png)
+
 
 -  **Exact Name**: `REACT_APP_caseHybrid`
 -  **Description**: This element is used to configure the Hybrid Case page, where a user can view a video, compare two image options, and provide their answer in the right column.
 
 ### Example REACT_APP_caseHybrid
+
+
 ```json
     "REACT_APP_caseHybrid": {
     "caseHybridColumnLeft": { "label": "Case" },
@@ -1261,6 +1276,8 @@ When the  button below the any of the smaller image on the middle column of the 
 
 ### REACT_APP_caseVideo
 
+![Case video](./readme-assets/casevideo.png)
+
 
 -  **Exact Name**: `REACT_APP_caseVideo`
 -  **Description**: This element is used to configure the Video Case page, where a user can rank 2 videos. 
@@ -1345,6 +1362,7 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 ### REACT_APP_caseAudio
+![Case audio](./readme-assets/audiocase.png)
 
 
 -  **Exact Name**: `REACT_APP_caseAudio`
@@ -1436,6 +1454,8 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 ## REACT_APP_summaryAndFeedback
+![summaryandfeedback](./readme-assets/summaryandfeedback.png)
+
 
 -  **Exact Name**: `REACT_APP_summaryAndFeedback`
 -  **Description**: This tag is used to configure the summary and feedback page. The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback. This page can be modified by the following parameters.
@@ -1628,6 +1648,11 @@ When the  button below the any of the smaller image on the middle column of the 
 
 ## REACT_APP_end
 
+![endpage](./readme-assets/endpage.png)
+
+-  **Exact Name**: `REACT_APP_end`
+-  **Description**: This element is used to configure the end page of the HULDRA framework.
+
 
 ### Example REACT_APP_end
 
@@ -1640,8 +1665,6 @@ When the  button below the any of the smaller image on the middle column of the 
 ```
 
 
--  **Exact Name**: `REACT_APP_end`
--  **Description**: This element is used to configure the end page of the HULDRA framework.
 
 ### REACT_APP_end Title
 
@@ -1663,7 +1686,10 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 ## REACT_APP_footer
+![footer](./readme-assets/footer.png)
 
+-  **Exact Name**: `REACT_APP_footer`
+-  **Description**: This element is used to configure the footer that is displayed under the pages.
 
 ### Example REACT_APP_footer
 
@@ -1678,8 +1704,7 @@ When the  button below the any of the smaller image on the middle column of the 
 ```
 
 
--  **Exact Name**: `REACT_APP_footer`
--  **Description**: This element is used to configure the footer that is displayed under the pages.
+
 
 ### REACT_APP_footer icon1ClassName
 
@@ -1710,7 +1735,10 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 ## REACT_APP_header
+-  **Exact Name**: `REACT_APP_header`
+-  **Description**: This element is used to configure the headers displayed on HULDRA framework pages.
 
+![header](./readme-assets/header.png)
 
 ### Example REACT_APP_header
 
@@ -1725,8 +1753,7 @@ When the  button below the any of the smaller image on the middle column of the 
 ```
 
 
--  **Exact Name**: `REACT_APP_header`
--  **Description**: This element is used to configure the headers displayed on HULDRA framework pages.
+
 
 ### REACT_APP_header labelBackground
 
