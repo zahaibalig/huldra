@@ -190,6 +190,14 @@ The names in the table of content directly refer to the name of the configurable
             - [choices](#feedbackformquestions-choices)
             - [hasCommentBox](#feedbackformquestions-hascommentbox)
             - [commentBoxLabel](#feedbackformquestions-commentboxlabel)
+11. [REACT_APP_end](#react_app_end)
+    - [Example](#example-react_app_end)
+	- [title](#react_app_end-title)
+	- [endMessage](#react_app_end-endmessage)
+	- [redirectTimeout](#react_app_end-redirecttimeout)
+
+
+
 
 
 
@@ -1417,7 +1425,7 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 
-### REACT_APP_summaryAndFeedback
+## REACT_APP_summaryAndFeedback
 
 -  **Exact Name**: `REACT_APP_summaryAndFeedback`
 -  **Description**: This tag is used to configure the summary and feedback page. The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback. This page can be modified by the following parameters.
@@ -1607,3 +1615,39 @@ When the  button below the any of the smaller image on the middle column of the 
 ### feedbackFormQuestions commentBoxLabel
 -  **Exact Name**: `commentBoxLabel`
 -  **Description**: The heading of the comment box is defined by this field.
+
+## REACT_APP_end
+
+
+### Example REACT_APP_end
+
+```json
+  "REACT_APP_end": {
+    "title": "",
+    "endMessage": "Thank you for participating in our survey!",
+    "redirectTimeout": 2500
+  }
+```
+
+
+-  **Exact Name**: `REACT_APP_end`
+-  **Description**: This element is used to configure the end page of the HULDRA framework.
+
+### REACT_APP_end Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to show the title on the end page.
+
+
+
+### REACT_APP_end endMessage
+
+-  **Exact Name**: `endMessage`
+-  **Description**: This element is used to show the last message below title on the end page.
+
+
+### REACT_APP_end redirectTimeout
+
+-  **Exact Name**: `redirectTimeout`
+-  **Description**: The end page stays for a certain duration and then the user is redirected to the home page. You can configure the time user stays at the end page in miliseconds here.
+
