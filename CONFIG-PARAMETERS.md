@@ -1498,15 +1498,24 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 
 ## REACT_APP_footer
-<!---
+
+The footer component is common to all pages in the survey (except warning page). 
+The footer is configured using the `REACT_APP_footer` block in the `config.json` file. 
+
+### Parameters
+
+The `REACT_APP_footer` block contains 5 elements.
+- `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element.
+- `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element.
+- `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
+- `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
+- `label`: The text between two icons can be configured here.
+
+### Visual Overview
+
 ![footer](./readme-assets/footer.png)
 
--  **Exact Name**: `REACT_APP_footer`
--  **Description**: This element is used to configure the footer that is displayed under the pages.
-
-
-
-### Example REACT_APP_footer
+### Sample Config
 
 ```json
  "REACT_APP_footer": {
@@ -1518,35 +1527,6 @@ The `REACT_APP_homepage` block contains 3 elements.
   }
 ```
 
-
-
-
-### REACT_APP_footer icon1ClassName
-
--  **Exact Name**: `icon1ClassName`
--  **Description**: The first icon dsplayed on the footer can be configured with this element.
-
-### REACT_APP_footer icon2ClassName
-
--  **Exact Name**: `icon2ClassName`
--  **Description**: The second icon dsplayed on the footer can be configured with this element.
-
-### REACT_APP_footer icon1Url
-
--  **Exact Name**: `icon1Url`
--  **Description**: The URL that a user will be redirected when clicked on first icon is defined here.
-
-
-### REACT_APP_footer icon2Url
-
--  **Exact Name**: `icon2Url`
--  **Description**: The URL that a user will be redirected when clicked on second icon is defined here.
-
-### REACT_APP_footer label
-
--  **Exact Name**: `label`
--  **Description**: The text between two icons can be configured here.
--->
 
 
 ## REACT_APP_header
