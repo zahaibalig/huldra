@@ -57,7 +57,7 @@ The `REACT_APP_warning` block contains 2 elements.
 
 ### Visual Overview
 
-![overview of pages](./readme-assets/warning.png)
+<kbd>![overview of pages](./readme-assets/warning.png)</kbd>
 
 ### Sample Config  
 
@@ -85,7 +85,7 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 ### Visual Overview
 
-![plot](./readme-assets/homepage.png)
+<kbd>![plot](./readme-assets/homepage.png)</kbd>
 
 ### Sample Config 
 
@@ -190,7 +190,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
   
 ### Visual Overview
 
-![plot](./readme-assets/background.png)
+<kbd>![plot](./readme-assets/background.png)</kbd>
 
 ### Sample Config
 
@@ -390,8 +390,8 @@ The `caseImageColumnRight` sub-block is used to configure the right column, and 
   
 ### Visual Overview
 
-![Case Image](./readme-assets/caseimage.png)
-![Case Image popup](./readme-assets/caseimagepopup.png)
+<kbd>![Case Image](./readme-assets/caseimage.png)</kbd>
+<kbd>![Case Image popup](./readme-assets/caseimagepopup.png)</kbd>
 
 ### Sample Config
 
@@ -473,8 +473,8 @@ The `caseHybridColumnRight` sub-block is used to configure the right column, and
 
 ### Visual Overview
 
-![Case Image](./readme-assets/casehybrid.png)
-![Case Image](./readme-assets/casehybridpopup.png)
+<kbd>![Case Image](./readme-assets/casehybrid.png)</kbd>
+<kbd>![Case Image](./readme-assets/casehybridpopup.png)</kbd>
 
 ### Sample Config
 
@@ -539,7 +539,7 @@ The `caseVideoColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-![Case video](./readme-assets/casevideo.png)
+<kbd>![Case video](./readme-assets/casevideo.png)</kbd>
 
 ### Sample Config
 
@@ -586,7 +586,7 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-![Case audio](./readme-assets/audiocase.png)
+<kbd>![Case audio](./readme-assets/audiocase.png)</kbd>
 
 ### Sample Config
 
@@ -655,7 +655,7 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
 
 ### Visual Overview
 
-![summaryandfeedback](./readme-assets/summaryandfeedback.png)
+<kbd>![summaryandfeedback](./readme-assets/summaryandfeedback.png)</kbd>
 
 ### Sample Config
 
@@ -750,7 +750,7 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 ### Visual Overview
 
-![endpage](./readme-assets/endpage.png)
+<kbd>![endpage](./readme-assets/endpage.png)</kbd>
 
 ### Sample Config
 
@@ -780,7 +780,7 @@ The `REACT_APP_footer` block contains 5 elements.
 
 ### Visual Overview
 
-![footer](./readme-assets/footer.png)
+<kbd>![footer](./readme-assets/footer.png)</kbd>
 
 ### Sample Config
 
@@ -811,7 +811,7 @@ The `REACT_APP_header` block contains 4 elements.
 
 ### Visual Overview
 
-![header](./readme-assets/header.png)
+<kbd>![header](./readme-assets/header.png)</kbd>
 
 ### Sample Config
 
