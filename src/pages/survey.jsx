@@ -31,7 +31,8 @@ import { logSessionEvent } from "../utils/localStorage";
 import Modal from '@mui/material/Modal';
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { getFolderReference, fetchCases } from "../utils/firebase";
+import { getFolderReference } from "../utils/firebase";
+import { fetchCases} from "../utils/loadAssets";
 
 const Survey = ({
   history,

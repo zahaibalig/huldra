@@ -213,50 +213,29 @@ You can retrieve participant response files from your Firebase storage bucket (`
 
 
 # REACT_APP_general
-Four new parameters will be added under `storage` under `REACT_APP_general` in `config.json`.
-`REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` will be removed from `.env`.
-All 4 parameters are optional, since we will have defaults (1) in config.json, and (2) directly in the code.
+Two new parameters will be added under `storage` under `REACT_APP_general` in `config.json`.
 
 - `assetsStorageType`:
-  - Default value: `["local", "firebase"]`
-  - Possible values: an array of `local` and/or `firebase`.
+  - Default value: `"local"`
+  - Possible values: `"local"`, `"firebase"`
 
-  With the default value, the app will first try to load the assets from local storage, and if it fails, it will try to load them from Firebase.
+We do not implement fallback for now, if their preferred storage type does not work, there is no recovery.
 
-  If you want to load the assets from Firebase only, set it as `["firebase"]`.
+We look for assets in `<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`, and in `src/assets/gallery` if `assetsStorageType` is `local`.
 
-  If you want to load the assets from local storage only, set it as `["local"]`.
-
-  If you want to load the assets fro Firebase first, and if it fails, load them from local storage, set it as `["firebase", "local"]`.
-
-- `assetsStoragePath`:
-
-  The root directory of the assets for the corresponding storage type.
-  The app will look for assets for cases under a folder named `cases` under this directory.
-  - Default value: `["/src/assets/gallery", "/dev/gallery"]`
-
-  The values should be consistent with the values in `assetsStorageType`.
-  For example, if you set `assetsStorageType` with an array two values, you should also set `assetsStoragePath` with an array of two values.
-  The order of the values in `assetsStoragePath` should be the same as the order of the values in `assetsStorageType`.
-  If you provide more values here, the app will only use the first two values.
-  If you provide less values here, the app will use the default values for the rest of the values.
-    - `/dev/gallery` is for `assetsStorageType` `firebase`. (The bucket and other info about Firebase is set in `.env`.)
-    - `/src/assets/gallery` is for `assetsStorageType` `local`.
-    This folder is in the project root where `package.json` is located.
+If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` in `config.json` must be populated with the list of case foldernames.
 
 - `responsesStorageType`:
-  - Default value: `"firebase"`
-  - Possible values: `firebase`, `download`
+  - Default value: `"download"`
+  - Possible values: `"download"`, `"firebase"`
+
   If you set the value as `download`, when the participant finishes the survey and click submit, the app will let the participant download the responses as a file.
+  The download location will be chosen by the participant.
+
   If you set the value as `firebase`, the app will upload the responses to Firebase.
+  The app will put responses under a folder named `responses` under `<Firebase root>` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
   If that fails, it will show an error message and give the participant the option to download the responses as a file.
 
-- `responsesStoragePath`:
-  - Default value: `/dev`
-
-The root directory of the responses for the corresponding storage type.
-
-The app will put responses under a folder named `responses` under this directory.
-
-This parameter is only applicable if `responsesStorageType` is set as `firebase`.
-If it is set as `download`, the app will let the participant download the responses as a file and the download location will be chosen by the participant.
+# Test assets
+We add test assets to /src/assets/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
+The assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).

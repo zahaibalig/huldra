@@ -1,51 +1,44 @@
 import { fetchConfigVariable } from "../utils/handleConfigVars";
-import { getAssetDownloadUrl } from "../utils/firebase";
+import {
+  fetchCases as fetchCasesFirebase,
+  getAssetDownloadUrl as getAssetFirebase
+} from "../utils/firebase";
+import {
+  fetchCases as fetchCasesLocal,
+  getAsset as getAssetLocal
+} from "../utils/loadLocalAssets";
 
-const getAssetFromLocal = (path) => {
-  // if path begins with a slash, remove it
-  if (path[0] === "/") {
-    path = path.slice(1);
-  }
+const fetchCases = async (configExists, path, cases, shuffle) => {
+  let validCases;
 
-  // try to get the asset from the local assets folder. if it doesn't exist, return null
-  let url = null;
-  try {
-    url = require(`../assets/${path}`);
-  } catch (err) {
-    console.log(err);
-  }
+  // firebase
+  // validCases= await fetchCasesFirebase(configExists, path, cases, shuffle);
 
-  return url;
+  // local
+  validCases = fetchCasesLocal(configExists, path, cases, shuffle);
+
+  return validCases;
 };
-
-const getAssetFromFirebase = async (path) => {
-  let url = await getAssetDownloadUrl(path);
-  return url;
-}
 
 const getAsset = async (path) => {
   const defaults = {
-    "assetsStorageType": ["local", "firebase"],
-    "assetsStoragePath": ["/src/assets/gallery", "/dev/gallery"],
-    "responsesStorageType": "firebase",
-    "responsesStoragePath": "/dev"
-  };
+    "assetsStorageType": "local",
+    "responsesStorageType": "download"
+};
 
   // read the configs. if the parameters under "storage" under "REACT_APP_general" are defined, use them; otherwise, use the default values
   const REACT_APP_general = fetchConfigVariable("REACT_APP_general");
   let config = defaults;
   if (REACT_APP_general && REACT_APP_general.storage) {
     config.assetsStorageType = REACT_APP_general.storage.assetsStorageType || defaults.assetsStorageType;
-    config.assetsStoragePath = REACT_APP_general.storage.assetsStoragePath || defaults.assetsStoragePath;
     config.responsesStorageType = REACT_APP_general.storage.responsesStorageType || defaults.responsesStorageType;
-    config.responsesStoragePath = REACT_APP_general.storage.responsesStoragePath || defaults.responsesStoragePath;
   }
 
-  let url = getAssetFromLocal(path);
+  let url = getAssetLocal(path);
   if (!url) {
-    url = await getAssetFromFirebase(path);
+    url = await getAssetFirebase(path);
   }
   return url;
 };
 
-export default getAsset;
+export { fetchCases, getAsset };

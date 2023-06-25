@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import getAsset from "../utils/loadAssets";
+import {getAsset} from "../utils/loadAssets";
 
 const RankedImage = ({
   path = "/gallery/empty.png",
