@@ -533,18 +533,16 @@ The `REACT_APP_warning` block contains the following elements for each section.
 - `sectionClassName`: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `sectionTitleClassName`: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `sectionTextClassName`: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-- `sectionContent`: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
-
-The `REACT_APP_warning` block contains the following elements for each subsection (i.e., for each object under `sectionContent`).
-- `title`: Title of the subsection is defined by this property.
-- `sectionText`: Text of the subsection is defined by this property.
-- `className`: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-- `imagePath`: Define the path of the image located on firebase to here to display the image on subsection.
-- `imageClassName`: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-- `imageAlternativeText`: Alternative text to be displayed, if the image is not available is defined here.
-- `descriptionClassName`: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-- `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-- `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `sectionContent`: This element is used to define the subsections under sections. <!--- Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object. --> Each object under `sectionContent` corresponds to a subsection, and contains the following elements.
+     - `title`: Title of the subsection is defined by this property.
+     - `sectionText`: Text of the subsection is defined by this property.
+     - `className`: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+     - `imagePath`: Define the path of the image located on firebase to here to display the image on subsection.
+     - `imageClassName`: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+     - `imageAlternativeText`: Alternative text to be displayed, if the image is not available is defined here.
+     - `descriptionClassName`: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+     - `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+     - `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
   
 ### Visual Overview
 
@@ -1274,14 +1272,54 @@ When the  button below the any of the smaller image on the middle column of the 
 
 
 ## REACT_APP_summaryAndFeedback
+
+The summary and feedback page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
 <!---
+The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback.
+left column, i.e., the summary column of the page
+right column, i.e., the feedback column of the page
+-->
+The summary and feedback page is configured using the `REACT_APP_summaryAndFeedback` block in the `config.json` file.
+
+### Parameters
+
+The `REACT_APP_summaryAndFeedback` block contains 2 sub-blocks.
+
+The `summary` sub-block is used to configure the left column, and contains the following elements.
+- `display`: It is a bool value, setting this value to false will not show the summary coulumn, it will only show the feedback form.
+- `highlightAnswers`: It is a bool value, setting this value to false will not show the highlight the answer's that users has selected for the questions.
+- `title`: The element is used to define the heading of the summary column.
+- `title`: The element is used to define the text below the heading of the summary column.
+- `videoPlaceholderIconPath`: For questions containing videos, instead of full videos, a thumbnail is shown. That thumbnail location can be set here.
+- `audioPlaceholderIconPath`: For questions containing audios, instead of full audio players, a thumbnail is shown. That thumbnail location can be set here.
+- `imagePlaceholderIconPath`: For questions containing audios or videos or hybrid cases, the image representing those cases can be configured here by giving it's location.
+
+The `feedbackForm` sub-block is used to configure the right column, and contains the following elements.
+- `title`: You can configure the heading of the feedback form with this element.
+- `text`: You can configure the text below the heading of the feedback form with this element.
+- `feedbackFormQuestions`: Questions can be added in the feedback from through this element. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `feedbackFormQuestions` can contain as many questions as desired, where each question is configured using the following elements. 
+     - `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
+     - `id`: The unique identifier of the question. Can be understood as question number.
+     - `label`: The question can be defined/written with this label.
+     - `optional`: A bool value. When set to false, the question becomes mandatory to answer.
+     - `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
+     - `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
+     - `commentBoxLabel`[^2]: The heading of the comment box is defined by this field. 
+     - `showToolTip`[^3]
+     - `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
+          - `question`: As the name suggest the questions is defined here.
+          - `size`: The size of the likert scale, corresponding to the question is defined by this element.
+          - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
+
+[^2]: Only for multiple choice type questions.
+[^3]: Only for text type questions.
+[^4]: Only for likert type questions.
+
+### Visual Overview
+
 ![summaryandfeedback](./readme-assets/summaryandfeedback.png)
 
-
--  **Exact Name**: `REACT_APP_summaryAndFeedback`
--  **Description**: This tag is used to configure the summary and feedback page. The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback. This page can be modified by the following parameters.
-
-### Example REACT_APP_summaryAndFeedback  
+### Sample Config
 
 ```json
   "REACT_APP_summaryAndFeedback": {
@@ -1358,115 +1396,6 @@ When the  button below the any of the smaller image on the middle column of the 
   }
 ```
 
-
-### Summary
--  **Exact Name**: `summary`
--  **Description**: This tag is used to configure the left column, i.e., the summary column of the page. The following paramaters can be used to modify the summary column of the page.
-
-### Summary display
--  **Exact Name**: `display`
--  **Description**: It is a bool value, setting this value to false will not show the summary coulumn, it will only show the feedback form.
-
-
-### Summary highlightAnswers
--  **Exact Name**: `highlightAnswers`
--  **Description**: It is a bool value, setting this value to false will not show the highlight the answer's that users has selected for the questions.
-
-### Summary title
--  **Exact Name**: `title`
--  **Description**: The element is used to define the heading of the summary column.
-
-### Summary text
--  **Exact Name**: `title`
--  **Description**: The element is used to define the text below the heading of the summary column.
-
-### Summary label
--  **Exact Name**: `label`
--  **Description**: The element is used to define the heading below the text of the summary column.
-
-### Summary videoPlaceholderIconPath
--  **Exact Name**: `videoPlaceholderIconPath`
--  **Description**: For questions containing videos, instead of full videos, a thumbnail is shown. That thumbnail location can be set here.
-
-### Summary audioPlaceholderIconPath
--  **Exact Name**: `audioPlaceholderIconPath`
--  **Description**: For questions containing audios, instead of full audio players, a thumbnail is shown. That thumbnail location can be set here.
-
-### Summary imagePlaceholderIconPath
--  **Exact Name**: `imagePlaceholderIconPath`
--  **Description**: For questions containing audios or videos or hybrid cases, the image representing those cases can be configured here by giving it's location.
-
-### feedbackForm
--  **Exact Name**: `feedbackForm`
--  **Description**: This tag is used to configure the right column, i.e., the feedback column of the page. The following paramaters can be used to modify the feedback form.
-
-### feedbackForm title
--  **Exact Name**: `title`
--  **Description**: You can configure the heading of the feedback form with this element.
-
-### feedbackForm text
--  **Exact Name**: `text`
--  **Description**: You can configure the text below the heading of the feedback form with this element.
-
-### feedbackForm feedbackFormQuestions
--  **Exact Name**: `feedbackFormQuestions`
--  **Description**: Questions can be added in the feedback from through this element. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user.
-
-
-### feedbackFormQuestions questionType
--  **Exact Name**: `questionType`
--  **Description**: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
-
-### feedbackFormQuestions id
--  **Exact Name**: `id`
--  **Description**: The unique identifier of the question. Can be understood as question number.
-
-### feedbackFormQuestions label
--  **Exact Name**: `label`
--  **Description**: The question can be defined/written with this label.
-
-
-### feedbackFormQuestions optional
--  **Exact Name**: `optional`
--  **Description**: A bool value. When set to false, the question becomes mandatory to answer.
-
-
-### feedbackFormQuestions likertQuestions
--  **Exact Name**: `likertQuestions`
--  **Description**: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. likertQuestions can be configured by the following parameters:
-
-
-### feedbackFormQuestions likertQuestions question
-
--  **Exact Name**: `question`
--  **Description**: As the name suggest the questions is defined here.
-
-### feedbackFormQuestions likertQuestions size
-
--  **Exact Name**: `size`
--  **Description**: The size of the likert scale, corresponding to the question is defined by this element.
-
-### feedbackFormQuestions likertQuestions label
-
--  **Exact Name**: `label`
--  **Description**: The text over the likert scale which can be used to describe or give instructions to the user is written here.
-
-
-### feedbackFormQuestions choices
-
--  **Exact Name**: `choices`
--  **Description**: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
-
-
-### feedbackFormQuestions hasCommentBox
--  **Exact Name**: `hasCommentBox`
--  **Description**: A bool field. Set it to true to display a comment box to take textual input from the user.
-
-
-### feedbackFormQuestions commentBoxLabel
--  **Exact Name**: `commentBoxLabel`
--  **Description**: The heading of the comment box is defined by this field.
--->
 
 
 ## REACT_APP_end
