@@ -1530,13 +1530,23 @@ The `REACT_APP_footer` block contains 5 elements.
 
 
 ## REACT_APP_header
-<!---
--  **Exact Name**: `REACT_APP_header`
--  **Description**: This element is used to configure the headers displayed on HULDRA framework pages.
+
+The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page). 
+The header is configured using the `REACT_APP_header` block in the `config.json` file. 
+
+### Parameters
+
+The `REACT_APP_header` block contains 4 elements.
+- `labelBackground`: This element is used to configure the title of the header on the Background page.
+- `labelDemonstration`: This element is used to configure the title of the header on the Demonstration page.
+- `labelCase`: This element is used to configure the title of the header on the cases pages.
+- `labelSummaryAndFeedback`: This element is used to configure the title of the header on the Summary and Feedback page.
+
+### Visual Overview
 
 ![header](./readme-assets/header.png)
 
-### Example REACT_APP_header
+### Sample Config
 
 ```json
  "REACT_APP_header": {
@@ -1548,29 +1558,6 @@ The `REACT_APP_footer` block contains 5 elements.
 
 ```
 
-
-
-
-### REACT_APP_header labelBackground
-
--  **Exact Name**: `labelBackground`
--  **Description**: This element is used to configure the title of the header on the Background page.
-
-### REACT_APP_header labelDemonstration
-
--  **Exact Name**: `labelDemonstration`
--  **Description**: This element is used to configure the title of the header on the Demonstration page.
-
-### REACT_APP_header labelCase
-
--  **Exact Name**: `labelCase`
--  **Description**: This element is used to configure the title of the header on the cases pages.
-
-### REACT_APP_header labelSummaryAndFeedback
-
--  **Exact Name**: `labelSummaryAndFeedback`
--  **Description**: This element is used to configure the title of the header on the Summary and Feedback page.
--->
 
 ## REACT_APP_general
 
