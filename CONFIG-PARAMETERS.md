@@ -246,14 +246,11 @@ The properties which are next to the numbered list represent the page type that 
 
 ## REACT_APP_warning
 
-<!--
+### Visual Overview
+
 ![overview of pages](./readme-assets/warning.png)
 
--  **Exact Name**: `REACT_APP_warning`
--  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
-
-### Example REACT_APP_warning  
-
+### Sample Config  
 
 ```json
 "REACT_APP_warning": {
@@ -262,6 +259,17 @@ The properties which are next to the numbered list represent the page type that 
 }
 ```
 
+### Parameters
+
+The warning page is used to display a warning when the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem. 
+The warning page is configured using the `REACT_APP_warning` block in the `config.json` file. 
+The `REACT_APP_warning` block contains 2 elements.
+- `warningMessage`: The actual message displayed to the user when there is a rendering error is defined by this element. 
+- `title`: The heading of actual message displayed to the user when there is a rendering error is defined by this element.
+
+<!--
+-  **Exact Name**: `REACT_APP_warning`
+-  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
 
 ### Warning Message
 -  **Exact Name**: `warningMessage`
