@@ -1,6 +1,15 @@
 # Configuration File Documentation
 
-The Huldra framework supports 8 type of pages[^1]:
+This document serves as a comprehensive guide to the parameters in the `config.json` file. 
+
+<!---
+It describes each parameter and its purpose. 
+Make sure to follow the instructions and guidelines mentioned for each parameter.
+The names in the table of content directly refer to the name of the configurable property. 
+The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures.
+-->
+
+The Huldra framework supports 8 type of pages[^1]. All pages are configurable using the `config.json` file.
 - **Warning:** Page used to communicate to users that there is a problem.
 - **Homepage:** Landing page, where the users can log in with an existing participant ID, or choose to go to the registration page to create a new participant ID.
 - **Registration:** Page used to retrieve participant information/metadata.
@@ -13,16 +22,7 @@ The Huldra framework supports 8 type of pages[^1]:
 ![overview of pages](./readme-assets/documentation-main.png)
 
 [^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
-
-All pages are configurable using the `config.json` file. This document serves as a comprehensive guide to the parameters in the `config.json` file. 
-
-<!---
-It describes each parameter and its purpose. 
-Make sure to follow the instructions and guidelines mentioned for each parameter.
-The names in the table of content directly refer to the name of the configurable property. 
-The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures.
--->
-
+ 
 
 
 ## Configuration Blocks
