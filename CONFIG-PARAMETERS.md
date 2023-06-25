@@ -1,10 +1,5 @@
-﻿
-
-
-
 # Configuration File Documentation
 
-  
 The Huldra framework supports 8 type of pages[^1]:
 - **Warning:** Page used to communicate to users that there is a problem.
 - **Homepage:** Landing page, where the users can log in with an existing participant ID, or choose to go to the registration page to create a new participant ID.
@@ -28,7 +23,7 @@ The names in the table of content directly refer to the name of the configurable
 The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures.
 -->
 
- 
+
 
 ## Configuration Blocks
 
@@ -385,9 +380,6 @@ The registration page is configured using the `REACT_APP_registration` block in 
 }
 ```
 
-  
-
-
 -  **Exact Name**: `REACT_APP_registration`
 
 -  **Description**:  The components of these element are used to configure the regestration page. Nine diffrerent questions can be configured. If you are creating a REACT_APP_registration element, make sure to include all the 9 questions inside. 
@@ -554,8 +546,6 @@ The `REACT_APP_warning` block contains the following elements for each subsectio
 - `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
   
-
-
 ### Visual Overview
 
 ![plot](./readme-assets/background.png)
@@ -593,9 +583,6 @@ The `REACT_APP_warning` block contains the following elements for each subsectio
 
 -  **Exact Name**: `REACT_APP_background`
 -  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
-
-
-*********
 
 ### Styling Classes
 
@@ -656,13 +643,38 @@ The `REACT_APP_warning` block contains the following elements for each subsectio
 ```
 -->
 
+
+
 ## REACT_APP_demonstration
 
-<!---
--  **Exact Name**: `REACT_APP_demonstration`
--  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
+The demonstration page(s) can be configured to display various multimedia content. 
+The demonstration page(s) are configured using the `REACT_APP_demonstration` block in the `config.json` file.
 
-### Example REACT_APP_demonstration
+### Parameters
+
+Huldra can include up to 3 demonstration pages, where each page can contain an image, video, or audio. 
+
+The `REACT_APP_demonstration` block contains the following elements for each demonstration page.
+- `textBefore`: Text written on line 1 can be configured here.
+- `textAfter`: Text written on line 2 can be configured here.
+- `hasImage`: A bool. Set it true to display an image on the demonstration page.
+- `imagePath`: Define the path of the image located on firebase to here to display the image on the demonstration page. **Note:** `hasImage` bool has to be set true in order to put the image on the demonstartion page.
+- `imageClassName`: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
+- `hasVideo`: A bool. Set it true to display a video on the demonstration page.
+- `videoPath`: Define the path of the video on firebase to here to display the video on the demonstartion page. **Note:** `hasVideo` bool has to be set true in order to put the video on the demonstartion page.
+- `videoHeight`: Define the height of the video player in px.
+- `videoWidth`: Define the width of the video player in px.
+- `hasAudio`: A bool. Set it true to put an audio on the demonstration page.
+- `audioPath`: Define the path of the audio on firebase to here to put the audio on the demonstartion page. **Note:** `hasAudio` bool has to be set true in order to put the audio on the demonstartion page.
+- `audioHeight`: Define the height of the audio player in px.
+- `audioWidth`: Define the width of the audio player in px.
+
+
+
+### Visual Overview
+
+
+### Sample Config
 
 ```json
   "REACT_APP_demonstration": [
@@ -692,102 +704,12 @@ The `REACT_APP_warning` block contains the following elements for each subsectio
   ]
 ```
 
-  
-
-
-### Text Before
--  **Exact Name**: `textBefore`
--  **Description**: Text written on line 1 can be configured here
-
-### Text After
-
--  **Exact Name**: `textAfter`
--  **Description**: Text written on line 2 can be configured here
-
-
-### Has Image
-
-  
-
--  **Exact Name**: `hasImage`
--  **Description**: A bool. Set it true to display an image on the demonstartion page.
-
-
-### Image Path
-
-  
-
--  **Exact Name**: `imagePath`
--  **Description**: Define the path of the image located on firebase to here to display the image on the demonstartion page. Note: hasImage bool has to be set true in order to put the image on the demonstartion page
-
-
-### Image Class Name
-
-  
-
--  **Exact Name**: `imageClassName`
--  **Description**: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
-
- 
-### Has Video
-
-  
-
--  **Exact Name**: `hasVideo`
--  **Description**: A bool. Set it true to display a video on the demonstartion page.
-
-
-
-### Video Path
-
-  
-
--  **Exact Name**: `videoPath`
--  **Description**: Define the path of the video on firebase to here to display the video on the demonstartion page. Note: hasVideo bool has to be set true in order to put the video on the demonstartion page
-
-
-### Video Height
-
-  
-
--  **Exact Name**: `videoHeight`  
--  **Description**: Define the height of the video player in px.
-
-### Video Width
-
-  
-
--  **Exact Name**: `videoWidth`  
--  **Description**: Define the width of the video player in px.
-
-### Has Audio
-
-  
-
--  **Exact Name**: `hasAudio`
--  **Description**: A bool. Set it true to put an audio on the demonstartion page.
-
-### Audio Path
-
-  
-
--  **Exact Name**: `audioPath`
--  **Description**: Define the path of the audio on firebase to here to put the audio on the demonstartion page. Note: hasAudio bool has to be set true in order to put the audio on the demonstartion page.
-
-### Audio Height
-
-  
-
--  **Exact Name**: `audioHeight`
--  **Description**: Define the height of the audio player in px.
-
-### Audio Width
-
-  
-
--  **Exact Name**: `audioWidth`
--  **Description**: Define the width of the audio player in px.
+<!---
+-  **Exact Name**: `REACT_APP_demonstration`
+-  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
 -->
+
+
 
 ## REACT_APP_caseImage
 
