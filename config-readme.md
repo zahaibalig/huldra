@@ -195,9 +195,19 @@ The names in the table of content directly refer to the name of the configurable
 	- [title](#react_app_end-title)
 	- [endMessage](#react_app_end-endmessage)
 	- [redirectTimeout](#react_app_end-redirecttimeout)
-
-
-
+12. [REACT_APP_footer](#react_app_footer)
+    - [Example](#example-react_app_footer)
+	- [icon1ClassName](#react_app_footer-icon1classname)
+	- [icon2ClassName](#react_app_footer-icon2classname)
+	- [icon1Url](#react_app_footer-icon1url)
+	- [icon2Url](#react_app_footer-icon2url)
+	- [label](#react_app_footer-label)
+13. [REACT_APP_header](#react_app_header)
+    - [Example](#example-react_app_header)
+	- [labelBackground](#react_app_header-labelbackground)
+	- [labelDemonstration](#react_app_header-labeldemonstration)
+	- [labelCase](#react_app_header-labelcase)
+	- [labelSummaryAndFeedback](#react_app_header-labelsummaryandfeedback)
 
 
 
@@ -1650,4 +1660,92 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `redirectTimeout`
 -  **Description**: The end page stays for a certain duration and then the user is redirected to the home page. You can configure the time user stays at the end page in miliseconds here.
+
+
+## REACT_APP_footer
+
+
+### Example REACT_APP_footer
+
+```json
+ "REACT_APP_footer": {
+    "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
+    "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
+    "icon1Url": "mailto:huldra@simula.no",
+    "icon2Url": "https://github.com/simula/huldra",
+    "label": "huldra@simula.no"
+  }
+```
+
+
+-  **Exact Name**: `REACT_APP_footer`
+-  **Description**: This element is used to configure the footer that is displayed under the pages.
+
+### REACT_APP_footer icon1ClassName
+
+-  **Exact Name**: `icon1ClassName`
+-  **Description**: The first icon dsplayed on the footer can be configured with this element.
+
+### REACT_APP_footer icon2ClassName
+
+-  **Exact Name**: `icon2ClassName`
+-  **Description**: The second icon dsplayed on the footer can be configured with this element.
+
+### REACT_APP_footer icon1Url
+
+-  **Exact Name**: `icon1Url`
+-  **Description**: The URL that a user will be redirected when clicked on first icon is defined here.
+
+
+### REACT_APP_footer icon2Url
+
+-  **Exact Name**: `icon2Url`
+-  **Description**: The URL that a user will be redirected when clicked on second icon is defined here.
+
+### REACT_APP_footer label
+
+-  **Exact Name**: `label`
+-  **Description**: The text between two icons can be configured here.
+
+
+
+## REACT_APP_header
+
+
+### Example REACT_APP_header
+
+```json
+ "REACT_APP_header": {
+    "labelBackground": "Background",
+    "labelDemonstration": "Demonstration",
+    "labelCase": "Questionnaire",
+    "labelSummaryAndFeedback": "Summary and Feedback"
+  }
+
+```
+
+
+-  **Exact Name**: `REACT_APP_header`
+-  **Description**: This element is used to configure the headers displayed on HULDRA framework pages.
+
+### REACT_APP_header labelBackground
+
+-  **Exact Name**: `labelBackground`
+-  **Description**: This element is used to configure the title of the header on the Background page.
+
+### REACT_APP_header labelDemonstration
+
+-  **Exact Name**: `labelDemonstration`
+-  **Description**: This element is used to configure the title of the header on the Demonstration page.
+
+### REACT_APP_header labelCase
+
+-  **Exact Name**: `labelCase`
+-  **Description**: This element is used to configure the title of the header on the cases pages.
+
+### REACT_APP_header labelSummaryAndFeedback
+
+-  **Exact Name**: `labelSummaryAndFeedback`
+-  **Description**: This element is used to configure the title of the header on the Summary and Feedback page.
+
 
