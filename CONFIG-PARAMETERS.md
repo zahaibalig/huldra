@@ -527,14 +527,41 @@ The registration page is configured using the `REACT_APP_registration` block in 
 
 
 ## REACT_APP_background
-<!--
+
+The background page is used to display background information related to the study. 
+The background page is configured using the `REACT_APP_background` block in the `config.json` file. 
+
+### Parameters
+
+The background page can contain as many sections as desired, where each section contains as many subsections as desired. 
+
+The `REACT_APP_warning` block contains the following elements for each section.
+- `sectionTitle`: Title of the section is defined with this property.
+- `sectionText`: Text of the section is defined with this property.
+- `sectionClassName`: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `sectionTitleClassName`: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `sectionTextClassName`: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `sectionContent`: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
+
+The `REACT_APP_warning` block contains the following elements for each subsection (i.e., for each object under `sectionContent`).
+- `title`: Title of the subsection is defined by this property.
+- `sectionText`: Text of the subsection is defined by this property.
+- `className`: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `imagePath`: Define the path of the image located on firebase to here to display the image on subsection.
+- `imageClassName`: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `imageAlternativeText`: Alternative text to be displayed, if the image is not available is defined here.
+- `descriptionClassName`: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+- `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+  
+
+
+### Visual Overview
+
 ![plot](./readme-assets/background.png)
 
--  **Exact Name**: `REACT_APP_background`
+### Sample Config
 
--  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
-
-### Example REACT_APP_background
 ```json
 "REACT_APP_background": [
     {
@@ -559,143 +586,16 @@ The registration page is configured using the `REACT_APP_registration` block in 
     }
   ]
 ```
-  
 
 
-  
-
-### Section-Title
-
--  **Exact Name**: `sectionTitle`
--  **Description**: Title of the section is defined with this property.
-  
-
-### Section-Text
-
-  
-
--  **Exact Name**: `sectionText`
--  **Description**: Text of the section is defined with this property.
-
-  
-  
-
-### Section Class Name
-
-  
-
--  **Exact Name**: `sectionClassName`
--  **Description**: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Section Title Class Name
-
--  **Exact Name**: `sectionTitleClassName`
--  **Description**: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-
-### Section Text Class Name
-
-  
-
--  **Exact Name**: `sectionTextClassName`
--  **Description**: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-## Section Content
-
-  
-
--  **Exact Name**: `sectionContent`
--  **Description**: This element is used to define the subsections under sections. Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object.
-
-  
-  
-
-### Subsection Title
-
-  
-
--  **Exact Name**: `title`
--  **Description**: Title of the subsection is defined by this property.
-
-  
-
-### Subsection Text
-
-  
-
--  **Exact Name**: `sectionText`
--  **Description**: Text of the subsection is defined by this property.
-
-  
-  
-
-### Subsection Class Name
-
-  
-
--  **Exact Name**: `className`
--  **Description**: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Subsection Image Path
-
-  
--  **Exact Name**: `imagePath`
--  **Description**: Define the path of the image located on firebase to here to display the image on subsection.
-
-  
-
-### Subsection Image Class Name
-
--  **Exact Name**: `imageClassName`
--  **Description**: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-### Subsection Image Alternative Text
-
-  
-
--  **Exact Name**: `imageAlternativeText` 
--  **Description**: Alternative text to be displayed, if the image is not available is defined here.
-
-  
-
-### Subsection Description Class Name
-
-  
-
--  **Exact Name**: `descriptionClassName`
--  **Description**: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-  
-
-### Subsection Title Class Name
-
-  
-
--  **Exact Name**: `titleClassName`
--  **Description**: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-
-  
-
-### Subsection Text Class Name
-
-  
-
--  **Exact Name**: `textClassName`
--  **Description**: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+<!--
 
 
+-  **Exact Name**: `REACT_APP_background`
+-  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
 
+
+*********
 
 ### Styling Classes
 
