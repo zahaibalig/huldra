@@ -46,7 +46,6 @@
       "label": "Text for optional tickbox."
     }
   },
-
   "REACT_APP_background": [
     {
       "sectionTitle": "Background",
@@ -89,7 +88,6 @@
     },
     {
       "sectionTitle": "Sample Section Title",
-
       "sectionClassName": "background-section",
       "sectionTitleClassName": "background-section-title",
       "sectionTextClassName": "background-text-content",
@@ -226,11 +224,6 @@
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
     }
   },
-  "REACT_APP_caseOrder": {
-    "cases": [
-    ],
-    "shuffle": "categorized"
-  },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
       "display": true,
@@ -292,6 +285,11 @@
     "title": "",
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
+  },
+    "REACT_APP_caseOrder": {
+    "cases": [
+    ],
+    "shuffle": "categorized"
   },
   "REACT_APP_outputJson": [
     "ParticipantInfo",
