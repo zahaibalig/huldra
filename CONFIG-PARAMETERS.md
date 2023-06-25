@@ -1092,14 +1092,33 @@ When the  button below the any of the smaller image on the middle column of the 
 -->
 
 ## REACT_APP_caseVideo
-<!--
+
+The caseVideo page is a main questionnaire page which displays a _caseVideo_ type survey question. 
+<!--- where a user can rank 2 videos -->
+All case pages identified as being of type _caseVideo_ are configured using the `REACT_APP_caseVideo` block in the `config.json` file.
+
+### Parameters
+
+The `REACT_APP_caseVideo` block contains 2 sub-blocks.
+
+The `caseVideoColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+- `label`: This element is used to configure the heading on the left column of case Video page.
+- `sectionVideoHeight`: This element is used to configure the height of the video players on the left column of case video page.
+- `sectionVideoWidth`: This element is used to configure the width of the video players on the left column of case video page.
+- `rightSectionVideoLabel`: This element is used to configure the heading of the right video on the left column of case video page.
+- `leftSectionVideoLabel`: This element is used to configure the heading of the left video on the left column of case video page.
+- `sectionButtonlabel`: This element is used to configure the label of the buttons below the videos  on the left column of case video page.
+
+The `caseVideoColumnRight` sub-block is used to configure the right column, and contains the following elements.
+- `title`: This element is used to configure the heading on the right column of case video page.
+- `text`: This element is used to configure the text description on the right column of case video page.
+
+### Visual Overview
+
 ![Case video](./readme-assets/casevideo.png)
 
+### Sample Config
 
--  **Exact Name**: `REACT_APP_caseVideo`
--  **Description**: This element is used to configure the Video Case page, where a user can rank 2 videos. 
-
-### Example REACT_APP_caseVideo
 ```json
   "REACT_APP_caseVideo": {
     "caseVideoColumnLeft": {
@@ -1117,66 +1136,7 @@ When the  button below the any of the smaller image on the middle column of the 
   },
 ```
 
-  
 
-### Case Video Column Left  
-
--  **Exact Name**: `caseVideoColumnLeft`
--  **Description**: This element is used to configure the left column of case video page. The left column can be configured acording to the parameter(s) below:
-
-### Case Video Column Left Label
-
--  **Exact Name**: `label`
--  **Description**: This element is used to configure the heading on the left column of case Video page.
-- 
-### Case Video Column Left Section Video Height
-
--  **Exact Name**: `sectionVideoHeight`
--  **Description**: This element is used to configure the height of the video players on the left column of case video page.
-
-
-### Case Video Column Left Section Video Width
-
--  **Exact Name**: `sectionVideoWidth`
--  **Description**: This element is used to configure the width of the video players on the left column of case video page.
-
-### Case Video Column Left rightSectionVideoLabel
-
--  **Exact Name**: `rightSectionVideoLabel`
--  **Description**: This element is used to configure the heading of the right video on the left column of case video page.
-
-
-
-### Case Video Column Left leftSectionVideoLabel
-
--  **Exact Name**: `leftSectionVideoLabel`
--  **Description**: This element is used to configure the heading of the left video on the left column of case video page.
-
-
-### Case Video Column Left Section Button Label
-
--  **Exact Name**: `sectionButtonlabel`
--  **Description**: This element is used to configure the label of the buttons below the videos  on the left column of case video page.
-
-
-
-### Case Video Column Right
-
--  **Exact Name**: `caseVideoColumnRight`
--  **Description**: This element is used to configure the right column of case video page. The right column can be configured acording to the parameter(s) below:
-
-### Case Video Column Right Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to configure the heading on the right column of case video page.
-
-
-### Case Video Column Right Text
-  
-
--  **Exact Name**: `text`
--  **Description**: This element is used to configure the text description on the right column of case video page.
--->
 
 ## REACT_APP_caseAudio
 
