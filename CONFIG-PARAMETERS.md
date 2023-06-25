@@ -352,15 +352,49 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 
 ## REACT_APP_caseImage
 
-<!---
--  **Exact Name**: `REACT_APP_caseImage`
--  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images.
+The caseImage page is a main questionnaire page which displays a _caseImage_ type survey question. 
+<!--- where a user can rank 2 images -->
+All case pages identified as being of type _caseImage_ are configured using the `REACT_APP_caseImage` block in the `config.json` file.
+
+### Parameters
+
+The `REACT_APP_caseImage` block contains 3 sub-blocks.
+
+The `caseImageColumnLeft` sub-block is used to configure the left column, and ...
+- `label`: This element is used to configure the heading on the left column of case image page.
+
+The `caseImageColumnMiddle` sub-block is used to configure the middle column, and ...
+- `title`: This element is used to configure the heading on the middle column of case image page.
+- `text`: This element is used to configure the descriptive text on the middle column of case image page.
+- `leftSectionTitle`: This element is used to configure the heading text over the left image on the middle column of case image page.
+- `leftSectionButtonlabel`: This element is used to configure the text of the button located below the left image on the middle column of case image page.
+- `leftSectionTextWithIconsLabel`: This element is used to configure the text below the button located below the left image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+- `rightSectionTitle`: This element is used to configure the heading text over the right image on the middle column of case image page.
+- `rightSectionButtonlabel`: This element is used to configure the text of the button located below the right image on the middle column of case image page.
+- `rightSectionTextWithIconsLabel`: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
+- `popupA`: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
+     - `mainTitle`: When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+     - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+     - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+     - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+- `popupB`: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
+     - `mainTitle`: When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+     - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+     - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+     - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+     - `gallerySubstring`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). **Note:** This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
+
+The `caseImageColumnRight` sub-block is used to configure the right column, and ...
+- `title`: This element is used to configure the heading on the right column of case image page.
+- `text`: This element is used to configure the text description on the right column of case image page.
+  
+### Visual Overview
 
 ![Case Image](./readme-assets/caseimage.png)
 ![Case Image popup](./readme-assets/caseimagepopup.png)
 
+### Sample Config
 
-### Example REACT_APP_caseImage
 ```json
   "REACT_APP_caseImage": {
     "caseImageColumnLeft": { "label": "Case" },
@@ -396,177 +430,13 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
   }
 ```
 
-  
-
-### Case Image Column Left  
-
--  **Exact Name**: `caseImageColumnLeft`
--  **Description**: This element is used to configure the left column of case image page. The left column can be configured acording to the parameter(s) below:
-
-### Case Image Column Left Label
-
-  
-
--  **Exact Name**: `label`
--  **Description**: This element is used to configure the heading on the left column of case image page.
-
-
-### Case Image Column Middle
-
-  
-
--  **Exact Name**: `caseImageColumnMiddle`  
--  **Description**: This element is used to configure the middle column of case image page. The middle column can be configured acording to the parameter(s) below:
-
-### Case Image Column Middle Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to configure the heading on the middle column of case image page.
-
-
-### Case Image Column Middle Text
-
-  
-
--  **Exact Name**: `text`
--  **Description**: This element is used to configure the descriptive text on the middle column of case image page.
-
-
-### Case Image Column Middle Left Section Title
-
-  
-
--  **Exact Name**: `leftSectionTitle`
--  **Description**: This element is used to configure the heading text over the left image on the middle column of case image page.
-
-### Case Image Column Middle Left Section Button Label
-
-  
-
--  **Exact Name**: `leftSectionButtonlabel`  
--  **Description**: This element is used to configure the text of the button located below the left image on the middle column of case image page.
-
-### Case Image Column Middle Left Section Text With Icons Label
-
-  
-
--  **Exact Name**: `leftSectionTextWithIconsLabel`
--  **Description**: This element is used to configure the text below the button located below the left image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
-
-### Case Image Column Middle Right Section Title
-
-  
-
--  **Exact Name**: `rightSectionTitle`
--  **Description**: This element is used to configure the heading text over the right image on the middle column of case image page.
-
-### Case Image Column Middle Right Section Button Label
-
-  
-
--  **Exact Name**: `rightSectionButtonlabel`  
--  **Description**: This element is used to configure the text of the button located below the right image on the middle column of case image page.
-
-### Case Image Column Middle Right Section Text With Icons Label
-
-  
-
--  **Exact Name**: `rightSectionTextWithIconsLabel`
--  **Description**: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
-
-
-
-### Case Image Column Middle PopupA
-
-  
-
--  **Exact Name**: `popupA`
--  **Description**: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
-
-### Case Image Column Middle PopupB
-
-  
-
--  **Exact Name**: `popupB`
--  **Description**: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
-
-
-### Case Image Column Middle Popup Main Title
-
-  
-
--  **Exact Name**: `mainTitle`
--  **Description**: 
-When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
-
-
-
-### Case Image Column Middle Popup Left Image Title
-
-  
-
--  **Exact Name**: `leftImageTitle`
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
-
-### Case Image Column Middle Popup Right Image Title
-
-  
-
--  **Exact Name**: `leftImageTitle`
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the third image, which is the right one among the two small images, on the popup.
-
-### Case Image Column Middle Popup Description Title
-
-  
-
--  **Exact Name**: `descriptionTitle`
--  **Description**:
-When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
-
-
-### Case Image Column Middle Popup Description Text
-
-  
-
--  **Exact Name**: `descriptionText`
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
-
-### Case Image Column Middle PopupB Gallery Substring
-
-  
-
--  **Exact Name**: `descriptionText`
--  **Description**: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). NOTE: This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
-
-### Case Image Column Right
-
-  
-
--  **Exact Name**: `caseImageColumnRight`
--  **Description**: This element is used to configure the right column of case image page. The right column can be configured acording to the parameter(s) below:
-
-### Case Image Column Right Title
-
-  
-
--  **Exact Name**: `title`
--  **Description**: This element is used to configure the heading on the right column of case image page.
-
-
-### Case Image Column Right text
-
-  
-
--  **Exact Name**: `text`
--  **Description**: This element is used to configure the text description on the right column of case image page.
--->
 
 
 ## REACT_APP_caseHybrid
 
 The caseHybrid page is a main questionnaire page which displays a _caseHybrid_ type survey question. 
 <!--- where a user can view a video, compare two image options, and provide their answer in the right column -->
-All case pages identified as being of type _caseVideo_ are configured using the `REACT_APP_caseVideo` block in the `config.json` file.
+All case pages identified as being of type _caseHybrid_ are configured using the `REACT_APP_caseHybrid` block in the `config.json` file.
 
 ### Parameters
 
