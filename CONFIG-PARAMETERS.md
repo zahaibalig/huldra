@@ -246,6 +246,15 @@ The properties which are next to the numbered list represent the page type that 
 
 ## REACT_APP_warning
 
+The warning page is used to display a warning when the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem. 
+The warning page is configured using the `REACT_APP_warning` block in the `config.json` file. 
+
+### Parameters
+
+The `REACT_APP_warning` block contains 2 elements.
+- `warningMessage`: The actual message displayed to the user when there is a rendering error is defined by this element. 
+- `title`: The heading of actual message displayed to the user when there is a rendering error is defined by this element.
+
 ### Visual Overview
 
 ![overview of pages](./readme-assets/warning.png)
@@ -259,13 +268,6 @@ The properties which are next to the numbered list represent the page type that 
 }
 ```
 
-### Parameters
-
-The warning page is used to display a warning when the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem. 
-The warning page is configured using the `REACT_APP_warning` block in the `config.json` file. 
-The `REACT_APP_warning` block contains 2 elements.
-- `warningMessage`: The actual message displayed to the user when there is a rendering error is defined by this element. 
-- `title`: The heading of actual message displayed to the user when there is a rendering error is defined by this element.
 
 <!--
 -  **Exact Name**: `REACT_APP_warning`
@@ -284,12 +286,22 @@ The `REACT_APP_warning` block contains 2 elements.
 
 ## REACT_APP_home
 
-<!--
+The homepage serves as the landing page. 
+The homepage is configured using the `REACT_APP_homepage` block in the `config.json` file. 
+
+### Parameters
+
+The `REACT_APP_homepage` block contains 4 elements.
+- `title`: This element is used to show the title on the home page. 
+- `introText`: This element is used to configure the introduction text shown at the home page.
+- `signupText`: This element is used to configure the subheading, signup text shown at the home page.
+- `additionalText`: This element configures the additional text shown on the home page.
+
+### Visual Overview
+
 ![plot](./readme-assets/homepage.png)
--  **Exact Name**: `REACT_APP_home`
--  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
 
-### Example REACT_APP_home
+### Sample Config 
 
 ```json
 "REACT_APP_home": {
@@ -300,53 +312,6 @@ The `REACT_APP_warning` block contains 2 elements.
 }
 ```
 
-
-
-### Home Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to show the title on the home page.
-
-
-## REACT_APP_home
-
-
-### Example REACT_APP_home
-
-```json
-"REACT_APP_home": {
-"title": "Huldra: Sample Title",
-"introText": "This is a sample subtitle or introduction text.",
-"signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
-"additionalText": "Please view this application in full-screen mode."
-}
-```
-
-
--  **Exact Name**: `REACT_APP_home`
--  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
-
-### Home Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to show the title on the home page.
-
-### Intro Text
-
--  **Exact Name**: `introText`
--  **Description**: This element is used to configure the introduction text shown at the home page
-
-
-### Signup Text
-
--  **Exact Name**: `signupText`
--  **Description**: This element is used to configure the subheading, signup text shown at the home page
-
-### Additional Text
-
--  **Exact Name**: `additionalText`
--  **Description**: This element configures the additional text shown on the home page.
--->
 
 
 ## REACT_APP_registration
