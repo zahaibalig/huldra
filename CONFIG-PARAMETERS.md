@@ -8,7 +8,7 @@
 The Huldra framework supports 8 type of pages[^1]:
 - **Warning:** Page used to communicate to users that there is a problem.
 - **Homepage:** Landing page, where the users can log in with an existing participant ID, or choose to go to the registration page to create a new participant ID.
-- **Registration:** Page used to retrieve participant information.
+- **Registration:** Page used to retrieve participant information/metadata.
 - **Background:** Page used to display background information related to the study.
 - **Demonstration:** Page that can be configured to display various multimedia content. This page can be used to check participant requirements (auditory/visual acuity, hardware/software, etc.), and/or display additional orientation information related to the study.
 - **Case:** Main questionnaire page which displays survey questions. A case page can be one of 4 different types: _caseImage_, _caseHybrid_, _caseVideo_, _caseAudio_.
@@ -269,20 +269,6 @@ The `REACT_APP_warning` block contains 2 elements.
 ```
 
 
-<!--
--  **Exact Name**: `REACT_APP_warning`
--  **Description**: When the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem, then with this element a message is displayed to the user. This is just a container element which has 2 sub-elements.
-
-### Warning Message
--  **Exact Name**: `warningMessage`
--  **Description**: The actual message displayed to the user when there is a rendering error is defined by this element. 
-
-### Title
--  **Exact Name**: `title`
--  **Description**: The heading of actual message displayed to the user when there is a rendering error is defined by this element. 
--->
-
-
 
 ## REACT_APP_home
 
@@ -315,6 +301,11 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 
 ## REACT_APP_registration
+
+The registration page is used to retrieve participant information/metadata. 
+The registration page is configured using the `REACT_APP_registration` block in the `config.json` file. 
+
+ 
 <!---
 ### Example REACT_APP_registration
 
