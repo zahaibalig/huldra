@@ -5,40 +5,49 @@
 # Configuration File Documentation
 
   
-The HULDRA framework comprises eight pages, i.e., Warning_, Home, Registration, Background, Demonstration, Case, Summary and Feedback Page.
-Summary about the configurable pages:
-- Warning Page: Error page to communicate users if there is a problem.
-- Home Page: Landing page, where the users can log in with an existing participant id or can go to the registration page.
-- Background Page: A page that can be configured to show the background or information about the study._
-- Demonstration Page: Page where media checks can be performed._
-- Case Pages: Pages where survey questions are shown._
-- Summary and Feedback Page: Page which displays the summary of the questions and collects feedback on it._
-- End Page: The last page displayed when users complete the survey_
-
-  
-Please refer this paper to understand more about these pages on HULDRA: https://dl.acm.org/doi/pdf/10.1145/3524273.3532887
-
+The Huldra framework supports 8 type of pages[^1]:
+- **Warning:** Page used to communicate to users that there is a problem.
+- **Homepage:** Landing page, where the users can log in with an existing participant ID, or choose to go to the registration page to create a new participant ID.
+- **Registration:** Page used to retrieve participant information.
+- **Background:** Page used to display background information related to the study.
+- **Demonstration:** Page that can be configured to display various multimedia content. This page can be used to check participant requirements (auditory/visual acuity, hardware/software, etc.), and/or display additional orientation information related to the study.
+- **Case:** Main questionnaire page which displays survey questions. A case page can be one of 4 different types: _caseImage_, _caseHybrid_, _caseVideo_, _caseAudio_.
+- **Summary and Feedback:** Page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
+- **End:** Final page of the survey, which is displayed after users complete the survey and submit their responses.
 
 ![overview of pages](./readme-assets/documentation-main.png)
 
+[^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
 
-All of these pages are configurable using a config.json file. This documentation provides a comprehensive guide to the parameters in the config file. It describes each parameter and its purpose. Make sure to follow the instructions and guidelines mentioned for each parameter.
+All pages are configurable using the `config.json` file. This document serves as a comprehensive guide to the parameters in the `config.json` file. 
 
-The names in the table of content directly refer to the name of the configurable property. The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures. 
+<!---
+It describes each parameter and its purpose. 
+Make sure to follow the instructions and guidelines mentioned for each parameter.
+The names in the table of content directly refer to the name of the configurable property. 
+The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures.
+-->
 
-## Table of Contents
+ 
+
+## Configuration Blocks
 
  1. [REACT_APP_warning](#react_app_warning)
+<!---
     - [Example](#example-react_app_warning)
 	- [warningMessage](#warning-message)
 	- [title](#title)
+-->
 2. [REACT_APP_home](#react_app_home)
+<!---
 	- [Example](#example-react_app_home)
 	 - [title](#home-title)
 	  - [introText](#intro-text)
 	  - [signupText](#signup-text)
 	  - [additionalText](#additional-text)
+-->
 3. [REACT_APP_registration](#react_app_registration)
+<!---
 	- [Example](#example-react_app_registration)
 	 - [Q1](#q1)
 		 - [label](#q1-label)
@@ -66,7 +75,9 @@ The names in the table of content directly refer to the name of the configurable
 		 - [label](#q8-label)
 	 - [Q9](#q9)
 		 - [label](#q9-label)
+-->
 4. [REACT_APP_background](#react_app_background)
+<!---
 	- [Example](#example-react_app_background)
 	 - [sectionTitle](#section-title)
 	 - [sectionText](#section-text)
@@ -84,7 +95,9 @@ The names in the table of content directly refer to the name of the configurable
 		 -  [titleClassName](#subsection-title-class-name)
 		 -  [textClassName](#subsection-text-class-name)
     -  [Styling Classes](#styling-classes)
+-->
 5. [REACT_APP_demonstration](#react_app_demonstration)
+<!---
 	- [Example](#example-react_app_demonstration)
 	 - [textBefore](#text-before)
 	 - [textAfter](#text-after)
@@ -99,7 +112,9 @@ The names in the table of content directly refer to the name of the configurable
 	 - [audioPath](#audio-path)
 	 - [audioHeight](#audio-height)
 	 - [audioWidth](#audio-width)
+-->
 6. [REACT_APP_caseImage](#react_app_caseimage)
+<!---
 	- [Example](#example-react_app_caseimage)
 	 - [caseImageColumnLeft](#case-image-column-left)
 		 - [label](#case-image-column-left-label)
@@ -123,7 +138,9 @@ The names in the table of content directly refer to the name of the configurable
     - [caseImageColumnRight](#case-image-column-right)
         - [title](#case-image-column-right-title)
         - [text](#case-image-column-right-text)
+-->
 7. [REACT_APP_caseHybrid](#react_app_casehybrid)
+<!---
     - [Example](#example-react_app_casehybrid)
     - [caseHybridColumnLeft](#case-hybrid-column-left)
         - [label](#case-hybrid-column-left-label)
@@ -142,7 +159,9 @@ The names in the table of content directly refer to the name of the configurable
     - [caseHybridColumnRight](#case-hybrid-column-right)
         - [title](#case-hybrid-column-right-title)
         - [text](#case-hybrid-column-right-text)
+-->
 8. [REACT_APP_caseVideo](#react_app_casevideo)
+<!---
     - [Example](#example-react_app_casevideo)
     - [caseVideoColumnLeft](#case-video-column-left)
         - [label](#case-video-column-left-label)
@@ -154,7 +173,9 @@ The names in the table of content directly refer to the name of the configurable
     - [caseVideoColumnRight](#case-video-column-right)
         - [title](#case-video-column-right-title)
         - [text](#case-video-column-right-text) 
+-->
 9. [REACT_APP_caseAudio](#react_app_caseaudio)
+<!---
     - [Example](#example-react_app_caseaudio)
     - [caseAudioColumnLeft](#case-audio-column-left)
         - [label](#case-audio-column-left-label)
@@ -166,7 +187,9 @@ The names in the table of content directly refer to the name of the configurable
     - [caseAudioColumnRight](#case-audio-column-right)
         - [title](#case-audio-column-right-title)
         - [text](#case-audio-column-right-text)
+-->
 10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
+<!---
     - [Example](#example-react_app_summaryandfeedback)
     - [summary](#summary)
         - [display](#summary-display)
@@ -192,56 +215,38 @@ The names in the table of content directly refer to the name of the configurable
             - [choices](#feedbackformquestions-choices)
             - [hasCommentBox](#feedbackformquestions-hascommentbox)
             - [commentBoxLabel](#feedbackformquestions-commentboxlabel)
+-->
 11. [REACT_APP_end](#react_app_end)
+<!---
     - [Example](#example-react_app_end)
 	- [title](#react_app_end-title)
 	- [endMessage](#react_app_end-endmessage)
 	- [redirectTimeout](#react_app_end-redirecttimeout)
+-->
 12. [REACT_APP_footer](#react_app_footer)
+<!---
     - [Example](#example-react_app_footer)
 	- [icon1ClassName](#react_app_footer-icon1classname)
 	- [icon2ClassName](#react_app_footer-icon2classname)
 	- [icon1Url](#react_app_footer-icon1url)
 	- [icon2Url](#react_app_footer-icon2url)
 	- [label](#react_app_footer-label)
+-->
 13. [REACT_APP_header](#react_app_header)
+<!---
     - [Example](#example-react_app_header)
 	- [labelBackground](#react_app_header-labelbackground)
 	- [labelDemonstration](#react_app_header-labeldemonstration)
 	- [labelCase](#react_app_header-labelcase)
 	- [labelSummaryAndFeedback](#react_app_header-labelsummaryandfeedback)
+ -->
+14. [REACT_APP_general](#react_app_general)
 
 
 
-
-## REACT_APP_home
-
-![plot](./readme-assets/homepage.png)
--  **Exact Name**: `REACT_APP_home`
--  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
-
-### Example REACT_APP_home
-
-```json
-"REACT_APP_home": {
-"title": "Huldra: Sample Title",
-"introText": "This is a sample subtitle or introduction text.",
-"signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
-"additionalText": "Please view this application in full-screen mode."
-}
-```
-
-
-
-### Home Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to show the title on the home page.
-
-
-
-  
 ## REACT_APP_warning
+
+<!--
 ![overview of pages](./readme-assets/warning.png)
 
 -  **Exact Name**: `REACT_APP_warning`
@@ -265,6 +270,34 @@ The names in the table of content directly refer to the name of the configurable
 ### Title
 -  **Exact Name**: `title`
 -  **Description**: The heading of actual message displayed to the user when there is a rendering error is defined by this element. 
+-->
+
+
+
+## REACT_APP_home
+
+<!--
+![plot](./readme-assets/homepage.png)
+-  **Exact Name**: `REACT_APP_home`
+-  **Description**: This element is used to configure the content on home page i.e., the first page the user lands on.
+
+### Example REACT_APP_home
+
+```json
+"REACT_APP_home": {
+"title": "Huldra: Sample Title",
+"introText": "This is a sample subtitle or introduction text.",
+"signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
+"additionalText": "Please view this application in full-screen mode."
+}
+```
+
+
+
+### Home Title
+
+-  **Exact Name**: `title`
+-  **Description**: This element is used to show the title on the home page.
 
 
 ## REACT_APP_home
@@ -305,11 +338,11 @@ The names in the table of content directly refer to the name of the configurable
 
 -  **Exact Name**: `additionalText`
 -  **Description**: This element configures the additional text shown on the home page.
-
+-->
 
 
 ## REACT_APP_registration
-
+<!---
 ### Example REACT_APP_registration
 
 ```json
@@ -525,11 +558,12 @@ The names in the table of content directly refer to the name of the configurable
 
 -  **Exact Name**: `label`
 -  **Description**: Element to describe the label/heading of the 9th question. 
-
+-->
 
 
 
 ## REACT_APP_background
+<!--
 ![plot](./readme-assets/background.png)
 
 -  **Exact Name**: `REACT_APP_background`
@@ -756,11 +790,11 @@ The names in the table of content directly refer to the name of the configurable
     text-align: justify;
 }"
 ```
+-->
 
+## REACT_APP_demonstration
 
-### REACT_APP_demonstration
-
-
+<!---
 -  **Exact Name**: `REACT_APP_demonstration`
 -  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
 
@@ -793,7 +827,6 @@ The names in the table of content directly refer to the name of the configurable
     }
   ]
 ```
-
 
   
 
@@ -890,11 +923,11 @@ The names in the table of content directly refer to the name of the configurable
 
 -  **Exact Name**: `audioWidth`
 -  **Description**: Define the width of the audio player in px.
+-->
 
+## REACT_APP_caseImage
 
-### REACT_APP_caseImage
-
-
+<!---
 -  **Exact Name**: `REACT_APP_caseImage`
 -  **Description**: This element is used to configure the Image Case page, where a user can rank 2 images.
 
@@ -1101,11 +1134,11 @@ When the button below the any of the smaller image on the middle column of the c
 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case image page.
+-->
 
 
-
-### REACT_APP_caseHybrid
-
+## REACT_APP_caseHybrid
+<!--
 ![Case Image](./readme-assets/casehybrid.png)
 ![Case Image](./readme-assets/casehybridpopup.png)
 
@@ -1272,10 +1305,10 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case image page.
+-->
 
-
-### REACT_APP_caseVideo
-
+## REACT_APP_caseVideo
+<!--
 ![Case video](./readme-assets/casevideo.png)
 
 
@@ -1359,9 +1392,10 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case video page.
+-->
 
-
-### REACT_APP_caseAudio
+## REACT_APP_caseAudio
+<!---
 ![Case audio](./readme-assets/audiocase.png)
 
 
@@ -1449,11 +1483,12 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `text`
 -  **Description**: This element is used to configure the text description on the right column of case audio page.
-
+-->
 
 
 
 ## REACT_APP_summaryAndFeedback
+<!---
 ![summaryandfeedback](./readme-assets/summaryandfeedback.png)
 
 
@@ -1645,17 +1680,16 @@ When the  button below the any of the smaller image on the middle column of the 
 ### feedbackFormQuestions commentBoxLabel
 -  **Exact Name**: `commentBoxLabel`
 -  **Description**: The heading of the comment box is defined by this field.
+-->
 
 ## REACT_APP_end
-
+<!---
 ![endpage](./readme-assets/endpage.png)
 
 -  **Exact Name**: `REACT_APP_end`
 -  **Description**: This element is used to configure the end page of the HULDRA framework.
 
-
 ### Example REACT_APP_end
-
 ```json
   "REACT_APP_end": {
     "title": "",
@@ -1683,13 +1717,16 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `redirectTimeout`
 -  **Description**: The end page stays for a certain duration and then the user is redirected to the home page. You can configure the time user stays at the end page in miliseconds here.
-
+-->
 
 ## REACT_APP_footer
+<!---
 ![footer](./readme-assets/footer.png)
 
 -  **Exact Name**: `REACT_APP_footer`
 -  **Description**: This element is used to configure the footer that is displayed under the pages.
+
+
 
 ### Example REACT_APP_footer
 
@@ -1731,10 +1768,11 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `label`
 -  **Description**: The text between two icons can be configured here.
-
+-->
 
 
 ## REACT_APP_header
+<!---
 -  **Exact Name**: `REACT_APP_header`
 -  **Description**: This element is used to configure the headers displayed on HULDRA framework pages.
 
@@ -1774,5 +1812,7 @@ When the  button below the any of the smaller image on the middle column of the 
 
 -  **Exact Name**: `labelSummaryAndFeedback`
 -  **Description**: This element is used to configure the title of the header on the Summary and Feedback page.
+-->
 
+## REACT_APP_general
 
