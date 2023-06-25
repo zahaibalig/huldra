@@ -1179,14 +1179,33 @@ When the  button below the any of the smaller image on the middle column of the 
 -->
 
 ## REACT_APP_caseAudio
-<!---
+
+The caseAudio page is a main questionnaire page which displays a _caseAudio_ type survey question. 
+<!--- where a user can rank 2 audios -->
+All case pages identified as being of type _caseAudio_ are configured using the `REACT_APP_caseAudio` block in the `config.json` file.
+
+### Parameters
+
+The `REACT_APP_caseAudio` block contains 2 sub-blocks.
+
+The `caseAudioColumnLeft` sub-block is used to configure the left column, and contains the following elements. 
+- `label`: This element is used to configure the heading on the left column of case Audio page.
+- `sectionAudioHeight`: This element is used to configure the height of the audio players on the left column of case audio page.
+- `sectionAudioWidth`: This element is used to configure the width of the audio players on the left column of case audio page.
+- `rightSectionAudioLabel`: This element is used to configure the heading of the right audio on the left column of case audio page.
+- `leftSectionAudioLabel`: This element is used to configure the heading of the left audio on the left column of case audio page.
+- `sectionButtonlabel`: This element is used to configure the label of the buttons below the audios  on the left column of case audio page.
+
+The `caseAudioColumnRight` sub-block is used to configure the right column, and contains the following elements.
+- `title`: This element is used to configure the heading on the right column of case audio page.
+- `text`: This element is used to configure the text description on the right column of case audio page.
+
+### Visual Overview
+
 ![Case audio](./readme-assets/audiocase.png)
 
+### Sample Config
 
--  **Exact Name**: `REACT_APP_caseAudio`
--  **Description**: This element is used to configure the Audio Case page, where a user can rank 2 audios. 
-
-### Example REACT_APP_caseAudio
 ```json
   "REACT_APP_caseAudio": {
     "caseAudioColumnLeft": {
@@ -1203,71 +1222,6 @@ When the  button below the any of the smaller image on the middle column of the 
     }
   },
 ```
-
-  
-
-### Case Audio Column Left  
-
--  **Exact Name**: `caseAudioColumnLeft`
--  **Description**: This element is used to configure the left column of case audio page. The left column can be configured acording to the parameter(s) below:
-
-### Case Audio Column Left Label
-
--  **Exact Name**: `label`
--  **Description**: This element is used to configure the heading on the left column of case Audio page.
-- 
-### Case Audio Column Left Section Audio Height
-
--  **Exact Name**: `sectionAudioHeight`
--  **Description**: This element is used to configure the height of the audio players on the left column of case audio page.
-
-
-### Case Audio Column Left Section Audio Width
-
--  **Exact Name**: `sectionAudioWidth`
--  **Description**: This element is used to configure the width of the audio players on the left column of case audio page.
-
-### Case Audio Column Left rightSectionAudioLabel
-
--  **Exact Name**: `rightSectionAudioLabel`
--  **Description**: This element is used to configure the heading of the right audio on the left column of case audio page.
-
-
-
-### Case Audio Column Left leftSectionAudioLabel
-
--  **Exact Name**: `leftSectionAudioLabel`
--  **Description**: This element is used to configure the heading of the left audio on the left column of case audio page.
-
-
-### Case Audio Column Left Section Button Label
-
--  **Exact Name**: `sectionButtonlabel`
--  **Description**: This element is used to configure the label of the buttons below the audios  on the left column of case audio page.
-
-
-
-
-
-
-
-### Case Audio Column Right
-
--  **Exact Name**: `caseAudioColumnRight`
--  **Description**: This element is used to configure the right column of case audio page. The right column can be configured acording to the parameter(s) below:
-
-### Case Audio Column Right Title
-
--  **Exact Name**: `title`
--  **Description**: This element is used to configure the heading on the right column of case audio page.
-
-
-### Case Audio Column Right Text
-  
-
--  **Exact Name**: `text`
--  **Description**: This element is used to configure the text description on the right column of case audio page.
--->
 
 
 
