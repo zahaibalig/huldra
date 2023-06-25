@@ -27,214 +27,19 @@ The properties which are next to the numbered list represent the page type that 
 
 ## Configuration Blocks
 
- 1. [REACT_APP_warning](#react_app_warning)
-<!---
-    - [Example](#example-react_app_warning)
-	- [warningMessage](#warning-message)
-	- [title](#title)
--->
+1. [REACT_APP_warning](#react_app_warning)
 2. [REACT_APP_home](#react_app_home)
-<!---
-	- [Example](#example-react_app_home)
-	 - [title](#home-title)
-	  - [introText](#intro-text)
-	  - [signupText](#signup-text)
-	  - [additionalText](#additional-text)
--->
 3. [REACT_APP_registration](#react_app_registration)
-<!---
-	- [Example](#example-react_app_registration)
-	 - [Q1](#q1)
-		 - [label](#q1-label)
-	 - [Q2](#q2)
-		 - [label](#q2-label)
-	 - [Q3](#q3)
-		 - [label](#q3-label)
-		 - [showTooltip](#q3-show-tooltip)
-		 - [tooltipMessage](#q3-tooltip-message)
-	 - [Q4](#q4)
-		 - [label](#q4-label)
-	 - [Q5](#q5)
-		 - [label](#q5-label)
-		 - [showTooltip](#q3-show-tooltip)
-		 - [tooltipMessage](#q3-tooltip-message)
-	 - [Q6](#q6)
-		 - [label](#q6-label)
-		 - [showTooltip](#q6-show-tooltip)
-		 - [tooltipMessage](#q6-tooltip-message)
-	 - [Q7](#q7)
-		 - [label](#q7-label)
-		 - [showTooltip](#q7-show-tooltip)
-		 - [tooltipMessage](#q7-tooltip-message)
-	 - [Q8](#q8)
-		 - [label](#q8-label)
-	 - [Q9](#q9)
-		 - [label](#q9-label)
--->
 4. [REACT_APP_background](#react_app_background)
-<!---
-	- [Example](#example-react_app_background)
-	 - [sectionTitle](#section-title)
-	 - [sectionText](#section-text)
-	 - 	 [sectionClassName](#section-class-name)
-	 - 	 [sectionTitleClassName](#section-title-class-name)
-	 - [sectionTextClassName](#section-text-class-name)
-	 - [sectionContent](#section-content)
-		 - [title](#subsection-title)
-		 - [sectionText](#subsection-text)
-		 - [className](#subsection-class-name)
-		 - [imagePath](#subsection-image-path)
-		 - [imageClassName](#subsection-image-class-name)
-		 - [imageAlternativeText](#subsection-image-alternative-text)
-		 - [descriptionClassName](#subsection-description-class-name)
-		 -  [titleClassName](#subsection-title-class-name)
-		 -  [textClassName](#subsection-text-class-name)
-    -  [Styling Classes](#styling-classes)
--->
 5. [REACT_APP_demonstration](#react_app_demonstration)
-<!---
-	- [Example](#example-react_app_demonstration)
-	 - [textBefore](#text-before)
-	 - [textAfter](#text-after)
-	 - 	[hasImage](#has-image)
-	 - [imagePath](#image-path)
-	 - [imageClassName](#image-class-name)
-	 - [hasVideo](#has-video)
-	 - [videoPath](#video-path)
-	 - [videoHeight](#video-height)
-	 - [videoWidth](#video-width)
-	 - [hasAudio](#has-audio)
-	 - [audioPath](#audio-path)
-	 - [audioHeight](#audio-height)
-	 - [audioWidth](#audio-width)
--->
 6. [REACT_APP_caseImage](#react_app_caseimage)
-<!---
-	- [Example](#example-react_app_caseimage)
-	 - [caseImageColumnLeft](#case-image-column-left)
-		 - [label](#case-image-column-left-label)
-	 - [caseImageColumnMiddle](#case-image-column-middle)
-		 - [title](#case-image-column-middle-title)
-		 - [text](#case-image-column-middle-text)
-		 - [leftSectionTitle](#case-image-column-middle-left-section-title)
-		 - [leftSectionButtonlabel](#case-image-column-middle-left-section-button-label)
-		 - [leftSectionTextWithIconsLabel](#case-image-column-middle-left-section-text-with-icons-label)
-		 - [rightSectionTitle](#case-image-column-middle-right-section-title)
-		 - [rightSectionButtonlabel](#case-image-column-middle-right-section-button-label)
-		 - [rightSectionTextWithIconsLabel](#case-image-column-middle-right-section-text-with-icons-label)
-		 - [popupA](#case-image-column-middle-popupa)
-		 - [popupB](#case-image-column-middle-popupb)
-			 - [mainTitle](#case-image-column-middle-popup-main-title)
-			 - [leftImageTitle](#case-image-column-middle-popup-left-image-title)
-			 - [rightImageTitle](#case-image-column-middle-popup-right-image-title)
-			 - [descriptionTitle](#case-image-column-middle-popup-description-title)
-			 - [descriptionText](#case-image-column-middle-popup-description-text)
-			 - [gallerySubstring](#case-image-column-middle-popupb-gallery-substring)
-    - [caseImageColumnRight](#case-image-column-right)
-        - [title](#case-image-column-right-title)
-        - [text](#case-image-column-right-text)
--->
 7. [REACT_APP_caseHybrid](#react_app_casehybrid)
-<!---
-    - [Example](#example-react_app_casehybrid)
-    - [caseHybridColumnLeft](#case-hybrid-column-left)
-        - [label](#case-hybrid-column-left-label)
-    - [caseHybridColumnMiddle](#case-hybrid-column-middle)
-        - [title](#case-hybrid-column-middle-title)
-        - [text](#case-hybrid-column-middle-text)
-        - [leftSectionTitle](#case-hybrid-column-middle-left-section-title)
-        - [leftSectionButtonlabel](#case-hybrid-column-middle-left-section-button-label)
-        - [leftSectionTextWithIconsLabel](#case-hybrid-column-middle-left-section-text-with-icons-label)
-        - [rightSectionTitle](#case-hybrid-column-middle-right-section-title)
-        - [rightSectionButtonlabel](#case-hybrid-column-middle-right-section-button-label)
-        - [rightSectionTextWithIconsLabel](#case-hybrid-column-middle-right-section-text-with-icons-label)
-        - [popupA](#case-hybrid-column-middle-popupa)
-        - [popupB](#case-hybrid-column-middle-popupb)
-            - [mainTitle](#case-hybrid-column-middle-popup-main-title)
-    - [caseHybridColumnRight](#case-hybrid-column-right)
-        - [title](#case-hybrid-column-right-title)
-        - [text](#case-hybrid-column-right-text)
--->
 8. [REACT_APP_caseVideo](#react_app_casevideo)
-<!---
-    - [Example](#example-react_app_casevideo)
-    - [caseVideoColumnLeft](#case-video-column-left)
-        - [label](#case-video-column-left-label)
-        - [sectionVideoHeight](#case-video-column-left-section-video-height)
-        - [sectionVideoWidth](#case-video-column-left-section-video-width)
-        - [rightSectionVideoLabel](#case-video-column-left-rightsectionvideolabel)
-        - [leftSectionVideoLabel](#case-video-column-left-leftsectionvideolabel)
-        - [sectionButtonlabel](#case-video-column-left-section-button-label)
-    - [caseVideoColumnRight](#case-video-column-right)
-        - [title](#case-video-column-right-title)
-        - [text](#case-video-column-right-text) 
--->
 9. [REACT_APP_caseAudio](#react_app_caseaudio)
-<!---
-    - [Example](#example-react_app_caseaudio)
-    - [caseAudioColumnLeft](#case-audio-column-left)
-        - [label](#case-audio-column-left-label)
-        - [sectionAudioHeight](#case-audio-column-left-section-audio-height)
-        - [sectionAudioWidth](#case-audio-column-left-section-audio-width)
-        - [rightSectionAudioLabel](#case-audio-column-left-rightsectionaudiolabel)
-        - [leftSectionAudioLabel](#case-audio-column-left-leftsectionaudiolabel)
-        - [sectionButtonlabel](#case-audio-column-left-section-button-label)
-    - [caseAudioColumnRight](#case-audio-column-right)
-        - [title](#case-audio-column-right-title)
-        - [text](#case-audio-column-right-text)
--->
 10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
-<!---
-    - [Example](#example-react_app_summaryandfeedback)
-    - [summary](#summary)
-        - [display](#summary-display)
-        - [highlightAnswers](#summary-highlightanswers)
-        - [title](#summary-title)
-        - [text](#summary-text)
-        - [label](#summary-label)
-        - [videoPlaceholderIconPath](#summary-videoplaceholdericonPath)
-        - [audioPlaceholderIconPath](#summary-audioplaceholdericonPath)
-        - [imagePlaceholderIconPath](#summary-imageplaceholdericonPath)
-    - [feedbackForm](#feedbackform)
-        - [title](#feedbackform-title)
-        - [text](#feedbacform-text)
-        - [label](#feedbackform-label)
-        - [feedbackFormQuestions](#feedbackform-feedbackformquestions)
-            - [questionType](#feedbackformquestions-questiontype)
-            - [id](#feedbackformquestions-id)
-            - [label](#feedbackformquestions-label)
-            - [likertQuestions](#feedbackformquestions-likertquestions)
-                - [question](#feedbackformquestions-likertquestions-question)
-                - [size](#feedbackformquestions-likertquestions-size)
-                - [label](#feedbackformquestions-likertquestions-label)
-            - [choices](#feedbackformquestions-choices)
-            - [hasCommentBox](#feedbackformquestions-hascommentbox)
-            - [commentBoxLabel](#feedbackformquestions-commentboxlabel)
--->
 11. [REACT_APP_end](#react_app_end)
-<!---
-    - [Example](#example-react_app_end)
-	- [title](#react_app_end-title)
-	- [endMessage](#react_app_end-endmessage)
-	- [redirectTimeout](#react_app_end-redirecttimeout)
--->
 12. [REACT_APP_footer](#react_app_footer)
-<!---
-    - [Example](#example-react_app_footer)
-	- [icon1ClassName](#react_app_footer-icon1classname)
-	- [icon2ClassName](#react_app_footer-icon2classname)
-	- [icon1Url](#react_app_footer-icon1url)
-	- [icon2Url](#react_app_footer-icon2url)
-	- [label](#react_app_footer-label)
--->
 13. [REACT_APP_header](#react_app_header)
-<!---
-    - [Example](#example-react_app_header)
-	- [labelBackground](#react_app_header-labelbackground)
-	- [labelDemonstration](#react_app_header-labeldemonstration)
-	- [labelCase](#react_app_header-labelcase)
-	- [labelSummaryAndFeedback](#react_app_header-labelsummaryandfeedback)
- -->
 14. [REACT_APP_general](#react_app_general)
 
 
@@ -300,220 +105,59 @@ The `REACT_APP_homepage` block contains 4 elements.
 The registration page is used to retrieve participant information/metadata. 
 The registration page is configured using the `REACT_APP_registration` block in the `config.json` file. 
 
- 
-<!---
-### Example REACT_APP_registration
+### Parameters
 
+<!---
+`REACT_APP_registration`:  The components of these element are used to configure the regestration page. Nine diffrerent questions can be configured. If you are creating a REACT_APP_registration element, make sure to include all the 9 questions inside. Each question (labeled "Q<question number>") has the following elements.
+- `label`: Element to describe the label/heading of the 1st question. MANDATORY?
+- `showTooltip`: A bool to set whether to show the tooltip for the question or not. OPTIONAL?
+- `showTooltip`: A bool to set whether to show the tooltip for the question or not. OPTIONAL?
+-->
+
+### Visual Overview
+
+### Sample Config
+
+<!---
 ```json
 "REACT_APP_registration": {
-
 "Q1": {
-
 "label": "Name"
-
 },
-
 "Q2": {
-
 "label": "E-mail address"
-
 },
-
 "Q3": {
-
 "label": "Country",
-
 "showTooltip": true,
-
 "tooltipMessage": "This field is mandatory."
-
 },
-
 "Q4": {
-
 "label": "Comments"
-
 },
-
 "Q5": {
-
 "label": "Degree",
-
 "showTooltip": true,
-
 "tooltipMessage": "This field is mandatory."
-
 },
-
 "Q6": {
-
 "label": "Mandatory question",
-
 "showTooltip": true,
-
 "tooltipMessage": "This field is mandatory."
-
 },
-
 "Q7": {
-
 "label": "Optional question",
-
 "showTooltip": true,
-
 "tooltipMessage": "This field is mandatory and must be a number."
-
 },
-
 "Q8": {
-
 "label": "Text for mandatory tickbox."
-
 },
-
 "Q9": {
-
 "label": "Text for optional tickbox."
-
 }
-
 }
 ```
-
--  **Exact Name**: `REACT_APP_registration`
-
--  **Description**:  The components of these element are used to configure the regestration page. Nine diffrerent questions can be configured. If you are creating a REACT_APP_registration element, make sure to include all the 9 questions inside. 
-
-### Q1
-
--  **Exact Name**: `Q1`
--  **Description**:  Element used to display the 1st question on the registration page
-
-### Q1 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 1st question. 
-
-### Q2
-
--  **Exact Name**: `Q2`
--  **Description**:  Element used to display the 2nd question on the registration page
-
-### Q2 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 2nd question. 
-
-### Q3
-
--  **Exact Name**: `Q3`
--  **Description**:  Element used to display the 3rd question on the registration page
-
-### Q3 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 3rd question. 
-
-### Q3 Show Tooltip
-
--  **Exact Name**: `showTooltip`
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q3 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
--  **Description**: Element to describe the label/heading of the tooltip.
-
-
-### Q4
-
--  **Exact Name**: `Q4`
--  **Description**:  Element used to display the 4th question on the registration page
-
-### Q4 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 4th question. 
-
-### Q5
-
--  **Exact Name**: `Q5`
--  **Description**:  Element used to display the 5th question on the registration page
-
-### Q5 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 5th question. 
-
-### Q5 Show Tooltip
-
--  **Exact Name**: `showTooltip`
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q5 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q6
-
--  **Exact Name**: `Q6`
--  **Description**:  Element used to display the 6th question on the registration page
-
-### Q6 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 6th question. 
-
-### Q6 Show Tooltip
-
--  **Exact Name**: `showTooltip`
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q6 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q7
-
--  **Exact Name**: `Q7`
--  **Description**:  Element used to display the 7th question on the registration page
-
-### Q7 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 7th question. 
-
-### Q7 Show Tooltip
-
--  **Exact Name**: `showTooltip`
--  **Description**: A bool to set whether to show the tooltip for the question or not. 
-
-### Q7 Tooltip Message
-
--  **Exact Name**: `tooltipMessage`
--  **Description**: Element to describe the label/heading of the tooltip.
-
-### Q8
-
--  **Exact Name**: `Q8`
--  **Description**:  Element used to display the 8th question on the registration page
-
-### Q8 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 8th question. 
-
-### Q9
-
--  **Exact Name**: `Q9`
--  **Description**:  Element used to display the 9th question on the registration page
-
-### Q9 Label
-
--  **Exact Name**: `label`
--  **Description**: Element to describe the label/heading of the 9th question. 
 -->
 
 
@@ -577,10 +221,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
 
 
 <!--
-
-
--  **Exact Name**: `REACT_APP_background`
--  **Description**: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
+`REACT_APP_background`: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
 
 ### Styling Classes
 
