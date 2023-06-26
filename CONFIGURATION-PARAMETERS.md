@@ -195,7 +195,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
 ### Sample Config
 
 ```json
- "REACT_APP_background": [
+   "REACT_APP_background": [
     {
       "sectionTitle": "Background",
       "sectionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nisi diam. Phasellus sed nulla ornare, ullamcorper justo a, dictum diam. Ut massa nibh, suscipit id magna facilisis, eleifend aliquam ipsum. Praesent erat libero, luctus nec ligula nec, tincidunt scelerisque mauris. Pellentesque consectetur nibh risus. Vestibulum pellentesque auctor orci a viverra. Curabitur eu lacus nulla.Nullam nulla justo, semper tincidunt tempor eget, porttitor et metus. Vestibulum in massa vestibulum, tristique libero vitae, porta elit. Fusce sollicitudin nulla ut tellus ornare, a pretium nulla laoreet. Proin gravida orci fermentum nisi lobortis ornare. Fusce egestas porta tincidunt. Donec placerat viverra diam non dignissim. Cras vel est ut tellus euismod ultricies. Nunc finibus sem felis, sed laoreet dolor hendrerit vel. Sed tincidunt varius erat at consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Nullam in nulla at nunc tincidunt elementum. Aliquam finibus vel ligula non blandit. Nunc ultricies feugiat libero, eu viverra orci facilisis in. Donec ultrices iaculis rutrum. Etiam eu luctus mi. Phasellus augue nunc, gravida ut pretium at, faucibus eu mauris. Ut ac vulputate elit. Donec massa justo, semper sit amet quam id, commodo pulvinar dui.",
@@ -234,7 +234,27 @@ The `REACT_APP_warning` block contains the following elements for each section.
           "textClassName": "background-text-content"
         }
       ]
-    }]
+    },
+    {
+      "sectionTitle": "Sample Section Title",
+      "sectionClassName": "background-section",
+      "sectionTitleClassName": "background-section-title",
+      "sectionTextClassName": "background-text-content",
+      "sectionContent": [
+        {
+          "title": "Sample Subsection Title",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
+          "className": "background-single-block",
+          "imagePath": "/gallery/sample-image.png",
+          "imageClassName": "explanation-background-image",
+          "imageAlternativeText": "sample-image",
+          "descriptionClassName": "background-single-block-description-content",
+          "titleClassName": "background-single-block-description-label",
+          "textClassName": "background-text-content"
+        }
+      ]
+    }
+  ]
 ```
 
 
