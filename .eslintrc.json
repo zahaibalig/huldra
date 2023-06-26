@@ -20,8 +20,8 @@
   "rules": {
     "quotes": ["error", "double", { "allowTemplateLiterals": true, "avoidEscape": true }],
     "semi": ["error", "always"],
-    "react/prop-types": "warn",
-    "react/display-name": "warn",
+    "react/prop-types": "off",
+    "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
     "no-unused-vars": "warn",
     "no-undef": "warn",
