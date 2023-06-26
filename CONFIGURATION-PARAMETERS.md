@@ -19,7 +19,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 - **Summary and Feedback:** Page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
 - **End:** Final page of the survey, which is displayed after users complete the survey and submit their responses.
 
-![overview of pages](./src/assets/readme-assets/documentation-main.png)
+![overview of pages](./src/assets/documentation-assets/documentation-main.png)
 
 [^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
  
@@ -57,7 +57,7 @@ The `REACT_APP_warning` block contains 2 elements.
 
 ### Visual Overview
 
-<kbd>![warningpage overview](./src/assets/readme-assets/REACT_APP_warning.png)</kbd>
+<kbd>![warningpage overview](./src/assets/documentation-assets/REACT_APP_warning.png)</kbd>
 
 ### Sample Config  
 
@@ -85,7 +85,7 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 ### Visual Overview
 
-<kbd>![Home Page Visual](./src/assets/readme-assets/REACT_APP_home.png)</kbd>
+<kbd>![Home Page Visual](./src/assets/documentation-assets/REACT_APP_home.png)</kbd>
 
 ### Sample Config 
 
@@ -190,7 +190,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
   
 ### Visual Overview
 
-<kbd>![background visual](./src/assets/readme-assets/REACT_APP_background.png)</kbd>
+<kbd>![background visual](./src/assets/documentation-assets/REACT_APP_background.png)</kbd>
 
 ### Sample Config
 
@@ -329,10 +329,10 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 
 
 ### Visual Overview
-<kbd>![background REACT_APP_demonstration_video_image](./src/assets/readme-assets/REACT_APP_demonstration_video_image.png)</kbd>
-<kbd>![background REACT_APP_demonstration_image](./src/assets/readme-assets/REACT_APP_demonstration_image.png)</kbd>
-<kbd>![background REACT_APP_demonstration_video](./src/assets/readme-assets/REACT_APP_demonstration_video.png)</kbd>
-<kbd>![background REACT_APP_demonstration_audio](./src/assets/readme-assets/REACT_APP_demonstration_audio.png)</kbd>
+<kbd>![background REACT_APP_demonstration_video_image](./src/assets/documentation-assets/REACT_APP_demonstration_video_image.png)</kbd>
+<kbd>![background REACT_APP_demonstration_image](./src/assets/documentation-assets/REACT_APP_demonstration_image.png)</kbd>
+<kbd>![background REACT_APP_demonstration_video](./src/assets/documentation-assets/REACT_APP_demonstration_video.png)</kbd>
+<kbd>![background REACT_APP_demonstration_audio](./src/assets/documentation-assets/REACT_APP_demonstration_audio.png)</kbd>
 
 
 
@@ -413,8 +413,8 @@ The `caseImageColumnRight` sub-block is used to configure the right column, and 
   
 ### Visual Overview
 
-<kbd>![Case Image](./src/assets/readme-assets/REACT_APP_caseImage.png)</kbd>
-<kbd>![Case Image popup](./src/assets/readme-assets/REACT_APP_caseImagepopup.png)</kbd>
+<kbd>![Case Image](./src/assets/documentation-assets/REACT_APP_caseImage.png)</kbd>
+<kbd>![Case Image popup](./src/assets/documentation-assets/REACT_APP_caseImagepopup.png)</kbd>
 
 ### Sample Config
 
@@ -496,8 +496,8 @@ The `caseHybridColumnRight` sub-block is used to configure the right column, and
 
 ### Visual Overview
 
-<kbd>![Case Image](./src/assets/readme-assets/REACT_APP_caseHybrid.png)</kbd>
-<kbd>![Case Image](./src/assets/readme-assets/REACT_APP_caseHybridpopup.png)</kbd>
+<kbd>![Case Image](./src/assets/documentation-assets/REACT_APP_caseHybrid.png)</kbd>
+<kbd>![Case Image](./src/assets/documentation-assets/REACT_APP_caseHybridpopup.png)</kbd>
 
 ### Sample Config
 
@@ -562,7 +562,7 @@ The `caseVideoColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![Case video](./src/assets/readme-assets/REACT_APP_caseVideo.png)</kbd>
+<kbd>![Case video](./src/assets/documentation-assets/REACT_APP_caseVideo.png)</kbd>
 
 ### Sample Config
 
@@ -609,7 +609,7 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![Case audio](./src/assets/readme-assets/REACT_APP_caseAudio.png)</kbd>
+<kbd>![Case audio](./src/assets/documentation-assets/REACT_APP_caseAudio.png)</kbd>
 
 ### Sample Config
 
@@ -678,7 +678,7 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
 
 ### Visual Overview
 
-<kbd>![summaryandfeedback](./src/assets/readme-assets/REACT_APP_summaryAndFeedback.png)</kbd>
+<kbd>![summaryandfeedback](./src/assets/documentation-assets/REACT_APP_summaryAndFeedback.png)</kbd>
 
 ### Sample Config
 
@@ -773,7 +773,7 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 ### Visual Overview
 
-<kbd>![endpage](./src/assets/readme-assets/REACT_APP_end.png)</kbd>
+<kbd>![endpage](./src/assets/documentation-assets/REACT_APP_end.png)</kbd>
 
 ### Sample Config
 
@@ -803,7 +803,7 @@ The `REACT_APP_footer` block contains 5 elements.
 
 ### Visual Overview
 
-<kbd>![footer](./src/assets/readme-assets/REACT_APP_footer.png)</kbd>
+<kbd>![footer](./src/assets/documentation-assets/REACT_APP_footer.png)</kbd>
 
 ### Sample Config
 
@@ -834,10 +834,10 @@ The `REACT_APP_header` block contains 4 elements.
 
 ### Visual Overview
 
-<kbd>![header](./src/assets/readme-assets/REACT_APP_header_Background.png)</kbd>
-<kbd>![header](./src/assets/readme-assets/REACT_APP_header_Demonstration.png)</kbd>
-<kbd>![header](./src/assets/readme-assets/REACT_APP_header_case.png)</kbd>
-<kbd>![header](./src/assets/readme-assets/REACT_APP_header_SummaryAndFeedback.png)</kbd>
+<kbd>![header](./src/assets/documentation-assets/REACT_APP_header_Background.png)</kbd>
+<kbd>![header](./src/assets/documentation-assets/REACT_APP_header_Demonstration.png)</kbd>
+<kbd>![header](./src/assets/documentation-assets/REACT_APP_header_case.png)</kbd>
+<kbd>![header](./src/assets/documentation-assets/REACT_APP_header_SummaryAndFeedback.png)</kbd>
 
 
 ### Sample Config
