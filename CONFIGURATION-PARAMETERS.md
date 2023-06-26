@@ -339,12 +339,12 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 - `imageClassName`: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
 - `hasVideo`: A bool. Set it true to display a video on the demonstration page.
 - `videoPath`: Define the path of the video on firebase to here to display the video on the demonstartion page. **Note:** `hasVideo` bool has to be set true in order to put the video on the demonstartion page.
-- `videoHeight`: Define the height of the video player in px and em.
-- `videoWidth`: Define the width of the video player in px and em.
+- `videoHeight`: Define the height of the video player in px or em.
+- `videoWidth`: Define the width of the video player in px or em.
 - `hasAudio`: A bool. Set it true to put an audio on the demonstration page.
 - `audioPath`: Define the path of the audio on firebase to here to put the audio on the demonstartion page. **Note:** `hasAudio` bool has to be set true in order to put the audio on the demonstartion page.
-- `audioHeight`: Define the height of the audio player in px and em.
-- `audioWidth`: Define the width of the audio player in px and em.
+- `audioHeight`: Define the height of the audio player in px or em.
+- `audioWidth`: Define the width of the audio player in px or em.
 
 
 
