@@ -27,14 +27,20 @@
 
 ### Code Syntax, Logging, Styling and Requirements
 
-- This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use eslint as linter and prettier as a formatting tool and husky pre-commit hook
-- Use double quotes for strings, specially if the string contains quotes inside
-- Run `npm run lint` or `npm run lint:fix` to lint the codebase with eslint
-- Run `npm format` to format the code according to the defined style of the project
-- All changed code will be linted and formatted automatically before commit
-- Unix line ending (LF) is preferable
+- This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use eslint as linter, prettier as a formatting tool and husky pre-commit hook
+
+- Prettier, the formatting tool will format the codes according to the defined rule. To see the formatting rules, see `.prettierrc` file in the root folder.
+
+- The linter, eslint will identify, warn and in cases, throw errors if any portion of the code goes against the defined rules. To see the linting rules, see `.eslintrc.json` in the root folder.
+
+- Husky pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors. In case of errors that cannot be fixed by the linter, the committing process will be terminated and the errors have to be fixed manually.
+
+- It is possible to lint the code with the command `npm run lint`, `npm run lint:fix` and format with `npm run format` anytime.
+
 - All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any)
+
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
+
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
 <!---
 - Use the Huldra uniform logging framework as frequently as appropriate for your code
