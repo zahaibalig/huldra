@@ -68,7 +68,9 @@ describe("if window.innerWidth = 1200", () => {
       expect(screen.getByText(/Name/)).toBeInTheDocument();
       expect(screen.getByText(/E-mail address/)).toBeInTheDocument();
 
-      const buttonStartSurvey = screen.getByRole("button", { name: "Start Survey" });
+      const buttonStartSurvey = screen.getByRole("button", {
+        name: "Start Survey",
+      });
       expect(buttonStartSurvey).toBeInTheDocument();
     });
 
@@ -77,7 +79,9 @@ describe("if window.innerWidth = 1200", () => {
       user.click(buttonStartSurvey);
       expect(screen.getByText(/Background/)).toBeInTheDocument();
 
-      const buttonNextOnBackground = screen.getByRole("button", { name: "Next" });
+      const buttonNextOnBackground = screen.getByRole("button", {
+        name: "Next",
+      });
       expect(buttonNextOnBackground).toBeInTheDocument();
     });
 
@@ -88,7 +92,9 @@ describe("if window.innerWidth = 1200", () => {
         screen.getByText(/You can have a demonstration page with a single image/)
       ).toBeInTheDocument();
 
-      const buttonNextOnDemeonstration = screen.getByRole("button", { name: "Next" });
+      const buttonNextOnDemeonstration = screen.getByRole("button", {
+        name: "Next",
+      });
       expect(buttonNextOnDemeonstration).toBeInTheDocument();
     });
 
@@ -101,7 +107,9 @@ describe("if window.innerWidth = 1200", () => {
         )
       ).toBeInTheDocument();
 
-      const buttonNextOnDemeonstration2 = screen.getByRole("button", { name: "Next" });
+      const buttonNextOnDemeonstration2 = screen.getByRole("button", {
+        name: "Next",
+      });
       expect(buttonNextOnDemeonstration2).toBeInTheDocument();
     });
 
@@ -114,7 +122,9 @@ describe("if window.innerWidth = 1200", () => {
         )
       ).toBeInTheDocument();
 
-      const buttonNextOnDemeonstration3 = screen.getByRole("button", { name: "Next" });
+      const buttonNextOnDemeonstration3 = screen.getByRole("button", {
+        name: "Next",
+      });
       expect(buttonNextOnDemeonstration3).toBeInTheDocument();
     });
 
@@ -187,7 +197,9 @@ describe("if window.innerWidth = 1200", () => {
       expect(screen.getByText(/Summary of cases/)).toBeInTheDocument();
       expect(screen.getByText(/Overall feedback/)).toBeInTheDocument();
 
-      const buttonEndSurvey = screen.getByRole("button", { name: "End Survey" });
+      const buttonEndSurvey = screen.getByRole("button", {
+        name: "End Survey",
+      });
       expect(buttonEndSurvey).toBeInTheDocument();
     });
 
