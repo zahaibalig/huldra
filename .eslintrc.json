@@ -18,12 +18,14 @@
   },
   "plugins": ["react", "jest"],
   "rules": {
-    "quotes": ["error", "double"],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true, "avoidEscape": true }],
     "semi": ["error", "always"],
     "react/prop-types": "warn",
     "react/display-name": "warn",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn"
   },
   "ignorePatterns": ["temp.js", "**/*.test.js"]
 }
