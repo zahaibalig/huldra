@@ -795,8 +795,8 @@ The footer is configured using the `REACT_APP_footer` block in the `config.json`
 ### Parameters
 
 The `REACT_APP_footer` block contains 5 elements.
-- `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element.
-- `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element.
+- `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
+- `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
 - `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
 - `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
 - `label`: The text between two icons can be configured here.
