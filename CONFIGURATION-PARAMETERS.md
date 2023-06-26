@@ -19,7 +19,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 - **Summary and Feedback:** Page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
 - **End:** Final page of the survey, which is displayed after users complete the survey and submit their responses.
 
-![overview of pages](./readme-assets/documentation-main.png)
+![overview of pages](./src/assets/css/readme-assets/documentation-main.png)
 
 [^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
  
@@ -57,7 +57,7 @@ The `REACT_APP_warning` block contains 2 elements.
 
 ### Visual Overview
 
-<kbd>![overview of pages](./readme-assets/warning.png)</kbd>
+<kbd>![warningpage overview](./src/assets/css/readme-assets/REACT_APP_warning.png)</kbd>
 
 ### Sample Config  
 
@@ -85,7 +85,7 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 ### Visual Overview
 
-<kbd>![plot](./readme-assets/homepage.png)</kbd>
+<kbd>![Home Page Visual](./src/assets/css/readme-assets/REACT_APP_home.png)</kbd>
 
 ### Sample Config 
 
@@ -190,22 +190,41 @@ The `REACT_APP_warning` block contains the following elements for each section.
   
 ### Visual Overview
 
-<kbd>![plot](./readme-assets/background.png)</kbd>
+<kbd>![background visual](./src/assets/css/readme-assets/REACT_APP_background.png)</kbd>
 
 ### Sample Config
 
 ```json
-"REACT_APP_background": [
+ "REACT_APP_background": [
     {
       "sectionTitle": "Background",
-      "sectionText": "Lorem ipsum dolor ",
+      "sectionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at nisi diam. Phasellus sed nulla ornare, ullamcorper justo a, dictum diam. Ut massa nibh, suscipit id magna facilisis, eleifend aliquam ipsum. Praesent erat libero, luctus nec ligula nec, tincidunt scelerisque mauris. Pellentesque consectetur nibh risus. Vestibulum pellentesque auctor orci a viverra. Curabitur eu lacus nulla.Nullam nulla justo, semper tincidunt tempor eget, porttitor et metus. Vestibulum in massa vestibulum, tristique libero vitae, porta elit. Fusce sollicitudin nulla ut tellus ornare, a pretium nulla laoreet. Proin gravida orci fermentum nisi lobortis ornare. Fusce egestas porta tincidunt. Donec placerat viverra diam non dignissim. Cras vel est ut tellus euismod ultricies. Nunc finibus sem felis, sed laoreet dolor hendrerit vel. Sed tincidunt varius erat at consequat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.Nullam in nulla at nunc tincidunt elementum. Aliquam finibus vel ligula non blandit. Nunc ultricies feugiat libero, eu viverra orci facilisis in. Donec ultrices iaculis rutrum. Etiam eu luctus mi. Phasellus augue nunc, gravida ut pretium at, faucibus eu mauris. Ut ac vulputate elit. Donec massa justo, semper sit amet quam id, commodo pulvinar dui.",
+      "sectionClassName": "background-section",
+      "sectionTitleClassName": "background-section-title",
+      "sectionTextClassName": "background-text-content",
+      "sectionContent": []
+    },
+    {
+      "sectionTitle": "Sample Section Title",
+      "sectionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
       "sectionClassName": "background-section",
       "sectionTitleClassName": "background-section-title",
       "sectionTextClassName": "background-text-content",
       "sectionContent": [
         {
           "title": "Sample Subsection Title",
-          "text": "Lorem ipsum dolor ",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
+          "className": "background-single-block",
+          "imagePath": "/gallery/sample-image.png",
+          "imageClassName": "explanation-background-image",
+          "imageAlternativeText": "sample-image",
+          "descriptionClassName": "background-single-block-description-content",
+          "titleClassName": "background-single-block-description-label",
+          "textClassName": "background-text-content"
+        },
+        {
+          "title": "Sample Subsection Title",
+          "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
           "className": "background-single-block",
           "imagePath": "/gallery/sample-image.png",
           "imageClassName": "explanation-background-image",
@@ -215,8 +234,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
           "textClassName": "background-text-content"
         }
       ]
-    }
-  ]
+    }]
 ```
 
 
@@ -291,7 +309,7 @@ The demonstration page(s) are configured using the `REACT_APP_demonstration` blo
 
 ### Parameters
 
-Huldra can include up to 3 demonstration pages, where each page can contain an image, video, or audio. 
+Huldra can include up to 3 demonstration pages, where each page can contain an image, video, or audio. Pages can also contain multiple elements. 
 
 The `REACT_APP_demonstration` block contains the following elements for each demonstration page.
 - `textBefore`: Text written on line 1 can be configured here.
@@ -301,16 +319,21 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 - `imageClassName`: The class used to define styling of the image on demonstration page. As of now there is only one class available to define the image styling. The class name is "demonstration-image", whose height is defined as 22em and width is auto adjusted.
 - `hasVideo`: A bool. Set it true to display a video on the demonstration page.
 - `videoPath`: Define the path of the video on firebase to here to display the video on the demonstartion page. **Note:** `hasVideo` bool has to be set true in order to put the video on the demonstartion page.
-- `videoHeight`: Define the height of the video player in px.
-- `videoWidth`: Define the width of the video player in px.
+- `videoHeight`: Define the height of the video player in px and em.
+- `videoWidth`: Define the width of the video player in px and em.
 - `hasAudio`: A bool. Set it true to put an audio on the demonstration page.
 - `audioPath`: Define the path of the audio on firebase to here to put the audio on the demonstartion page. **Note:** `hasAudio` bool has to be set true in order to put the audio on the demonstartion page.
-- `audioHeight`: Define the height of the audio player in px.
-- `audioWidth`: Define the width of the audio player in px.
+- `audioHeight`: Define the height of the audio player in px and em.
+- `audioWidth`: Define the width of the audio player in px and em.
 
 
 
 ### Visual Overview
+<kbd>![background REACT_APP_demonstration_video_image](./src/assets/css/readme-assets/REACT_APP_demonstration_video_image.png)</kbd>
+<kbd>![background REACT_APP_demonstration_image](./src/assets/css/readme-assets/REACT_APP_demonstration_image.png)</kbd>
+<kbd>![background REACT_APP_demonstration_video](./src/assets/css/readme-assets/REACT_APP_demonstration_video.png)</kbd>
+<kbd>![background REACT_APP_demonstration_audio](./src/assets/css/readme-assets/REACT_APP_demonstration_audio.png)</kbd>
+
 
 
 ### Sample Config
@@ -390,8 +413,8 @@ The `caseImageColumnRight` sub-block is used to configure the right column, and 
   
 ### Visual Overview
 
-<kbd>![Case Image](./readme-assets/caseimage.png)</kbd>
-<kbd>![Case Image popup](./readme-assets/caseimagepopup.png)</kbd>
+<kbd>![Case Image](./src/assets/css/readme-assets/REACT_APP_caseImage.png)</kbd>
+<kbd>![Case Image popup](./src/assets/css/readme-assets/REACT_APP_caseImagepopup.png)</kbd>
 
 ### Sample Config
 
@@ -473,8 +496,8 @@ The `caseHybridColumnRight` sub-block is used to configure the right column, and
 
 ### Visual Overview
 
-<kbd>![Case Image](./readme-assets/casehybrid.png)</kbd>
-<kbd>![Case Image](./readme-assets/casehybridpopup.png)</kbd>
+<kbd>![Case Image](./src/assets/css/readme-assets/REACT_APP_caseHybrid.png)</kbd>
+<kbd>![Case Image](./src/assets/css/readme-assets/REACT_APP_caseHybridpopup.png)</kbd>
 
 ### Sample Config
 
@@ -539,7 +562,7 @@ The `caseVideoColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![Case video](./readme-assets/casevideo.png)</kbd>
+<kbd>![Case video](./src/assets/css/readme-assets/REACT_APP_caseVideo.png)</kbd>
 
 ### Sample Config
 
@@ -586,7 +609,7 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![Case audio](./readme-assets/audiocase.png)</kbd>
+<kbd>![Case audio](./src/assets/css/readme-assets/REACT_APP_caseAudio.png)</kbd>
 
 ### Sample Config
 
@@ -655,7 +678,7 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
 
 ### Visual Overview
 
-<kbd>![summaryandfeedback](./readme-assets/summaryandfeedback.png)</kbd>
+<kbd>![summaryandfeedback](./src/assets/css/readme-assets/REACT_APP_summaryAndFeedback.png)</kbd>
 
 ### Sample Config
 
@@ -750,7 +773,7 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 ### Visual Overview
 
-<kbd>![endpage](./readme-assets/endpage.png)</kbd>
+<kbd>![endpage](./src/assets/css/readme-assets/REACT_APP_end.png)</kbd>
 
 ### Sample Config
 
@@ -780,7 +803,7 @@ The `REACT_APP_footer` block contains 5 elements.
 
 ### Visual Overview
 
-<kbd>![footer](./readme-assets/footer.png)</kbd>
+<kbd>![footer](./src/assets/css/readme-assets/REACT_APP_footer.png)</kbd>
 
 ### Sample Config
 
@@ -811,7 +834,11 @@ The `REACT_APP_header` block contains 4 elements.
 
 ### Visual Overview
 
-<kbd>![header](./readme-assets/header.png)</kbd>
+<kbd>![header](./src/assets/css/readme-assets/REACT_APP_header_Background.png)</kbd>
+<kbd>![header](./src/assets/css/readme-assets/REACT_APP_header_Demonstration.png)</kbd>
+<kbd>![header](./src/assets/css/readme-assets/REACT_APP_header_case.png)</kbd>
+<kbd>![header](./src/assets/css/readme-assets/REACT_APP_header_SummaryAndFeedback.png)</kbd>
+
 
 ### Sample Config
 
