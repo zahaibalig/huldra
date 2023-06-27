@@ -292,15 +292,6 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-  "REACT_APP_outputJson": [
-    "ParticipantInfo",
-    "CaseOrder",
-    "SoftwareInfo",
-    "CaseStudyAnswers",
-    "SessionEvents",
-    "FeedbackFormAnswers",
-    "SessionInfo"
-  ],
   "REACT_APP_color": {
     "themeColor": "",
     "buttonColor": ""
@@ -328,6 +319,15 @@
     "caseOrder": {
       "cases": [],
       "shuffle": "categorized"
-    }
+    },
+    "outputJson": [
+      "ParticipantInfo",
+      "CaseOrder",
+      "SoftwareInfo",
+      "CaseStudyAnswers",
+      "SessionEvents",
+      "FeedbackFormAnswers",
+      "SessionInfo"
+    ]
   }
 }

@@ -45,7 +45,6 @@ const Survey = ({
   REACT_APP_caseHybrid,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
-  REACT_APP_outputJson,
   REACT_APP_footer,
   REACT_APP_header,
 
@@ -749,7 +748,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseVideo={REACT_APP_caseVideo}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : prefix === "audio" ? (
               <CaseAudio
@@ -757,7 +755,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseAudio={REACT_APP_caseAudio}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : prefix === "hybrid" ? (
               <CaseHybrid
@@ -765,7 +762,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseHybrid={REACT_APP_caseHybrid}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : (
               <CaseImage
@@ -773,7 +769,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_outputJson={REACT_APP_outputJson}
                 REACT_APP_demonstration={
                   REACT_APP_demonstration[demonstrationPageIndex]
                 }

@@ -1,5 +1,6 @@
 import { getStorageReference, getFirebaseApp } from "../utils/firebase";
 import { fetchConfigVariableValues } from "./handleConfigVars";
+import configuration from "../config.json";
 const { REACT_APP_FIREBASE_ROOT_DIRECTORY } = process.env;
 const rootDirectory = REACT_APP_FIREBASE_ROOT_DIRECTORY;
 
@@ -10,7 +11,7 @@ let storageRef = getStorageReference();
 
 const pushToBucket = () => {
   let storeToBucket = {};
-  fetchConfigVariableValues("REACT_APP_outputJson").map((prop) => {
+  Object(configuration["REACT_APP_general"].outputJson).map((prop) => {
     storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
     return null;
   });
