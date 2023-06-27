@@ -25,7 +25,6 @@ const App = () => {
         "REACT_APP_footer",
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
-        "REACT_APP_color",
         "REACT_APP_general"
       ]),
     );
@@ -33,8 +32,8 @@ const App = () => {
     window.addEventListener("resize", handleResize);
   }, []);
     return (
-    <div className={`App theme-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]}
-    button-color-${configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["buttonColor"]}`}>
+    <div className={`App theme-color-${configuration["REACT_APP_general"] && configuration["REACT_APP_general"]["color"]&& configuration["REACT_APP_general"]["color"]["themeColor"]}
+    button-color-${configuration["REACT_APP_general"] && configuration["REACT_APP_general"]["color"]&& configuration["REACT_APP_general"]["color"]["buttonColor"]}`}>
       {innerWidth < 1200 ? (
         <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
       ) : (

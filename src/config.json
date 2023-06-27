@@ -292,10 +292,6 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-  "REACT_APP_color": {
-    "themeColor": "",
-    "buttonColor": ""
-  },
   "REACT_APP_footer": {
     "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
     "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
@@ -328,6 +324,10 @@
       "SessionEvents",
       "FeedbackFormAnswers",
       "SessionInfo"
-    ]
+    ],
+    "color": {
+      "themeColor": "green",
+      "buttonColor": "green"
+    }
   }
 }
