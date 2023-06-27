@@ -27,15 +27,15 @@
 
 ### Code Syntax, Logging, Styling and Requirements
 
-- This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use eslint as linter, prettier as a formatting tool and husky pre-commit hook
+- This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use [ESLint](https://eslint.org/) as the linter, [Prettier](https://prettier.io/) as the formatting tool, and [Husky](https://typicode.github.io/husky/) pre-commit hook
 
-- Prettier, the formatting tool will format the codes according to the defined rule. To see the formatting rules, see `.prettierrc` file in the root folder.
+- [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (see `.prettierrc` file in the root folder for the formatting rules)
 
-- The linter, eslint will identify, warn and in cases, throw errors if any portion of the code goes against the defined rules. To see the linting rules, see `.eslintrc.json` in the root folder.
+- [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (see `.eslintrc.json` in the root folder for the linting rules)
 
-- Husky pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors. In case of errors that cannot be fixed by the linter, the committing process will be terminated and the errors have to be fixed manually.
+- [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
 
-- It is possible to lint the code with the command `npm run lint`, `npm run lint:fix` and format with `npm run format` anytime.
+- It is possible to lint the code with the commands `npm run lint` and `npm run lint:fix`, and to format the code with the command `npm run format` anytime
 
 - All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any)
 
