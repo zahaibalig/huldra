@@ -22,7 +22,6 @@ const App = () => {
         "REACT_APP_summaryAndFeedback",
         "REACT_APP_end",
         "REACT_APP_survey",
-        "REACT_APP_footer",
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
         "REACT_APP_general"
@@ -44,7 +43,6 @@ const App = () => {
               <Survey
                 {...props}
                 REACT_APP_home={configuration["REACT_APP_home"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -56,7 +54,6 @@ const App = () => {
                 {...props}
                 REACT_APP_general={configuration["REACT_APP_general"]}
                 REACT_APP_registration={configuration["REACT_APP_registration"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -70,7 +67,6 @@ const App = () => {
                 REACT_APP_demonstration={
                   configuration["REACT_APP_demonstration"]
                 }
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -83,7 +79,6 @@ const App = () => {
                 REACT_APP_demonstration={
                   configuration["REACT_APP_demonstration"]
                 }
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -100,7 +95,6 @@ const App = () => {
                 REACT_APP_demonstration={
                   configuration["REACT_APP_demonstration"]
                 }
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -113,7 +107,6 @@ const App = () => {
                 REACT_APP_summaryAndFeedback={
                   configuration["REACT_APP_summaryAndFeedback"]
                 }
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
                 REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
@@ -124,7 +117,6 @@ const App = () => {
               <Survey
                 {...props}
                 REACT_APP_end={configuration["REACT_APP_end"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
               />
             )}
           />
