@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Save partial feedback form answers ([#81](https://github.com/simulamet-host/huldra-internal/issues/81))
 - Create development and release guidelines ([#84](https://github.com/simulamet-host/huldra-internal/issues/84))
 - Optionally highlight answers in the summary page ([#44](https://github.com/simulamet-host/huldra-internal/issues/44))
+- Document config parameters ([#139](https://github.com/simulamet-host/huldra-internal/issues/139))
 
 ### Changed
 <!--- [1.0.0] - 2021-04-08 -->
