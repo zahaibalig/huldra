@@ -5,7 +5,7 @@ All notable changes to the `dev` branch will be documented in this file, per rel
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [x.y.z] - yyyy-mm-dd
+## [2.0.0-26] - 2023-06-26
 
 ### Added
 <!--- [1.0.0] - 2021-04-08 -->
@@ -38,6 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!--- 2022-10-27 -->
 - Create summaryAndFeedback.css for all the styling in summaryAndFeedback.jsx, summary.jsx, and feedbackForm.jsx
 
+<!--- 2023-06-26 -->
+- Save partial feedback form answers ([#81](https://github.com/simulamet-host/huldra-internal/issues/81))
+- Create development and release guidelines ([#84](https://github.com/simulamet-host/huldra-internal/issues/84))
+- Optionally highlight answers in the summary page ([#44](https://github.com/simulamet-host/huldra-internal/issues/44))
+- Document config parameters ([#139](https://github.com/simulamet-host/huldra-internal/issues/139))
 
 ### Changed
 <!--- [1.0.0] - 2021-04-08 -->
@@ -89,7 +94,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - summaryAndFeedback.jsx, and its children summary.jsx and feedbackForm.jsx now imports all styling from summaryAndFeedback.css
 - Change all ID to classes
 - Change class names to follow global styling rules 
-  
+
+<!--- 2023-06-26 -->
+- Update documentation ([#148](https://github.com/simulamet-host/huldra-internal/issues/148))
 
 ### Fixed
 <!--- [1.0.0] - 2021-04-08 -->
