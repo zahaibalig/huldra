@@ -60,8 +60,8 @@
   },
   "lint-staged": {
     "src/**/*.{js, jsx, html, css, md}": [
-      "prettier --write .",
-      "eslint --fix ."
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "devDependencies": {
