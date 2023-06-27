@@ -28,7 +28,7 @@ import ProtectedRoute from "../minor-components/protectedRoute";
 import Header from "../minor-components/header";
 import { pushToBucket } from "../utils/cloudStorage";
 import { logSessionEvent } from "../utils/localStorage";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { getFolderReference, fetchCases } from "../utils/firebase";
@@ -104,13 +104,13 @@ const Survey = ({
   // use configuration parameter to allow/disallow proceeding to the next page without answering
   useEffect(() => {
     // only works on case pages
-    if (history.location.pathname.startsWith('/survey/case')) {
+    if (history.location.pathname.startsWith("/survey/case")) {
       const allowProceedingWithoutAnswering = REACT_APP_general["allowProceedingWithoutAnswering"];
       if (allowProceedingWithoutAnswering) {
         setDisableNextButton(false);
       }
     }
- }, [disableNextButton]);
+  }, [disableNextButton]);
 
   /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
@@ -123,13 +123,9 @@ const Survey = ({
       setActiveYears(999);
       setComments("Form filled out as part of development.");
       setTermsOfUse(true);
-      toastInfo(
-        "Form filled out as part of development.",
-        "top-center",
-        "req-error"
-      );
+      toastInfo("Form filled out as part of development.", "top-center", "req-error");
     }
-    if (history.location.pathname === "/survey/summary-and-feedback"){
+    if (history.location.pathname === "/survey/summary-and-feedback") {
       setOpenEndDialog(true);
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
     }
@@ -227,7 +223,10 @@ const Survey = ({
   // use configuration parameter to allow/disallow revisiting previous answers
   const allowRevisitingAnswers = REACT_APP_general["allowRevisitingAnswers"];
   // only works on case pages and the summary-and-feedback page
-  if (history.location.pathname.startsWith('/survey/case') || history.location.pathname === "/survey/summary-and-feedback") {
+  if (
+    history.location.pathname.startsWith("/survey/case") ||
+    history.location.pathname === "/survey/summary-and-feedback"
+  ) {
     if (allowRevisitingAnswers === false) {
       leftButtonClassName = "hidden-button";
     }
@@ -249,12 +248,8 @@ const Survey = ({
   const submitSurvey = () => {
     setOpenEndDialog(false);
 
-    const CaseStudyAnswers = JSON.parse(
-      localStorage.getItem("CaseStudyAnswers")
-    );
-    const FeedbackFormAnswers = JSON.parse(
-      localStorage.getItem("FeedbackFormAnswers")
-    );
+    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
+    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
     const ParticipantInfo = JSON.parse(localStorage.getItem("ParticipantInfo"));
     const SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
     const SoftwareInfo = JSON.parse(localStorage.getItem("SoftwareInfo"));
@@ -289,19 +284,13 @@ const Survey = ({
     history.replace("/survey/end");
   };
   const handleEndSurvey = () => {
-    const FeedbackFormAnswers = JSON.parse(
-      localStorage.getItem("FeedbackFormAnswers")
-    ) || {};
+    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
     let hasError = validateFeedbackForm(
       REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
       FeedbackFormAnswers
     ).hasError;
     if (hasError) {
-      toastError(
-        "Please verify mandatory fields.",
-        "top-center",
-        "req-error"
-      );
+      toastError("Please verify mandatory fields.", "top-center", "req-error");
     } else {
       setOpenEndDialog(true);
     }
@@ -341,11 +330,7 @@ const Survey = ({
         history.push(`/survey/demonstration`);
       }
     } else if (history.location.pathname === "/survey/demonstration") {
-      logSessionEvent(
-        "Next",
-        `Demonstration${currentDemonstrationPageIndex}`,
-        0
-      );
+      logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
       pushToBucket();
 
       if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
@@ -383,11 +368,7 @@ const Survey = ({
       pushToBucket();
       history.push(`/survey/case${casesCount}`);
     } else if (history.location.pathname === "/survey/demonstration") {
-      logSessionEvent(
-        "Previous",
-        `Demonstration${currentDemonstrationPageIndex}`,
-        PageLocator
-      );
+      logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, PageLocator);
       pushToBucket();
       switch (currentDemonstrationPageIndex) {
         case 1:
@@ -417,9 +398,7 @@ const Survey = ({
     } else if (PageLocator === 1) {
       logSessionEvent("Previous", `Case1`, PageLocator);
       pushToBucket();
-      setCurrentDemonstrationPageIndex(
-        Math.min(REACT_APP_demonstration.length, 3)
-      );
+      setCurrentDemonstrationPageIndex(Math.min(REACT_APP_demonstration.length, 3));
       switch (REACT_APP_demonstration.length) {
         case 0:
           history.push(`/survey/background`);
@@ -466,11 +445,7 @@ const Survey = ({
         (notifications && !validateEmail(email)) ||
         (email && !validateEmail(email))
       ) {
-        toastError(
-          "Please provide your email address.",
-          "top-center",
-          "email-error"
-        );
+        toastError("Please provide your email address.", "top-center", "email-error");
       } else {
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
@@ -486,13 +461,7 @@ const Survey = ({
             REACT_APP_caseOrder["cases"],
             REACT_APP_caseOrder["shuffle"]
           );
-        } else
-          CaseOrder = await fetchCases(
-            false,
-            `${rootDirectory}/gallery/cases/`,
-            null,
-            null
-          ); // todo: add a fallback in config.json url to fetch all the  cases
+        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null); // todo: add a fallback in config.json url to fetch all the  cases
         localStorage.clear();
         let uuid = uuidv4();
         //copy(uuid);
@@ -537,15 +506,10 @@ const Survey = ({
 
         let jsonString = JSON.stringify(saveToBucket);
         let blob = generateBlobFromJson(jsonString);
-        let fileRef = getFolderReference(
-          `${rootDirectory}/responses/${uuid}.json`
-        );
+        let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
         fileRef.put(blob);
         //todo check together with REACT_APP_outputJson
-        localStorage.setItem(
-          "ParticipantInfo",
-          JSON.stringify(ParticipantInfo)
-        );
+        localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
         setRouteIsAllowed(true);
 
         localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
@@ -564,13 +528,15 @@ const Survey = ({
         history.location.pathname === "/survey/registration"
           ? "full-scroll-survey-wrapper-no-padding"
           : "full-scroll-survey-wrapper"
-      }>
+      }
+    >
       <Modal
         className="modal"
         open={openDialog}
         onClose={handleDialogClose}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description">
+        aria-describedby="simple-modal-description"
+      >
         <ConfirmationDialog
           dialogQuestion={"Are you sure you want to go back?"}
           cancelText={"Cancel"}
@@ -589,7 +555,8 @@ const Survey = ({
         open={openEndDialog}
         onClose={handleEndDialogClose}
         aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description">
+        aria-describedby="simple-modal-description"
+      >
         <ConfirmationDialog
           dialogQuestion={"Do you want to submit your answers?"}
           cancelText={"Cancel"}
@@ -601,13 +568,11 @@ const Survey = ({
           }}
         />
       </Modal>
-      {localStorage.length > 0 &&
-        !pageIsRegistration &&
-        !pageIsEndPage &&
-        !pageIsHome ? (
+      {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
         <Header
-          leftLabel={`Participant ID: ${JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-            }`}
+          leftLabel={`Participant ID: ${
+            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+          }`}
           leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
@@ -617,11 +582,7 @@ const Survey = ({
             return;
           }}
           leftIcon2OnClick={() =>
-            copyToClipboard(
-              JSON.parse(localStorage.getItem("ParticipantInfo"))[
-              "ParticipantId"
-              ]
-            )
+            copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
           }
           rightLabel={
             history.location.pathname !== "/survey/end" && (
@@ -631,23 +592,17 @@ const Survey = ({
                    ${REACT_APP_header && REACT_APP_header["labelBackground"]}
                   `}</span>
                 ) : history.location.pathname === "/survey/demonstration" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_header && REACT_APP_header["labelDemonstration"]
-                    }`}</span>
-                ) : history.location.pathname ===
-                  "/survey/summary-and-feedback" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_header &&
-                    REACT_APP_header["labelSummaryAndFeedback"]
-                    }`}</span>
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${REACT_APP_header && REACT_APP_header["labelDemonstration"]}`}</span>
+                ) : history.location.pathname === "/survey/summary-and-feedback" ? (
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${REACT_APP_header && REACT_APP_header["labelSummaryAndFeedback"]}`}</span>
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_header && REACT_APP_header["labelCase"]
-                    } | Case ${PageLocator}/${casesCount}`}</span>
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${
+                    REACT_APP_header && REACT_APP_header["labelCase"]
+                  } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>
                 )}
@@ -708,9 +663,7 @@ const Survey = ({
           render={(props) => (
             <Demonstration
               {...props}
-              REACT_APP_demonstration={
-                REACT_APP_demonstration[demonstrationPageIndex]
-              }
+              REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
             />
           )}
         />
@@ -743,7 +696,7 @@ const Survey = ({
           render={(props) => {
             //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-            [PageLocator - 1].split("-")[0]
+              [PageLocator - 1].split("-")[0]
               .toLowerCase();
             return prefix === "video" ? (
               <CaseVideo
@@ -776,9 +729,7 @@ const Survey = ({
                 caseId={PageLocator}
                 REACT_APP_caseImage={REACT_APP_caseImage}
                 REACT_APP_outputJson={REACT_APP_outputJson}
-                REACT_APP_demonstration={
-                  REACT_APP_demonstration[demonstrationPageIndex]
-                }
+                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
               />
             );
           }}

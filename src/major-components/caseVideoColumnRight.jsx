@@ -50,9 +50,7 @@ const CaseVideoColumnRight = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div
-        className="video-ranking-wrapper" /* TODO: can be drilled down as a prop */
-      >
+      <div className="video-ranking-wrapper" /* TODO: can be drilled down as a prop */>
         <GenericImageSection
           title={topSectionTitle}
           imageClassName={topSectionImageClassName}

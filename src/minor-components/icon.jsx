@@ -14,12 +14,10 @@ const Icon = ({ onClick, tooltipMessage, className, ariaHidden = true }) => {
           className={className}
           aria-hidden={ariaHidden}
           onClick={onClick}
-          data-tip={tooltipMessage}></i>
+          data-tip={tooltipMessage}
+        ></i>
       ) : !onClick && tooltipMessage ? (
-        <i
-          className={className}
-          aria-hidden={ariaHidden}
-          data-tip={tooltipMessage}></i>
+        <i className={className} aria-hidden={ariaHidden} data-tip={tooltipMessage}></i>
       ) : !onClick && !tooltipMessage ? (
         <i className={className} aria-hidden={ariaHidden}></i>
       ) : onClick && !tooltipMessage ? (

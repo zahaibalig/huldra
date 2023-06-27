@@ -1,14 +1,14 @@
 .demonstration-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 .demonstration-image {
-    height: 22em;
-    width: auto;
+  height: 22em;
+  width: auto;
 }
 /* This code is no longer used in the code base */
 /*.demonstration-text {*/

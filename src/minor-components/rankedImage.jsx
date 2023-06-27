@@ -17,8 +17,7 @@ const RankedImage = ({
   useEffect(() => {
     setSubscribed(true);
     (async () => {
-      subscribed &&
-        (await getImageDownloadUrl(path).then((res) => setImagePath(res)));
+      subscribed && (await getImageDownloadUrl(path).then((res) => setImagePath(res)));
     })();
     return () => setSubscribed(false);
   }, [path, subscribed]);
@@ -36,12 +35,7 @@ const RankedImage = ({
           <span className="ranked-image-rank-text">{rankText}</span>
         </div>
       ) : (
-        <img
-          onClick={onClick}
-          src={imagePath}
-          alt={alternativeText}
-          className={className}
-        />
+        <img onClick={onClick} src={imagePath} alt={alternativeText} className={className} />
       )}
     </div>
   );

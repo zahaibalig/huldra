@@ -9,8 +9,7 @@ import { pushToBucket } from "../utils/cloudStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
-  const { firebaseConfig, rootDirectory, REACT_APP_general } =
-    useContext(AppContext); // todo: firebaseConfig should include rootDirectory
+  const { firebaseConfig, rootDirectory, REACT_APP_general } = useContext(AppContext); // todo: firebaseConfig should include rootDirectory
   const [participantId, setParticipantId] = useState("");
 
   useEffect(() => {
@@ -43,11 +42,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
       .child(`${rootDirectory}/responses/${participantId}.json`)
       .getDownloadURL()
       .catch((error) => {
-        toastError(
-          `The participant ID you entered is invalid.`,
-          "top-center",
-          "error"
-        );
+        toastError(`The participant ID you entered is invalid.`, "top-center", "error");
         return;
       })
       .then(async (res) => {
@@ -81,9 +76,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
           {(REACT_APP_home && REACT_APP_home["title"]) ||
             (REACT_APP_general && REACT_APP_general["appName"])}
         </h2>
-        <div className="home-intro">
-          {REACT_APP_home && REACT_APP_home["introText"]}
-        </div>
+        <div className="home-intro">{REACT_APP_home && REACT_APP_home["introText"]}</div>
       </div>
       <div className="home-registration-wrapper">
         <div className="home-login">
@@ -110,9 +103,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
           />
         </div>
         <div className="home-signup">
-          <p className="home-signup-message">
-            {REACT_APP_home && REACT_APP_home["signupText"]}
-          </p>
+          <p className="home-signup-message">{REACT_APP_home && REACT_APP_home["signupText"]}</p>
           <GenericButton
             onClick={handleRedirectToRegistration}
             hasIcon={true}
