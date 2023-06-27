@@ -74,6 +74,8 @@ You can customize your instance by changing configuration parameters in the `.en
 
 When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [**Deploy to a server**](#4-deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
+See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
+
 ### Color scheme
 You can add the following to `src/config.json` to specify a color scheme.
 
