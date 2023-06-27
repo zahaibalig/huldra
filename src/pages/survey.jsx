@@ -48,7 +48,8 @@ const Survey = ({
   REACT_APP_outputJson,
   REACT_APP_footer,
   REACT_APP_header,
-  REACT_APP_caseOrder,
+
+
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
@@ -110,7 +111,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
- }, [disableNextButton]);
+  }, [disableNextButton]);
 
   /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
@@ -129,7 +130,7 @@ const Survey = ({
         "req-error"
       );
     }
-    if (history.location.pathname === "/survey/summary-and-feedback"){
+    if (history.location.pathname === "/survey/summary-and-feedback") {
       setOpenEndDialog(true);
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
     }
@@ -475,16 +476,13 @@ const Survey = ({
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
         let CaseOrder;
-        if (REACT_APP_caseOrder && REACT_APP_caseOrder["cases"].length !== 0) {
-          /*   CaseOrder = fetchCasesFromConfig(
-            REACT_APP_caseOrder["cases"],
-            REACT_APP_caseOrder["shuffle"]
-          ); */
+
+        if (REACT_APP_general && REACT_APP_general["caseOrder"].length !== 0 && REACT_APP_general["caseOrder"]["cases"].length !== 0) {
           CaseOrder = await fetchCases(
             true,
             null,
-            REACT_APP_caseOrder["cases"],
-            REACT_APP_caseOrder["shuffle"]
+            REACT_APP_general["caseOrder"]["cases"],
+            REACT_APP_general["caseOrder"]["shuffle"]
           );
         } else
           CaseOrder = await fetchCases(

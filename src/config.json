@@ -111,7 +111,6 @@
       "textBefore": "You can have a demonstration page with a single image.",
       "textAfter": "You can use this page to describe how the rest of the survey works.",
       "hasImage": true,
-
       "imagePath": "/gallery/sample-image.png",
       "imageClassName": "demonstration-image"
     },
@@ -133,7 +132,9 @@
     }
   ],
   "REACT_APP_caseImage": {
-    "caseImageColumnLeft": { "label": "Case" },
+    "caseImageColumnLeft": {
+      "label": "Case"
+    },
     "caseImageColumnMiddle": {
       "title": "Answer Options",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
@@ -165,7 +166,9 @@
     }
   },
   "REACT_APP_caseHybrid": {
-    "caseHybridColumnLeft": { "label": "Case" },
+    "caseHybridColumnLeft": {
+      "label": "Case"
+    },
     "caseHybridColumnMiddle": {
       "title": "Answer Options",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
@@ -274,7 +277,10 @@
           "id": "Q3",
           "label": "Example multiple choice question.",
           "optional": false,
-          "choices": ["Example choice 1.", "Example choice 2."],
+          "choices": [
+            "Example choice 1.",
+            "Example choice 2."
+          ],
           "hasCommentBox": true,
           "commentBoxLabel": "Comment to the multiple choice question Q3."
         }
@@ -286,11 +292,6 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-    "REACT_APP_caseOrder": {
-    "cases": [
-    ],
-    "shuffle": "categorized"
-  },
   "REACT_APP_outputJson": [
     "ParticipantInfo",
     "CaseOrder",
@@ -301,7 +302,7 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "themeColor" : "",
+    "themeColor": "",
     "buttonColor": ""
   },
   "REACT_APP_footer": {
@@ -323,6 +324,10 @@
     "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false,
     "caseImageViewDetailsMandatory": true,
-    "caseHybridViewDetailsMandatory": true
+    "caseHybridViewDetailsMandatory": true,
+    "caseOrder": {
+      "cases": [],
+      "shuffle": "categorized"
+    }
   }
 }

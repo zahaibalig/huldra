@@ -26,9 +26,9 @@ const App = () => {
         "REACT_APP_footer",
         "REACT_APP_header",
         "REACT_APP_caseHybrid",
-        "REACT_APP_caseOrder",
-        "REACT_APP_color"
-      ])
+        "REACT_APP_color",
+        "REACT_APP_general"
+      ]),
     );
     function handleResize() { }
     window.addEventListener("resize", handleResize);
@@ -57,7 +57,7 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_caseOrder={configuration["REACT_APP_caseOrder"]}
+                REACT_APP_general={configuration["REACT_APP_general"]}
                 REACT_APP_registration={configuration["REACT_APP_registration"]}
                 REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
                 REACT_APP_footer={configuration["REACT_APP_footer"]}
