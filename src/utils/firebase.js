@@ -1,10 +1,9 @@
 import firebase from "firebase/app";
-import auth from "firebase/auth";
 import "firebase/storage";
 import axios from "axios";
 import _ from "lodash";
 
-/* GET FIREBASE ENVIRONEMENT VARIABLES. */
+/* GET FIREBASE ENVIRONMENT VARIABLES. */
 const {
   REACT_APP_FIREBASE_API_KEY,
   REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -28,7 +27,7 @@ const getFirebaseApp = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   } else {
-    /* IF ALREADY INTIALIZED USE THE CURRENT INSTANCE. */
+    /* IF ALREADY INITIALIZED USE THE CURRENT INSTANCE. */
     firebase.app();
   }
 };
