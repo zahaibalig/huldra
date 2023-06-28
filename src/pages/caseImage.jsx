@@ -15,6 +15,7 @@ import Popup from "../minor-components/popup";
 import { useLocation } from 'react-router-dom';
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
+import getConfig from "../utils/handleStorageConfig";
 
 const CaseImage = ({
   caseId /* todo:rename to avoid confusion with case uuid */,
@@ -29,35 +30,65 @@ const CaseImage = ({
   const [openChoiceB, setOpenChoiceB] = useState(false);
   const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
   const [galleryImages, setGalleryImages] = useState([]);
-  const { rootDirectory, disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
+  const {
+    rootDirectory,
+    disableNextButton,
+    setDisableNextButton,
+    REACT_APP_general,
+  } = useContext(AppContext);
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(
     localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
   );
-  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
-  const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
+  let choiceAHighRes = "";
+  let choiceBHighRes = "";
+  let choiceAThumbnail = "";
+  let choiceBThumbnail = "";
+  let originalThumbnail = "";
+  let originalHighRes = "";
+
+  const storageConfig = getConfig();
+  if (storageConfig.assetsStorageType === "local") {
+    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    // console.log("validCaseFiles", validCaseFiles);
+    if (validCaseFiles && validCaseFiles[caseId - 1]) {
+      const caseFiles = validCaseFiles[caseId - 1];
+      choiceAHighRes = caseFiles[2];
+      choiceBHighRes = caseFiles[3];
+      choiceAThumbnail = caseFiles[2];
+      choiceBThumbnail = caseFiles[3];
+      originalThumbnail = caseFiles[1];
+      originalHighRes = caseFiles[1];
+    }
+  } else if (storageConfig.assetsStorageType === "firebase") {
+    // the following file extensions will actually be overwritten in firebase.js
+    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }-a.png`;
+    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }-b.png`;
+    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }-a.png`;
+    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }-b.png`;
+    originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }.png`;
+    originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+      pagesOrder[caseId - 1]
+    }.png`;
+  }
 
   const useLocationChange = (action) => {
-    const location = useLocation()
-    React.useEffect(() => { action(location) }, [location])
+    const location = useLocation();
+    React.useEffect(() => {
+      action(location);
+    }, [location]);
   };
 
   useLocationChange((location) => {
@@ -134,15 +165,20 @@ const CaseImage = ({
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    const caseImageViewDetailsMandatory = REACT_APP_general["caseImageViewDetailsMandatory"];
+    const caseImageViewDetailsMandatory =
+      REACT_APP_general["caseImageViewDetailsMandatory"];
 
     if (
-        caseImageViewDetailsMandatory === true && (first === empty && (openedChoiceA === false || openedChoiceB === false))
+      caseImageViewDetailsMandatory === true &&
+      first === empty &&
+      (openedChoiceA === false || openedChoiceB === false)
     ) {
       //Show warning only when we don't have a ranking AND  at least one of the flags is still set to false.
       toastInfo("Please see both explanations.", "top-center", "select-error");
     } else if (
-        caseImageViewDetailsMandatory === false || (first !== empty || (openedChoiceA === true && openedChoiceB === true))
+      caseImageViewDetailsMandatory === false ||
+      first !== empty ||
+      (openedChoiceA === true && openedChoiceB === true)
     ) {
       /* TODO: read the corresponding string for the answers item in the output
       json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
@@ -196,8 +232,8 @@ const CaseImage = ({
           selectAsFirst("choiceA");
         }}
         leftSectionButtonOnClick={() => {
-            setOpenChoiceA(true);
-            setOpenedChoiceA(true);
+          setOpenChoiceA(true);
+          setOpenedChoiceA(true);
         }}
         leftSectionHasButton={true}
         leftSectionTextWithIconsHasLeftIcon={false}
@@ -234,15 +270,14 @@ const CaseImage = ({
         }
         rightSectionTextWithIconsHasRightIcon={true}
         rightSectionTextWithIconsRightIconClassName="fa fa-check viewed"
-        rightSectionShowTextWithIcons={
-          openedChoiceB === true
-        }
+        rightSectionShowTextWithIcons={openedChoiceB === true}
         rightSectionTextWithIconsClassName="case-image-text-with-icons"
       />
       <Modal
         className="case-image-modal"
         open={openChoiceA}
-        onClose={() => setOpenChoiceA(false)}>
+        onClose={() => setOpenChoiceA(false)}
+      >
         <Popup
           onCloseIconClick={() => setOpenChoiceA(false)}
           mainTitle={
@@ -278,7 +313,8 @@ const CaseImage = ({
       <Modal
         className="case-image-modal"
         open={openChoiceB}
-        onClose={() => setOpenChoiceB(false)}>
+        onClose={() => setOpenChoiceB(false)}
+      >
         <Popup
           onCloseIconClick={() => setOpenChoiceB(false)}
           mainTitle={

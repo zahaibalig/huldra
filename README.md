@@ -153,7 +153,7 @@ For an image case, a json file is also necessary. An image case needs 4 files mi
 | `FLAC`  | ✅   |
 | `MP3`  | ✅   |
 | `OGG`  | ✅   |
-| `WAW`  | ✅   |
+| `WAV`  | ✅   |
 | `WMA`  | ❌  |
 
 | Video Format | Support |
@@ -169,7 +169,9 @@ For an image case, a json file is also necessary. An image case needs 4 files mi
 | Image Format | Support |
 | ------------- | ------------- |
 | `JPEG`  | ✅   |
+| `JPG`  | ✅   |
 | `PNG`  | ✅  |
+| `GIF`  | ✅   |
 
 ## Outputs
 
@@ -225,6 +227,8 @@ We look for assets in `<Firebase root>/gallery` (`<Firebase root>` is set with `
 
 If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` in `config.json` must be populated with the list of case foldernames.
 
+As the cases are fetched at the beginning of the survey, if you change the value of this parameter, you need to go to the home page and restart the survey from scratch.
+
 - `responsesStorageType`:
   - Default value: `"download"`
   - Possible values: `"download"`, `"firebase"`
@@ -237,5 +241,5 @@ If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder`
   If that fails, it will show an error message and give the participant the option to download the responses as a file.
 
 # Test assets
-We add test assets to /src/assets/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
+We add test assets to /public/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
 The assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).

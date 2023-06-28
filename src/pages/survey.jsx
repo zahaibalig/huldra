@@ -475,6 +475,7 @@ const Survey = ({
       } else {
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
+        localStorage.clear();
         let CaseOrder;
         if (REACT_APP_caseOrder && REACT_APP_caseOrder["cases"].length !== 0) {
           /*   CaseOrder = fetchCasesFromConfig(
@@ -494,7 +495,6 @@ const Survey = ({
             null,
             null
           ); // todo: add a fallback in config.json url to fetch all the  cases
-        localStorage.clear();
         let uuid = uuidv4();
         //copy(uuid);
         let ParticipantInfo = {

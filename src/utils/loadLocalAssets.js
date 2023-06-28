@@ -26,8 +26,8 @@ const fetchCases = async () => {
     }
   }
 
-  // console.log("validCases = ", validCases);
-  // console.log("validCaseFiles = ", validCaseFiles);
+  console.log("validCases = ", validCases);
+  console.log("validCaseFiles = ", validCaseFiles);
 
   localStorage.setItem("validCaseFiles", JSON.stringify(validCaseFiles));
 
@@ -120,7 +120,8 @@ const validateCase = async (caseName) => {
   return files;
 };
 
-/** check if a file exists
+/**
+ * check if a file exists
  * @param {string} fullPath - the full path of the file
  * @param {string} fileType - the type of the file
  * @returns {Promise<boolean>} - true if the file exists, false otherwise
@@ -175,10 +176,7 @@ const getFileNameGroup = async (fileNameArrayArray, fileType) => {
   return group;
 };
 
-const getAsset = async (path) => {
-  fetchCases();
-  // console.log("getAsset: path = ", path);
-
+const getAsset = (path) => {
   // for local assets, returning the path is enough
   return path;
 };
