@@ -34,10 +34,7 @@ const RadioInput = ({
       />
       <span className="radio-question">
         {showTooltip && (
-          <Icon
-            tooltipMessage={tooltipMessage}
-            className=" fa fa-info-circle form-tooltip ml-1"
-          />
+          <Icon tooltipMessage={tooltipMessage} className=" fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
         {label} {!optional && <Asterisk />}
       </span>

@@ -2,7 +2,7 @@
 
 ## Introduction and Terminology
 
-- A (pre-/regular/patch) release is only made when the code is “production-ready” 
+- A (pre-/regular/patch) release is only made when the code is “production-ready”
 - The code is considered "production-ready" whenever it can also be shared publicly [in the public repo](https://github.com/simula/huldra)
 - We adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html), and use numeric values[^1] for all major, minor, patch, and pre-release identifiers
 
@@ -12,19 +12,19 @@
 
 - A "pre-release" can be used when a regular release is not ready (i.e., updates to the codebase are not necessarily aligned with planned milestones and associated issues)
 - **Source branch:** pre-releases are made from `main`
-- **Version tag:**  pre-releases use version tags in `vX.Y.Z-T` format[^2]
+- **Version tag:** pre-releases use version tags in `vX.Y.Z-T` format[^2]
 
 [^2]: Releases are referred to in `[X.Y.Z(-T)] - yyyy-mm-dd` format in `CHANGELOG.md`, where `yyyy`, `mm`, and `dd` are the year, month, day of release respectively.
 
 ### Regular Releases
 
 - **Source branch:** regular releases are made from `main`.
-- **Version tag:**  regular releases use version tags in `vX.Y.Z` format[^2]
+- **Version tag:** regular releases use version tags in `vX.Y.Z` format[^2]
 
 ### Hotfix and Patch Releases
 
 - **Source branch:** patch releases can be made from `dev` as well as `main` (changes do not need to be deployed in `main` at the time of release).
-- **Version tag:**  patch releases use version tags in `vX.Y.Z` format, where only `Z` should be updated compared to an **existing** tag `vX.Y.-`[^2]
+- **Version tag:** patch releases use version tags in `vX.Y.Z` format, where only `Z` should be updated compared to an **existing** tag `vX.Y.-`[^2]
 
 ## Checklist
 

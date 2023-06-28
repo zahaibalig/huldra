@@ -28,10 +28,7 @@ const PopupWithGallery = React.forwardRef(
         </div>{" "}
         <div className="modal-detail-body">
           <div className="modal-detail-body-row">
-            <RankedImage
-              path={preview}
-              className="modal-detail-image-wrapper"
-            />
+            <RankedImage path={preview} className="modal-detail-image-wrapper" />
 
             <div className="modal-detail-text-content">
               <div className="original-vs-explanation">
@@ -62,9 +59,7 @@ const PopupWithGallery = React.forwardRef(
               galleryImages.map((e, index) => (
                 <RankedImage
                   key={index}
-                  onClick={() =>
-                    setPreview(e.replace("thumbnails", "originals"))
-                  }
+                  onClick={() => setPreview(e.replace("thumbnails", "originals"))}
                   className="gallery-image"
                   index={index}
                   path={e}

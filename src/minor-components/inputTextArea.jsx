@@ -14,19 +14,18 @@ const InputTextArea = ({
   type = "text",
   className = "feedback-text-input",
 }) => {
-
   /**
- * get the saved answer from local storage, so as to repopulate the answer
- * @param   {string} id The id of the question. If it is comment to mc questions, the id is followed by '-comment'
- * @returns {string} text of the saved answer
- */
-   const getSavedAnswer = (id) => {
+   * get the saved answer from local storage, so as to repopulate the answer
+   * @param   {string} id The id of the question. If it is comment to mc questions, the id is followed by '-comment'
+   * @returns {string} text of the saved answer
+   */
+  const getSavedAnswer = (id) => {
     // if the id is comment to mc questions, the id is followed by '-comment'
-    if (id.endsWith('-comment')) {
+    if (id.endsWith("-comment")) {
       id = id.slice(0, -8);
     }
 
-    let text = '';
+    let text = "";
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
     if (FeedbackFormAnswers) {
       const answer = FeedbackFormAnswers[id];
@@ -41,13 +40,9 @@ const InputTextArea = ({
     <div className={className}>
       <label htmlFor={id} className="radio-question">
         {showTooltip && (
-          <Icon
-            tooltipMessage={tooltipMessage}
-            className=" fa fa-info-circle form-tooltip ml-1"
-          />
+          <Icon tooltipMessage={tooltipMessage} className=" fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
-        {label}{" "}
-        {optional && <span className="input-text-area-optional-text"> (optional)</span>}{" "}
+        {label} {optional && <span className="input-text-area-optional-text"> (optional)</span>}{" "}
         {!optional && <Asterisk />}
       </label>
       <textarea

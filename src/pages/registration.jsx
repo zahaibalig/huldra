@@ -31,52 +31,36 @@ const Registration = ({
         <div className="horizontal-sections">
           <div className="vertical-section">
             <InputTextField
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q1"].label
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q1"].label}
               id="name"
               onChange={(e) => onNameChange(e)}
               optional={false}
             />
 
             <InputTextField
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q2"].label
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q2"].label}
               id="email"
               onChange={(e) => onEmailChange(e)}
               optional={true}
             />
             <InputTextField
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q3"].label
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q3"].label}
               id="country"
               onChange={(e) => onCountryChange(e)}
-              showTooltip={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q3"].showTooltip
-              }
+              showTooltip={REACT_APP_registration && REACT_APP_registration["Q3"].showTooltip}
               optional={false}
-              tooltipMessage={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q3"].tooltipMessage
-              }
+              tooltipMessage={REACT_APP_registration && REACT_APP_registration["Q3"].tooltipMessage}
             />
             <InputTextArea
               id="comments"
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q4"].label
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q4"].label}
               onChange={(e) => onCommentsChange(e)}
               optional={true}
             />
           </div>
           <div className="vertical-section">
             <InputRadio
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q5"].label
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q5"].label}
               onChange={handleDegreeChange}
               onTextChange={handleOtherDegreeChange}
               optional={false}
@@ -86,49 +70,27 @@ const Registration = ({
                 ["PhD", false, ""],
                 ["Other", true, "please specify"],
               ]}
-              showTooltip={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q5"].showTooltip
-              }
-              tooltipMessage={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q5"].tooltipMessage
-              }
+              showTooltip={REACT_APP_registration && REACT_APP_registration["Q5"].showTooltip}
+              tooltipMessage={REACT_APP_registration && REACT_APP_registration["Q5"].tooltipMessage}
             />
 
             <InputTextField
               onChange={(e) => onFieldOfExpertiseChange(e)}
               name="field-of-expertise"
               id="field-of-expertise"
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q6"].label
-              }
-              showTooltip={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q6"].showTooltip
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q6"].label}
+              showTooltip={REACT_APP_registration && REACT_APP_registration["Q6"].showTooltip}
               optional={false}
-              tooltipMessage={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q6"].tooltipMessage
-              }
+              tooltipMessage={REACT_APP_registration && REACT_APP_registration["Q6"].tooltipMessage}
             />
             <InputTextField
               onChange={(e) => onActiveYearsChange(e)}
               id="active-years"
               name="active-years"
-              label={
-                REACT_APP_registration && REACT_APP_registration["Q7"].label
-              }
-              showTooltip={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q7"].showTooltip
-              }
+              label={REACT_APP_registration && REACT_APP_registration["Q7"].label}
+              showTooltip={REACT_APP_registration && REACT_APP_registration["Q7"].showTooltip}
               optional={true}
-              tooltipMessage={
-                REACT_APP_registration &&
-                REACT_APP_registration["Q7"].tooltipMessage
-              }
+              tooltipMessage={REACT_APP_registration && REACT_APP_registration["Q7"].tooltipMessage}
             />
           </div>
         </div>

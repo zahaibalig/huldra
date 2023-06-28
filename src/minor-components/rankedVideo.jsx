@@ -8,8 +8,7 @@ const RankedVideo = ({ url, width, height, className, label }) => {
   useEffect(() => {
     setSubscribed(true);
     (async () => {
-      subscribed &&
-        (await getImageDownloadUrl(url).then((res) => setVideoUrl(res)));
+      subscribed && (await getImageDownloadUrl(url).then((res) => setVideoUrl(res)));
     })();
     return () => setSubscribed(false);
   }, [url, subscribed]);

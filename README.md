@@ -16,7 +16,7 @@ Currenty Huldra uses Google Firebase to store assets and responses (we may suppo
 - Click **+ Add project** and follow the prompts to create a project.
 - Click the **</>** icon to create a web app.
 - Once the web app is created, the project configuration page will be opened automatically. Here you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
- - In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
+- In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
 
 ### 2. Upload assets
 
@@ -35,7 +35,7 @@ You need to have [Node.js](https://nodejs.org/) installed on your computer.
 - Inside the folder of the source (where `package.json` is located), run `npm install`.
 - Create a file named `.env` in the same folder as `package.json`. The content of the file should be in the following format:
 
-````
+```
 REACT_APP_FIREBASE_API_KEY="Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp"
 REACT_APP_FIREBASE_AUTH_DOMAIN="foobar.firebaseapp.com"
 REACT_APP_FIREBASE_PROJECT_ID="foobar"
@@ -43,7 +43,7 @@ REACT_APP_FIREBASE_STORAGE_BUCKET="foobar.appspot.com"
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="1234567890"
 REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
-````
+```
 
 Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [**Set up a Firebase project**](#1-set-up-a-firebase-project).
 
@@ -62,7 +62,9 @@ For Netlify, you can set variables under **Site settings** -> **Build & deploy**
 For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
 
 ## Other issues about deployment
+
 ### CORS error messages from Firabase
+
 You can change Firebase settings to suit your needs.
 
 If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
@@ -70,6 +72,7 @@ If you see CORS error messages from Firabase in the console, that means you must
 # More about Huldra
 
 ## Configuration
+
 You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
 
 When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [**Deploy to a server**](#4-deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
@@ -103,6 +106,7 @@ The values of the colors are:
 ## Assets
 
 ### Overview
+
 Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases.
 
 If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these cases;
@@ -114,6 +118,7 @@ if empty, the app fetches all cases from Firebase.
 If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
 
 ### Naming convention
+
 The assets have to adhere to the following naming convention:
 
 - Folder: `<type>-<label>`
@@ -150,44 +155,46 @@ For an image case, a json file is also necessary. An image case needs 4 files mi
 ### Supported file extensions
 
 | Audio Format | Support |
-| ------------- | ------------- |
-| `AAC`  | ✅   |
-| `AIFF`  | ❌  |
-| `FLAC`  | ✅   |
-| `MP3`  | ✅   |
-| `OGG`  | ✅   |
-| `WAW`  | ✅   |
-| `WMA`  | ❌  |
+| ------------ | ------- |
+| `AAC`        | ✅      |
+| `AIFF`       | ❌      |
+| `FLAC`       | ✅      |
+| `MP3`        | ✅      |
+| `OGG`        | ✅      |
+| `WAW`        | ✅      |
+| `WMA`        | ❌      |
 
 | Video Format | Support |
-| ------------- | ------------- |
-| `AVI`  | ❌  |
-| `FLV`  | ❌  |
-| `MKV`  | ❌  |
-| `MOV`  | ✅   |
-| `MP4`  | ✅   |
-| `WEBM`  | ✅   |
-| `WMV`  | ❌  |
+| ------------ | ------- |
+| `AVI`        | ❌      |
+| `FLV`        | ❌      |
+| `MKV`        | ❌      |
+| `MOV`        | ✅      |
+| `MP4`        | ✅      |
+| `WEBM`       | ✅      |
+| `WMV`        | ❌      |
 
 | Image Format | Support |
-| ------------- | ------------- |
-| `JPEG`  | ✅   |
-| `PNG`  | ✅  |
+| ------------ | ------- |
+| `JPEG`       | ✅      |
+| `PNG`        | ✅      |
 
 ## Outputs
 
 You can retrieve participant response files from your Firebase storage bucket (`<root directory>` -> `responses`) at your convenience.
 
 ## References
+
 - [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887)
 - [Experiences and Lessons Learned from a Crowdsourced-Remote Hybrid User Survey Framework](https://ieeexplore.ieee.org/document/10019678)
 - [Automatic thumbnail selection for soccer videos using machine learning](https://dl.acm.org/doi/abs/10.1145/3524273.3528182)
 - [HOST-ATS: automatic thumbnail selection with dashboard-controlled ML pipeline and dynamic user survey](https://dl.acm.org/doi/abs/10.1145/3524273.3532908)
 - [Visual explanations for polyp detection: How medical doctors assess intrinsic versus extrinsic explanations](https://arxiv.org/abs/2204.00617)
 
+## Citation
 
- ## Citation
- If you find our work useful for your research, please include the following citation:
+If you find our work useful for your research, please include the following citation:
+
 ```
 @inproceedings{Hammou2022,
   doi = {10.1145/3524273.3532887},
@@ -204,10 +211,12 @@ You can retrieve participant response files from your Firebase storage bucket (`
 # Internal only
 
 ## Guidelines
+
 - `DEVELOPMENT-GUIDELINES.md`
 - `RELEASE-GUIDELINES.md`
 
 ## Keyboard shortcuts
+
 `Enter`: imitates the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
 
 `Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)

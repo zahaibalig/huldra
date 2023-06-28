@@ -44,9 +44,7 @@ const CaseHybridColumnRight = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div
-        className="case-hybrid-ranking-wrapper" /* TODO: can be drilled down as a prop */
-      >
+      <div className="case-hybrid-ranking-wrapper" /* TODO: can be drilled down as a prop */>
         <GenericImageSection
           title={topSectionTitle}
           imageClassName={topSectionImageClassName}

@@ -27,10 +27,7 @@ const PopupWithoutGallery = React.forwardRef(
         </div>{" "}
         <div className="modal-detail-body">
           <div className="modal-detail-body-row">
-            <RankedImage
-              path={preview}
-              className="modal-detail-image-wrapper"
-            />
+            <RankedImage path={preview} className="modal-detail-image-wrapper" />
 
             <div className="modal-detail-text-content">
               <div className="original-vs-explanation">
