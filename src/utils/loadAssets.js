@@ -12,10 +12,10 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
   let validCases;
 
   // firebase
-  validCases = await fetchCasesFirebase(configExists, path, cases, shuffle);
+  // validCases = await fetchCasesFirebase(configExists, path, cases, shuffle);
 
   // local
-  // validCases = fetchCasesLocal(configExists, path, cases, shuffle);
+  validCases = fetchCasesLocal(configExists, path, cases, shuffle);
 
   return validCases;
 };
@@ -38,9 +38,9 @@ const getAsset = async (path) => {
   }
 
   let url = getAssetLocal(path);
-  // if (!url) {
-  url = await getAssetFirebase(path);
-  // }
+  if (!url) {
+    url = await getAssetFirebase(path);
+  }
   return url;
 };
 

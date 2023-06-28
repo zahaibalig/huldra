@@ -13,9 +13,12 @@ const fetchCases = async () => {
   for (let i = 0; i < cases.length; i++) {
     const isValid = await validateCase(cases[i]);
     console.log(cases[i], isValid);
+    if (isValid) {
+      validCases.push(cases[i]);
+    }
   }
 
-  // console.log("validCases  = ", validCases);
+  console.log("validCases = ", validCases);
 
   return cases;
 };
@@ -123,37 +126,11 @@ const fileGroupExists = async (fileNameArrayArray, fileType) => {
   return true;
 };
 
-// for a given file type, this function checks all the supported file extensions to see if any of them exist. will return true on the first one that exists
-// const fileTypeExists = async (fileNameArray, fileType) => {
-//   for (let i = 0; i < fileNameArray.length; i++) {
-//     const fileName = fileNameArray[i];
-//     const exists = await fileExists(fileName, fileType);
-//     if (exists) {
-//       return true;
-//     }
-//   }
-// };
-
 const getAsset = async (path) => {
-  fetchCases();
-  //   const exists = await fileExists("/gallery/countdown.mp4", "video");
-  //   console.log("exists = ", exists);
-  // console.log("getAsset: path = ", path);
+  console.log("getAsset: path = ", path);
 
-  // if path begins with a slash, remove it
-  if (path[0] === "/") {
-    path = path.slice(1);
-  }
-
-  // try to get the asset from the local assets folder. if it doesn't exist, return null
-  let url = null;
-  try {
-    url = require(`/${path}`);
-  } catch (err) {
-    //  console.log(err);
-  }
-
-  return url;
+  // for local assets, returning the path is enough
+  return path;
 };
 
 
