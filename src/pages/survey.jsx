@@ -45,7 +45,6 @@ const Survey = ({
   REACT_APP_caseHybrid,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
-  REACT_APP_header,
 
 
 }) => {
@@ -624,25 +623,24 @@ const Survey = ({
               <div className="survey-header">
                 {history.location.pathname === "/survey/background" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${REACT_APP_header && REACT_APP_header["labelBackground"]}
+                   ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelBackground"]}
                   `}</span>
                 ) : history.location.pathname === "/survey/demonstration" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]
                     } |
-                  ${REACT_APP_header && REACT_APP_header["labelDemonstration"]
+                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelDemonstration"]
                     }`}</span>
                 ) : history.location.pathname ===
                   "/survey/summary-and-feedback" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]
                     } |
-                  ${REACT_APP_header &&
-                    REACT_APP_header["labelSummaryAndFeedback"]
+                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]
                     }`}</span>
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]
                     } |
-                  ${REACT_APP_header && REACT_APP_header["labelCase"]
+                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelCase"]
                     } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>

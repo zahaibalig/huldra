@@ -292,12 +292,6 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-  "REACT_APP_header": {
-    "labelBackground": "Background",
-    "labelDemonstration": "Demonstration",
-    "labelCase": "Questionnaire",
-    "labelSummaryAndFeedback": "Summary and Feedback"
-  },
   "REACT_APP_general": {
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
@@ -328,6 +322,12 @@
       "icon1Url": "mailto:huldra@simula.no",
       "icon2Url": "https://github.com/simula/huldra",
       "label": "huldra@simula.no"
+    },
+    "header": {
+      "labelBackground": "Background",
+      "labelDemonstration": "Demonstration",
+      "labelCase": "Questionnaire",
+      "labelSummaryAndFeedback": "Summary and Feedback"
     }
   }
 }
