@@ -807,71 +807,122 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 
 
-## REACT_APP_footer
-
-The footer component is common to all pages in the survey (except warning page). 
-The footer is configured using the `REACT_APP_footer` block in the `config.json` file. 
-
-### Parameters
-
-The `REACT_APP_footer` block contains 5 elements.
-- `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
-- `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
-- `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
-- `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
-- `label`: The text between two icons can be configured here.
-
-### Visual Overview
-
-<kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
-
-### Sample Config
-
-```json
- "REACT_APP_footer": {
-    "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
-    "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
-    "icon1Url": "mailto:huldra@simula.no",
-    "icon2Url": "https://github.com/simula/huldra",
-    "label": "huldra@simula.no"
-  }
-```
-
-
-
-## REACT_APP_header
-
-The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page). 
-The header is configured using the `REACT_APP_header` block in the `config.json` file. 
-
-### Parameters
-
-The `REACT_APP_header` block contains 4 elements.
-- `labelBackground`: This element is used to configure the title of the header on the Background page.
-- `labelDemonstration`: This element is used to configure the title of the header on the Demonstration page.
-- `labelCase`: This element is used to configure the title of the header on the cases pages.
-- `labelSummaryAndFeedback`: This element is used to configure the title of the header on the Summary and Feedback page.
-
-### Visual Overview
-
-<kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
-<kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
-<kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
-<kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
-
-
-### Sample Config
-
-```json
- "REACT_APP_header": {
-    "labelBackground": "Background",
-    "labelDemonstration": "Demonstration",
-    "labelCase": "Questionnaire",
-    "labelSummaryAndFeedback": "Summary and Feedback"
-  }
-
-```
 
 
 ## REACT_APP_general
+This component is a general component which configures various properties of the Huldra framework. This component is used to alter Huldra's behviour and working.
 
+### Parameters
+
+The `REACT_APP_general` block contains 11 elements.
+- `softwareInfoTag`: This tag serves the purpose of defining the software version or providing software information. The details specified here are prominently displayed in the generated JSON output file.
+- `appName`: This tag is used to congigure the app name which is displayed on the header. (Refer to the visual overview under the header subsection here for better understanding.)
+- `allowRevisitingAnswers`: This tag can take 2 values, i.e., True or False. Setting the value to False will not allow users to visit previous question.
+- `allowProceedingWithoutAnswering`: This tag can take 2 values, i.e., True or False. Setting the value to True will let users move on to another question without answering it, basically making the questions optional to answer.
+- `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
+- `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
+- `caseOrder`: This parameter defines the order of the cases shown to the user.
+    #### Parameters
+    - `cases:` This is where you write the cases (folder names in firebase directory) that you want to show to the user.
+    - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
+
+  NB: If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+
+- `color`: This element can be used to define the colour scheme of the app. It has 2 subelements. 
+    #### Parameters
+   - `themeColor:` Here you can define the theme colour of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
+
+   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
+
+  NB: You can pick from the following lists of colours only:
+
+  - 'blue': $\color{#38c3f2}{■}$ (#38c3f2)
+  - 'green': $\color{#6db784}{■}$ (#6db784);
+  - 'purple': $\color{#9b45b2}{■}$ (#9b45b2);
+  - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
+  - 'teal': $\color{#2b6777}{■}$ (#2b6777);
+  - 'orange': $\color{#eb6b40}{■}$ (#eb6b40);
+
+-  `footer`:
+
+    The footer component is common to all pages in the survey (except warning page). 
+    The footer is configured using the `footer` block under `REACT_APP_general` in the `config.json` file. 
+
+    #### Parameters
+
+    The `footer` block contains 5 elements.
+    - `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
+    - `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
+    - `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
+    - `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
+    - `label`: The text between two icons can be configured here.
+
+    #### Visual Overview
+
+    <kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
+
+
+
+
+-  #### `header`
+
+    The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page). 
+    The header is configured using the `header` block under `REACT_APP_general` in the `config.json` file. 
+
+    #### Parameters
+
+    The `header` block contains 4 elements.
+    - `labelBackground`: This element is used to configure the title of the header on the Background page.
+    - `labelDemonstration`: This element is used to configure the title of the header on the Demonstration page.
+    - `labelCase`: This element is used to configure the title of the header on the cases pages.
+    - `labelSummaryAndFeedback`: This element is used to configure the title of the header on the Summary and Feedback page.
+
+    #### Visual Overview
+
+    <kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
+    <kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
+    <kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
+    <kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
+
+
+  ### Sample Config
+```
+    
+     "REACT_APP_general": {
+    "softwareInfoTag": "NA (Development)",
+    "appName": "Huldra",
+    "allowRevisitingAnswers": true,
+    "allowProceedingWithoutAnswering": true,
+    "caseImageViewDetailsMandatory": true,
+    "caseHybridViewDetailsMandatory": true,
+    "caseOrder": {
+      "cases": [],
+      "shuffle": "categorized"
+    },
+    "outputJson": [
+      "ParticipantInfo",
+      "CaseOrder",
+      "SoftwareInfo",
+      "CaseStudyAnswers",
+      "SessionEvents",
+      "FeedbackFormAnswers",
+      "SessionInfo"
+    ],
+    "color": {
+      "themeColor": "blue",
+      "buttonColor": "yellow"
+    },
+    "footer": {
+      "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
+      "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
+      "icon1Url": "mailto:huldra@simula.no",
+      "icon2Url": "https://github.com/simula/huldra",
+      "label": "huldra@simula.no"
+    },
+    "header": {
+      "labelBackground": "Background",
+      "labelDemonstration": "Demonstration",
+      "labelCase": "Questionnaire",
+      "labelSummaryAndFeedback": "Summary and Feedback"
+    }
+  ```

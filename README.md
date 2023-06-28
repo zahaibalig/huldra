@@ -77,13 +77,14 @@ When you deploy to a server such as Heroku, you can specify configuration parame
 See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
 
 ### Color scheme
-You can add the following to `src/config.json` to specify a color scheme.
-
+To specify a color scheme, you need to navigate to src/config.json. Inside this file, you will find an element named 'REACT_APP_general'. Within this element, you can define the color scheme using the 'color' element, as shown below:
 ```
-  "REACT_APP_color": {
+"REACT_APP_general": {
+  "color": {
     "themeColor" : "<value>",
     "buttonColor" : "<value>"
-  },
+  }
+}
 ```
 
 Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.

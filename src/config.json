@@ -313,8 +313,8 @@
       "SessionInfo"
     ],
     "color": {
-      "themeColor": "green",
-      "buttonColor": "green"
+      "themeColor": "blue",
+      "buttonColor": "yellow"
     },
     "footer": {
       "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
