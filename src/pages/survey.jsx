@@ -45,8 +45,6 @@ const Survey = ({
   REACT_APP_caseHybrid,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
-
-
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
@@ -449,7 +447,11 @@ const Survey = ({
         setRouteIsAllowed(true);
         let CaseOrder;
 
-        if (REACT_APP_general && REACT_APP_general["caseOrder"].length !== 0 && REACT_APP_general["caseOrder"]["cases"].length !== 0) {
+        if (
+          REACT_APP_general &&
+          REACT_APP_general["caseOrder"].length !== 0 &&
+          REACT_APP_general["caseOrder"]["cases"].length !== 0
+        ) {
           CaseOrder = await fetchCases(
             true,
             null,
@@ -565,8 +567,9 @@ const Survey = ({
       </Modal>
       {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
         <Header
-          leftLabel={`Participant ID: ${JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-            }`}
+          leftLabel={`Participant ID: ${
+            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+          }`}
           leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
@@ -583,25 +586,32 @@ const Survey = ({
               <div className="survey-header">
                 {history.location.pathname === "/survey/background" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelBackground"]}
+                   ${
+                     REACT_APP_general &&
+                     REACT_APP_general["header"] &&
+                     REACT_APP_general["header"]["labelBackground"]
+                   }
                   `}</span>
                 ) : history.location.pathname === "/survey/demonstration" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelDemonstration"]
-                    }`}</span>
-                ) : history.location.pathname ===
-                  "/survey/summary-and-feedback" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]
-                    }`}</span>
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${
+                    REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelDemonstration"]
+                  }`}</span>
+                ) : history.location.pathname === "/survey/summary-and-feedback" ? (
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${
+                    REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]
+                  }`}</span>
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]
-                    } |
-                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelCase"]
-                    } | Case ${PageLocator}/${casesCount}`}</span>
+                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+                  ${
+                    REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelCase"]
+                  } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>
                 )}
@@ -695,7 +705,7 @@ const Survey = ({
           render={(props) => {
             //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-            [PageLocator - 1].split("-")[0]
+              [PageLocator - 1].split("-")[0]
               .toLowerCase();
             return prefix === "video" ? (
               <CaseVideo
@@ -724,9 +734,7 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_demonstration={
-                  REACT_APP_demonstration[demonstrationPageIndex]
-                }
+                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
               />
             );
           }}
@@ -749,14 +757,35 @@ const Survey = ({
         />
       </Switch>
 
-
       <Footer
-        label={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["label"]}
-        icon1ClassName={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["icon1ClassName"]}
-        icon2ClassName={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["icon2ClassName"]}
-        footerIconUrl={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["footerIconUrl"]}
-        icon1Url={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["icon1Url"]}
-        icon2Url={REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["icon2Url"]}
+        label={
+          REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["label"]
+        }
+        icon1ClassName={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon1ClassName"]
+        }
+        icon2ClassName={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon2ClassName"]
+        }
+        footerIconUrl={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["footerIconUrl"]
+        }
+        icon1Url={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon1Url"]
+        }
+        icon2Url={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon2Url"]
+        }
         leftButtonLabel="Previous"
         rightButtonLabel={rightButtonLabel}
         onLeftButtonClick={onLeftButtonClick}

@@ -1,15 +1,16 @@
 # Configuration File Documentation
 
-This document serves as a comprehensive guide to the parameters in the `config.json` file. 
+This document serves as a comprehensive guide to the parameters in the `config.json` file.
 
 <!---
-It describes each parameter and its purpose. 
+It describes each parameter and its purpose.
 Make sure to follow the instructions and guidelines mentioned for each parameter.
-The names in the table of content directly refer to the name of the configurable property. 
+The names in the table of content directly refer to the name of the configurable property.
 The properties which are next to the numbered list represent the page type that the particular parameter can configure, and the properties that are next to the bullet points represent the component of that page that it configures.
 -->
 
 The Huldra framework supports 8 type of pages[^1]. All pages are configurable using the `config.json` file.
+
 - **Warning:** Page used to communicate to users that there is a problem.
 - **Homepage:** Landing page, where the users can log in with an existing participant ID, or choose to go to the registration page to create a new participant ID.
 - **Registration:** Page used to retrieve participant information/metadata.
@@ -22,8 +23,6 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 ![Overview](./src/assets/documentation/documentation-main.png)
 
 [^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
- 
-
 
 ## Configuration Blocks
 
@@ -42,24 +41,23 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 13. [REACT_APP_header](#react_app_header)
 14. [REACT_APP_general](#react_app_general)
 
-
-
 ## REACT_APP_warning
 
-The warning page is used to display a warning when the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem. 
-The warning page is configured using the `REACT_APP_warning` block in the `config.json` file. 
+The warning page is used to display a warning when the user's screen resolution is less than 1200 x 800, or if there is any other rendering problem.
+The warning page is configured using the `REACT_APP_warning` block in the `config.json` file.
 
 ### Parameters
 
 The `REACT_APP_warning` block contains 2 elements.
-- `warningMessage`: The actual message displayed to the user when there is a rendering error is defined by this element. 
+
+- `warningMessage`: The actual message displayed to the user when there is a rendering error is defined by this element.
 - `title`: The heading of actual message displayed to the user when there is a rendering error is defined by this element.
 
 ### Visual Overview
 
 <kbd>![Warning](./src/assets/documentation/warning.png)</kbd>
 
-### Sample Config  
+### Sample Config
 
 ```json
 "REACT_APP_warning": {
@@ -68,17 +66,16 @@ The `REACT_APP_warning` block contains 2 elements.
 }
 ```
 
-
-
 ## REACT_APP_home
 
-The homepage serves as the landing page. 
-The homepage is configured using the `REACT_APP_homepage` block in the `config.json` file. 
+The homepage serves as the landing page.
+The homepage is configured using the `REACT_APP_homepage` block in the `config.json` file.
 
 ### Parameters
 
 The `REACT_APP_homepage` block contains 4 elements.
-- `title`: This element is used to show the title on the home page. 
+
+- `title`: This element is used to show the title on the home page.
 - `introText`: This element is used to configure the introduction text shown at the home page.
 - `signupText`: This element is used to configure the subheading, signup text shown at the home page.
 - `additionalText`: This element configures the additional text shown on the home page.
@@ -87,7 +84,7 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 <kbd>![Home](./src/assets/documentation/home.png)</kbd>
 
-### Sample Config 
+### Sample Config
 
 ```json
 "REACT_APP_home": {
@@ -98,12 +95,10 @@ The `REACT_APP_homepage` block contains 4 elements.
 }
 ```
 
-
-
 ## REACT_APP_registration
 
-The registration page is used to retrieve participant information/metadata. 
-The registration page is configured using the `REACT_APP_registration` block in the `config.json` file. 
+The registration page is used to retrieve participant information/metadata.
+The registration page is configured using the `REACT_APP_registration` block in the `config.json` file.
 
 ### Parameters
 
@@ -160,34 +155,33 @@ The registration page is configured using the `REACT_APP_registration` block in 
 ```
 -->
 
-
-
 ## REACT_APP_background
 
-The background page is used to display background information related to the study. 
-The background page is configured using the `REACT_APP_background` block in the `config.json` file. 
+The background page is used to display background information related to the study.
+The background page is configured using the `REACT_APP_background` block in the `config.json` file.
 
 ### Parameters
 
-The background page can contain as many sections as desired, where each section contains as many subsections as desired. 
+The background page can contain as many sections as desired, where each section contains as many subsections as desired.
 
 The `REACT_APP_warning` block contains the following elements for each section.
+
 - `sectionTitle`: Title of the section is defined with this property.
 - `sectionText`: Text of the section is defined with this property.
 - `sectionClassName`: Styling of section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `sectionTitleClassName`: Styling of title of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `sectionTextClassName`: Styling of text of the section is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
 - `sectionContent`: This element is used to define the subsections under sections. <!--- Create multipule objects under the array to create multipule subsections, i.e., every subsection is one object. --> Each object under `sectionContent` corresponds to a subsection, and contains the following elements.
-     - `title`: Title of the subsection is defined by this property.
-     - `sectionText`: Text of the subsection is defined by this property.
-     - `className`: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-     - `imagePath`: Define the path of the image located on firebase to here to display the image on subsection.
-     - `imageClassName`: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-     - `imageAlternativeText`: Alternative text to be displayed, if the image is not available is defined here.
-     - `descriptionClassName`: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-     - `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-     - `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
-  
+  - `title`: Title of the subsection is defined by this property.
+  - `sectionText`: Text of the subsection is defined by this property.
+  - `className`: Styling of subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+  - `imagePath`: Define the path of the image located on firebase to here to display the image on subsection.
+  - `imageClassName`: Styling of image on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+  - `imageAlternativeText`: Alternative text to be displayed, if the image is not available is defined here.
+  - `descriptionClassName`: Styling of description on the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+  - `titleClassName`: Styling of title of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+  - `textClassName`: Styling of text of the subsection is defined by choosing the predefined classes. Check the styling classes section for more details regarding particular classes.
+
 ### Visual Overview
 
 <kbd>![Background](./src/assets/documentation/background.png)</kbd>
@@ -257,7 +251,6 @@ The `REACT_APP_warning` block contains the following elements for each section.
   ]
 ```
 
-
 <!--
 `REACT_APP_background`: This element is used to define the information on background page. This is defined as an array, since multipule sections for information can be defined here. Every section is one object.
 
@@ -320,18 +313,17 @@ The `REACT_APP_warning` block contains the following elements for each section.
 ```
 -->
 
-
-
 ## REACT_APP_demonstration
 
-The demonstration page(s) can be configured to display various multimedia content. 
+The demonstration page(s) can be configured to display various multimedia content.
 The demonstration page(s) are configured using the `REACT_APP_demonstration` block in the `config.json` file.
 
 ### Parameters
 
-Huldra can include up to 3 demonstration pages, where each page can contain an image, video, or audio. Pages can also contain multiple elements. 
+Huldra can include up to 3 demonstration pages, where each page can contain an image, video, or audio. Pages can also contain multiple elements.
 
 The `REACT_APP_demonstration` block contains the following elements for each demonstration page.
+
 - `textBefore`: Text written on line 1 can be configured here.
 - `textAfter`: Text written on line 2 can be configured here.
 - `hasImage`: A bool. Set it true to display an image on the demonstration page.
@@ -346,15 +338,12 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 - `audioHeight`: Define the height of the audio player in px or em.
 - `audioWidth`: Define the width of the audio player in px or em.
 
-
-
 ### Visual Overview
+
 <kbd>![Demonstration (video and image)](./src/assets/documentation/demonstration_video_image.png)</kbd>
 <kbd>![Demonstration (image)](./src/assets/documentation/demonstration_image.png)</kbd>
 <kbd>![Demonstration (video)](./src/assets/documentation/demonstration_video.png)</kbd>
 <kbd>![Demonstration (audio)](./src/assets/documentation/demonstration_audio.png)</kbd>
-
-
 
 ### Sample Config
 
@@ -391,12 +380,12 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 -  **Description**: This element is used to configure the demonstartion page. You can demonstrate image, video, and audio to the user. It is mandatody to have this array. The number of objects in this array define the number of demonstartion pages. To have no demonstartion page at all, make this as an empty array. The demonstration page is comprised of the elements below:
 -->
 
-
-
 ## REACT_APP_caseImage
 
-The caseImage page is a main questionnaire page which displays a _caseImage_ type survey question. 
+The caseImage page is a main questionnaire page which displays a _caseImage_ type survey question.
+
 <!--- where a user can rank 2 images -->
+
 All case pages identified as being of type _caseImage_ are configured using the `REACT_APP_caseImage` block in the `config.json` file.
 
 ### Parameters
@@ -404,9 +393,11 @@ All case pages identified as being of type _caseImage_ are configured using the 
 The `REACT_APP_caseImage` block contains 3 sub-blocks.
 
 The `caseImageColumnLeft` sub-block is used to configure the left column, and ...
+
 - `label`: This element is used to configure the heading on the left column of case image page.
 
 The `caseImageColumnMiddle` sub-block is used to configure the middle column, and ...
+
 - `title`: This element is used to configure the heading on the middle column of case image page.
 - `text`: This element is used to configure the descriptive text on the middle column of case image page.
 - `leftSectionTitle`: This element is used to configure the heading text over the left image on the middle column of case image page.
@@ -416,21 +407,22 @@ The `caseImageColumnMiddle` sub-block is used to configure the middle column, an
 - `rightSectionButtonlabel`: This element is used to configure the text of the button located below the right image on the middle column of case image page.
 - `rightSectionTextWithIconsLabel`: This element is used to configure the text below the button located below the right image on the middle column of case image page. This text is only visible when the user has clicked on the mentioned button.
 - `popupA`: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of case image page.
-     - `mainTitle`: When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
-     - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
-     - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
-     - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+  - `mainTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+  - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+  - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+  - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
 - `popupB`: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of case image page.
-     - `mainTitle`: When the  button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
-     - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
-     - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
-     - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
-     - `gallerySubstring`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). **Note:** This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
+  - `mainTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+  - `leftImageTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the heading for the second image, which is the left one among the two small images, on the popup.
+  - `descriptionTitle`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description heading of the popup. The description heading is positioned below the 2 smaller images.
+  - `descriptionText`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures up the description text of the popup.
+  - `gallerySubstring`: When the button below the any of the smaller image on the middle column of the case image page is clicked a popup appears. This element configures the string below the larger image(1st one). **Note:** This is exclusive to popup B (the one which opens after clicking on the button located below the right image on the middle column of case image page.)
 
 The `caseImageColumnRight` sub-block is used to configure the right column, and ...
+
 - `title`: This element is used to configure the heading on the right column of case image page.
 - `text`: This element is used to configure the text description on the right column of case image page.
-  
+
 ### Visual Overview
 
 <kbd>![CaseImage](./src/assets/documentation/caseImage.png)</kbd>
@@ -473,12 +465,12 @@ The `caseImageColumnRight` sub-block is used to configure the right column, and 
   }
 ```
 
-
-
 ## REACT_APP_caseHybrid
 
-The caseHybrid page is a main questionnaire page which displays a _caseHybrid_ type survey question. 
+The caseHybrid page is a main questionnaire page which displays a _caseHybrid_ type survey question.
+
 <!--- where a user can view a video, compare two image options, and provide their answer in the right column -->
+
 All case pages identified as being of type _caseHybrid_ are configured using the `REACT_APP_caseHybrid` block in the `config.json` file.
 
 ### Parameters
@@ -486,9 +478,11 @@ All case pages identified as being of type _caseHybrid_ are configured using the
 The `REACT_APP_caseHybrid` block contains 3 sub-blocks.
 
 The `caseHybridColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+
 - `label`: This element is used to configure the heading on the left column of case hybrid page.
 
 The `caseHybridColumnMiddle` sub-block is used to configure the middle column, and contains the following elements..
+
 - `title`: This element is used to configure the heading on the middle column of case hybrid page.
 - `text`: This element is used to configure the descriptive text on the middle column of case hybrid page.
 - `leftSectionTitle`: This element is used to configure the heading text over the left image on the middle column of case hybrid page.
@@ -498,19 +492,20 @@ The `caseHybridColumnMiddle` sub-block is used to configure the middle column, a
 - `rightSectionButtonlabel`: This element is used to configure the text of the button located below the right image on the middle column of case hybrid page.
 - `rightSectionTextWithIconsLabel`: This element is used to configure the text below the button located below the right image on the middle column of case hybrid page. This text is only visible when the user has clicked on the mentioned button.
 - `popupA`: This element is used to configure the popup which opens after clicking on the button located below the left image on the middle column of caseHybrid page.
-     - `mainTitle`: When the  button below the any of the smaller image on the middle column of the case hybrid page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
-     - `leftImageTitle`: ...
-     - `rightImageTitle`: ...
-     - `descriptionTitle`: ...
-     - `descriptionText`: ...
+  - `mainTitle`: When the button below the any of the smaller image on the middle column of the case hybrid page is clicked a popup appears. This element configures up the main heading on the popup, which is positioned above the first image on the popup (the large one).
+  - `leftImageTitle`: ...
+  - `rightImageTitle`: ...
+  - `descriptionTitle`: ...
+  - `descriptionText`: ...
 - `popupB`: This element is used to configure the popup which opens after clicking on the button located below the right image on the middle column of caseHybrid page.
-     - `leftImageTitle`: ...
-     - `rightImageTitle`: ...
-     - `descriptionTitle`: ...
-     - `descriptionText`: ...
-     - `gallerySubstring`: ...
+  - `leftImageTitle`: ...
+  - `rightImageTitle`: ...
+  - `descriptionTitle`: ...
+  - `descriptionText`: ...
+  - `gallerySubstring`: ...
 
 The `caseHybridColumnRight` sub-block is used to configure the right column, and contains the following elements.
+
 - `title`: This element is used to configure the heading on the right column of case hybrid page.
 - `text`: This element is used to configure the text description on the right column of case image page.
 
@@ -556,12 +551,12 @@ The `caseHybridColumnRight` sub-block is used to configure the right column, and
   },
 ```
 
-
-
 ## REACT_APP_caseVideo
 
-The caseVideo page is a main questionnaire page which displays a _caseVideo_ type survey question. 
+The caseVideo page is a main questionnaire page which displays a _caseVideo_ type survey question.
+
 <!--- where a user can rank 2 videos -->
+
 All case pages identified as being of type _caseVideo_ are configured using the `REACT_APP_caseVideo` block in the `config.json` file.
 
 ### Parameters
@@ -569,14 +564,16 @@ All case pages identified as being of type _caseVideo_ are configured using the 
 The `REACT_APP_caseVideo` block contains 2 sub-blocks.
 
 The `caseVideoColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+
 - `label`: This element is used to configure the heading on the left column of case Video page.
 - `sectionVideoHeight`: This element is used to configure the height of the video players on the left column of case video page.
 - `sectionVideoWidth`: This element is used to configure the width of the video players on the left column of case video page.
 - `rightSectionVideoLabel`: This element is used to configure the heading of the right video on the left column of case video page.
 - `leftSectionVideoLabel`: This element is used to configure the heading of the left video on the left column of case video page.
-- `sectionButtonlabel`: This element is used to configure the label of the buttons below the videos  on the left column of case video page.
+- `sectionButtonlabel`: This element is used to configure the label of the buttons below the videos on the left column of case video page.
 
 The `caseVideoColumnRight` sub-block is used to configure the right column, and contains the following elements.
+
 - `title`: This element is used to configure the heading on the right column of case video page.
 - `text`: This element is used to configure the text description on the right column of case video page.
 
@@ -603,27 +600,29 @@ The `caseVideoColumnRight` sub-block is used to configure the right column, and 
   },
 ```
 
-
-
 ## REACT_APP_caseAudio
 
-The caseAudio page is a main questionnaire page which displays a _caseAudio_ type survey question. 
+The caseAudio page is a main questionnaire page which displays a _caseAudio_ type survey question.
+
 <!--- where a user can rank 2 audios -->
+
 All case pages identified as being of type _caseAudio_ are configured using the `REACT_APP_caseAudio` block in the `config.json` file.
 
 ### Parameters
 
 The `REACT_APP_caseAudio` block contains 2 sub-blocks.
 
-The `caseAudioColumnLeft` sub-block is used to configure the left column, and contains the following elements. 
+The `caseAudioColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+
 - `label`: This element is used to configure the heading on the left column of case Audio page.
 - `sectionAudioHeight`: This element is used to configure the height of the audio players on the left column of case audio page.
 - `sectionAudioWidth`: This element is used to configure the width of the audio players on the left column of case audio page.
 - `rightSectionAudioLabel`: This element is used to configure the heading of the right audio on the left column of case audio page.
 - `leftSectionAudioLabel`: This element is used to configure the heading of the left audio on the left column of case audio page.
-- `sectionButtonlabel`: This element is used to configure the label of the buttons below the audios  on the left column of case audio page.
+- `sectionButtonlabel`: This element is used to configure the label of the buttons below the audios on the left column of case audio page.
 
 The `caseAudioColumnRight` sub-block is used to configure the right column, and contains the following elements.
+
 - `title`: This element is used to configure the heading on the right column of case audio page.
 - `text`: This element is used to configure the text description on the right column of case audio page.
 
@@ -650,16 +649,16 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
   },
 ```
 
-
-
 ## REACT_APP_summaryAndFeedback
 
 The summary and feedback page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
+
 <!---
 The summary of the user's answers is displayed on the left column, and the right column is used for getting the feedback.
 left column, i.e., the summary column of the page
 right column, i.e., the feedback column of the page
 -->
+
 The summary and feedback page is configured using the `REACT_APP_summaryAndFeedback` block in the `config.json` file.
 
 ### Parameters
@@ -667,6 +666,7 @@ The summary and feedback page is configured using the `REACT_APP_summaryAndFeedb
 The `REACT_APP_summaryAndFeedback` block contains 2 sub-blocks.
 
 The `summary` sub-block is used to configure the left column, and contains the following elements.
+
 - `display`: It is a bool value, setting this value to false will not show the summary coulumn, it will only show the feedback form.
 - `highlightAnswers`: It is a bool value, setting this value to false will not show the highlight the answer's that users has selected for the questions.
 - `title`: The element is used to define the heading of the summary column.
@@ -676,21 +676,22 @@ The `summary` sub-block is used to configure the left column, and contains the f
 - `imagePlaceholderIconPath`: For questions containing audios or videos or hybrid cases, the image representing those cases can be configured here by giving it's location.
 
 The `feedbackForm` sub-block is used to configure the right column, and contains the following elements.
+
 - `title`: You can configure the heading of the feedback form with this element.
 - `text`: You can configure the text below the heading of the feedback form with this element.
-- `feedbackFormQuestions`: Questions can be added in the feedback from through this element. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `feedbackFormQuestions` can contain as many questions as desired, where each question is configured using the following elements. 
-     - `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
-     - `id`: The unique identifier of the question. Can be understood as question number.
-     - `label`: The question can be defined/written with this label.
-     - `optional`: A bool value. When set to false, the question becomes mandatory to answer.
-     - `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
-     - `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
-     - `commentBoxLabel`[^2]: The heading of the comment box is defined by this field. 
-     - `showToolTip`[^3]
-     - `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
-          - `question`: As the name suggest the questions is defined here.
-          - `size`: The size of the likert scale, corresponding to the question is defined by this element.
-          - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
+- `feedbackFormQuestions`: Questions can be added in the feedback from through this element. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `feedbackFormQuestions` can contain as many questions as desired, where each question is configured using the following elements.
+  - `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
+  - `id`: The unique identifier of the question. Can be understood as question number.
+  - `label`: The question can be defined/written with this label.
+  - `optional`: A bool value. When set to false, the question becomes mandatory to answer.
+  - `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
+  - `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
+  - `commentBoxLabel`[^2]: The heading of the comment box is defined by this field.
+  - `showToolTip`[^3]
+  - `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
+    - `question`: As the name suggest the questions is defined here.
+    - `size`: The size of the likert scale, corresponding to the question is defined by this element.
+    - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
 
 [^2]: Only for multiple choice type questions.
 [^3]: Only for text type questions.
@@ -777,16 +778,15 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
   }
 ```
 
-
-
 ## REACT_APP_end
 
-The end page is the final page of the survey, which is displayed after users complete the survey and submit their responses. 
-The end page is configured using the `REACT_APP_end` block in the `config.json` file. 
+The end page is the final page of the survey, which is displayed after users complete the survey and submit their responses.
+The end page is configured using the `REACT_APP_end` block in the `config.json` file.
 
 ### Parameters
 
 The `REACT_APP_homepage` block contains 3 elements.
+
 - `title`: This element is used to show the title on the end page.
 - `endMessage`: This element is used to show the last message below title on the end page.
 - `redirectTimeout`: The end page stays for a certain duration and then the user is redirected to the homepage. You can configure the time user stays at the end page in miliseconds here.
@@ -805,16 +805,14 @@ The `REACT_APP_homepage` block contains 3 elements.
   }
 ```
 
-
-
-
-
 ## REACT_APP_general
+
 This component is a general component which configures various properties of the Huldra framework. This component is used to alter Huldra's behviour and working.
 
 ### Parameters
 
 The `REACT_APP_general` block contains 11 elements.
+
 - `softwareInfoTag`: This tag serves the purpose of defining the software version or providing software information. The details specified here are prominently displayed in the generated JSON output file.
 - `appName`: This tag is used to congigure the app name which is displayed on the header. (Refer to the visual overview under the header subsection here for better understanding.)
 - `allowRevisitingAnswers`: This tag can take 2 values, i.e., True or False. Setting the value to False will not allow users to visit previous question.
@@ -822,17 +820,21 @@ The `REACT_APP_general` block contains 11 elements.
 - `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseOrder`: This parameter defines the order of the cases shown to the user.
-    #### Parameters
-    - `cases:` This is where you write the cases (folder names in firebase directory) that you want to show to the user.
-    - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
+
+  #### Parameters
+
+  - `cases:` This is where you write the cases (folder names in firebase directory) that you want to show to the user.
+  - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
 
   NB: If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
 
-- `color`: This element can be used to define the colour scheme of the app. It has 2 subelements. 
-    #### Parameters
-   - `themeColor:` Here you can define the theme colour of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
+- `color`: This element can be used to define the colour scheme of the app. It has 2 subelements.
 
-   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
+  #### Parameters
+
+  - `themeColor:` Here you can define the theme colour of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
+
+  - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
 
   NB: You can pick from the following lists of colours only:
 
@@ -843,51 +845,50 @@ The `REACT_APP_general` block contains 11 elements.
   - 'teal': $\color{#2b6777}{■}$ (#2b6777);
   - 'orange': $\color{#eb6b40}{■}$ (#eb6b40);
 
--  `footer`:
+- `footer`:
 
-    The footer component is common to all pages in the survey (except warning page). 
-    The footer is configured using the `footer` block under `REACT_APP_general` in the `config.json` file. 
+  The footer component is common to all pages in the survey (except warning page).
+  The footer is configured using the `footer` block under `REACT_APP_general` in the `config.json` file.
 
-    #### Parameters
+  #### Parameters
 
-    The `footer` block contains 5 elements.
-    - `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
-    - `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
-    - `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
-    - `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
-    - `label`: The text between two icons can be configured here.
+  The `footer` block contains 5 elements.
 
-    #### Visual Overview
+  - `icon1ClassName`: The first icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
+  - `icon2ClassName`: The second icon dsplayed on the footer can be configured with this element. The icon class is generated through font awesome which is a toolkit that provides scalable vector icons.
+  - `icon1Url`: The URL that a user will be redirected when clicked on first icon is defined here.
+  - `icon2Url`: The URL that a user will be redirected when clicked on second icon is defined here.
+  - `label`: The text between two icons can be configured here.
 
-    <kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
+  #### Visual Overview
 
+  <kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
 
+- #### `header`
 
+  The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page).
+  The header is configured using the `header` block under `REACT_APP_general` in the `config.json` file.
 
--  #### `header`
+  #### Parameters
 
-    The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page). 
-    The header is configured using the `header` block under `REACT_APP_general` in the `config.json` file. 
+  The `header` block contains 4 elements.
 
-    #### Parameters
+  - `labelBackground`: This element is used to configure the title of the header on the Background page.
+  - `labelDemonstration`: This element is used to configure the title of the header on the Demonstration page.
+  - `labelCase`: This element is used to configure the title of the header on the cases pages.
+  - `labelSummaryAndFeedback`: This element is used to configure the title of the header on the Summary and Feedback page.
 
-    The `header` block contains 4 elements.
-    - `labelBackground`: This element is used to configure the title of the header on the Background page.
-    - `labelDemonstration`: This element is used to configure the title of the header on the Demonstration page.
-    - `labelCase`: This element is used to configure the title of the header on the cases pages.
-    - `labelSummaryAndFeedback`: This element is used to configure the title of the header on the Summary and Feedback page.
+  #### Visual Overview
 
-    #### Visual Overview
+  <kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
+  <kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
+  <kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
+  <kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
 
-    <kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
-    <kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
-    <kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
-    <kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
+### Sample Config
 
-
-  ### Sample Config
 ```
-    
+
      "REACT_APP_general": {
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
@@ -925,4 +926,4 @@ The `REACT_APP_general` block contains 11 elements.
       "labelCase": "Questionnaire",
       "labelSummaryAndFeedback": "Summary and Feedback"
     }
-  ```
+```
