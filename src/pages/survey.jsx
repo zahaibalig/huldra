@@ -112,7 +112,6 @@ const Survey = ({
     }
   }, [disableNextButton]);
 
-  /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
     if (history.location.pathname === "/survey/registration") {
       setName("NA (Development)");
@@ -570,9 +569,8 @@ const Survey = ({
       </Modal>
       {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
         <Header
-          leftLabel={`Participant ID: ${
-            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-          }`}
+          leftLabel={`Participant ID: ${JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+            }`}
           leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
@@ -600,9 +598,8 @@ const Survey = ({
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_header && REACT_APP_header["labelCase"]
-                  } | Case ${PageLocator}/${casesCount}`}</span>
+                  ${REACT_APP_header && REACT_APP_header["labelCase"]
+                    } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>
                 )}
@@ -696,7 +693,7 @@ const Survey = ({
           render={(props) => {
             //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-              [PageLocator - 1].split("-")[0]
+            [PageLocator - 1].split("-")[0]
               .toLowerCase();
             return prefix === "video" ? (
               <CaseVideo
