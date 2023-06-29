@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState} from "react";
 import { AppContext } from "../context/appContext";
 import _ from "lodash";
 import RankedImage from "../minor-components/rankedImage";
+import getConfig from "../utils/handleStorageConfig";
 
 const Summary = ({
   highlightAnswers,
@@ -24,16 +25,25 @@ const Summary = ({
     setAnswers(caseStudyAnswers);
   }, []);
 
-  const imageClassName = (caseNumber, option) =>{
-    if (getAnswers !== null && getAnswers[caseNumber] !== undefined && highlightAnswers === true){
+  const imageClassName = (caseNumber, option) => {
+    if (
+      getAnswers !== null &&
+      getAnswers[caseNumber] !== undefined &&
+      highlightAnswers === true
+    ) {
       const answer = getAnswers[caseNumber];
       // highlight the option selected by the user
-      if (answer[0] === option){
-          return "summary-scaled-image-fit-height-summary highlight-image";
+      if (answer[0] === option) {
+        return "summary-scaled-image-fit-height-summary highlight-image";
       }
     }
     return "summary-scaled-image-fit-height-summary";
   };
+
+  const storageConfig = getConfig();
+  let caseImage = "";
+  let caseImageA = "";
+  let caseImageB = "";
 
   return (
     <div className="summary-wrapper">
@@ -49,15 +59,33 @@ const Summary = ({
         .map((item) => parseInt(item, 10))
         .map((item) => {
           let casePrefix = pagesOrder[item - 1].split("-")[0].toLowerCase();
-          let thumbnailPathSingle = `/gallery/cases/${pagesOrder[item - 1]}/${
-            pagesOrder[item - 1]
-          }-thumbnail.png`;
-          let thumbnailPathA = `/gallery/cases/${pagesOrder[item - 1]}/${
-            pagesOrder[item - 1]
-          }-a-thumbnail.png`;
-          let thumbnailPathB = `/gallery/cases/${pagesOrder[item - 1]}/${
-            pagesOrder[item - 1]
-          }-b-thumbnail.png`;
+
+          if (storageConfig.assetsStorageType === "local") {
+            const validCaseFiles = JSON.parse(
+              localStorage.getItem("validCaseFiles")
+            );
+            if (validCaseFiles && validCaseFiles[item - 1]) {
+              const caseFiles = validCaseFiles[item - 1];
+              if (casePrefix === "image") {
+                caseImage = caseFiles[1];
+                caseImageA = caseFiles[2];
+                caseImageB = caseFiles[3];
+              } else if (casePrefix === "hybrid") {
+                caseImageA = caseFiles[1];
+                caseImageB = caseFiles[2];
+              }
+            }
+          } else if (storageConfig.assetsStorageType === "firebase") {
+            caseImage = `/gallery/cases/${pagesOrder[item - 1]}/${
+              pagesOrder[item - 1]
+            }.png`;
+            caseImageA = `/gallery/cases/${pagesOrder[item - 1]}/${
+              pagesOrder[item - 1]
+            }-a.png`;
+            caseImageB = `/gallery/cases/${pagesOrder[item - 1]}/${
+              pagesOrder[item - 1]
+            }-b.png`;
+          }
 
           return (
             <div key={item} className="summary-case-answer">
@@ -73,11 +101,8 @@ const Summary = ({
                       : casePrefix === "audio"
                       ? `/gallery/empty-white.png`
                       : casePrefix === "hybrid"
-                      ? /* videoPlaceholderIconPath */ thumbnailPathSingle
-                      : /* ? videoPlaceholderIconPath */
-                        `/gallery/cases/${pagesOrder[item - 1]}/${
-                          pagesOrder[item - 1]
-                        }.png`
+                      ? videoPlaceholderIconPath
+                      : caseImage
                   }
                   alternativeText={`case`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
@@ -92,17 +117,13 @@ const Summary = ({
                       : casePrefix === "audio"
                       ? `${audioPlaceholderIconPath}`
                       : casePrefix === "hybrid"
-                      ? `${`/gallery/cases/${pagesOrder[item - 1]}/${
-                          pagesOrder[item - 1]
-                        }-a.png`}`
-                      : `/gallery/cases/${pagesOrder[item - 1]}/${
-                          pagesOrder[item - 1]
-                        }-a.png`
+                      ? caseImageA
+                      : caseImageA
                   }
                   alternativeText={`A`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
                   className={imageClassName(item, "A")}
-                  />
+                />
               </div>
               <div className={highlightClassName}>
                 <RankedImage
@@ -112,12 +133,8 @@ const Summary = ({
                       : casePrefix === "audio"
                       ? `${audioPlaceholderIconPath}`
                       : casePrefix === "hybrid"
-                      ? `${`/gallery/cases/${pagesOrder[item - 1]}/${
-                          pagesOrder[item - 1]
-                        }-b.png`}`
-                      : `/gallery/cases/${pagesOrder[item - 1]}/${
-                          pagesOrder[item - 1]
-                        }-b.png`
+                      ? caseImageB
+                      : caseImageB
                   }
                   alternativeText={`B`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
