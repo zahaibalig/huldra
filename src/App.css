@@ -399,8 +399,6 @@
 }
 
 /* BACKGROUND PAGE */
-/* TODO: make the name of this class more generic
-(it's being used by other pages like case)!!!! */
 .background-text-content-left {
   text-align: left;
 }
