@@ -26,8 +26,8 @@ const fetchCases = async () => {
     }
   }
 
-  console.log("validCases = ", validCases);
-  console.log("validCaseFiles = ", validCaseFiles);
+  // console.log("validCases = ", validCases);
+  // console.log("validCaseFiles = ", validCaseFiles);
 
   localStorage.setItem("validCaseFiles", JSON.stringify(validCaseFiles));
 

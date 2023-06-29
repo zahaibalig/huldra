@@ -100,25 +100,21 @@ The values of the colors are:
 ## Assets
 
 ### Overview
-Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases.
 
-If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these cases;
-if empty, the app fetches all cases from Firebase.
+The assets can be placed either locally or in your Firebase bucket. You can congifure this in `config.json` under `REACT_APP_general` -> `storage` -> `assetsStorageType`:
+- Default value: `"local"`
+- Possible values: `"local"`, `"firebase"`
 
-`"shuffle": "categorized"`: the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio)
-`"shuffle": "full"`: all the cases are shuffled
+We look for assets in `/public/gallery` if `assetsStorageType` is `local`, and
+`<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`.
 
-If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` in `config.json` must be populated with the list of case foldernames.
 
-### Naming convention
-The assets have to adhere to the following naming convention:
+As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
 
-- Folder: `<type>-<label>`
-- Main asset: `<type>-<label>.<extension>`
-- Option A: `<type>-<label>-a.<extension>`
-- Option B: `<type>-<label>-b.<extension>`
+In either storage type, the assets have to adhere to the following folder structure and naming convention.
 
-`<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
+If a case folder misses any of the required files, the case will be skipped.
 
 ### Directory tree
 
@@ -144,34 +140,47 @@ gallery
 
 For an image case, a json file is also necessary. An image case needs 4 files minimum.
 
+### Naming convention
+The assets have to adhere to the following naming convention:
+
+- Folder: `<type>-<label>`
+- Main asset: `<type>-<label>.<extension>`
+- Option A: `<type>-<label>-a.<extension>`
+- Option B: `<type>-<label>-b.<extension>`
+
+`<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
+
 ### Supported file extensions
 
-| Audio Format | Support |
-| ------------- | ------------- |
-| `AAC`  | ✅   |
-| `AIFF`  | ❌  |
-| `FLAC`  | ✅   |
-| `MP3`  | ✅   |
-| `OGG`  | ✅   |
-| `WAV`  | ✅   |
-| `WMA`  | ❌  |
+```
+image: ["jpg", "jpeg", "png", "gif"],
+audio: ["mp3", "wav", "ogg", "aac", "flac"],
+video: ["mp4", "webm", "mov"],
+```
 
-| Video Format | Support |
-| ------------- | ------------- |
-| `AVI`  | ❌  |
-| `FLV`  | ❌  |
-| `MKV`  | ❌  |
-| `MOV`  | ✅   |
-| `MP4`  | ✅   |
-| `WEBM`  | ✅   |
-| `WMV`  | ❌  |
+The file extensions must be lowercase.
 
-| Image Format | Support |
-| ------------- | ------------- |
-| `JPEG`  | ✅   |
-| `JPG`  | ✅   |
-| `PNG`  | ✅  |
-| `GIF`  | ✅   |
+### Case order
+
+If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` must be populated with the list of case foldernames.
+
+If `assetsStorageType` is `firebase`, the `cases` array under `REACT_APP_caseOrder` can be empty.
+If `cases` is not empty, the app uses these cases; if empty, the app fetches all cases from Firebase.
+
+The `shuffle` parameter under `REACT_APP_caseOrder` has the following effects:
+
+- If `cases` is empty: categorized shuffle
+- If `cases` is not empty:
+    - `"shuffle": "categorized"`: the order of the cases is shuffled within each case type, but the order of the types is hardcoded (image, hybrid, video, and audio)
+    - `"shuffle": "full"`: all the cases are shuffled
+    - If `shuffle` is not specified: the app uses the order specified in `cases`
+
+If you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
+
+### Test assets
+
+We put some test assets in /public/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
+The assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
 
@@ -213,33 +222,3 @@ You can retrieve participant response files from your Firebase storage bucket (`
 
 `Shift + F`: on the registration page which opens after clicking `Get participant ID`, automatically fill out the form and make the "Start Survey" button clickable (applicable fields are filled with the string "NA", in order to facilitate the filtering of such development/test/debug responses from Firebase later on)
 
-
-# REACT_APP_general
-Two new parameters will be added under `storage` under `REACT_APP_general` in `config.json`.
-
-- `assetsStorageType`:
-  - Default value: `"local"`
-  - Possible values: `"local"`, `"firebase"`
-
-We do not implement fallback for now, if their preferred storage type does not work, there is no recovery.
-
-We look for assets in `<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`, and in `src/assets/gallery` if `assetsStorageType` is `local`.
-
-If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` in `config.json` must be populated with the list of case foldernames.
-
-As the cases are fetched at the beginning of the survey, if you change the value of this parameter, you need to go to the home page and restart the survey from scratch.
-
-- `responsesStorageType`:
-  - Default value: `"download"`
-  - Possible values: `"download"`, `"firebase"`
-
-  If you set the value as `download`, when the participant finishes the survey and click submit, the app will let the participant download the responses as a file.
-  The download location will be chosen by the participant.
-
-  If you set the value as `firebase`, the app will upload the responses to Firebase.
-  The app will put responses under a folder named `responses` under `<Firebase root>` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
-  If that fails, it will show an error message and give the participant the option to download the responses as a file.
-
-# Test assets
-We add test assets to /public/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
-The assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
