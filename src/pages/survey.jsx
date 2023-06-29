@@ -129,13 +129,6 @@ const Survey = ({
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
     }
   });
-  /* TODO: Unify the implementatino of hot keys across the app */
-  /* HOTKEYS FOR CASE PAGE */
-  /*  useHotkeys("Escape", () => {
-    if (history.location.pathname.includes("/survey/case"))
-      setOpenDatasetBased(false);
-    setOpenIntrinsic(false);
-  }); */
 
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);
