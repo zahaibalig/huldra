@@ -1,7 +1,7 @@
 import { fetchConfigVariable } from "./handleConfigVars";
 
 /**
- * read from config.json. use the default values if the parameters are not defined
+ * read from config. use the default values if the parameters are not defined
  * @returns {object} - the config object for storage
  * @property {string} assetsStorageType - the type of storage for assets (local or firebase)
  * @property {string} responsesStorageType - the type of storage for responses (download or firebase)

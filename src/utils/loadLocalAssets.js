@@ -1,37 +1,74 @@
+import { fetchConfigVariable } from "./handleConfigVars";
+import _ from "lodash";
+
 /**
  * return the names of valid cases, and save the file names of the valid cases in localStorage
  * @returns {Promise<Array.<string>>} - an array of valid cases
  * @affects {localStorage} - sets the "validCaseFiles" item in localStorage
  */
 const fetchCases = async () => {
-  // read from config.json
-  const cases = [
-    "image-test",
-    "image-flower",
-    "audio-bird",
-    "video-bird",
-    "hybrid-flowerbird",
-  ];
+  // read from config
+  const caseConfig = fetchConfigVariable("REACT_APP_caseOrder");
+  const cases = caseConfig ? caseConfig.cases : [];
+  const shuffle = caseConfig ? caseConfig.shuffle : false;
 
-  // the names of the valid cases
-  const validCases = [];
-  // the file names of the valid cases
-  const validCaseFiles = [];
+  let validCases = [];
   for (let i = 0; i < cases.length; i++) {
     const caseFiles = await validateCase(cases[i]);
-    // console.log(cases[i], caseFiles);
     if (caseFiles) {
-      validCases.push(cases[i]);
-      validCaseFiles.push(caseFiles);
+      validCases.push({ name: cases[i], files: caseFiles });
     }
   }
 
-  // console.log("validCases = ", validCases);
-  // console.log("validCaseFiles = ", validCaseFiles);
+  // the names of the valid cases
+  let validCaseNames = [];
+  // the file names of the valid cases
+  let validCaseFiles = [];
+
+  // shuffle the cases according to the config
+  if (shuffle === "categorized") {
+    let casesByType = {
+      image: [],
+      hybrid: [],
+      video: [],
+      audio: [],
+    };
+
+    validCases.forEach((validCase) => {
+      const caseName = validCase.name;
+      const caseType = caseName.split("-")[0].toLowerCase();
+      casesByType[caseType].push(validCase);
+    });
+
+    Object.keys(casesByType).forEach((caseType) => {
+      casesByType[caseType] = _.shuffle(casesByType[caseType]);
+    });
+
+    validCaseNames = [
+      ...casesByType.image.map((validCase) => validCase.name),
+      ...casesByType.hybrid.map((validCase) => validCase.name),
+      ...casesByType.video.map((validCase) => validCase.name),
+      ...casesByType.audio.map((validCase) => validCase.name),
+    ];
+
+    validCaseFiles = [
+      ...casesByType.image.map((validCase) => validCase.files),
+      ...casesByType.hybrid.map((validCase) => validCase.files),
+      ...casesByType.video.map((validCase) => validCase.files),
+      ...casesByType.audio.map((validCase) => validCase.files),
+    ];
+  } else if (shuffle === "full") {
+    validCases = _.shuffle(validCases);
+    validCaseNames = validCases.map((validCase) => validCase.name);
+    validCaseFiles = validCases.map((validCase) => validCase.files);
+  } else {
+    validCaseNames = validCases.map((validCase) => validCase.name);
+    validCaseFiles = validCases.map((validCase) => validCase.files);
+  }
 
   localStorage.setItem("validCaseFiles", JSON.stringify(validCaseFiles));
 
-  return validCases;
+  return validCaseNames;
 };
 
 /**
@@ -49,7 +86,7 @@ const validateCase = async (caseName) => {
     video: ["mp4", "webm", "mov"],
   };
 
-  const type = caseName.split("-")[0];
+  const type = caseName.split("-")[0].toLowerCase();
   const fileNameBase = `${path}${caseName}/${caseName}`;
 
   // the files that exist

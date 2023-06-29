@@ -148,7 +148,7 @@ The assets have to adhere to the following naming convention:
 - Option A: `<type>-<label>-a.<extension>`
 - Option B: `<type>-<label>-b.<extension>`
 
-`<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
+`<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
 
 ### Supported file extensions
 
