@@ -277,7 +277,10 @@
           "id": "Q3",
           "label": "Example multiple choice question.",
           "optional": false,
-          "choices": ["Example choice 1.", "Example choice 2."],
+          "choices": [
+            "Example choice 1.",
+            "Example choice 2."
+          ],
           "hasCommentBox": true,
           "commentBoxLabel": "Comment to the multiple choice question Q3."
         }

@@ -124,7 +124,12 @@ const Survey = ({
     if (history.location.pathname === "/survey/summary-and-feedback") {
       setOpenEndDialog(true);
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
+
     }
+
+
+
+
   });
   /* TODO: Unify the implementatino of hot keys across the app */
   /* HOTKEYS FOR CASE PAGE */
@@ -448,9 +453,9 @@ const Survey = ({
         let CaseOrder;
 
         if (
-          REACT_APP_general &&
-          REACT_APP_general["caseOrder"].length !== 0 &&
-          REACT_APP_general["caseOrder"]["cases"].length !== 0
+          REACT_APP_general?.caseOrder?.length !== 0 &&
+          REACT_APP_general?.caseOrder?.cases?.length !== 0
+
         ) {
           CaseOrder = await fetchCases(
             true,
@@ -567,9 +572,8 @@ const Survey = ({
       </Modal>
       {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
         <Header
-          leftLabel={`Participant ID: ${
-            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-          }`}
+          leftLabel={`Participant ID: ${JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+            }`}
           leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
@@ -586,32 +590,28 @@ const Survey = ({
               <div className="survey-header">
                 {history.location.pathname === "/survey/background" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${
-                     REACT_APP_general &&
-                     REACT_APP_general["header"] &&
-                     REACT_APP_general["header"]["labelBackground"]
-                   }
+                   ${REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelBackground"]
+                    }
                   `}</span>
                 ) : history.location.pathname === "/survey/demonstration" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
+                  ${REACT_APP_general &&
                     REACT_APP_general["header"] &&
                     REACT_APP_general["header"]["labelDemonstration"]
-                  }`}</span>
+                    }`}</span>
                 ) : history.location.pathname === "/survey/summary-and-feedback" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]
-                  }`}</span>
+                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelSummaryAndFeedback"]
+                    }`}</span>
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
+                  ${REACT_APP_general &&
                     REACT_APP_general["header"] &&
                     REACT_APP_general["header"]["labelCase"]
-                  } | Case ${PageLocator}/${casesCount}`}</span>
+                    } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>
                 )}
@@ -705,7 +705,7 @@ const Survey = ({
           render={(props) => {
             //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-              [PageLocator - 1].split("-")[0]
+            [PageLocator - 1].split("-")[0]
               .toLowerCase();
             return prefix === "video" ? (
               <CaseVideo

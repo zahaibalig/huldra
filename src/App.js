@@ -55,11 +55,7 @@ const App = () => {
           <Route
             path="/survey/registration"
             render={(props) => (
-              <Survey
-                {...props}
-                REACT_APP_general={configuration["REACT_APP_general"]}
-                REACT_APP_registration={configuration["REACT_APP_registration"]}
-              />
+              <Survey {...props} REACT_APP_registration={configuration["REACT_APP_registration"]} />
             )}
           />
           <Route
