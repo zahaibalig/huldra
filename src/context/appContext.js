@@ -14,11 +14,6 @@ export const AppProvider = (props) => {
     "REACT_APP_FIREBASE_ROOT_DIRECTORY",
   ]);
   const REACT_APP_general = fetchConfigVariable("REACT_APP_general");
-  /* todo: 1) figure out the use case for this field in the ouptput json 
-  (e.g will this be used for A/B test? or indicating that a deployment is a debug/dev version...)
-           2) Decide whether it should be possible to configure externally 
-               or not (via environment varibles, similar to firebase variables) */
-
   const getCurrentPageIndex = () => {
     return setPageLocator(parseInt(localStorage.getItem("PageLocator"), 10));
   };
