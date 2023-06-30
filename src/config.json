@@ -228,8 +228,13 @@
   },
   "REACT_APP_caseOrder": {
     "cases": [
+      "image-test",
+      "image-flower",
+      "audio-bird",
+      "video-bird",
+      "hybrid-flowerbird"
     ],
-    "shuffle": "categorized"
+    "shuffle": ""
   },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
@@ -303,7 +308,7 @@
     "SessionInfo"
   ],
   "REACT_APP_color": {
-    "themeColor" : "",
+    "themeColor": "",
     "buttonColor": ""
   },
   "REACT_APP_footer": {

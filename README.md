@@ -177,10 +177,11 @@ The `shuffle` parameter under `REACT_APP_caseOrder` has the following effects:
 
 If you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
 
-### Test assets
+### Example assets
 
-We put some test assets in /public/gallery (minimal working example with all case types) so that when people clone the repo and run directly, they will run a fully working example locally.
-The assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
+We put some example assets in /public/gallery (minimal working example with all case types, as well as placeholder images and example assets for other pages),
+so that when people clone the repo and run directly, they will run a fully working example locally.
+The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
 
