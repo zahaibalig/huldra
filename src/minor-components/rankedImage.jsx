@@ -15,10 +15,12 @@ const RankedImage = ({
 }) => {
   const [imagePath, setImagePath] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  useEffect(async () => {
+  useEffect(() => {
     setSubscribed(true);
-    const imagePath = await getAsset(path);
-    setImagePath(imagePath);
+    (async () => {
+      const imagePath = await getAsset(path);
+      setImagePath(imagePath);
+    })();
     return () => setSubscribed(false);
   }, [path, subscribed]);
 

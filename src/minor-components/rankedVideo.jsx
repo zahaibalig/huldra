@@ -5,10 +5,12 @@ import { getAsset } from "../utils/loadAssets";
 const RankedVideo = ({ url, width, height, className, label }) => {
   const [videoUrl, setVideoUrl] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  useEffect(async () => {
+  useEffect(() => {
     setSubscribed(true);
-    const videoUrl = await getAsset(url);
-    setVideoUrl(videoUrl);
+    (async () => {
+      const videoUrl = await getAsset(url);
+      setVideoUrl(videoUrl);
+    })();
     return () => setSubscribed(false);
   }, [url, subscribed]);
   return (

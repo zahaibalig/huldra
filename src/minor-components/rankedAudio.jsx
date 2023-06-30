@@ -5,10 +5,12 @@ import { getAsset } from "../utils/loadAssets";
 const RankedAudio = ({ url, width, height, className, label }) => {
   const [audioUrl, setAudioUrl] = useState("");
   const [subscribed, setSubscribed] = useState(false);
-  useEffect(async () => {
+  useEffect(() => {
     setSubscribed(true);
-    const audioUrl = await getAsset(url);
-    setAudioUrl(audioUrl);
+    (async () => {
+      const audioUrl = await getAsset(url);
+      setAudioUrl(audioUrl);
+    })();
     return () => setSubscribed(false);
   }, [url, subscribed]);
   return (
