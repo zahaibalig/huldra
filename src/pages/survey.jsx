@@ -221,7 +221,6 @@ const Survey = ({
     }
   }
 
-  /* TODO: CLEAN UP THESE VARIABLES */
   let pageIsRegistration = history.location.pathname === "/survey/registration";
   let pageIsEndPage = history.location.pathname === "/survey/end";
   let pageIsHome = history.location.pathname === "/survey/home";
