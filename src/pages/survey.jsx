@@ -485,7 +485,6 @@ const Survey = ({
         let blob = generateBlobFromJson(jsonString);
         let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
         fileRef.put(blob);
-        //todo check together with REACT_APP_outputJson
         localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
         setRouteIsAllowed(true);
 
