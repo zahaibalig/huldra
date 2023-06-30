@@ -399,7 +399,6 @@ const Survey = ({
           setDemonstrationPageIndex(2);
           history.push(`/survey/demonstration`);
           break;
-        // todo:if possible we would like to dynamically redirect the default action to case 3
       }
     } else {
       logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
