@@ -1,13 +1,13 @@
-import React, {useEffect, useContext, useState} from "react";
-import {AppContext} from "../context/appContext";
-import {getFirebaseApp} from "../utils/firebase";
-import Modal from '@mui/material/Modal';
+import React, { useEffect, useContext, useState } from "react";
+import { AppContext } from "../context/appContext";
+import { getFirebaseApp } from "../utils/firebase";
+import Modal from "@mui/material/Modal";
 import CaseHybridColumnLeft from "../major-components/caseHybridColumnLeft";
 import CaseHybridColumnMiddle from "../major-components/caseHybridColumnMiddle";
 import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
 import Popup from "../minor-components/popup";
 import "../assets/css/caseHybrid.css";
-import {toastInfo} from "../utils/toast";
+import { toastInfo } from "../utils/toast";
 import getConfig from "../utils/handleStorageConfig";
 
 const CaseHybrid = ({
@@ -24,8 +24,7 @@ const CaseHybrid = ({
   const [openChoiceB, setOpenChoiceB] = useState(false);
   const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
 
-  const { disableNextButton, setDisableNextButton, REACT_APP_general } =
-    useContext(AppContext);
+  const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
@@ -52,21 +51,11 @@ const CaseHybrid = ({
     }
   } else if (storageConfig.assetsStorageType === "firebase") {
     // the following file extensions will actually be overwritten in firebase.js
-    videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-      pagesOrder[caseId - 1]
-    }.mp4`;
-    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-      pagesOrder[caseId - 1]
-    }-a.png`;
-    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-      pagesOrder[caseId - 1]
-    }-b.png`;
-    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-      pagesOrder[caseId - 1]
-    }-a.png`;
-    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-      pagesOrder[caseId - 1]
-    }-b.png`;
+    videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
+    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
   }
 
   useEffect(() => {
@@ -74,19 +63,14 @@ const CaseHybrid = ({
     setSubscribed(true);
     getFirebaseApp();
 
-    const CaseStudyAnswers = JSON.parse(
-      localStorage.getItem("CaseStudyAnswers")
-    );
+    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);
 
       if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "A") {
         setFirst(choiceAThumbnail);
         setSecond(choiceBThumbnail);
-      } else if (
-        CaseStudyAnswers[caseId] &&
-        CaseStudyAnswers[caseId][0] === "B"
-      ) {
+      } else if (CaseStudyAnswers[caseId] && CaseStudyAnswers[caseId][0] === "B") {
         setFirst(choiceBThumbnail);
         setSecond(choiceAThumbnail);
       }
@@ -120,8 +104,7 @@ const CaseHybrid = ({
             "top-center",
             "select-error"
           ); */
-    const caseHybridViewDetailsMandatory =
-      REACT_APP_general["caseHybridViewDetailsMandatory"];
+    const caseHybridViewDetailsMandatory = REACT_APP_general["caseHybridViewDetailsMandatory"];
 
     if (
       caseHybridViewDetailsMandatory === true &&
@@ -135,9 +118,7 @@ const CaseHybrid = ({
       first !== empty ||
       (openedChoiceA === true && openedChoiceB === true)
     ) {
-      const CaseStudyAnswers = JSON.parse(
-        localStorage.getItem("CaseStudyAnswers")
-      );
+      const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
       const newAnswers = { ...CaseStudyAnswers };
       if (choice === "choiceA") {
         newAnswers[caseId] = ["A", "B"];
@@ -172,9 +153,7 @@ const CaseHybrid = ({
         leftSectionClassName="case-hybrid-alternative-section"
         leftSectionImageUrl={choiceAThumbnail}
         leftSectionImageClassName="case-hybrid-scaled-image-fit-width"
-        leftSectionTitle={
-          REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionTitle
-        }
+        leftSectionTitle={REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionTitle}
         leftSectionButtonClassName="btn control"
         leftSectionButtonlabel={
           REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionButtonlabel
@@ -189,8 +168,7 @@ const CaseHybrid = ({
         leftSectionHasButton={true}
         leftSectionTextWithIconsHasLeftIcon={false}
         leftSectionTextWithIconsLabel={
-          REACT_APP_caseHybrid["caseHybridColumnMiddle"]
-            .leftSectionTextWithIconsLabel
+          REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionTextWithIconsLabel
         }
         leftSectionTextWithIconsHasRightIcon={true}
         leftSectionTextWithIconsRightIconClassName="fa fa-check viewed"
@@ -203,9 +181,7 @@ const CaseHybrid = ({
         }
         rightSectionImageUrl={choiceBThumbnail}
         rightSectionImageClassName="case-hybrid-scaled-image-fit-width"
-        rightSectionTitle={
-          REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionTitle
-        }
+        rightSectionTitle={REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionTitle}
         rightSectionButtonOnClick={() => {
           setOpenChoiceB(true);
           setOpenedChoiceB(true);
@@ -216,38 +192,25 @@ const CaseHybrid = ({
         }}
         rightSectionTextWithIconsHasLeftIcon={false}
         rightSectionTextWithIconsLabel={
-          REACT_APP_caseHybrid["caseHybridColumnMiddle"]
-            .rightSectionTextWithIconsLabel
+          REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionTextWithIconsLabel
         }
         rightSectionTextWithIconsHasRightIcon={true}
         rightSectionTextWithIconsRightIconClassName="fa fa-check viewed"
         rightSectionShowTextWithIcons={openedChoiceB === true}
         rightSectionTextWithIconsClassName="case-hybrid-text-with-icons"
       />
-      <Modal
-        className="modal"
-        open={openChoiceA}
-        onClose={() => setOpenChoiceA(false)}
-      >
+      <Modal className="modal" open={openChoiceA} onClose={() => setOpenChoiceA(false)}>
         <Popup
           onCloseIconClick={() => setOpenChoiceA(false)}
-          title={
-            REACT_APP_caseHybrid["caseHybridColumnMiddle"].popupA["mainTitle"]
-          }
+          title={REACT_APP_caseHybrid["caseHybridColumnMiddle"].popupA["mainTitle"]}
           imageUrl={choiceAHighRes}
           popupType="basic"
         />
       </Modal>
-      <Modal
-        className="modal"
-        open={openChoiceB}
-        onClose={() => setOpenChoiceB(false)}
-      >
+      <Modal className="modal" open={openChoiceB} onClose={() => setOpenChoiceB(false)}>
         <Popup
           onCloseIconClick={() => setOpenChoiceB(false)}
-          title={
-            REACT_APP_caseHybrid["caseHybridColumnMiddle"].popupB["mainTitle"]
-          }
+          title={REACT_APP_caseHybrid["caseHybridColumnMiddle"].popupB["mainTitle"]}
           imageUrl={choiceBHighRes}
           popupType="basic"
         />
@@ -255,14 +218,8 @@ const CaseHybrid = ({
       {casePageType === "ranking" && (
         <CaseHybridColumnRight
           className="case-hybrid-column"
-          title={
-            REACT_APP_caseHybrid &&
-            REACT_APP_caseHybrid["caseHybridColumnRight"].title
-          }
-          text={
-            REACT_APP_caseHybrid &&
-            REACT_APP_caseHybrid["caseHybridColumnRight"].text
-          }
+          title={REACT_APP_caseHybrid && REACT_APP_caseHybrid["caseHybridColumnRight"].title}
+          text={REACT_APP_caseHybrid && REACT_APP_caseHybrid["caseHybridColumnRight"].text}
           textClassName="case-hybrid-text"
           topSectionClassName="case-hybrid-generic-image-section"
           topSectionImageUrl={first}

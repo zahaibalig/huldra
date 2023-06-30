@@ -1,10 +1,9 @@
 import firebase from "firebase/app";
-import auth from "firebase/auth";
 import "firebase/storage";
 import axios from "axios";
 import _ from "lodash";
 
-/* GET FIREBASE ENVIRONEMENT VARIABLES. */
+/* GET FIREBASE ENVIRONMENT VARIABLES. */
 const {
   REACT_APP_FIREBASE_API_KEY,
   REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -28,7 +27,7 @@ const getFirebaseApp = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   } else {
-    /* IF ALREADY INTIALIZED USE THE CURRENT INSTANCE. */
+    /* IF ALREADY INITIALIZED USE THE CURRENT INSTANCE. */
     firebase.app();
   }
 };
@@ -58,17 +57,13 @@ const getStorageReference = () => {
 const listfolders = async (path) => {
   let folders = [];
   let response = await (await getFolderReference(path).listAll()).prefixes;
-  response.map((item) =>
-    folders.push(item._delegate._location.path_.split("/").pop())
-  );
+  response.map((item) => folders.push(item._delegate._location.path_.split("/").pop()));
   return folders;
 };
 
 const listFiles = async (path, substring) => {
   let galleryItems = [];
-  let result = await getFolderReference(
-    REACT_APP_FIREBASE_ROOT_DIRECTORY.concat(path)
-  ).listAll();
+  let result = await getFolderReference(REACT_APP_FIREBASE_ROOT_DIRECTORY.concat(path)).listAll();
   result._delegate["items"]
     .filter((e) => e._location.path_.includes(substring))
     .map((e) => {
@@ -92,9 +87,7 @@ const getAssetDownloadUrl = async (path) => {
   let newPath = split.join("/");
   let test = await getStorageReference().child(newPath).listAll();
   test = test._delegate.items.filter(
-    (item) =>
-      item._location.path_.split(".")[0] ===
-      appendedPath.split(".")[0].substring(1)
+    (item) => item._location.path_.split(".")[0] === appendedPath.split(".")[0].substring(1)
   );
 
   if (test[0] !== undefined) {

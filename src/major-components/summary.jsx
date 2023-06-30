@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/appContext";
 import _ from "lodash";
 import RankedImage from "../minor-components/rankedImage";
@@ -19,18 +19,12 @@ const Summary = ({
   const [getAnswers, setAnswers] = useState({});
 
   useEffect(() => {
-    const caseStudyAnswers = JSON.parse(
-      localStorage.getItem("CaseStudyAnswers")
-    );
+    const caseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     setAnswers(caseStudyAnswers);
   }, []);
 
   const imageClassName = (caseNumber, option) => {
-    if (
-      getAnswers !== null &&
-      getAnswers[caseNumber] !== undefined &&
-      highlightAnswers === true
-    ) {
+    if (getAnswers !== null && getAnswers[caseNumber] !== undefined && highlightAnswers === true) {
       const answer = getAnswers[caseNumber];
       // highlight the option selected by the user
       if (answer[0] === option) {
@@ -61,9 +55,7 @@ const Summary = ({
           let casePrefix = pagesOrder[item - 1].split("-")[0].toLowerCase();
 
           if (storageConfig.assetsStorageType === "local") {
-            const validCaseFiles = JSON.parse(
-              localStorage.getItem("validCaseFiles")
-            );
+            const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
             if (validCaseFiles && validCaseFiles[item - 1]) {
               const caseFiles = validCaseFiles[item - 1];
               if (casePrefix === "image") {
@@ -76,15 +68,9 @@ const Summary = ({
               }
             }
           } else if (storageConfig.assetsStorageType === "firebase") {
-            caseImage = `/gallery/cases/${pagesOrder[item - 1]}/${
-              pagesOrder[item - 1]
-            }.png`;
-            caseImageA = `/gallery/cases/${pagesOrder[item - 1]}/${
-              pagesOrder[item - 1]
-            }-a.png`;
-            caseImageB = `/gallery/cases/${pagesOrder[item - 1]}/${
-              pagesOrder[item - 1]
-            }-b.png`;
+            caseImage = `/gallery/cases/${pagesOrder[item - 1]}/${pagesOrder[item - 1]}.png`;
+            caseImageA = `/gallery/cases/${pagesOrder[item - 1]}/${pagesOrder[item - 1]}-a.png`;
+            caseImageB = `/gallery/cases/${pagesOrder[item - 1]}/${pagesOrder[item - 1]}-b.png`;
           }
 
           return (

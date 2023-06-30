@@ -16,8 +16,7 @@ const logSessionEvent = (ButtonType, Location, PageLocator) => {
     ButtonType,
     Timestamp,
   };
-  SessionEvents =
-    SessionEvents !== null ? [...SessionEvents, tail] : new Array(tail);
+  SessionEvents = SessionEvents !== null ? [...SessionEvents, tail] : new Array(tail);
   localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
   localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 };

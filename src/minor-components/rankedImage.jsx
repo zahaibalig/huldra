@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {getAsset} from "../utils/loadAssets";
+import { getAsset } from "../utils/loadAssets";
 
 const RankedImage = ({
   path = "/gallery/empty.png",
@@ -36,12 +36,7 @@ const RankedImage = ({
           <span className="ranked-image-rank-text">{rankText}</span>
         </div>
       ) : (
-        <img
-          onClick={onClick}
-          src={imagePath}
-          alt={alternativeText}
-          className={className}
-        />
+        <img onClick={onClick} src={imagePath} alt={alternativeText} className={className} />
       )}
     </div>
   );

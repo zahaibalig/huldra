@@ -81,14 +81,10 @@ const CaseImageColumnMiddle = ({
           imageRank={leftSectionImageRank}
           imageOnClick={leftSectionImageOnClick}
           textWithIconsHasLeftIcon={leftSectionTextWithIconsHasLeftIcon}
-          textWithIconLeftIconClassName={
-            leftSectionTextWithIconLeftIconClassName
-          }
+          textWithIconLeftIconClassName={leftSectionTextWithIconLeftIconClassName}
           textWithIconsLabel={leftSectionTextWithIconsLabel}
           textWithIconsHasRightIcon={leftSectionTextWithIconsHasRightIcon}
-          textWithIconsRightIconClassName={
-            leftSectionTextWithIconsRightIconClassName
-          }
+          textWithIconsRightIconClassName={leftSectionTextWithIconsRightIconClassName}
           textWithIconsClassName={leftSectionTextWithIconsClassName}
           showTextWithIcons={leftSectionShowTextWithIcons}
         />
@@ -112,14 +108,10 @@ const CaseImageColumnMiddle = ({
           imageRank={rightSectionImageRank}
           imageOnClick={rightSectionImageOnClick}
           textWithIconsHasLeftIcon={rightSectionTextWithIconsHasLeftIcon}
-          textWithIconLeftIconClassName={
-            rightSectionTextWithIconLeftIconClassName
-          }
+          textWithIconLeftIconClassName={rightSectionTextWithIconLeftIconClassName}
           textWithIconsLabel={rightSectionTextWithIconsLabel}
           textWithIconsHasRightIcon={rightSectionTextWithIconsHasRightIcon}
-          textWithIconsRightIconClassName={
-            rightSectionTextWithIconsRightIconClassName
-          }
+          textWithIconsRightIconClassName={rightSectionTextWithIconsRightIconClassName}
           textWithIconsClassName={rightSectionTextWithIconsClassName}
           showTextWithIcons={rightSectionShowTextWithIcons}
         />

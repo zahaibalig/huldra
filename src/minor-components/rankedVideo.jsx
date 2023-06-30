@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import {getAsset} from "../utils/loadAssets";
+import { getAsset } from "../utils/loadAssets";
 
 const RankedVideo = ({ url, width, height, className, label }) => {
   const [videoUrl, setVideoUrl] = useState("");

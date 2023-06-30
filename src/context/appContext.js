@@ -1,9 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import { getFirebaseApp, anonymousAuthentication } from "../utils/firebase";
-import {
-  fetchConfigVariable,
-  fetchConfigVariablesBatch,
-} from "../utils/handleConfigVars";
+import { fetchConfigVariable, fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 
 /* 
 -----------------------------------------------------------------
@@ -51,8 +48,7 @@ export const AppProvider = (props) => {
   const [disableNextButton, setDisableNextButton] = useState(false);
   const [clientUid, setClientId] = useState("");
   const [casesCount, setCasesCount] = useState(0);
-  const [currentDemonstrationPageIndex, setCurrentDemonstrationPageIndex] =
-    useState(0);
+  const [currentDemonstrationPageIndex, setCurrentDemonstrationPageIndex] = useState(0);
 
   const rootDirectory = firebaseConfig.REACT_APP_FIREBASE_ROOT_DIRECTORY;
   useEffect(() => {
@@ -82,7 +78,5 @@ export const AppProvider = (props) => {
     currentDemonstrationPageIndex,
     setCurrentDemonstrationPageIndex,
   };
-  return (
-    <AppContext.Provider value={value}>{props.children}</AppContext.Provider>
-  );
+  return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
 };

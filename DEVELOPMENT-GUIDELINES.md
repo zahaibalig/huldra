@@ -5,20 +5,19 @@
 ### Software Repository
 
 - In consistency with other Simula Metropolitan Center for Digital Engineering (SimulaMet) Department of Holistic Systems (HOST) internal repositories, we are currently using the name `huldra-internal` for the software repository, the codebase has no dependency on the name/address of the repository
-- Those who have access to the repository and project board: members of the SimulaMet-HOST GitHub organization (admin access), Huldra master students (write access), and Huldra interns (write access) 
+- Those who have access to the repository and project board: members of the SimulaMet-HOST GitHub organization (admin access), Huldra master students (write access), and Huldra interns (write access)
 
 ### Documentation
 
 - This repository includes a `README.md` file, which refers to all other relevant documentation
 - Format cheat sheets for all documentation can be found [here](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax) and [here](https://guides.github.com/features/mastering-markdown/)
 
-
 ## Development
 
 ### Use of Branches
 
 - We use the `dev` branch for development (protected branch: merge possible only after PR with at least 1 review)
-- We use the `main` branch for releases (protected branch: merge possible only by selected users) 
+- We use the `main` branch for releases (protected branch: merge possible only by selected users)
 - We currently employ no staging or release candidate branch
 - The development branch `dev` should always compile and pass all tests
 - All development should begin in branches created from `dev`
@@ -26,17 +25,26 @@
 - Regularly merge `dev` into your feature branch to avoid conflicts later on, especially if you take multiple days to complete your task
 - Check the [full list of branches](https://github.com/simulamet-host/huldra-internal/branches/all) from time to time to delete unused/stale branches that you have created
 
-### Code Syntax, Logging, and Requirements
+### Code Syntax, Logging, Styling and Requirements
 
-- We will start using [lint](https://en.wikipedia.org/wiki/Lint_(software)) for syntax and style checks on our codebase very soon 
-- All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any) 
+- This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use [ESLint](https://eslint.org/) as the linter, [Prettier](https://prettier.io/) as the formatting tool, and [Husky](https://typicode.github.io/husky/) pre-commit hook
+     - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (see `.prettierrc` file in the root folder for the formatting rules)
+     - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (see `.eslintrc.json` in the root folder for the linting rules)
+     - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
+- It is possible to lint the code with the commands `npm run lint` and `npm run lint:fix`, and to format the code with the command `npm run format` anytime
+- Try to resolve all warnings from the linter before you make a commit
+- All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any)
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
+<!---
+- Use the Huldra uniform logging framework as frequently as appropriate for your code
+- Update requirements and guideline documents whenever your code introduces new dependencies
+  -->
 
 ### Issue Tracking
 
 - We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
-- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels) 
+- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
 - We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
 
 ### Commits
@@ -64,8 +72,8 @@
 
 <!---
 ### Testing
-
-(TBC)
+- All unit tests must pass on a feature branch before creating a PR towards `dev`
+- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
 -->
 
 ### Versioning and Releases
@@ -73,7 +81,6 @@
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
 - See `RELEASE-GUIDELINES.md` for further details
-
 
 ## Additional Notes
 
