@@ -1,4 +1,5 @@
 import { fetchConfigVariable } from "./handleConfigVars";
+import * as f from "./loadLocalAssets";
 import _ from "lodash";
 
 /**
@@ -10,7 +11,7 @@ const fetchCases = async () => {
   // read from config
   const caseConfig = fetchConfigVariable("REACT_APP_caseOrder");
   const cases = caseConfig ? caseConfig.cases : [];
-  const shuffle = caseConfig ? caseConfig.shuffle : false;
+  const shuffle = caseConfig ? caseConfig.shuffle : "";
 
   let validCases = [];
   for (let i = 0; i < cases.length; i++) {
@@ -94,7 +95,7 @@ const validateCase = async (caseName) => {
 
   if (type === "image") {
     const fileName1 = `${fileNameBase}.json`;
-    const fileExists1 = await fileExists(fileName1, "json");
+    const fileExists1 = await f.fileExists(fileName1, "json");
     if (!fileExists1) {
       return false;
     }
@@ -199,7 +200,7 @@ const getFileNameGroup = async (fileNameArrayArray, fileType) => {
     for (let j = 0; j < fileNameArray.length; j++) {
       const fileName = fileNameArray[j];
       // loop through the supported extensions. stop at the first one that exists
-      const exists = await fileExists(fileName, fileType);
+      const exists = await f.fileExists(fileName, fileType);
       if (exists) {
         fileNameExists = true;
         group.push(fileName);
@@ -230,4 +231,11 @@ const fetchJsonAttributeValue = async (path, attribute) => {
   return json[attribute];
 };
 
-export { fetchCases, getAsset, fetchJsonAttributeValue };
+export {
+  fetchCases,
+  getAsset,
+  fetchJsonAttributeValue,
+  fileExists,
+  getFileNameGroup,
+  validateCase,
+};
