@@ -28,7 +28,7 @@ const CaseHybrid = ({
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
+    localStorage.getItem("CaseOrder")
   );
   const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
