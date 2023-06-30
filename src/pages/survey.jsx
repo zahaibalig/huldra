@@ -300,12 +300,7 @@ const Survey = ({
   });
   const handleNext = () => {
     getCurrentPageIndex();
-    /* TODO: Integrate the registration page inside this function with all its dependencies. */
-    /*  if (history.location.pathname === "/survey/registration") { */
-    /*  logSessionEvent("Start Survey", "Registration", 0); */
-    /*       getParticipantId();
-     */
-    /*  } else  */
+
     if (history.location.pathname === "/survey/background") {
       logSessionEvent("Next", "Background", 0);
       pushToBucket();
