@@ -49,7 +49,7 @@ export const AppProvider = (props) => {
     PageLocator,
     setPageLocator,
     firebaseConfig,
-    rootDirectory, // todo: pass rootDirectory inside firebaseConfig
+    rootDirectory,
     clientUid,
     casesCount,
     REACT_APP_general,
