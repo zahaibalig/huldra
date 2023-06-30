@@ -668,7 +668,6 @@ const Survey = ({
           path={`/survey/case:id`}
           exact
           render={(props) => {
-            //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
             [PageLocator - 1].split("-")[0]
               .toLowerCase();
