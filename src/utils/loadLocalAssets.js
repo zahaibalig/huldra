@@ -134,9 +134,7 @@ const validateCase = async (caseName) => {
 
     files = group;
   } else if (type === "hybrid") {
-    const fileName1ArrayArray = [
-      extensions.video.map((ext) => `${fileNameBase}.${ext}`),
-    ];
+    const fileName1ArrayArray = [extensions.video.map((ext) => `${fileNameBase}.${ext}`)];
     const group1 = await getFileNameGroup(fileName1ArrayArray, "video");
     if (!group1) {
       return false;
@@ -180,7 +178,9 @@ const fileExists = async (fullPath, fileType) => {
     if (contentType && contentType.startsWith(types[fileType])) {
       return true;
     }
-  } catch (err) {}
+  } catch (err) {
+    // console.error(err);
+  }
 
   return false;
 };

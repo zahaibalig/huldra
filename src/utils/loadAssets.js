@@ -3,10 +3,7 @@ import {
   fetchCases as fetchCasesFirebase,
   getAssetDownloadUrl as getAssetFirebase,
 } from "../utils/firebase";
-import {
-  fetchCases as fetchCasesLocal,
-  getAsset as getAssetLocal,
-} from "../utils/loadLocalAssets";
+import { fetchCases as fetchCasesLocal, getAsset as getAssetLocal } from "../utils/loadLocalAssets";
 
 const fetchCases = async (configExists, path, cases, shuffle) => {
   const config = getConfig();

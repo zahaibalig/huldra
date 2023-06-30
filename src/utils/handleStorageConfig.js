@@ -18,8 +18,7 @@ const getConfig = () => {
     config.assetsStorageType =
       REACT_APP_general.storage.assetsStorageType || defaults.assetsStorageType;
     config.responsesStorageType =
-      REACT_APP_general.storage.responsesStorageType ||
-      defaults.responsesStorageType;
+      REACT_APP_general.storage.responsesStorageType || defaults.responsesStorageType;
   }
 
   return config;
