@@ -8,7 +8,6 @@ const GenericBackgroundSection = ({
   sectionTextClassName = "background-text-content",
   sectionContent,
 }) => {
-  // TODO: create minor componenet for being able to configure the background page text section by section (similar to feedbackForm.jsx)
   return (
     <div className={sectionClassName}>
       <span className={sectionTitleClassName}>{sectionTitle}</span>
