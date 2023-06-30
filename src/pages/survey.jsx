@@ -336,11 +336,6 @@ const Survey = ({
       pushToBucket();
       history.push(`/survey/summary-and-feedback`);
     } else {
-      /* TODO: INTEGRATE handleEndSurvey METHOD */
-      /*  else if (history.location.pathname === "/survey/summary-and-feedback") { */
-      /*  logSessionEvent("End Survey", `Summary and Feedback`, PageLocator); */
-
-      /*   } */
       return;
     }
   };
