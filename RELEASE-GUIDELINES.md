@@ -34,16 +34,11 @@
 - Update internal notes on dependencies and/or installation and/or configuration if necessary
 - Check and update `VERSION.md`
 - Update `CHANGELOG.md`
+- Confirm that both local and cloud deployment works for the source branch
 - [If source branch is `dev`] Merge `dev` into `main`[^3]
 - [If necessary] make further changes in `main`
 - Make the release from `main` using an appropriate version tag
 - [If applicable] Close the relevant milestone
 - Inform the team about the new release
-
-<!---
-- Check local deployment!
-- Check cloud deployment (e.g., https://host-internal.herokuapp.com/)
-before releasing
--->
 
 [^3]: If necessary, leave out features. You can use "squash and merge" to combine all commits into one.
