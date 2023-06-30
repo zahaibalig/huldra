@@ -145,7 +145,13 @@ gallery
 |       └───image-sit.json
 ```
 
-For an image case, a json file is also necessary. An image case needs 4 files minimum.
+For an image case, a json file is also necessary. The json file should contain the description of the image and the description will be used on the page for that image case. An example of the json file is as follows:
+
+```
+{
+  "description": "Write your description here."
+}
+```
 
 ### Naming convention
 

@@ -2,8 +2,13 @@ import getConfig from "./handleStorageConfig";
 import {
   fetchCases as fetchCasesFirebase,
   getAssetDownloadUrl as getAssetFirebase,
+  fetchJsonAttributeValue as fetchJsonFirebase,
 } from "../utils/firebase";
-import { fetchCases as fetchCasesLocal, getAsset as getAssetLocal } from "../utils/loadLocalAssets";
+import {
+  fetchCases as fetchCasesLocal,
+  getAsset as getAssetLocal,
+  fetchJsonAttributeValue as fetchJsonLocal,
+} from "../utils/loadLocalAssets";
 
 const fetchCases = async (configExists, path, cases, shuffle) => {
   const config = getConfig();
@@ -33,4 +38,18 @@ const getAsset = async (path) => {
   return url;
 };
 
-export { fetchCases, getAsset };
+const fetchJsonAttributeValue = async (path, attribute) => {
+  const config = getConfig();
+
+  let value;
+
+  if (config.assetsStorageType === "local") {
+    value = await fetchJsonLocal(path, attribute);
+  } else if (config.assetsStorageType === "firebase") {
+    value = await fetchJsonFirebase(path, attribute);
+  }
+
+  return value;
+};
+
+export { fetchCases, getAsset, fetchJsonAttributeValue };

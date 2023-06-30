@@ -218,4 +218,16 @@ const getAsset = (path) => {
   return path;
 };
 
-export { fetchCases, getAsset };
+/**
+ * fetch the value of a JSON attribute
+ * @param {string} path - the path of the JSON file
+ * @param {string} attribute - the attribute to fetch
+ * @returns {Promise<string>} - the value of the attribute
+ */
+const fetchJsonAttributeValue = async (path, attribute) => {
+  const response = await fetch(path);
+  const json = await response.json();
+  return json[attribute];
+};
+
+export { fetchCases, getAsset, fetchJsonAttributeValue };

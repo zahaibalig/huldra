@@ -1,8 +1,3 @@
 {
-  "uuid": "1",
-  "description": "This image contains",
-  "prediction": "foo",
-  "confidence": 0.1,
-  "correctness": "foo",
-  "ptsne-similar": {}
+  "description": "This description is from the json file under the case folder"
 }

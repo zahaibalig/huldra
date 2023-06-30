@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { toastInfo } from "../utils/toast";
 import { AppContext } from "../context/appContext";
-import { fetchJsonAttributeValue, getFirebaseApp, listFiles } from "../utils/firebase";
+import { getFirebaseApp, listFiles } from "../utils/firebase";
 import { getCaseJsonFile } from "../utils/urlHandler";
 import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
 import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
 import getConfig from "../utils/handleStorageConfig";
+import { fetchJsonAttributeValue } from "../utils/loadAssets";
 
 const CaseImage = ({
   caseId /* todo:rename to avoid confusion with case uuid */,
@@ -109,9 +110,18 @@ const CaseImage = ({
       setGalleryImages(gallery);
 
       const caseUuid = pagesOrder[caseId - 1];
-      setCaseDescription(
-        await fetchJsonAttributeValue(getCaseJsonFile(rootDirectory, caseUuid), "description")
-      );
+
+      let jsonPath = "";
+      if (storageConfig.assetsStorageType === "local") {
+        const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+        if (validCaseFiles && validCaseFiles[caseId - 1]) {
+          const caseFiles = validCaseFiles[caseId - 1];
+          jsonPath = caseFiles[0];
+        }
+      } else if (storageConfig.assetsStorageType === "firebase") {
+        jsonPath = getCaseJsonFile(rootDirectory, caseUuid);
+      }
+      setCaseDescription(await fetchJsonAttributeValue(jsonPath, "description"));
     })();
     localStorage.setItem("PageLocator", caseId);
     /* TODO: extend this to work with both caseId and pageLocator */
