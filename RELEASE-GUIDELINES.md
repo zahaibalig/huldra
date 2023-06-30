@@ -40,4 +40,10 @@
 - [If applicable] Close the relevant milestone
 - Inform the team about the new release
 
+<!---
+- Check local deployment!
+- Check cloud deployment (e.g., https://host-internal.herokuapp.com/)
+before releasing
+-->
+
 [^3]: If necessary, leave out features. You can use "squash and merge" to combine all commits into one.
