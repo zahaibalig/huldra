@@ -178,10 +178,7 @@ const Survey = ({
     rightButtonClassName = "hidden-button";
   } else if (history.location.pathname === "/survey/registration") {
     rightButtonLabel = "Start Survey";
-    /* TODO : MAKE SURE handleNext() WORKS FOR REGISTRATION   */
-    /*     onRightButtonClick = () => handleNext();
 
- */
     onRightButtonClick = () => getParticipantId();
     leftButtonClassName = "hidden-button";
     rightButtonClassName = "btn control";
