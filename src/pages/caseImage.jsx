@@ -101,16 +101,16 @@ const CaseImage = ({
     caseId,
     disableNextButton,
     setDisableNextButton,
-    REACT_APP_caseImage, //todo: might not be necessary
+    REACT_APP_caseImage,
     choiceAThumbnail,
     choiceBThumbnail,
     empty,
-    //pagesOrder, //todo: remove
-    rootDirectory, //todo: might not be necessary
-    openedChoiceA, //todo: might not be necessary
-    openedChoiceB, //todo: might not be necessary
-    setOpenedChoiceA, //todo: might not be necessary
-    setOpenedChoiceB, //todo: might not be necessary
+    //pagesOrder,
+    rootDirectory,
+    openedChoiceA,
+    openedChoiceB,
+    setOpenedChoiceA,
+    setOpenedChoiceB,
     setSubscribed,
   ]);
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
