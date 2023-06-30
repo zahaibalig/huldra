@@ -13,7 +13,7 @@ import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
 
 const CaseImage = ({
-  caseId /* todo:rename to avoid confusion with case uuid */,
+  caseId,
   totalCases,
   REACT_APP_caseImage,
 }) => {
@@ -35,15 +35,12 @@ const CaseImage = ({
   );
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
+  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }.png`;
   const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
 
   const useLocationChange = (action) => {
