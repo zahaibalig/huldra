@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CaseImage from "../caseImage";
 import { AppContext } from "../../context/appContext";
@@ -37,10 +37,40 @@ jest.mock("react-router-dom", () => ({
   useLocation: jest.fn(),
 }));
 
+// mock fetch
+const unmockedFetch = global.fetch;
+
+beforeAll(() => {
+  global.fetch = () =>
+    Promise.resolve({
+      json: () => Promise.resolve([]),
+    });
+});
+
+afterAll(() => {
+  global.fetch = unmockedFetch;
+});
+
+// mock firebase functions used in caseImage
+jest.mock("../../utils/firebase", () => ({
+  getFirebaseApp: jest.fn(),
+  listFiles: jest.fn(),
+  getAssetDownloadUrl: jest.fn(),
+  fetchJsonAttributeValue: jest.fn(),
+}));
+
 test("clicking the 'View Details' button in the caseImage page (case 1) shows a pop-up", async () => {
-  const CaseOrder =
-    "['image-xai','hybrid-soccer','video-countdown','audio-ogg','audio-flac','audio-wma','audio-aiff']";
-  Storage.prototype.getItem = jest.fn().mockReturnValue(CaseOrder);
+  // mock localStorage.getItem
+  const CaseOrder = [
+    "image-xai",
+    "hybrid-soccer",
+    "video-countdown",
+    "audio-ogg",
+    "audio-flac",
+    "audio-wma",
+    "audio-aiff",
+  ];
+  Storage.prototype.getItem = jest.fn().mockReturnValue(JSON.stringify(CaseOrder));
 
   // the value copied from config.json
   const REACT_APP_caseImage = {
