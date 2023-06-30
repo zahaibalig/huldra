@@ -80,13 +80,6 @@ const CaseHybrid = ({
   /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    /* TODO: read the corresponding string for the answers item in the output
-          json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
-    /*      toastSuccess(
-            "Both explanations have been viewed.",
-            "top-center",
-            "select-error"
-          ); */
     const caseHybridViewDetailsMandatory = REACT_APP_general["caseHybridViewDetailsMandatory"];
 
     if (
