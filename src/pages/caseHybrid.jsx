@@ -21,7 +21,7 @@ const CaseHybrid = ({
   const [openedChoiceB, setOpenedChoiceB] = useState(false);
   const [openChoiceA, setOpenChoiceA] = useState(false);
   const [openChoiceB, setOpenChoiceB] = useState(false);
-  const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
+  const [casePageType] = useState("ranking");
 
   const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
   const empty = `/gallery/empty.png`;
@@ -35,13 +35,11 @@ const CaseHybrid = ({
 
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
 
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-a.png`;
 
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
+    }-b.png`;
 
   useEffect(() => {
     setDisableNextButton(true);
