@@ -439,7 +439,7 @@ const Survey = ({
             REACT_APP_caseOrder["cases"],
             REACT_APP_caseOrder["shuffle"]
           );
-        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null); // todo: add a fallback in config.json url to fetch all the  cases
+        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
         localStorage.clear();
         let uuid = uuidv4();
         //copy(uuid);
