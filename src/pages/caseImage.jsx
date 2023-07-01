@@ -31,7 +31,7 @@ const CaseImage = ({
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
+    localStorage.getItem("CaseOrder")
   );
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
