@@ -8,7 +8,7 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
+    localStorage.getItem("CaseOrder")
   );
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   useEffect(() => {
