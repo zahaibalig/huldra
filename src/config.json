@@ -111,7 +111,6 @@
       "textBefore": "You can have a demonstration page with a single image.",
       "textAfter": "You can use this page to describe how the rest of the survey works.",
       "hasImage": true,
-
       "imagePath": "/gallery/sample-image.png",
       "imageClassName": "demonstration-image"
     },
@@ -133,7 +132,9 @@
     }
   ],
   "REACT_APP_caseImage": {
-    "caseImageColumnLeft": { "label": "Case" },
+    "caseImageColumnLeft": {
+      "label": "Case"
+    },
     "caseImageColumnMiddle": {
       "title": "Answer Options",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
@@ -165,7 +166,9 @@
     }
   },
   "REACT_APP_caseHybrid": {
-    "caseHybridColumnLeft": { "label": "Case" },
+    "caseHybridColumnLeft": {
+      "label": "Case"
+    },
     "caseHybridColumnMiddle": {
       "title": "Answer Options",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus.",
@@ -223,10 +226,6 @@
       "title": "Your Answer",
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
     }
-  },
-  "REACT_APP_caseOrder": {
-    "cases": ["image-test", "image-flower", "audio-bird", "video-bird", "hybrid-flowerbird"],
-    "shuffle": ""
   },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
@@ -290,42 +289,46 @@
     "endMessage": "Thank you for participating in our survey!",
     "redirectTimeout": 2500
   },
-  "REACT_APP_outputJson": [
-    "ParticipantInfo",
-    "CaseOrder",
-    "SoftwareInfo",
-    "CaseStudyAnswers",
-    "SessionEvents",
-    "FeedbackFormAnswers",
-    "SessionInfo"
-  ],
-  "REACT_APP_color": {
-    "themeColor": "",
-    "buttonColor": ""
-  },
-  "REACT_APP_footer": {
-    "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
-    "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
-    "icon1Url": "mailto:huldra@simula.no",
-    "icon2Url": "https://github.com/simula/huldra",
-    "label": "huldra@simula.no"
-  },
-  "REACT_APP_header": {
-    "labelBackground": "Background",
-    "labelDemonstration": "Demonstration",
-    "labelCase": "Questionnaire",
-    "labelSummaryAndFeedback": "Summary and Feedback"
-  },
   "REACT_APP_general": {
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false,
     "caseImageViewDetailsMandatory": true,
+    "caseHybridViewDetailsMandatory": true,
+    "caseOrder": {
+      "cases": ["image-test", "image-flower", "audio-bird", "video-bird", "hybrid-flowerbird"],
+      "shuffle": ""
+    },
     "storage": {
       "assetsStorageType": "local",
       "responsesStorageType": "download"
     },
-    "caseHybridViewDetailsMandatory": true
+    "outputJson": [
+      "ParticipantInfo",
+      "CaseOrder",
+      "SoftwareInfo",
+      "CaseStudyAnswers",
+      "SessionEvents",
+      "FeedbackFormAnswers",
+      "SessionInfo"
+    ],
+    "color": {
+      "themeColor": "blue",
+      "buttonColor": "yellow"
+    },
+    "footer": {
+      "icon1ClassName": "fa fa-envelope-o mr-1 fa-lg generic-icon",
+      "icon2ClassName": "fa fa-github ml-1 fa-lg generic-icon",
+      "icon1Url": "mailto:huldra@simula.no",
+      "icon2Url": "https://github.com/simula/huldra",
+      "label": "huldra@simula.no"
+    },
+    "header": {
+      "labelBackground": "Background",
+      "labelDemonstration": "Demonstration",
+      "labelCase": "Questionnaire",
+      "labelSummaryAndFeedback": "Summary and Feedback"
+    }
   }
 }

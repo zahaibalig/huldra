@@ -46,10 +46,6 @@ const Survey = ({
   REACT_APP_caseHybrid,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
-  REACT_APP_outputJson,
-  REACT_APP_footer,
-  REACT_APP_header,
-  REACT_APP_caseOrder,
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
@@ -129,7 +125,12 @@ const Survey = ({
     if (history.location.pathname === "/survey/summary-and-feedback") {
       setOpenEndDialog(true);
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
+
     }
+
+
+
+
   });
   /* TODO: Unify the implementatino of hot keys across the app */
   /* HOTKEYS FOR CASE PAGE */
@@ -452,16 +453,17 @@ const Survey = ({
         setRouteIsAllowed(true);
         localStorage.clear();
         let CaseOrder;
-        if (REACT_APP_caseOrder && REACT_APP_caseOrder["cases"].length !== 0) {
-          /*   CaseOrder = fetchCasesFromConfig(
-            REACT_APP_caseOrder["cases"],
-            REACT_APP_caseOrder["shuffle"]
-          ); */
+
+        if (
+          REACT_APP_general?.caseOrder?.length !== 0 &&
+          REACT_APP_general?.caseOrder?.cases?.length !== 0
+
+        ) {
           CaseOrder = await fetchCases(
             true,
             null,
-            REACT_APP_caseOrder["cases"],
-            REACT_APP_caseOrder["shuffle"]
+            REACT_APP_general["caseOrder"]["cases"],
+            REACT_APP_general["caseOrder"]["shuffle"]
           );
         } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null); // todo: add a fallback in config.json url to fetch all the  cases
         let uuid = uuidv4();
@@ -571,9 +573,8 @@ const Survey = ({
       </Modal>
       {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
         <Header
-          leftLabel={`Participant ID: ${
-            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-          }`}
+          leftLabel={`Participant ID: ${JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+            }`}
           leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
@@ -590,20 +591,28 @@ const Survey = ({
               <div className="survey-header">
                 {history.location.pathname === "/survey/background" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${REACT_APP_header && REACT_APP_header["labelBackground"]}
+                   ${REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelBackground"]
+                    }
                   `}</span>
                 ) : history.location.pathname === "/survey/demonstration" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${REACT_APP_header && REACT_APP_header["labelDemonstration"]}`}</span>
+                  ${REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelDemonstration"]
+                    }`}</span>
                 ) : history.location.pathname === "/survey/summary-and-feedback" ? (
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${REACT_APP_header && REACT_APP_header["labelSummaryAndFeedback"]}`}</span>
+                  ${REACT_APP_general && REACT_APP_general["header"] && REACT_APP_general["header"]["labelSummaryAndFeedback"]
+                    }`}</span>
                 ) : history.location.pathname.includes("case") ? (
                   // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_header && REACT_APP_header["labelCase"]
-                  } | Case ${PageLocator}/${casesCount}`}</span>
+                  ${REACT_APP_general &&
+                    REACT_APP_general["header"] &&
+                    REACT_APP_general["header"]["labelCase"]
+                    } | Case ${PageLocator}/${casesCount}`}</span>
                 ) : (
                   <span></span>
                 )}
@@ -697,7 +706,7 @@ const Survey = ({
           render={(props) => {
             //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-              [PageLocator - 1].split("-")[0]
+            [PageLocator - 1].split("-")[0]
               .toLowerCase();
             return prefix === "video" ? (
               <CaseVideo
@@ -705,7 +714,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseVideo={REACT_APP_caseVideo}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : prefix === "audio" ? (
               <CaseAudio
@@ -713,7 +721,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseAudio={REACT_APP_caseAudio}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : prefix === "hybrid" ? (
               <CaseHybrid
@@ -721,7 +728,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseHybrid={REACT_APP_caseHybrid}
-                REACT_APP_outputJson={REACT_APP_outputJson}
               />
             ) : (
               <CaseImage
@@ -729,7 +735,6 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_outputJson={REACT_APP_outputJson}
                 REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
               />
             );
@@ -754,12 +759,34 @@ const Survey = ({
       </Switch>
 
       <Footer
-        label={REACT_APP_footer && REACT_APP_footer["label"]}
-        icon1ClassName={REACT_APP_footer && REACT_APP_footer["icon1ClassName"]}
-        icon2ClassName={REACT_APP_footer && REACT_APP_footer["icon2ClassName"]}
-        footerIconUrl={REACT_APP_footer && REACT_APP_footer["footerIconUrl"]}
-        icon1Url={REACT_APP_footer && REACT_APP_footer["icon1Url"]}
-        icon2Url={REACT_APP_footer && REACT_APP_footer["icon2Url"]}
+        label={
+          REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["label"]
+        }
+        icon1ClassName={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon1ClassName"]
+        }
+        icon2ClassName={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon2ClassName"]
+        }
+        footerIconUrl={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["footerIconUrl"]
+        }
+        icon1Url={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon1Url"]
+        }
+        icon2Url={
+          REACT_APP_general &&
+          REACT_APP_general["footer"] &&
+          REACT_APP_general["footer"]["icon2Url"]
+        }
         leftButtonLabel="Previous"
         rightButtonLabel={rightButtonLabel}
         onLeftButtonClick={onLeftButtonClick}
