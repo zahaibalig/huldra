@@ -130,8 +130,6 @@ const CaseImage = ({
       first !== empty ||
       (openedChoiceA === true && openedChoiceB === true)
     ) {
-      /* TODO: read the corresponding string for the answers item in the output
-      json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
 
       const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
       const newAnswers = { ...CaseStudyAnswers };
