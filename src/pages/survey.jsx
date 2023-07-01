@@ -572,7 +572,6 @@ const Survey = ({
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
                   ${REACT_APP_header && REACT_APP_header["labelSummaryAndFeedback"]}`}</span>
                 ) : history.location.pathname.includes("case") ? (
-                  // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
                   ${REACT_APP_header && REACT_APP_header["labelCase"]
                     } | Case ${PageLocator}/${casesCount}`}</span>
