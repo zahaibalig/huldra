@@ -23,7 +23,7 @@ const CaseImage = ({
   const [openedChoiceB, setOpenedChoiceB] = useState(false);
   const [openChoiceA, setOpenChoiceA] = useState(false);
   const [openChoiceB, setOpenChoiceB] = useState(false);
-  const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
+  const [casePageType] = useState("ranking");
   const [galleryImages, setGalleryImages] = useState([]);
   const { rootDirectory, disableNextButton, setDisableNextButton, REACT_APP_general } =
     useContext(AppContext);
