@@ -22,122 +22,93 @@ const App = () => {
         "REACT_APP_summaryAndFeedback",
         "REACT_APP_end",
         "REACT_APP_survey",
-        "REACT_APP_outputJson",
-        "REACT_APP_footer",
-        "REACT_APP_header",
         "REACT_APP_caseHybrid",
-        "REACT_APP_caseOrder",
-        "REACT_APP_color",
+        "REACT_APP_general",
       ])
     );
     function handleResize() {}
     window.addEventListener("resize", handleResize);
   }, []);
-    return (
-      <div
-        className={`App theme-color-${
-          configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]
-        }
-      button-color-${
-        configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["buttonColor"]
-      }`}
-      >
-        {innerWidth < 1200 ? (
-          <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
-        ) : (
-          <Switch>
-            <Route
-              path="/survey/home"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_home={configuration["REACT_APP_home"]}
-                  REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/registration"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_caseOrder={configuration["REACT_APP_caseOrder"]}
-                  REACT_APP_registration={configuration["REACT_APP_registration"]}
-                  REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/background"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_background={configuration["REACT_APP_background"]}
-                  REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/demonstration"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/case:id"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_caseImage={configuration["REACT_APP_caseImage"]}
-                  REACT_APP_caseVideo={configuration["REACT_APP_caseVideo"]}
-                  REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}
-                  REACT_APP_caseHybrid={configuration["REACT_APP_caseHybrid"]}
-                  REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                  REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/summary-and-feedback"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_summaryAndFeedback={configuration["REACT_APP_summaryAndFeedback"]}
-                  REACT_APP_outputJson={configuration}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                  REACT_APP_header={configuration["REACT_APP_header"]}
-                />
-              )}
-            />
-            <Route
-              path="/survey/end"
-              render={(props) => (
-                <Survey
-                  {...props}
-                  REACT_APP_end={configuration["REACT_APP_end"]}
-                  REACT_APP_footer={configuration["REACT_APP_footer"]}
-                />
-              )}
-            />
-            <Redirect from="/" to="/survey/home" />
-          </Switch>
-        )}
-      </div>
-    );
-  };
+  return (
+    <div
+      className={`App theme-color-${
+        configuration["REACT_APP_general"] &&
+        configuration["REACT_APP_general"]["color"] &&
+        configuration["REACT_APP_general"]["color"]["themeColor"]
+      }
+    button-color-${
+      configuration["REACT_APP_general"] &&
+      configuration["REACT_APP_general"]["color"] &&
+      configuration["REACT_APP_general"]["color"]["buttonColor"]
+    }`}
+    >
+      {innerWidth < 1200 ? (
+        <Warning REACT_APP_warning={configuration["REACT_APP_warning"]} />
+      ) : (
+        <Switch>
+          <Route
+            path="/survey/home"
+            render={(props) => (
+              <Survey {...props} REACT_APP_home={configuration["REACT_APP_home"]} />
+            )}
+          />
+          <Route
+            path="/survey/registration"
+            render={(props) => (
+              <Survey {...props} REACT_APP_registration={configuration["REACT_APP_registration"]} />
+            )}
+          />
+          <Route
+            path="/survey/background"
+            render={(props) => (
+              <Survey
+                {...props}
+                REACT_APP_background={configuration["REACT_APP_background"]}
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
+              />
+            )}
+          />
+          <Route
+            path="/survey/demonstration"
+            render={(props) => (
+              <Survey
+                {...props}
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
+              />
+            )}
+          />
+          <Route
+            path="/survey/case:id"
+            render={(props) => (
+              <Survey
+                {...props}
+                REACT_APP_caseImage={configuration["REACT_APP_caseImage"]}
+                REACT_APP_caseVideo={configuration["REACT_APP_caseVideo"]}
+                REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}
+                REACT_APP_caseHybrid={configuration["REACT_APP_caseHybrid"]}
+                REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
+              />
+            )}
+          />
+          <Route
+            path="/survey/summary-and-feedback"
+            render={(props) => (
+              <Survey
+                {...props}
+                REACT_APP_summaryAndFeedback={configuration["REACT_APP_summaryAndFeedback"]}
+              />
+            )}
+          />
+          <Route
+            path="/survey/end"
+            render={(props) => <Survey {...props} REACT_APP_end={configuration["REACT_APP_end"]} />}
+          />
+          <Redirect from="/" to="/survey/home" />
+        </Switch>
+      )}
+    </div>
+  );
+};
   /* DEBUG BLOCK: the below part is to replace the whole return statement for debugging. Comment the return above and Uncomment the return below to test App with nothing under App.js */
 //   return (
 //     <div className="App">
