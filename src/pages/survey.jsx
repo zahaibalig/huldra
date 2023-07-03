@@ -449,10 +449,7 @@ const Survey = ({
         localStorage.clear();
         let CaseOrder;
 
-        if (
-          REACT_APP_general?.caseOrder?.length !== 0 &&
-          REACT_APP_general?.caseOrder?.cases?.length !== 0
-        ) {
+        if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
           CaseOrder = await fetchCases(
             true,
             null,

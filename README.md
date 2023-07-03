@@ -119,7 +119,7 @@ We look for assets in `/public/gallery` if `assetsStorageType` is `local`, and
 
 If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
-As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
+As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button.
 
 In either storage type, the assets have to adhere to the following folder structure and naming convention.
 
@@ -163,8 +163,11 @@ The assets have to adhere to the following naming convention:
 - Main asset: `<type>-<label>.<extension>`
 - Option A: `<type>-<label>-a.<extension>`
 - Option B: `<type>-<label>-b.<extension>`
+- JSON file: `<type>-<label>.json`
 
 `<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
+
+Refer to the **Directory tree** section for what kinds of assets are required for each type.
 
 ### Supported file extensions
 
@@ -176,12 +179,16 @@ video: ["mp4", "webm", "mov"],
 
 The file extensions must be lowercase.
 
+This is also the order in which the app will look for assets. For example, if you have `image-sit.jpg` and `image-sit.png`, the app will use `image-sit.jpg`.
+
 ### Case order
 
 If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
 If `assetsStorageType` is `firebase`, the `cases` array can be empty.
 If `cases` is not empty, the app uses these cases; if empty, the app fetches all cases from Firebase.
+
+The app only uses valid cases (cases with all the necessary assets) and the order of cases is decided by the `shuffle` parameter as described below.
 
 The `shuffle` parameter under `caseOrder` has the following effects:
 
@@ -191,7 +198,7 @@ The `shuffle` parameter under `caseOrder` has the following effects:
   - `"shuffle": "full"`: all the cases are shuffled
   - If `shuffle` is not specified: the app uses the order specified in `cases`
 
-If you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
+If you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button
 
 ### Example assets
 
