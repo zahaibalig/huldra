@@ -247,7 +247,6 @@ const CaseImage = ({
           text={REACT_APP_caseImage && REACT_APP_caseImage["caseImageColumnRight"].text}
           textClassName="case-image-background-text"
           topSectionClassName="case-image-generic-image-section"
-          /* TODO */ /* topSectionClassName */
           topSectionImageUrl={first}
           topSectionImageClassName="case-image-scaled-image-fit-height"
           topSectionImageHasRank={true}
