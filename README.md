@@ -117,7 +117,7 @@ The assets can be placed either locally or in your Firebase bucket. You can cong
 We look for assets in `/public/gallery` if `assetsStorageType` is `local`, and
 `<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`.
 
-If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` in `config.json` must be populated with the list of case foldernames.
+If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
 As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch.
 
@@ -178,12 +178,12 @@ The file extensions must be lowercase.
 
 ### Case order
 
-If `assetsStorageType` is `local`, the `cases` array under `REACT_APP_caseOrder` must be populated with the list of case foldernames.
+If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
-If `assetsStorageType` is `firebase`, the `cases` array under `REACT_APP_caseOrder` can be empty.
+If `assetsStorageType` is `firebase`, the `cases` array can be empty.
 If `cases` is not empty, the app uses these cases; if empty, the app fetches all cases from Firebase.
 
-The `shuffle` parameter under `REACT_APP_caseOrder` has the following effects:
+The `shuffle` parameter under `caseOrder` has the following effects:
 
 - If `cases` is empty: categorized shuffle
 - If `cases` is not empty:
