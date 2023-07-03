@@ -93,7 +93,6 @@ const CaseImage = ({
       );
     })();
     localStorage.setItem("PageLocator", caseId);
-    /* TODO: extend this to work with both caseId and pageLocator */
     return () => {
       setSubscribed(false);
     };
