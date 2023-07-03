@@ -22,12 +22,8 @@ const App = () => {
         "REACT_APP_summaryAndFeedback",
         "REACT_APP_end",
         "REACT_APP_survey",
-        "REACT_APP_outputJson",
-        "REACT_APP_footer",
-        "REACT_APP_header",
         "REACT_APP_caseHybrid",
-        "REACT_APP_caseOrder",
-        "REACT_APP_color",
+        "REACT_APP_general",
       ])
     );
     function handleResize() {}
@@ -36,10 +32,14 @@ const App = () => {
   return (
     <div
       className={`App theme-color-${
-        configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["themeColor"]
+        configuration["REACT_APP_general"] &&
+        configuration["REACT_APP_general"]["color"] &&
+        configuration["REACT_APP_general"]["color"]["themeColor"]
       }
     button-color-${
-      configuration["REACT_APP_color"] && configuration["REACT_APP_color"]["buttonColor"]
+      configuration["REACT_APP_general"] &&
+      configuration["REACT_APP_general"]["color"] &&
+      configuration["REACT_APP_general"]["color"]["buttonColor"]
     }`}
     >
       {innerWidth < 1200 ? (
@@ -49,26 +49,13 @@ const App = () => {
           <Route
             path="/survey/home"
             render={(props) => (
-              <Survey
-                {...props}
-                REACT_APP_home={configuration["REACT_APP_home"]}
-                REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
-              />
+              <Survey {...props} REACT_APP_home={configuration["REACT_APP_home"]} />
             )}
           />
           <Route
             path="/survey/registration"
             render={(props) => (
-              <Survey
-                {...props}
-                REACT_APP_caseOrder={configuration["REACT_APP_caseOrder"]}
-                REACT_APP_registration={configuration["REACT_APP_registration"]}
-                REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
-              />
+              <Survey {...props} REACT_APP_registration={configuration["REACT_APP_registration"]} />
             )}
           />
           <Route
@@ -78,8 +65,6 @@ const App = () => {
                 {...props}
                 REACT_APP_background={configuration["REACT_APP_background"]}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
           />
@@ -89,8 +74,6 @@ const App = () => {
               <Survey
                 {...props}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
           />
@@ -103,10 +86,7 @@ const App = () => {
                 REACT_APP_caseVideo={configuration["REACT_APP_caseVideo"]}
                 REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}
                 REACT_APP_caseHybrid={configuration["REACT_APP_caseHybrid"]}
-                REACT_APP_outputJson={configuration["REACT_APP_outputJson"]}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
           />
@@ -116,21 +96,12 @@ const App = () => {
               <Survey
                 {...props}
                 REACT_APP_summaryAndFeedback={configuration["REACT_APP_summaryAndFeedback"]}
-                REACT_APP_outputJson={configuration}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-                REACT_APP_header={configuration["REACT_APP_header"]}
               />
             )}
           />
           <Route
             path="/survey/end"
-            render={(props) => (
-              <Survey
-                {...props}
-                REACT_APP_end={configuration["REACT_APP_end"]}
-                REACT_APP_footer={configuration["REACT_APP_footer"]}
-              />
-            )}
+            render={(props) => <Survey {...props} REACT_APP_end={configuration["REACT_APP_end"]} />}
           />
           <Redirect from="/" to="/survey/home" />
         </Switch>
