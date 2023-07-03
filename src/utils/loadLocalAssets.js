@@ -9,9 +9,9 @@ import _ from "lodash";
  */
 const fetchCases = async () => {
   // read from config
-  const caseConfig = fetchConfigVariable("REACT_APP_caseOrder");
-  const cases = caseConfig ? caseConfig.cases : [];
-  const shuffle = caseConfig ? caseConfig.shuffle : "";
+  const config = fetchConfigVariable("REACT_APP_general");
+  const cases = config?.caseOrder?.cases || [];
+  const shuffle = config?.caseOrder?.shuffle || "";
 
   let validCases = [];
   for (let i = 0; i < cases.length; i++) {
