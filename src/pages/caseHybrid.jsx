@@ -77,7 +77,6 @@ const CaseHybrid = ({
     empty,
     setSubscribed,
   ]);
-  /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
     const caseHybridViewDetailsMandatory = REACT_APP_general["caseHybridViewDetailsMandatory"];
