@@ -113,7 +113,6 @@ const CaseImage = ({
     setOpenedChoiceB,
     setSubscribed,
   ]);
-  /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
     const caseImageViewDetailsMandatory = REACT_APP_general["caseImageViewDetailsMandatory"];
