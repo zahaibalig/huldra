@@ -167,7 +167,7 @@ The assets have to adhere to the following naming convention:
 
 `<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
 
-Refer to the **Directory tree** section for what kinds of assets are required for each type.
+Refer to the **Directory tree** section for which assets are required for each type.
 
 ### Supported file extensions
 
