@@ -16,20 +16,18 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
       <h3>{title}</h3>
       <div className="summary-and-feedback-text-content">{text} </div>
       <form className="feedback-form">
-
-
         {feedbackFormQuestions.map((e, index = 0) => {
           return e.questionType === "text"
             ? React.createElement(components[e["questionType"]], {
-              key: index,
-              onChange: (event) => handleTextFieldChange(event, e),
-              ...e,
-            })
+                key: index,
+                onChange: (event) => handleTextFieldChange(event, e),
+                ...e,
+              })
             : React.createElement(components[e["questionType"]], {
-              key: index,
-              config: e,
-              ...e,
-            });
+                key: index,
+                config: e,
+                ...e,
+              });
         })}
       </form>
     </div>

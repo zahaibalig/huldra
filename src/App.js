@@ -109,7 +109,7 @@ const App = () => {
     </div>
   );
 };
-  /* DEBUG BLOCK: the below part is to replace the whole return statement for debugging purposes. Comment the return statement above and uncomment the return statement below to test app with nothing under App.js */
+/* DEBUG BLOCK: the below part is to replace the whole return statement for debugging purposes. Comment the return statement above and uncomment the return statement below to test app with nothing under App.js */
 //   return (
 //     <div className="App">
 //       <h1>Hello world!</h1>

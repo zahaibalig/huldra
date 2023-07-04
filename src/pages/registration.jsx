@@ -18,7 +18,6 @@ const Registration = ({
   setNotifications,
   REACT_APP_registration,
 }) => {
-
   return (
     <div className="registration-form-wrapper">
       <form id="registration-form">

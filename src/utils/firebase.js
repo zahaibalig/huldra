@@ -179,7 +179,7 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
     validCases = cases.filter((e) => check[cases.indexOf(e)] === true);
     validCases.map((element) => {
       let prefix = element.split("-")[0].toLowerCase();
-      return prefix === "video" 
+      return prefix === "video"
         ? videoCases.push(element)
         : prefix === "audio"
         ? audioCases.push(element)

@@ -7,9 +7,7 @@ import "../assets/css/caseVideo.css";
 const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder")
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   useEffect(() => {
     localStorage.setItem("PageLocator", caseId);

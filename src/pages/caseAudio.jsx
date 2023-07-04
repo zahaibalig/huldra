@@ -7,9 +7,7 @@ import "../assets/css/caseAudio.css";
 const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder")
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   useEffect(() => {
     localStorage.setItem("PageLocator", caseId);

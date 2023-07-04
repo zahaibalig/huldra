@@ -29,7 +29,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   const fetchParticipantData = async (url) => {
     return await await axios
       .get(url)
-      .catch((err) => { })
+      .catch((err) => {})
       .then((res) => {
         return res;
       });

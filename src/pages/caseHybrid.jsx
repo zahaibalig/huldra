@@ -27,19 +27,19 @@ const CaseHybrid = ({
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder")
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
 
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
 
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-a.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+    pagesOrder[caseId - 1]
+  }-a.png`;
 
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-b.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+    pagesOrder[caseId - 1]
+  }-b.png`;
 
   useEffect(() => {
     setDisableNextButton(true);

@@ -12,11 +12,7 @@ import { useLocation } from "react-router-dom";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
 
-const CaseImage = ({
-  caseId,
-  totalCases,
-  REACT_APP_caseImage,
-}) => {
+const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   const [caseDescription, setCaseDescription] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [openedChoiceA, setOpenedChoiceA] = useState(false);
@@ -30,17 +26,18 @@ const CaseImage = ({
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder")
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-a.png`;
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }-b.png`;
-  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]
-    }.png`;
+  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+    pagesOrder[caseId - 1]
+  }-a.png`;
+  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+    pagesOrder[caseId - 1]
+  }-b.png`;
+  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
+    pagesOrder[caseId - 1]
+  }.png`;
   const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
 
   const useLocationChange = (action) => {
@@ -128,7 +125,6 @@ const CaseImage = ({
       first !== empty ||
       (openedChoiceA === true && openedChoiceB === true)
     ) {
-
       const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
       const newAnswers = { ...CaseStudyAnswers };
       if (choice === "choiceA") {
