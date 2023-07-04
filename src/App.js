@@ -109,10 +109,11 @@ const App = () => {
     </div>
   );
 };
-/* TODO: the below part is to replace the whole return statement for debugging. */
-/*  return (
-    <div className="App">
-      <CaseNew />
-    </div>
-  ); */
+/* DEBUG BLOCK: the below part is to replace the whole return statement for debugging purposes. Comment the return statement above and uncomment the return statement below to test app with nothing under App.js */
+//   return (
+//     <div className="App">
+//       <h1>Hello world!</h1>
+//     </div>
+//   );
+// };
 export default App;

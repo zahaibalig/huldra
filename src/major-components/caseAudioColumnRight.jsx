@@ -50,7 +50,7 @@ const CaseAudioColumnRight = ({
     <div className={className}>
       <h4>{title}</h4>
       <p className={textClassName}>{text}</p>
-      <div className="audio-ranking-wrapper" /* TODO: can be drilled down as a prop */>
+      <div className="audio-ranking-wrapper">
         <GenericImageSection
           title={topSectionTitle}
           imageClassName={topSectionImageClassName}

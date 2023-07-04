@@ -109,7 +109,6 @@ const Survey = ({
     }
   }, [disableNextButton]);
 
-  /* TODO: MAKE SURE THESE ARE WORKING PROPERLY ON ALL PAGES */
   useHotkeys("Shift+f", () => {
     if (history.location.pathname === "/survey/registration") {
       setName("NA (Development)");
@@ -127,13 +126,6 @@ const Survey = ({
       localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
     }
   });
-  /* TODO: Unify the implementatino of hot keys across the app */
-  /* HOTKEYS FOR CASE PAGE */
-  /*  useHotkeys("Escape", () => {
-    if (history.location.pathname.includes("/survey/case"))
-      setOpenDatasetBased(false);
-    setOpenIntrinsic(false);
-  }); */
 
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);
@@ -183,10 +175,7 @@ const Survey = ({
     rightButtonClassName = "hidden-button";
   } else if (history.location.pathname === "/survey/registration") {
     rightButtonLabel = "Start Survey";
-    /* TODO : MAKE SURE handleNext() WORKS FOR REGISTRATION   */
-    /*     onRightButtonClick = () => handleNext();
 
- */
     onRightButtonClick = () => getParticipantId();
     leftButtonClassName = "hidden-button";
     rightButtonClassName = "btn control";
@@ -229,7 +218,6 @@ const Survey = ({
     }
   }
 
-  /* TODO: CLEAN UP THESE VARIABLES */
   let pageIsRegistration = history.location.pathname === "/survey/registration";
   let pageIsEndPage = history.location.pathname === "/survey/end";
   let pageIsHome = history.location.pathname === "/survey/home";
@@ -309,12 +297,7 @@ const Survey = ({
   });
   const handleNext = () => {
     getCurrentPageIndex();
-    /* TODO: Integrate the registration page inside this function with all its dependencies. */
-    /*  if (history.location.pathname === "/survey/registration") { */
-    /*  logSessionEvent("Start Survey", "Registration", 0); */
-    /*       getParticipantId();
-     */
-    /*  } else  */
+
     if (history.location.pathname === "/survey/background") {
       logSessionEvent("Next", "Background", 0);
       pushToBucket();
@@ -350,11 +333,6 @@ const Survey = ({
       pushToBucket();
       history.push(`/survey/summary-and-feedback`);
     } else {
-      /* TODO: INTEGRATE handleEndSurvey METHOD */
-      /*  else if (history.location.pathname === "/survey/summary-and-feedback") { */
-      /*  logSessionEvent("End Survey", `Summary and Feedback`, PageLocator); */
-
-      /*   } */
       return;
     }
   };
@@ -418,7 +396,6 @@ const Survey = ({
           setDemonstrationPageIndex(2);
           history.push(`/survey/demonstration`);
           break;
-        // todo:if possible we would like to dynamically redirect the default action to case 3
       }
     } else {
       logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
@@ -456,7 +433,7 @@ const Survey = ({
             REACT_APP_general["caseOrder"]["cases"],
             REACT_APP_general["caseOrder"]["shuffle"]
           );
-        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null); // todo: add a fallback in config.json url to fetch all the  cases
+        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
         let uuid = uuidv4();
         //copy(uuid);
         let ParticipantInfo = {
@@ -502,7 +479,6 @@ const Survey = ({
         let blob = generateBlobFromJson(jsonString);
         let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
         fileRef.put(blob);
-        //todo check together with REACT_APP_outputJson
         localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
         setRouteIsAllowed(true);
 
@@ -571,7 +547,6 @@ const Survey = ({
           leftIcon2TooltipMessage=" Copy to clipboard"
           leftIcon1ClassName="fa fa-info-circle form-tooltip"
           leftIcon2ClassName="fa fa-clone ml-3 form-tooltip"
-          /* TODO: CHECK ALTERNATIVES FOR THIS METHOD */
           leftIcon1OnClick={() => {
             return;
           }}
@@ -604,7 +579,6 @@ const Survey = ({
                     REACT_APP_general["header"]["labelSummaryAndFeedback"]
                   }`}</span>
                 ) : history.location.pathname.includes("case") ? (
-                  // todo: find an alternative to history.location.pathname which would allow for distinguishing between case and caseVideo
                   <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
                   ${
                     REACT_APP_general &&
@@ -702,7 +676,6 @@ const Survey = ({
           path={`/survey/case:id`}
           exact
           render={(props) => {
-            //todo: use check video method
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
               [PageLocator - 1].split("-")[0]
               .toLowerCase();

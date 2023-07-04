@@ -81,7 +81,6 @@ const Summary = ({
               <div className={highlightClassName}>
                 <RankedImage
                   path={
-                    //todo: add a conditional to check for the existence of the image thumbnail. If not, use the generic icon specified by imagePlaceholderIconPath
                     casePrefix === "video"
                       ? `/gallery/empty-white.png`
                       : casePrefix === "audio"

@@ -2,21 +2,6 @@ import React, { useState, createContext, useEffect } from "react";
 import { getFirebaseApp, anonymousAuthentication } from "../utils/firebase";
 import { fetchConfigVariable, fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 
-/* 
------------------------------------------------------------------
-
------------------------------------------------------------------
- */
-/* TODO: CENTRALIZE THE READING OF CONFIG PARAMETERS IN APP.js */
-
-/* const firebaseConfig = {
-  apiKey: "REACT_APP_FIREBASE_API_KEY",
-  authDomain: "REACT_APP_FIREBASE_AUTH_DOMAIN",
-  projectId: "REACT_APP_FIREBASE_PROJECT_ID",
-  storageBucket: "REACT_APP_FIREBASE_STORAGE_BUCKET",
-  messagingSenderId: "REACT_APP_FIREBASE_MESSAGING_SENDER_ID",
-  appId: REACT_APP_FIREBASE_APP_ID,
-}; */
 export const AppContext = createContext();
 export const AppProvider = (props) => {
   const firebaseConfig = fetchConfigVariablesBatch([
@@ -29,11 +14,6 @@ export const AppProvider = (props) => {
     "REACT_APP_FIREBASE_ROOT_DIRECTORY",
   ]);
   const REACT_APP_general = fetchConfigVariable("REACT_APP_general");
-  /* todo: 1) figure out the use case for this field in the ouptput json 
-  (e.g will this be used for A/B test? or indicating that a deployment is a debug/dev version...)
-           2) Decide whether it should be possible to configure externally 
-               or not (via environment varibles, similar to firebase variables) */
-
   const getCurrentPageIndex = () => {
     return setPageLocator(parseInt(localStorage.getItem("PageLocator"), 10));
   };
@@ -69,7 +49,7 @@ export const AppProvider = (props) => {
     PageLocator,
     setPageLocator,
     firebaseConfig,
-    rootDirectory, // todo: pass rootDirectory inside firebaseConfig
+    rootDirectory,
     clientUid,
     casesCount,
     REACT_APP_general,

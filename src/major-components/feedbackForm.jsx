@@ -16,9 +16,6 @@ const FeedbackForm = ({ feedbackFormQuestions, title, text }) => {
       <h3>{title}</h3>
       <div className="summary-and-feedback-text-content">{text} </div>
       <form className="feedback-form">
-        {/* TODO: CHECK FONT WEIGHT, INVESTIGATE WAYS TO PASS ADITIONAL STYLING PARAMETERS INTO
-        APP.CSS */}
-
         {feedbackFormQuestions.map((e, index = 0) => {
           return e.questionType === "text"
             ? React.createElement(components[e["questionType"]], {
