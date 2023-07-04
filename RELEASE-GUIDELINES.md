@@ -34,6 +34,7 @@
 - Update internal notes on dependencies and/or installation and/or configuration if necessary
 - Check and update `VERSION.md`
 - Update `CHANGELOG.md`
+- Confirm that both local and cloud deployment works for the source branch
 - [If source branch is `dev`] Merge `dev` into `main`[^3]
 - [If necessary] make further changes in `main`
 - Make the release from `main` using an appropriate version tag
