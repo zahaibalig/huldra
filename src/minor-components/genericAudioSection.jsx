@@ -1,6 +1,6 @@
 import React from "react";
 import GenericButton from "./genericButton";
-import RankedVideo from "./rankedVideo";
+import RankedAudio from "./rankedAudio";
 import TextWithIcons from "./textWithIcons";
 
 const GenericAudioSection = ({
@@ -37,7 +37,7 @@ const GenericAudioSection = ({
     <div className={className}>
       <h5>{title}</h5>
       {text && <p className={textClassName}>{text}</p>}{" "}
-      <RankedVideo
+      <RankedAudio
         url={audioUrl}
         width={audioWidth}
         height={audioHeight}
