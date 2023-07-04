@@ -9,7 +9,9 @@
     "signupText": "<If you don't have a participant ID, you can have one by clicking the button below.>",
     "additionalText": "<Please view this application in full screen mode.>"
   },
-  "REACT_APP_registration": {},
+  "REACT_APP_registration": {
+    "hello": "world"
+  },
 
   "REACT_APP_background": [
     {
