@@ -18,13 +18,6 @@ const Registration = ({
   setNotifications,
   REACT_APP_registration,
 }) => {
-  /* TODO: CHECK THIS CODE TO FIX TEXTFIELD ALIGNMENT ISSUE.
-   className={
-        id === "active-years" || id === "field-of-expertise"
-          ? "input-wrapper-with-margin "
-          : "input-wrapper"
-      }
-   */
   return (
     <div className="registration-form-wrapper">
       <form id="registration-form">

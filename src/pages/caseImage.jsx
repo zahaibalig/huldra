@@ -12,27 +12,21 @@ import { useLocation } from "react-router-dom";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
 
-const CaseImage = ({
-  caseId /* todo:rename to avoid confusion with case uuid */,
-  totalCases,
-  REACT_APP_caseImage,
-}) => {
+const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   const [caseDescription, setCaseDescription] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [openedChoiceA, setOpenedChoiceA] = useState(false);
   const [openedChoiceB, setOpenedChoiceB] = useState(false);
   const [openChoiceA, setOpenChoiceA] = useState(false);
   const [openChoiceB, setOpenChoiceB] = useState(false);
-  const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
+  const [casePageType] = useState("ranking");
   const [galleryImages, setGalleryImages] = useState([]);
   const { rootDirectory, disableNextButton, setDisableNextButton, REACT_APP_general } =
     useContext(AppContext);
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
   const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
   const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
@@ -96,7 +90,6 @@ const CaseImage = ({
       );
     })();
     localStorage.setItem("PageLocator", caseId);
-    /* TODO: extend this to work with both caseId and pageLocator */
     return () => {
       setSubscribed(false);
     };
@@ -104,19 +97,18 @@ const CaseImage = ({
     caseId,
     disableNextButton,
     setDisableNextButton,
-    REACT_APP_caseImage, //todo: might not be necessary
+    REACT_APP_caseImage,
     choiceAThumbnail,
     choiceBThumbnail,
     empty,
-    //pagesOrder, //todo: remove
-    rootDirectory, //todo: might not be necessary
-    openedChoiceA, //todo: might not be necessary
-    openedChoiceB, //todo: might not be necessary
-    setOpenedChoiceA, //todo: might not be necessary
-    setOpenedChoiceB, //todo: might not be necessary
+    //pagesOrder,
+    rootDirectory,
+    openedChoiceA,
+    openedChoiceB,
+    setOpenedChoiceA,
+    setOpenedChoiceB,
     setSubscribed,
   ]);
-  /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
     const caseImageViewDetailsMandatory = REACT_APP_general["caseImageViewDetailsMandatory"];
@@ -133,9 +125,6 @@ const CaseImage = ({
       first !== empty ||
       (openedChoiceA === true && openedChoiceB === true)
     ) {
-      /* TODO: read the corresponding string for the answers item in the output
-      json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
-
       const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
       const newAnswers = { ...CaseStudyAnswers };
       if (choice === "choiceA") {
@@ -254,7 +243,6 @@ const CaseImage = ({
           text={REACT_APP_caseImage && REACT_APP_caseImage["caseImageColumnRight"].text}
           textClassName="case-image-background-text"
           topSectionClassName="case-image-generic-image-section"
-          /* TODO */ /* topSectionClassName */
           topSectionImageUrl={first}
           topSectionImageClassName="case-image-scaled-image-fit-height"
           topSectionImageHasRank={true}

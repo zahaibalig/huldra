@@ -21,15 +21,13 @@ const CaseHybrid = ({
   const [openedChoiceB, setOpenedChoiceB] = useState(false);
   const [openChoiceA, setOpenChoiceA] = useState(false);
   const [openChoiceB, setOpenChoiceB] = useState(false);
-  const [casePageType] = useState("ranking"); // TODO: CHANGE FROM STATE VARIABLE TO A CONFIG PARAMETER.  ALTERNATIVE VALUES: "ranking", "highlight"
+  const [casePageType] = useState("ranking");
 
   const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
   const empty = `/gallery/empty.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
-  const pagesOrder = JSON.parse(
-    localStorage.getItem("CaseOrder") // TODO: can be moved later to survey
-  );
+  const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
   const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
 
@@ -79,16 +77,8 @@ const CaseHybrid = ({
     empty,
     setSubscribed,
   ]);
-  /* TODO: THIS PATH SHOULD BE PASSED TO GenericSection AS THE imageUrl */
 
   const selectAsFirst = (choice) => {
-    /* TODO: read the corresponding string for the answers item in the output
-          json ( e.g "answers" or "CaseStudyAnswers") from config.json or .env */
-    /*      toastSuccess(
-            "Both explanations have been viewed.",
-            "top-center",
-            "select-error"
-          ); */
     const caseHybridViewDetailsMandatory = REACT_APP_general["caseHybridViewDetailsMandatory"];
 
     if (

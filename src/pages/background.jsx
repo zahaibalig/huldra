@@ -7,7 +7,6 @@ const Background = ({ history, REACT_APP_background }) => {
 
   const onBackButtonEvent = useCallback(
     (e) => {
-      // todo:investigate why this is individually done?(why not in survey.jsx)
       e.preventDefault();
       if (!finishStatus) {
         if (window.confirm("Are you sure you want to go back?")) {

@@ -1,9 +1,3 @@
-/* TODO: IE compatibility issue. */
-/* import "core-js/stable";
-import "react-app-polyfill/ie9";
-import "react-app-polyfill/ie11";
-import "react-app-polyfill/stable";
-import "fast-text-encoding/text"; */
 /* MANDATORY IMPORTS */
 import React from "react";
 import ReactDOM from "react-dom";

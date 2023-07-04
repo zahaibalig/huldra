@@ -1,6 +1,6 @@
 import configuration from "../config.json";
 const fetchConfigVariable = (param) => {
-  return process.env[param] !== undefined ? process.env[param] : configuration[param]; //TODO env nesting fix
+  return process.env[param] !== undefined ? process.env[param] : configuration[param];
 };
 
 const fetchConfigVariablesBatch = (parameters) => {
