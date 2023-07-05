@@ -151,6 +151,9 @@ const validateCase = async (caseName) => {
     }
 
     files = group1.concat(group2);
+  } else {
+    // if not a supported case type, return false
+    return false;
   }
 
   return files;

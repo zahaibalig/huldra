@@ -60,13 +60,13 @@ describe("fetchCases", () => {
     // mock fetchConfigVariable to return some test data
     fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
       caseOrder: {
-        cases: ["audio-case1", "vidoe-case2", "image-case3"],
+        cases: ["audio-case1", "video-case2", "image-case3"],
       },
     });
 
     const result = await f.fetchCases();
 
-    expect(result).toEqual(["audio-case1", "vidoe-case2", "image-case3"]);
+    expect(result).toEqual(["audio-case1", "video-case2", "image-case3"]);
   });
 
   test("should return the array in categorized order when shuffle is categorized", async () => {
@@ -84,5 +84,21 @@ describe("fetchCases", () => {
     const result = await f.fetchCases();
 
     expect(result).toEqual(["image-case1", "hybrid-case4", "video-case3", "audio-case2"]);
+  });
+
+  test("should skip the case if its name does not start with a supported case type", async () => {
+    // mock fileExists to return true
+    f.fileExists = jest.fn().mockResolvedValue(true);
+
+    // mock fetchConfigVariable to return some test data
+    fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
+      caseOrder: {
+        cases: ["audio-case1", "case2", "-case3", "vid-case4"],
+      },
+    });
+
+    const result = await f.fetchCases();
+
+    expect(result).toEqual(["audio-case1"]);
   });
 });
