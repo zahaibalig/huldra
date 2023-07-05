@@ -11,5 +11,15 @@
   "endOfLine": "lf",
   "arrowParens": "always",
   "quoteProps": "as-needed",
-  "requirePragma": false
+  "requirePragma": false,
+  "rangeStart": 0,
+  "rangeEnd": 999999999,
+  "parser": "",
+  "filepath": "",
+  "insertPragma": false,
+  "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "css",
+  "vueIndentScriptAndStyle": false,
+  "embeddedLanguageFormatting": "auto",
+  "singleAttributePerLine": false
 }
