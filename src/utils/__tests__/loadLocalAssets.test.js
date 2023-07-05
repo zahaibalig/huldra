@@ -40,8 +40,10 @@ describe("fetchCases", () => {
 
     // mock fetchConfigVariable to return some test data
     fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
-      cases: ["image-case1", "image-case2", "image-case3"],
-      shuffle: "",
+      caseOrder: {
+        cases: ["image-case1", "image-case2", "image-case3"],
+        shuffle: "",
+      },
     });
 
     const result = await f.fetchCases();
@@ -57,7 +59,9 @@ describe("fetchCases", () => {
 
     // mock fetchConfigVariable to return some test data
     fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
-      cases: ["audio-case1", "vidoe-case2", "image-case3"],
+      caseOrder: {
+        cases: ["audio-case1", "vidoe-case2", "image-case3"],
+      },
     });
 
     const result = await f.fetchCases();
@@ -71,8 +75,10 @@ describe("fetchCases", () => {
 
     // mock fetchConfigVariable to return some test data
     fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
-      cases: ["image-case1", "audio-case2", "video-case3", "hybrid-case4"],
-      shuffle: "categorized",
+      caseOrder: {
+        cases: ["image-case1", "audio-case2", "video-case3", "hybrid-case4"],
+        shuffle: "categorized",
+      },
     });
 
     const result = await f.fetchCases();
