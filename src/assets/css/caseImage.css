@@ -25,7 +25,7 @@
 
 .case-image-image-wrapper {
   width: 400px;
-  height: auto;
+  height: 300px;
 }
 
 .case-image-alternative-section {
@@ -37,8 +37,8 @@
 }
 
 .case-image-explanation-background-image {
-  height: 12em;
-  width: 12em;
+  height: 144px;
+  width: 192px;
 }
 
 .case-image-text-with-icons {
@@ -58,8 +58,8 @@
 }
 
 .case-image-scaled-image-fit-height {
-  width: auto;
-  height: 100%;
+  width: 264px;
+  height: 198px;
 }
 
 .case-image-column-middle-generic-section {

@@ -279,3 +279,7 @@ footer {
   position: relative;
   left: 1.5em;
 }
+
+img {
+  object-fit: contain;
+}
