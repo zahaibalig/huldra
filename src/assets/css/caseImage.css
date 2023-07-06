@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.case-image-explanation-background-image {
+.case-image-column-middle-image {
   height: 144px;
   width: 192px;
 }
@@ -57,7 +57,7 @@
   height: 50%;
 }
 
-.case-image-scaled-image-fit-height {
+.case-image-column-right-image {
   width: 264px;
   height: 198px;
 }

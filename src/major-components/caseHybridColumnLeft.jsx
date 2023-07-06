@@ -34,6 +34,7 @@ const CaseHybridColumnLeft = ({
           hasButton={false}
           videoUrl={sectionVideoUrl}
           videoWidth="400px"
+          videoHeight="225px"
         />
       </div>
     </div>

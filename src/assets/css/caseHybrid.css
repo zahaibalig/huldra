@@ -40,9 +40,9 @@
   align-items: center;
 }
 
-.case-hybrid-scaled-image-fit-width {
-  width: 200px;
-  height: auto;
+.case-hybrid-column-middle-image {
+  height: 108px;
+  width: 192px;
 }
 
 .case-hybrid-text-with-icons {
@@ -55,9 +55,9 @@
   height: 50%;
 }
 
-.case-hybrid-scaled-image-fit-height {
-  width: auto;
-  height: 100%;
+.case-hybrid-column-right-image {
+  width: 336px;
+  height: 189px;
 }
 
 .case-hybrid-video-section-centered {
@@ -72,18 +72,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.case-hybrid-ranking-wrapper {
-  display: "flex";
-  flex-direction: "column";
-  align-items: "center";
-  justify-content: "center";
-  width: 100%;
-  overflow: hidden;
-  position: "relative";
-  bottom: "2em";
-  height: 100%;
 }
 
 .case-hybrid-column-middle-generic-image-section {

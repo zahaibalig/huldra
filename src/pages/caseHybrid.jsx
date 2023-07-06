@@ -25,7 +25,7 @@ const CaseHybrid = ({
   const [casePageType] = useState("ranking");
 
   const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
-  const empty = `/gallery/empty.png`;
+  const empty = `/gallery/empty-white.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
@@ -142,7 +142,7 @@ const CaseHybrid = ({
         textClassName="case-hybrid-text"
         leftSectionClassName="case-hybrid-alternative-section"
         leftSectionImageUrl={choiceAThumbnail}
-        leftSectionImageClassName="case-hybrid-scaled-image-fit-width"
+        leftSectionImageClassName="case-hybrid-column-middle-image"
         leftSectionTitle={REACT_APP_caseHybrid["caseHybridColumnMiddle"].leftSectionTitle}
         leftSectionButtonClassName="btn control"
         leftSectionButtonlabel={
@@ -170,7 +170,7 @@ const CaseHybrid = ({
           REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionButtonlabel
         }
         rightSectionImageUrl={choiceBThumbnail}
-        rightSectionImageClassName="case-hybrid-scaled-image-fit-width"
+        rightSectionImageClassName="case-hybrid-column-middle-image"
         rightSectionTitle={REACT_APP_caseHybrid["caseHybridColumnMiddle"].rightSectionTitle}
         rightSectionButtonOnClick={() => {
           setOpenChoiceB(true);
@@ -213,12 +213,12 @@ const CaseHybrid = ({
           textClassName="case-hybrid-text"
           topSectionClassName="case-hybrid-generic-image-section"
           topSectionImageUrl={first}
-          topSectionImageClassName="case-hybrid-scaled-image-fit-height"
+          topSectionImageClassName="case-hybrid-column-right-image"
           topSectionImageHasRank={true}
           topSectionImageRank={1}
           bottomSectionClassName="case-hybrid-generic-image-section"
           bottomSectionImageUrl={second}
-          bottomSectionImageClassName="case-hybrid-scaled-image-fit-height"
+          bottomSectionImageClassName="case-hybrid-column-right-image"
           bottomSectionImageHasRank={true}
           bottomSectionImageRank={2}
         />

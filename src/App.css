@@ -639,19 +639,6 @@ fieldset.likertScale .likertIndicator {
   background-color: #ffffff;
 }
 
-/* wrapper around genericImageSections for ranking*/
-.ranking-wrapper {
-  display: "flex";
-  flex-direction: "column";
-  align-items: "center";
-  justify-content: "center";
-  width: 100%;
-  overflow: hidden;
-  position: "relative";
-  bottom: "2em";
-  height: 100%;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;

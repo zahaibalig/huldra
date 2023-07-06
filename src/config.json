@@ -202,8 +202,8 @@
   "REACT_APP_caseVideo": {
     "caseVideoColumnLeft": {
       "label": "Case",
-      "sectionVideoHeight": "200px",
-      "sectionVideoWidth": "410px",
+      "sectionVideoHeight": "225px",
+      "sectionVideoWidth": "400px",
       "rightSectionVideoLabel": "Video Clip B",
       "leftSectionVideoLabel": "Video Clip A",
       "sectionButtonlabel": "Select"
@@ -216,8 +216,8 @@
   "REACT_APP_caseAudio": {
     "caseAudioColumnLeft": {
       "label": "Case",
-      "sectionAudioHeight": "200px",
-      "sectionAudioWidth": "410px",
+      "sectionAudioHeight": "300px",
+      "sectionAudioWidth": "400px",
       "rightSectionAudioLabel": "Audio Clip B",
       "leftSectionAudioLabel": "Audio Clip A",
       "sectionButtonlabel": "Select"
