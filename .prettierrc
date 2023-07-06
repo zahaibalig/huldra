@@ -13,7 +13,7 @@
   "quoteProps": "as-needed",
   "requirePragma": false,
   "rangeStart": 0,
-  "rangeEnd": 999999999,
+  "rangeEnd": 999999999999,
   "parser": "",
   "filepath": "",
   "insertPragma": false,
