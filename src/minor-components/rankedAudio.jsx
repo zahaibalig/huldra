@@ -2,23 +2,23 @@ import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { getAsset } from "../utils/loadAssets";
 
-const RankedVideo = ({ url, width, height, className, label }) => {
-  const [videoUrl, setVideoUrl] = useState("");
+const RankedAudio = ({ url, width, height, className, label }) => {
+  const [audioUrl, setAudioUrl] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   useEffect(() => {
     setSubscribed(true);
     (async () => {
-      const videoUrl = await getAsset(url);
-      setVideoUrl(videoUrl);
+      const audioUrl = await getAsset(url);
+      setAudioUrl(audioUrl);
     })();
     return () => setSubscribed(false);
   }, [url, subscribed]);
   return (
     <div className={className}>
-      <span className="video-label">{label}</span>
-      <ReactPlayer width={width} height={height} controls url={videoUrl} />
+      <span className="audio-label">{label}</span>
+      <ReactPlayer width={width} height={height} controls url={audioUrl} />
     </div>
   );
 };
 
-export default RankedVideo;
+export default RankedAudio;

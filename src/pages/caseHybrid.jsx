@@ -8,6 +8,7 @@ import CaseHybridColumnRight from "../major-components/caseHybridColumnRight";
 import Popup from "../minor-components/popup";
 import "../assets/css/caseHybrid.css";
 import { toastInfo } from "../utils/toast";
+import getConfig from "../utils/handleStorageConfig";
 
 const CaseHybrid = ({
   caseId = 5,
@@ -28,18 +29,32 @@ const CaseHybrid = ({
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
-  const videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
-  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
 
-  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+  let videoUrl = "";
+  let choiceAHighRes = "";
+  let choiceBHighRes = "";
+  let choiceAThumbnail = "";
+  let choiceBThumbnail = "";
 
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
+  const storageConfig = getConfig();
+  if (storageConfig.assetsStorageType === "local") {
+    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    if (validCaseFiles && validCaseFiles[caseId - 1]) {
+      const caseFiles = validCaseFiles[caseId - 1];
+      videoUrl = caseFiles[0];
+      choiceAHighRes = caseFiles[1];
+      choiceBHighRes = caseFiles[2];
+      choiceAThumbnail = caseFiles[1];
+      choiceBThumbnail = caseFiles[2];
+    }
+  } else if (storageConfig.assetsStorageType === "firebase") {
+    // the following file extensions will actually be overwritten in firebase.js
+    videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
+    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+  }
 
   useEffect(() => {
     setDisableNextButton(true);
