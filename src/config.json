@@ -297,8 +297,12 @@
     "caseImageViewDetailsMandatory": true,
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
-      "cases": [],
-      "shuffle": "categorized"
+      "cases": ["image-test", "image-flower", "audio-bird", "video-bird", "hybrid-flowerbird"],
+      "shuffle": ""
+    },
+    "storage": {
+      "assetsStorageType": "local",
+      "responsesStorageType": "download"
     },
     "outputJson": [
       "ParticipantInfo",

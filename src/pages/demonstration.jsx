@@ -2,6 +2,7 @@ import React from "react";
 import ParagraphWithList from "../minor-components/paragraphWithList";
 import RankedImage from "../minor-components/rankedImage";
 import RankedVideo from "../minor-components/rankedVideo";
+import RankedAudio from "../minor-components/rankedAudio";
 import "../assets/css/demonstration.css";
 
 const Demonstration = ({ REACT_APP_demonstration }) => {
@@ -34,7 +35,7 @@ const Demonstration = ({ REACT_APP_demonstration }) => {
         />
       )}
       {REACT_APP_demonstration["hasAudio"] && (
-        <RankedVideo
+        <RankedAudio
           url={REACT_APP_demonstration["audioPath"]}
           height={REACT_APP_demonstration["audioHeight"]}
           width={REACT_APP_demonstration["audioWidth"]}

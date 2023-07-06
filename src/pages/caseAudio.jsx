@@ -3,6 +3,7 @@ import CaseAudioColumnLeft from "../major-components/caseAudioColumnLeft";
 import CaseAudioColumnRight from "../major-components/caseAudioColumnRight";
 import { AppContext } from "../context/appContext";
 import "../assets/css/caseAudio.css";
+import getConfig from "../utils/handleStorageConfig";
 
 const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const [first, setFirst] = useState("");
@@ -29,8 +30,23 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
 
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.mp3`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.mp3`;
+  let choiceA = "";
+  let choiceB = "";
+
+  const storageConfig = getConfig();
+  if (storageConfig.assetsStorageType === "local") {
+    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    if (validCaseFiles && validCaseFiles[caseId - 1]) {
+      const caseFiles = validCaseFiles[caseId - 1];
+      choiceA = caseFiles[0];
+      choiceB = caseFiles[1];
+    }
+  } else if (storageConfig.assetsStorageType === "firebase") {
+    // the following file extensions will actually be overwritten in firebase.js
+    choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.mp3`;
+    choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.mp3`;
+  }
+
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     const newAnswers = { ...CaseStudyAnswers };
