@@ -1,0 +1,22 @@
+name: Lint on merge
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: install dependency
+        run: npm ci
+      - name: lint files.
+        run: npm run lint:fix && npm run format
+      - name: Test build
+        run: npm run build
+        env:
+          CI: false
