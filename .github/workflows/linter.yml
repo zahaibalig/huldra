@@ -1,7 +1,7 @@
 name: Lint on merge
 on:
   push:
-    branches: ["master"]
+    branches: ["dev", "main"]
 
 jobs:
   lint:
