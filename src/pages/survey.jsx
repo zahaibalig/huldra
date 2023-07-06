@@ -19,7 +19,6 @@ import { v4 as uuidv4 } from "uuid";
 import { generateTimeStamp } from "../utils/timestamp";
 import { generateBlobFromJson } from "../utils/transform";
 import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
-import copy from "copy-to-clipboard";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import "firebase/storage";
@@ -33,6 +32,8 @@ import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { getFolderReference } from "../utils/firebase";
 import { fetchCases } from "../utils/loadAssets";
+import getConfig from "../utils/handleStorageConfig";
+import downloadResponse from "../utils/downloadResponse";
 
 const Survey = ({
   history,
@@ -107,7 +108,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
-  }, [disableNextButton]);
+  }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
   useHotkeys("Shift+f", () => {
     if (history.location.pathname === "/survey/registration") {
@@ -260,14 +261,21 @@ const Survey = ({
       FeedbackFormAnswers: FeedbackFormAnswers,
     };
 
-    let jsonString = JSON.stringify(storeToBucket);
-    let blob = generateBlobFromJson(jsonString);
-    let fileRef = getFolderReference(
-      `${rootDirectory}/responses/${ParticipantInfo.ParticipantId}.json`
-    );
-    fileRef.put(blob);
+    const jsonString = JSON.stringify(storeToBucket);
+    const fileName = `${ParticipantInfo.ParticipantId}.json`;
+
+    const storageConfig = getConfig();
+    if (storageConfig.responsesStorageType === "download") {
+      downloadResponse(jsonString, fileName);
+    } else if (storageConfig.responsesStorageType === "firebase") {
+      const blob = generateBlobFromJson(jsonString);
+      const fileRef = getFolderReference(`${rootDirectory}/responses/${fileName}`);
+      fileRef.put(blob);
+    }
+
     history.replace("/survey/end");
   };
+
   const handleEndSurvey = () => {
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
     let hasError = validateFeedbackForm(
@@ -435,7 +443,6 @@ const Survey = ({
           );
         } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
         let uuid = uuidv4();
-        //copy(uuid);
         let ParticipantInfo = {
           ParticipantId: uuid,
           Name: name,
