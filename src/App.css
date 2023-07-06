@@ -247,11 +247,6 @@
   height: auto;
 }
 
-.scaled-image-fit-height-hybrid {
-  width: auto;
-  height: 380px;
-}
-
 .scaled-image-fit-height-summary {
   width: 9em;
   height: auto;
@@ -538,7 +533,6 @@ fieldset.likertScale .likertIndicator {
   font-weight: bold;
 }
 
-.original-image,
 .explanation-image {
   width: 9em;
   height: 9em;
