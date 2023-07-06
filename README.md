@@ -109,26 +109,21 @@ The values of the colors are:
 
 ### Overview
 
-Set up the folder structure in your Firebase storage bucket, prepare and upload the multimedia assets corresponding to your desired cases.
+The assets can be placed either locally or in your Firebase bucket. You can congifure this in `config.json` under `REACT_APP_general` -> `storage` -> `assetsStorageType`:
 
-If `cases` is set in `config.json` under `REACT_APP_caseOrder`, the app uses these cases;
-if empty, the app fetches all cases from Firebase.
+- Default value: `"local"`
+- Possible values: `"local"`, `"firebase"`
 
-`"shuffle": "categorized"`: the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio)
-`"shuffle": "full"`: all the cases are shuffled
+We look for assets in `/public/gallery` if `assetsStorageType` is `local`, and
+`<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`.
 
-If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
-### Naming convention
+As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button.
 
-The assets have to adhere to the following naming convention:
+In either storage type, the assets have to adhere to the following folder structure and naming convention.
 
-- Folder: `<type>-<label>`
-- Main asset: `<type>-<label>.<extension>`
-- Option A: `<type>-<label>-a.<extension>`
-- Option B: `<type>-<label>-b.<extension>`
-
-`<type>` has to be one of the following: `audio`, `video`, `image`, and `hybrid`.
+If a case folder misses any of the required files, the case will be skipped.
 
 ### Directory tree
 
@@ -152,34 +147,64 @@ gallery
 |       └───image-sit.json
 ```
 
-For an image case, a json file is also necessary. An image case needs 4 files minimum.
+For an image case, a json file is also necessary. The json file should contain the description of the image and the description will be used on the page for that image case. An example of the json file is as follows:
+
+```
+{
+  "description": "Write your description here."
+}
+```
+
+### Naming convention
+
+The assets have to adhere to the following naming convention:
+
+- Folder: `<type>-<label>`
+- Main asset: `<type>-<label>.<extension>`
+- Option A: `<type>-<label>-a.<extension>`
+- Option B: `<type>-<label>-b.<extension>`
+- JSON file: `<type>-<label>.json`
+
+`<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
+
+Refer to the **Directory tree** section for which assets are required for each type.
 
 ### Supported file extensions
 
-| Audio Format | Support |
-| ------------ | ------- |
-| `AAC`        | ✅      |
-| `AIFF`       | ❌      |
-| `FLAC`       | ✅      |
-| `MP3`        | ✅      |
-| `OGG`        | ✅      |
-| `WAW`        | ✅      |
-| `WMA`        | ❌      |
+```
+image: ["jpg", "jpeg", "png", "gif"],
+audio: ["mp3", "wav", "ogg", "aac", "flac"],
+video: ["mp4", "webm", "mov"],
+```
 
-| Video Format | Support |
-| ------------ | ------- |
-| `AVI`        | ❌      |
-| `FLV`        | ❌      |
-| `MKV`        | ❌      |
-| `MOV`        | ✅      |
-| `MP4`        | ✅      |
-| `WEBM`       | ✅      |
-| `WMV`        | ❌      |
+The file extensions must be lowercase.
 
-| Image Format | Support |
-| ------------ | ------- |
-| `JPEG`       | ✅      |
-| `PNG`        | ✅      |
+This is also the order in which the app will look for assets. For example, if you have `image-sit.jpg` and `image-sit.png`, the app will use `image-sit.jpg`.
+
+### Case order
+
+If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
+
+If `assetsStorageType` is `firebase`, the `cases` array can be empty.
+If `cases` is not empty, the app uses these cases; if empty, the app fetches all cases from Firebase.
+
+The app only uses valid cases (cases with all the necessary assets) and the order of cases is decided by the `shuffle` parameter as described below.
+
+The `shuffle` parameter under `caseOrder` has the following effects:
+
+- If `cases` is empty: categorized shuffle
+- If `cases` is not empty:
+  - `"shuffle": "categorized"`: the order of the cases is shuffled within each case type, but the order of the types is hardcoded (image, hybrid, video, and audio)
+  - `"shuffle": "full"`: all the cases are shuffled
+  - If `shuffle` is not specified: the app uses the order specified in `cases`
+
+If you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button
+
+### Example assets
+
+We put some example assets in /public/gallery (minimal working example with all case types, as well as placeholder images and example assets for other pages),
+so that when people clone the repo and run directly, they will run a fully working example locally.
+The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
 

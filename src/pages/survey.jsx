@@ -31,7 +31,8 @@ import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { getFolderReference, fetchCases } from "../utils/firebase";
+import { getFolderReference } from "../utils/firebase";
+import { fetchCases } from "../utils/loadAssets";
 
 const Survey = ({
   history,
@@ -422,12 +423,10 @@ const Survey = ({
       } else {
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
+        localStorage.clear();
         let CaseOrder;
 
-        if (
-          REACT_APP_general?.caseOrder?.length !== 0 &&
-          REACT_APP_general?.caseOrder?.cases?.length !== 0
-        ) {
+        if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
           CaseOrder = await fetchCases(
             true,
             null,
@@ -435,7 +434,6 @@ const Survey = ({
             REACT_APP_general["caseOrder"]["shuffle"]
           );
         } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-        localStorage.clear();
         let uuid = uuidv4();
         //copy(uuid);
         let ParticipantInfo = {

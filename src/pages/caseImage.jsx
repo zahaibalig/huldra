@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { toastInfo } from "../utils/toast";
 import { AppContext } from "../context/appContext";
-import { fetchJsonAttributeValue, getFirebaseApp, listFiles } from "../utils/firebase";
+import { getFirebaseApp, listFiles } from "../utils/firebase";
 import { getCaseJsonFile } from "../utils/urlHandler";
 import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
 import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
@@ -11,6 +11,8 @@ import Popup from "../minor-components/popup";
 import { useLocation } from "react-router-dom";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
+import getConfig from "../utils/handleStorageConfig";
+import { fetchJsonAttributeValue } from "../utils/loadAssets";
 
 const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   const [caseDescription, setCaseDescription] = useState("");
@@ -27,18 +29,35 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
-  const choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
-  const choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
-  const choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-a.png`;
-  const choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }-b.png`;
-  const originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${
-    pagesOrder[caseId - 1]
-  }.png`;
-  const originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
+  let choiceAHighRes = "";
+  let choiceBHighRes = "";
+  let choiceAThumbnail = "";
+  let choiceBThumbnail = "";
+  let originalThumbnail = "";
+  let originalHighRes = "";
+
+  const storageConfig = getConfig();
+  if (storageConfig.assetsStorageType === "local") {
+    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    // console.log("validCaseFiles", validCaseFiles);
+    if (validCaseFiles && validCaseFiles[caseId - 1]) {
+      const caseFiles = validCaseFiles[caseId - 1];
+      choiceAHighRes = caseFiles[2];
+      choiceBHighRes = caseFiles[3];
+      choiceAThumbnail = caseFiles[2];
+      choiceBThumbnail = caseFiles[3];
+      originalThumbnail = caseFiles[1];
+      originalHighRes = caseFiles[1];
+    }
+  } else if (storageConfig.assetsStorageType === "firebase") {
+    // the following file extensions will actually be overwritten in firebase.js
+    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
+    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
+    originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
+    originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
+  }
 
   const useLocationChange = (action) => {
     const location = useLocation();
@@ -85,9 +104,18 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
       setGalleryImages(gallery);
 
       const caseUuid = pagesOrder[caseId - 1];
-      setCaseDescription(
-        await fetchJsonAttributeValue(getCaseJsonFile(rootDirectory, caseUuid), "description")
-      );
+
+      let jsonPath = "";
+      if (storageConfig.assetsStorageType === "local") {
+        const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+        if (validCaseFiles && validCaseFiles[caseId - 1]) {
+          const caseFiles = validCaseFiles[caseId - 1];
+          jsonPath = caseFiles[0];
+        }
+      } else if (storageConfig.assetsStorageType === "firebase") {
+        jsonPath = getCaseJsonFile(rootDirectory, caseUuid);
+      }
+      setCaseDescription(await fetchJsonAttributeValue(jsonPath, "description"));
     })();
     localStorage.setItem("PageLocator", caseId);
     return () => {
