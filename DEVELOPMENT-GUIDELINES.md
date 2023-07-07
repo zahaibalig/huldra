@@ -28,14 +28,15 @@
 ### Code Syntax, Logging, Styling and Requirements
 
 - This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use [ESLint](https://eslint.org/) as the linter, [Prettier](https://prettier.io/) as the formatting tool, and [Husky](https://typicode.github.io/husky/) pre-commit hook
-  - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (see `.prettierrc` file in the root folder for the formatting rules)
-  - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (see `.eslintrc.json` in the root folder for the linting rules)
+  - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules. All the rules are included in the configuration file (see `.prettierrc` file in the root folder for the formatting rules). See [Prettier options](https://prettier.io/docs/en/options.html) for more details.
+  - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules. The configuration file contains the full list of options for linting along with the rules available for the plugin **eslint-plugin-react**, except indentation as it might conflict with **Prettier**. Only some of them are active or have other values than default. see `.eslintrc.json` in the root folder for the linting rules. Visit [ESlint Rules Reference](https://eslint.org/docs/latest/rules/) and [eslint-plugin-react documentation](https://www.npmjs.com/package/eslint-plugin-react)
   - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
 - It is possible to lint the code with the commands `npm run lint` and `npm run lint:fix`, and to format the code with the command `npm run format` anytime
 - Try to resolve all warnings from the linter before you make a commit
 - All try-catch blocks should have accompanying log messages indicating the values assigned to critical variables, as well as exception messages (if any)
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
 - Never commit code containing hardcoded credentials or confidential information to a remote branch
+
 <!---
 - Use the Huldra uniform logging framework as frequently as appropriate for your code
 - Update requirements and guideline documents whenever your code introduces new dependencies
