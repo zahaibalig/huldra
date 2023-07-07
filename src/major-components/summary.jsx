@@ -10,7 +10,6 @@ const Summary = ({
   title,
   text,
   label,
-  imagePlaceholderIconPath,
   videoPlaceholderIconPath,
   audioPlaceholderIconPath,
 }) => {
@@ -28,10 +27,10 @@ const Summary = ({
       const answer = getAnswers[caseNumber];
       // highlight the option selected by the user
       if (answer[0] === option) {
-        return "summary-scaled-image-fit-height-summary highlight-image";
+        return "summary-scaled-image highlight-image";
       }
     }
-    return "summary-scaled-image-fit-height-summary";
+    return "summary-scaled-image";
   };
 
   const storageConfig = getConfig();
@@ -52,7 +51,7 @@ const Summary = ({
       {_.range(1, casesCount + 1)
         .map((item) => parseInt(item, 10))
         .map((item) => {
-          let casePrefix = pagesOrder[item - 1].split("-")[0].toLowerCase();
+          const casePrefix = pagesOrder[item - 1].split("-")[0].toLowerCase();
 
           if (storageConfig.assetsStorageType === "local") {
             const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
@@ -74,7 +73,7 @@ const Summary = ({
           }
 
           return (
-            <div key={item} className="summary-case-answer">
+            <div key={item} className={"summary-case-answer case-" + casePrefix}>
               <div className={highlightClassName}>
                 <span className="summary-case-label">{item}</span>
               </div>
@@ -82,25 +81,25 @@ const Summary = ({
                 <RankedImage
                   path={
                     casePrefix === "video"
-                      ? `/gallery/empty-white.png`
+                      ? videoPlaceholderIconPath
                       : casePrefix === "audio"
-                      ? `/gallery/empty-white.png`
+                      ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
                       ? videoPlaceholderIconPath
                       : caseImage
                   }
                   alternativeText={`case`}
                   wrapperClassName="summary-ranked-image-wrapper-summary"
-                  className="summary-scaled-image-fit-height-summary"
+                  className="summary-scaled-image"
                 />
               </div>
               <div className={highlightClassName}>
                 <RankedImage
                   path={
                     casePrefix === "video"
-                      ? `${videoPlaceholderIconPath}`
+                      ? videoPlaceholderIconPath
                       : casePrefix === "audio"
-                      ? `${audioPlaceholderIconPath}`
+                      ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
                       ? caseImageA
                       : caseImageA
@@ -114,9 +113,9 @@ const Summary = ({
                 <RankedImage
                   path={
                     casePrefix === "video"
-                      ? `${videoPlaceholderIconPath}`
+                      ? videoPlaceholderIconPath
                       : casePrefix === "audio"
-                      ? `${audioPlaceholderIconPath}`
+                      ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
                       ? caseImageB
                       : caseImageB

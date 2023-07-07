@@ -42,3 +42,8 @@
 .background-text-content {
   text-align: justify;
 }
+
+.explanation-background-image {
+  height: 144px;
+  width: 192px;
+}

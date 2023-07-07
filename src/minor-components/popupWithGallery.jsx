@@ -28,7 +28,7 @@ const PopupWithGallery = React.forwardRef(
         </div>{" "}
         <div className="modal-detail-body">
           <div className="modal-detail-body-row">
-            <RankedImage path={preview} className="modal-detail-image-wrapper" />
+            <RankedImage path={preview} className="case-image-popup-image-large" />
 
             <div className="modal-detail-text-content">
               <div className="original-vs-explanation">
@@ -37,7 +37,7 @@ const PopupWithGallery = React.forwardRef(
                   <RankedImage
                     onClick={() => setPreview(leftImageHighResUrl)}
                     path={leftImageThumbnailUrl}
-                    className="original-image"
+                    className="case-image-popup-image-small"
                   />
                 </div>
                 <div className="custom-wrapper">
@@ -45,12 +45,14 @@ const PopupWithGallery = React.forwardRef(
                   <RankedImage
                     onClick={() => setPreview(rightImageHighResUrl)}
                     path={rightImageThumbnailUrl}
-                    className="original-image"
+                    className="case-image-popup-image-small"
                   />
                 </div>
               </div>
-              <h5>{descriptionTitle}</h5>
-              <p>{descriptionText}</p>
+              <div className="case-image-popup-description">
+                <h5>{descriptionTitle}</h5>
+                <p>{descriptionText}</p>
+              </div>
             </div>
           </div>
           <h5>Similar Images:</h5>

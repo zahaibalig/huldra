@@ -247,11 +247,6 @@
   height: auto;
 }
 
-.scaled-image-fit-height-hybrid {
-  width: auto;
-  height: 380px;
-}
-
 .scaled-image-fit-height-summary {
   width: 9em;
   height: auto;
@@ -538,7 +533,6 @@ fieldset.likertScale .likertIndicator {
   font-weight: bold;
 }
 
-.original-image,
 .explanation-image {
   width: 9em;
   height: 9em;
@@ -639,19 +633,6 @@ fieldset.likertScale .likertIndicator {
   background-color: #ffffff;
 }
 
-/* wrapper around genericImageSections for ranking*/
-.ranking-wrapper {
-  display: "flex";
-  flex-direction: "column";
-  align-items: "center";
-  justify-content: "center";
-  width: 100%;
-  overflow: hidden;
-  position: "relative";
-  bottom: "2em";
-  height: 100%;
-}
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -678,9 +659,4 @@ fieldset.likertScale .likertIndicator {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #9c9393;
-}
-
-.explanation-background-image {
-  height: 12em;
-  width: 12em;
 }

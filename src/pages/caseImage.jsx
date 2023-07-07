@@ -25,7 +25,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   const [galleryImages, setGalleryImages] = useState([]);
   const { rootDirectory, disableNextButton, setDisableNextButton, REACT_APP_general } =
     useContext(AppContext);
-  const empty = `/gallery/empty.png`;
+  const empty = `/gallery/empty-white.png`;
   const [first, setFirst] = useState(empty);
   const [second, setSecond] = useState(empty);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
@@ -188,7 +188,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
         textClassName="case-image-background-text"
         leftSectionClassName="case-image-alternative-section"
         leftSectionImageUrl={choiceAThumbnail}
-        leftSectionImageClassName="case-image-explanation-background-image"
+        leftSectionImageClassName="case-image-column-middle-image"
         leftSectionTitle={REACT_APP_caseImage["caseImageColumnMiddle"].leftSectionTitle}
         leftSectionButtonClassName="btn control"
         leftSectionButtonlabel={REACT_APP_caseImage["caseImageColumnMiddle"].leftSectionButtonlabel}
@@ -214,7 +214,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
           REACT_APP_caseImage["caseImageColumnMiddle"].rightSectionButtonlabel
         }
         rightSectionImageUrl={choiceBThumbnail}
-        rightSectionImageClassName="case-image-explanation-background-image"
+        rightSectionImageClassName="case-image-column-middle-image"
         rightSectionTitle={REACT_APP_caseImage["caseImageColumnMiddle"].rightSectionTitle}
         rightSectionButtonOnClick={() => {
           setOpenChoiceB(true);
@@ -272,12 +272,12 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
           textClassName="case-image-background-text"
           topSectionClassName="case-image-generic-image-section"
           topSectionImageUrl={first}
-          topSectionImageClassName="case-image-scaled-image-fit-height"
+          topSectionImageClassName="case-image-column-right-image"
           topSectionImageHasRank={true}
           topSectionImageRank={1}
           bottomSectionClassName="case-image-generic-image-section"
           bottomSectionImageUrl={second}
-          bottomSectionImageClassName="case-image-scaled-image-fit-height"
+          bottomSectionImageClassName="case-image-column-right-image"
           bottomSectionImageHasRank={true}
           bottomSectionImageRank={2}
         />

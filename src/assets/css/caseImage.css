@@ -25,7 +25,7 @@
 
 .case-image-image-wrapper {
   width: 400px;
-  height: auto;
+  height: 300px;
 }
 
 .case-image-alternative-section {
@@ -36,9 +36,9 @@
   align-items: center;
 }
 
-.case-image-explanation-background-image {
-  height: 12em;
-  width: 12em;
+.case-image-column-middle-image {
+  height: 144px;
+  width: 192px;
 }
 
 .case-image-text-with-icons {
@@ -57,9 +57,9 @@
   height: 50%;
 }
 
-.case-image-scaled-image-fit-height {
-  width: auto;
-  height: 100%;
+.case-image-column-right-image {
+  width: 264px;
+  height: 198px;
 }
 
 .case-image-column-middle-generic-section {
@@ -76,4 +76,37 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+/* popup */
+.modal-detail-container {
+  border-radius: 0.2em;
+  background-color: white;
+  height: 648px;
+  width: 1152px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 1em;
+}
+
+.case-image-popup-image-large {
+  height: 540px;
+  width: 720px;
+}
+
+.case-image-popup-image-small {
+  height: 120px;
+  width: 160px;
+}
+
+.case-image-popup-description {
+  margin: 10px 0 0 10px;
+}
+
+.case-image-popup-description p {
+  max-height: 320px;
+  overflow-y: auto;
 }
