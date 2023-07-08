@@ -1,3 +1,6 @@
+import getConfig from "../utils/handleStorageConfig";
+import { pushToBucket } from "../utils/cloudStorage";
+
 /**
  * generate a blob from a json string and download it
  * @param {string} jsonString the content of the file
@@ -12,4 +15,14 @@ const downloadResponse = (jsonString, fileName) => {
   link.click();
 };
 
-export default downloadResponse;
+/**
+ * push the response to the bucket if the config variable is set so
+ */
+const conditionalPushToBucket = () => {
+  const storageConfig = getConfig();
+  if (storageConfig.responsesStorageType === "firebase") {
+    pushToBucket();
+  }
+};
+
+export { downloadResponse, conditionalPushToBucket };

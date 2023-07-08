@@ -25,7 +25,6 @@ import "firebase/storage";
 import { copyToClipboard } from "../utils/text";
 import ProtectedRoute from "../minor-components/protectedRoute";
 import Header from "../minor-components/header";
-import { pushToBucket } from "../utils/cloudStorage";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
@@ -33,7 +32,7 @@ import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { getFolderReference } from "../utils/firebase";
 import { fetchCases } from "../utils/loadAssets";
 import getConfig from "../utils/handleStorageConfig";
-import downloadResponse from "../utils/downloadResponse";
+import { downloadResponse, conditionalPushToBucket } from "../utils/handleResponse";
 
 const Survey = ({
   history,
@@ -308,7 +307,7 @@ const Survey = ({
 
     if (history.location.pathname === "/survey/background") {
       logSessionEvent("Next", "Background", 0);
-      pushToBucket();
+      conditionalPushToBucket();
       if (REACT_APP_demonstration.length === 0) {
         setPageLocator(1);
         history.push(`/survey/case1`);
@@ -319,7 +318,7 @@ const Survey = ({
       }
     } else if (history.location.pathname === "/survey/demonstration") {
       logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
-      pushToBucket();
+      conditionalPushToBucket();
 
       if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
         setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
@@ -332,13 +331,13 @@ const Survey = ({
       }
     } else if (PageLocator < casesCount) {
       logSessionEvent("Next", `Case${PageLocator}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       const newPageNumber = PageLocator + 1;
       setPageLocator(newPageNumber);
       history.push(`/survey/case${newPageNumber}`);
     } else if (PageLocator === casesCount) {
       logSessionEvent("Next", `Case${casesCount}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       history.push(`/survey/summary-and-feedback`);
     } else {
       return;
@@ -348,11 +347,11 @@ const Survey = ({
     getCurrentPageIndex();
     if (history.location.pathname === "/survey/summary-and-feedback") {
       logSessionEvent("Previous", `Summary and feedback`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       history.push(`/survey/case${casesCount}`);
     } else if (history.location.pathname === "/survey/demonstration") {
       logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       switch (currentDemonstrationPageIndex) {
         case 1:
           setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex - 1);
@@ -380,7 +379,7 @@ const Survey = ({
       history.push(`/`);
     } else if (PageLocator === 1) {
       logSessionEvent("Previous", `Case1`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       setCurrentDemonstrationPageIndex(Math.min(REACT_APP_demonstration.length, 3));
       switch (REACT_APP_demonstration.length) {
         case 0:
@@ -407,7 +406,7 @@ const Survey = ({
       }
     } else {
       logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       const newPageNumber = PageLocator - 1;
       setPageLocator(newPageNumber);
       history.push(`/survey/case${newPageNumber}`);
