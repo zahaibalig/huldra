@@ -17,7 +17,6 @@ import { ToastContainer } from "react-toastify";
 import { toastError, toastInfo } from "../utils/toast";
 import { v4 as uuidv4 } from "uuid";
 import { generateTimeStamp } from "../utils/timestamp";
-import { generateBlobFromJson } from "../utils/transform";
 import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
@@ -29,7 +28,6 @@ import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { getFolderReference } from "../utils/firebase";
 import { fetchCases } from "../utils/loadAssets";
 import getConfig from "../utils/handleStorageConfig";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
@@ -412,8 +410,8 @@ const Survey = ({
             REACT_APP_general["caseOrder"]["shuffle"]
           );
         } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-        let uuid = uuidv4();
-        let ParticipantInfo = {
+        const uuid = uuidv4();
+        const ParticipantInfo = {
           ParticipantId: uuid,
           Name: name,
           EmailAddress: email,
@@ -425,43 +423,33 @@ const Survey = ({
           Tickbox1: termsOfUse,
           Tickbox2: notifications,
         };
-        let SoftwareInfo = {
+        const SoftwareInfo = {
           SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
           Version: Version,
           OperatingSystem: getOs(),
           Browser: `${browserName} ${browserVersion}`,
           ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
         };
-        let SessionEvents = [
+        const SessionEvents = [
           {
             Location: "Registration",
             ButtonType: "Get participant ID",
             Timestamp: generateTimeStamp(),
           },
         ];
-        let saveToBucket = {
-          SoftwareInfo,
-          ParticipantInfo,
-          CaseOrder,
-          SessionInfo: {
-            SessionComplete: false,
-          },
-
-          CaseStudyAnswers: "",
-          FeedbackFormAnswers: "",
-          SessionEvents,
+        const SessionInfo = {
+          SessionComplete: false,
         };
 
-        let jsonString = JSON.stringify(saveToBucket);
-        let blob = generateBlobFromJson(jsonString);
-        let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
-        fileRef.put(blob);
         localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
         setRouteIsAllowed(true);
 
         localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
+        localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
         localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
         localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
+
+        conditionalPushToBucket();
         history.replace("/survey/background");
       }
     } else {
