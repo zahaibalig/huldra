@@ -32,7 +32,7 @@ import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { getFolderReference } from "../utils/firebase";
 import { fetchCases } from "../utils/loadAssets";
 import getConfig from "../utils/handleStorageConfig";
-import { downloadResponse, conditionalPushToBucket } from "../utils/handleResponse";
+import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
 
 const Survey = ({
   history,
@@ -233,44 +233,15 @@ const Survey = ({
   const submitSurvey = () => {
     setOpenEndDialog(false);
 
-    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
-    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
-    const ParticipantInfo = JSON.parse(localStorage.getItem("ParticipantInfo"));
-    const SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
-    const SoftwareInfo = JSON.parse(localStorage.getItem("SoftwareInfo"));
-    const CaseOrder = JSON.parse(localStorage.getItem("CaseOrder"));
+    logSessionEvent("End survey", "Summary and feedback", PageLocator);
 
-    const storeToBucket = {
-      SoftwareInfo,
-      ParticipantInfo,
-      CaseOrder,
-      SessionInfo: {
-        PageLocator: PageLocator,
-        SessionComplete: true,
-      },
-      SessionEvents: [
-        ...SessionEvents,
-        {
-          Location: "Summary and feedback",
-          ButtonType: "End survey",
-          Timestamp: generateTimeStamp(),
-        },
-      ],
-      CaseStudyAnswers: CaseStudyAnswers,
-      FeedbackFormAnswers: FeedbackFormAnswers,
+    const SessionInfo = {
+      PageLocator: PageLocator,
+      SessionComplete: true,
     };
+    localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 
-    const jsonString = JSON.stringify(storeToBucket);
-    const fileName = `${ParticipantInfo.ParticipantId}.json`;
-
-    const storageConfig = getConfig();
-    if (storageConfig.responsesStorageType === "download") {
-      downloadResponse(jsonString, fileName);
-    } else if (storageConfig.responsesStorageType === "firebase") {
-      const blob = generateBlobFromJson(jsonString);
-      const fileRef = getFolderReference(`${rootDirectory}/responses/${fileName}`);
-      fileRef.put(blob);
-    }
+    handleFinalResponse();
 
     history.replace("/survey/end");
   };

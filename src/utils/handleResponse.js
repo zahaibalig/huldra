@@ -1,3 +1,4 @@
+import { fetchConfigVariable } from "./handleConfigVars";
 import getConfig from "../utils/handleStorageConfig";
 import { pushToBucket } from "../utils/cloudStorage";
 
@@ -16,7 +17,7 @@ const downloadResponse = (jsonString, fileName) => {
 };
 
 /**
- * push the response to the bucket if the config variable is set so
+ * push data to the bucket if the config variable is set so
  */
 const conditionalPushToBucket = () => {
   const storageConfig = getConfig();
@@ -25,4 +26,26 @@ const conditionalPushToBucket = () => {
   }
 };
 
-export { downloadResponse, conditionalPushToBucket };
+/**
+ * handle the final response according to the config variable.
+ * if the config variable is set to "download", download the response. if the config variable is set to "firebase", push the response to the bucket.
+ * only items in the outputJson array will be contained in the response
+ */
+const handleFinalResponse = () => {
+  const storageConfig = getConfig();
+  if (storageConfig.responsesStorageType === "download") {
+    const storeToBucket = {};
+    const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
+    outputJson.map((prop) => {
+      storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
+      return null;
+    });
+    const jsonString = JSON.stringify(storeToBucket);
+    const fileName = `${storeToBucket["ParticipantInfo"].ParticipantId}.json`;
+    downloadResponse(jsonString, fileName);
+  } else if (storageConfig.responsesStorageType === "firebase") {
+    pushToBucket();
+  }
+};
+
+export { conditionalPushToBucket, handleFinalResponse };
