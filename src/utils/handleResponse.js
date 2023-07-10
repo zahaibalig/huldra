@@ -1,7 +1,37 @@
 import { fetchConfigVariable } from "./handleConfigVars";
 import getConfig from "../utils/handleStorageConfig";
-import { pushToBucket } from "../utils/cloudStorage";
 import { getStorageReference, getFirebaseApp } from "../utils/firebase";
+
+/**
+ * prepare the response to be pushed to the bucket; only items in the outputJson array will be contained in the response
+ * @returns {string} the response as a json string
+ */
+const prepareResponse = () => {
+  const storeToBucket = {};
+  const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
+  outputJson.map((prop) => {
+    storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
+    return null;
+  });
+  const jsonString = JSON.stringify(storeToBucket);
+  return jsonString;
+};
+
+/**
+ * push data to the firebase bucket
+ * @param {string} jsonString the content of the file
+ * @param {string} fileName the name of the file
+ */
+const pushToBucket = (jsonString, fileName) => {
+  const blob = new Blob([jsonString], { type: "application/json" });
+
+  getFirebaseApp();
+  const storageRef = getStorageReference();
+  const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
+  const fileRef = storageRef.child(`${rootDirectory}/responses/${fileName}`);
+
+  fileRef.put(blob).catch((err) => console.log(err));
+};
 
 /**
  * generate a blob from a json string and download it
@@ -23,7 +53,11 @@ const downloadResponse = (jsonString, fileName) => {
 const conditionalPushToBucket = () => {
   const storageConfig = getConfig();
   if (storageConfig.responsesStorageType === "firebase") {
-    pushToBucket();
+    const jsonString = prepareResponse();
+    const participantId = JSON.parse(localStorage.getItem("ParticipantInfo")).ParticipantId;
+    const fileName = `${participantId}.json`;
+
+    pushToBucket(jsonString, fileName);
   }
 };
 
@@ -34,18 +68,15 @@ const conditionalPushToBucket = () => {
  */
 const handleFinalResponse = () => {
   const storageConfig = getConfig();
+
+  const jsonString = prepareResponse();
+  const participantId = JSON.parse(localStorage.getItem("ParticipantInfo")).ParticipantId;
+  const fileName = `${participantId}.json`;
+
   if (storageConfig.responsesStorageType === "download") {
-    const storeToBucket = {};
-    const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
-    outputJson.map((prop) => {
-      storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
-      return null;
-    });
-    const jsonString = JSON.stringify(storeToBucket);
-    const fileName = `${storeToBucket["ParticipantInfo"].ParticipantId}.json`;
     downloadResponse(jsonString, fileName);
   } else if (storageConfig.responsesStorageType === "firebase") {
-    pushToBucket();
+    pushToBucket(jsonString, fileName);
   }
 };
 
