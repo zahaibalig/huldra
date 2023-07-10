@@ -8,6 +8,7 @@ import CaseImage from "./caseImage";
 import CaseVideo from "./caseVideo";
 import CaseHybrid from "./caseHybrid";
 import CaseAudio from "./caseAudio";
+import CaseText from "./caseText";
 import End from "./end";
 import Footer from "../minor-components/footer";
 import { Route, Switch } from "react-router-dom";
@@ -44,6 +45,7 @@ const Survey = ({
   REACT_APP_caseVideo,
   REACT_APP_caseAudio,
   REACT_APP_caseHybrid,
+  REACT_APP_caseText,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
@@ -492,6 +494,7 @@ const Survey = ({
     }
   };
 
+  console.log("prefix abc = ", localStorage.getItem("CaseOrder"));
   return (
     <div
       className={
@@ -679,12 +682,12 @@ const Survey = ({
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
               [PageLocator - 1].split("-")[0]
               .toLowerCase();
-            return prefix === "video" ? (
-              <CaseVideo
+            return prefix === "text" ? (
+              <CaseText
                 {...props}
                 totalCases={casesCount}
                 caseId={PageLocator}
-                REACT_APP_caseVideo={REACT_APP_caseVideo}
+                REACT_APP_caseText={REACT_APP_caseText}
               />
             ) : prefix === "audio" ? (
               <CaseAudio
@@ -700,15 +703,28 @@ const Survey = ({
                 caseId={PageLocator}
                 REACT_APP_caseHybrid={REACT_APP_caseHybrid}
               />
-            ) : (
-              <CaseImage
+            ) : prefix === "video" ? (
+              <CaseVideo
                 {...props}
                 totalCases={casesCount}
                 caseId={PageLocator}
-                REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
+                REACT_APP_caseVideo={REACT_APP_caseVideo}
+              />
+            ) : (
+              <CaseText
+                {...props}
+                totalCases={casesCount}
+                caseId={PageLocator}
+                REACT_APP_caseText={REACT_APP_caseText}
               />
             );
+            // <CaseImage
+            //   {...props}
+            //   totalCases={casesCount}
+            //   caseId={PageLocator}
+            //   REACT_APP_caseImage={REACT_APP_caseImage}
+            //   REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
+            // />
           }}
         />
         <Route

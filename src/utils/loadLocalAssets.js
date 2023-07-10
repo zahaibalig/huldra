@@ -26,13 +26,14 @@ const fetchCases = async () => {
   // the file names of the valid cases
   let validCaseFiles = [];
 
-  // shuffle the cases according to the config
+  // shuffle the cases according to the config //varun do here
   if (shuffle === "categorized") {
     let casesByType = {
       image: [],
       hybrid: [],
       video: [],
       audio: [],
+      text: [],
     };
 
     validCases.forEach((validCase) => {
@@ -50,6 +51,7 @@ const fetchCases = async () => {
       ...casesByType.hybrid.map((validCase) => validCase.name),
       ...casesByType.video.map((validCase) => validCase.name),
       ...casesByType.audio.map((validCase) => validCase.name),
+      ...casesByType.text.map((validCase) => validCase.name),
     ];
 
     validCaseFiles = [
@@ -57,6 +59,7 @@ const fetchCases = async () => {
       ...casesByType.hybrid.map((validCase) => validCase.files),
       ...casesByType.video.map((validCase) => validCase.files),
       ...casesByType.audio.map((validCase) => validCase.files),
+      ...casesByType.text.map((validCase) => validCase.files),
     ];
   } else if (shuffle === "full") {
     validCases = _.shuffle(validCases);
@@ -85,6 +88,7 @@ const validateCase = async (caseName) => {
     image: ["jpg", "jpeg", "png", "gif"],
     audio: ["mp3", "wav", "ogg", "aac", "flac"],
     video: ["mp4", "webm", "mov"],
+    text: ["txt"],
   };
 
   const type = caseName.split("-")[0].toLowerCase();
@@ -112,6 +116,17 @@ const validateCase = async (caseName) => {
     }
 
     files = [fileName1].concat(group);
+  } else if (type === "text") {
+    const fileNameArrayArray = [
+      extensions.text.map((ext) => `${fileNameBase}-a.${ext}`),
+      extensions.text.map((ext) => `${fileNameBase}-b.${ext}`),
+    ];
+    const group = await getFileNameGroup(fileNameArrayArray, "text");
+    if (!group) {
+      return false;
+    }
+
+    files = group;
   } else if (type === "audio") {
     const fileNameArrayArray = [
       extensions.audio.map((ext) => `${fileNameBase}-a.${ext}`),
@@ -176,6 +191,7 @@ const fileExists = async (fullPath, fileType) => {
       image: "image",
       audio: "audio",
       video: "video",
+      text: "text",
     };
 
     const contentType = response.headers.get("content-type");

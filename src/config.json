@@ -213,6 +213,20 @@
       "text": "Please select one of the video clips to place it on top. The top video clip is your preferred option for this case."
     }
   },
+  "REACT_APP_caseText": {
+    "caseTextColumnLeft": {
+      "label": "Case Text",
+      "sectionTextHeight": "200px",
+      "sectionTextWidth": "410px",
+      "rightSectionTextLabel": "Text Clip B",
+      "leftSectionTextLabel": "Video Clip A",
+      "sectionButtonlabel": "Select Text"
+    },
+    "caseTextColumnRight": {
+      "title": "Your   TextAnswer",
+      "text": "Please select one of the Text Text to place it on top. The top Text Text is your preferred option for this case."
+    }
+  },
   "REACT_APP_caseAudio": {
     "caseAudioColumnLeft": {
       "label": "Case",
@@ -297,7 +311,7 @@
     "caseImageViewDetailsMandatory": true,
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
-      "cases": ["image-test", "image-flower", "audio-bird", "video-bird", "hybrid-flowerbird"],
+      "cases": ["text-txt"],
       "shuffle": ""
     },
     "storage": {
