@@ -9,6 +9,8 @@ const App = () => {
   const [innerWidth] = useState(window.innerWidth);
   const [configuration, setConfiguration] = useState({});
   useEffect(() => {
+    if (true) {
+    }
     setConfiguration(
       fetchConfigVariablesBatch([
         "REACT_APP_home",
