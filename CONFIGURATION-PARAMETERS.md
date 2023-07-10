@@ -37,9 +37,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 9. [REACT_APP_caseAudio](#react_app_caseaudio)
 10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
 11. [REACT_APP_end](#react_app_end)
-12. [REACT_APP_footer](#react_app_footer)
-13. [REACT_APP_header](#react_app_header)
-14. [REACT_APP_general](#react_app_general)
+12. [REACT_APP_general](#react_app_general)
 
 ## REACT_APP_warning
 
@@ -823,20 +821,20 @@ The `REACT_APP_general` block contains 11 elements.
 
   #### Parameters
 
-  - `cases:` This is where you write the cases (folder names in firebase directory) that you want to show to the user.
+  - `cases:` This is where you write the list of cases (folder names in local/firebase directory) that you want to show to the user.
   - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
 
   NB: If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
 
-- `color`: This element can be used to define the colour scheme of the app. It has 2 subelements.
+- `color`: This element can be used to define the color scheme of the app. It has 2 subelements.
 
   #### Parameters
 
-  - `themeColor:` Here you can define the theme colour of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
+  - `themeColor:` Here you can define the theme color of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
 
   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
 
-  NB: You can pick from the following lists of colours only:
+  NB: You can pick from the following lists of colors only:
 
   - 'blue': $\color{#38c3f2}{■}$ (#38c3f2)
   - 'green': $\color{#6db784}{■}$ (#6db784);

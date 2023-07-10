@@ -5,6 +5,30 @@ All notable changes to the `dev` branch will be documented in this file, per rel
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [2.0.0-27] - 2023-07-10
+
+### Added
+
+- Integrate linter, formatter, and pre-commit hook ([#23](https://github.com/simulamet-host/huldra-internal/issues/23), [#172](https://github.com/simulamet-host/huldra-internal/issues/172), [#201](https://github.com/simulamet-host/huldra-internal/issues/201)) and relevant documentation ([#5](https://github.com/simulamet-host/huldra-internal/issues/5)) <!--- i.e., update `DEVELOPMENT-GUIDELINES.md` with information on lint rules --> 
+- Add support for using local gallery files ([#132](https://github.com/simulamet-host/huldra-internal/issues/132))
+
+### Changed
+
+- Merge shared configuration parameters into `REACT_APP_general` ([#166](https://github.com/simulamet-host/huldra-internal/issues/166))
+- Preserve aspect ratio while resizing images ([#83](https://github.com/simulamet-host/huldra-internal/issues/83))
+
+<!---
+### Fixed
+- Fix textbox grayout issue in registration page ([#149](https://github.com/simulamet-host/huldra-internal/issues/149)
+-->
+
+### Removed
+
+- Remove unnecessary imports ([#73](https://github.com/simulamet-host/huldra-internal/issues/73), [#181](https://github.com/simulamet-host/huldra-internal/issues/181))
+- Remove `TODO` blocks ([#74](https://github.com/simulamet-host/huldra-internal/issues/74))
+
+
 ## [2.0.0-26] - 2023-06-26
 
 ### Added
