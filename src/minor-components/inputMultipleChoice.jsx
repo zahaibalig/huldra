@@ -41,14 +41,14 @@ const InputMultipleChoice = ({
 
   return (
     <div className={wrapperClassName}>
-      <label htmlFor={id} className={labelClassName}>
+      <p className={labelClassName}>
         {showTooltip && (
           <Icon tooltipMessage={tooltipMessage} className="fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
         {label}{" "}
         {optional && <span className="input-multiple-choice-optional-text">(optional)</span>}{" "}
         {!optional && <Asterisk />}
-      </label>
+      </p>
       {choices.map((element, index) => {
         const checked = getSavedAnswer(id, index);
 

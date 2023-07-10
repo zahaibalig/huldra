@@ -34,14 +34,14 @@ const InputLikert = ({
 
   return (
     <div id={id} className={likertWrapperClassName}>
-      <label className={titleClassName}>
+      <p className={titleClassName}>
         {showTooltip && (
           <Icon tooltipMessage={tooltipMessage} className=" fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
         {label}
         {optional && <span className="input-likert-optional-text"> (optional)</span>}{" "}
         {!optional && <Asterisk />}
-      </label>
+      </p>
       {likertQuestions.map((e, index = 0) => {
         let likertOptions = { ...likertQuestions[index] };
         likertOptions.responses = generateLikertScheme(likertOptions.size);
