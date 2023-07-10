@@ -119,8 +119,8 @@
       "textAfter": "You can use this page to run a video check, or to display a tutorial video showing how the rest of the survey works.",
       "hasVideo": true,
       "videoPath": "/gallery/countdown.mp4",
-      "videoHeight": "300px",
-      "videoWidth": "450px"
+      "videoHeight": "270px",
+      "videoWidth": "480px"
     },
     {
       "textBefore": "You can have a demonstration page with a single audio player (custom size).",
@@ -128,7 +128,7 @@
       "hasAudio": true,
       "audioPath": "/gallery/audio-sample.mp3",
       "audioHeight": "300px",
-      "audioWidth": "450px"
+      "audioWidth": "400px"
     }
   ],
   "REACT_APP_caseImage": {
@@ -202,8 +202,8 @@
   "REACT_APP_caseVideo": {
     "caseVideoColumnLeft": {
       "label": "Case",
-      "sectionVideoHeight": "200px",
-      "sectionVideoWidth": "410px",
+      "sectionVideoHeight": "225px",
+      "sectionVideoWidth": "400px",
       "rightSectionVideoLabel": "Video Clip B",
       "leftSectionVideoLabel": "Video Clip A",
       "sectionButtonlabel": "Select"
@@ -216,8 +216,8 @@
   "REACT_APP_caseAudio": {
     "caseAudioColumnLeft": {
       "label": "Case",
-      "sectionAudioHeight": "200px",
-      "sectionAudioWidth": "410px",
+      "sectionAudioHeight": "300px",
+      "sectionAudioWidth": "400px",
       "rightSectionAudioLabel": "Audio Clip B",
       "leftSectionAudioLabel": "Audio Clip A",
       "sectionButtonlabel": "Select"

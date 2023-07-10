@@ -11,7 +11,7 @@ const PopupBasic = React.forwardRef(({ title, imageUrl, onCloseIconClick }, ref)
         <i onClick={onCloseIconClick} className="fa fa-lg fa-close close"></i>
       </div>
       <div className="modal-detail-body">
-        <RankedImage path={preview} className="scaled-image-fit-height-hybrid" />
+        <RankedImage path={preview} className="case-hybrid-popup-image" />
       </div>
     </div>
   );
