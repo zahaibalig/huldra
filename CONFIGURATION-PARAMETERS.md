@@ -37,9 +37,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 9. [REACT_APP_caseAudio](#react_app_caseaudio)
 10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
 11. [REACT_APP_end](#react_app_end)
-12. [REACT_APP_footer](#react_app_footer)
-13. [REACT_APP_header](#react_app_header)
-14. [REACT_APP_general](#react_app_general)
+12. [REACT_APP_general](#react_app_general)
 
 ## REACT_APP_warning
 
