@@ -1,74 +1,49 @@
 import React, { useState, useEffect, useContext } from "react";
-import firebase from "firebase/app";
 import "firebase/storage";
 import { AppContext } from "../context/appContext";
 import { toastError } from "../utils/toast";
-import axios from "axios";
 import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
-import { pushToBucket } from "../utils/cloudStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
+import { conditionalPushToBucket, fetchResponse } from "../utils/handleResponse";
+import getConfig from "../utils/handleStorageConfig";
+
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
-  const { firebaseConfig, rootDirectory, REACT_APP_general } = useContext(AppContext);
+  const { REACT_APP_general } = useContext(AppContext);
   const [participantId, setParticipantId] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("ParticipantInfo")) {
-      let data = JSON.parse(localStorage.getItem("ParticipantInfo"));
+      const data = JSON.parse(localStorage.getItem("ParticipantInfo"));
       setParticipantId(data.ParticipantId);
     }
   }, []);
 
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-  } else {
-    firebase.app(); // if already initialized, use that one
-  }
-  let storageRef = firebase.storage().ref();
-
-  const fetchParticipantData = async (url) => {
-    return await await axios
-      .get(url)
-      .catch((err) => {})
-      .then((res) => {
-        return res;
-      });
-  };
   const handleRedirectToRegistration = () => {
     history.push("/survey/registration");
   };
+
   const handleLogin = async () => {
-    storageRef
-      .child(`${rootDirectory}/responses/${participantId}.json`)
-      .getDownloadURL()
-      .catch((error) => {
-        toastError(`The participant ID you entered is invalid.`, "top-center", "error");
-        return;
-      })
-      .then(async (res) => {
-        let response = await fetchParticipantData(res);
-        if (response && response.data) {
-          if (response.data["ParticipantInfo"]) {
-            if (response.data.SessionInfo.SessionComplete) {
-              toastError(
-                `The participant ID you entered has completed the survey.`,
-                "top-center",
-                "error"
-              );
-            } else {
-              setRouteIsAllowed(true);
-              pushToLocalStorage(new Array(response.data));
-              logSessionEvent("Login page", "Start survey", 1);
-              pushToBucket();
-              history.push("/survey/background");
-            }
-          } else {
-            pushToLocalStorage([{ ParticipantInfo: response.data }]);
-            history.push("/survey/background");
-          }
-        }
-      });
+    const response = await fetchResponse(participantId);
+    if (!response) {
+      toastError(`The participant ID you entered is invalid.`, "top-center", "error");
+      return;
+    } else if (response.SessionInfo.SessionComplete) {
+      toastError(`The participant ID you entered has completed the survey.`, "top-center", "error");
+    } else {
+      setRouteIsAllowed(true);
+
+      // if fetching from firebase, update local storage with the response from firebase
+      if (getConfig().responsesStorageType === "firebase") {
+        pushToLocalStorage(new Array(response));
+      }
+
+      logSessionEvent("Start survey", "Login page", 1);
+      conditionalPushToBucket();
+      history.push("/survey/background");
+    }
   };
+
   return (
     <div className="home-welcome">
       <div className="home-header">

@@ -1,6 +1,7 @@
 import { fetchConfigVariable } from "./handleConfigVars";
 import getConfig from "../utils/handleStorageConfig";
 import { pushToBucket } from "../utils/cloudStorage";
+import { getStorageReference, getFirebaseApp } from "../utils/firebase";
 
 /**
  * generate a blob from a json string and download it
@@ -8,7 +9,7 @@ import { pushToBucket } from "../utils/cloudStorage";
  * @param {string} fileName the name of the file
  */
 const downloadResponse = (jsonString, fileName) => {
-  const blob = new Blob([jsonString], { type: "text/plain" });
+  const blob = new Blob([jsonString], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.download = fileName;
@@ -17,7 +18,7 @@ const downloadResponse = (jsonString, fileName) => {
 };
 
 /**
- * push data to the bucket if the config variable is set so
+ * push data to the bucket if the config variable is set so; otherwise, do nothing
  */
 const conditionalPushToBucket = () => {
   const storageConfig = getConfig();
@@ -48,4 +49,66 @@ const handleFinalResponse = () => {
   }
 };
 
-export { conditionalPushToBucket, handleFinalResponse };
+/**
+ * fetch saved response
+ * @param {string} participantId the participant id
+ * @returns {object|null} the response object or null if there is no saved response
+ */
+const fetchResponse = async (participantId) => {
+  const storageConfig = getConfig();
+
+  if (storageConfig.responsesStorageType === "firebase") {
+    /* GET CURRENT FIREBASE APP */
+    getFirebaseApp();
+    /* GET CURRENT STORAGE REFERENCE */
+    const storageRef = getStorageReference();
+
+    // for firebase, the file with the name of the participant id should exist in the bucket
+    const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
+    const fileRef = storageRef.child(`${rootDirectory}/responses/${participantId}.json`);
+    const response = await fileRef.getDownloadURL().catch((err) => {
+      console.log(err);
+    });
+    if (response) {
+      const responseJson = await fetch(response).then((res) => res.json());
+      return responseJson;
+    }
+    return null;
+  } else if (storageConfig.responsesStorageType === "download") {
+    // the participantId should be the same as the one in localStorage
+    const savedId = JSON.parse(localStorage.getItem("ParticipantInfo")).ParticipantId;
+    if (savedId !== participantId) {
+      return null;
+    }
+
+    // for a valid locally-saved response, all these items should be in localStorage
+    const neededItems = [
+      "ParticipantInfo",
+      "CaseOrder",
+      "SessionEvents",
+      "SessionInfo",
+      "SoftwareInfo",
+      "validCaseFiles",
+    ];
+
+    const savedResponse = {};
+    let validResponse = true;
+    neededItems.map((item) => {
+      const itemValue = localStorage.getItem(item);
+      if (itemValue) {
+        savedResponse[item] = JSON.parse(itemValue);
+      } else {
+        validResponse = false;
+      }
+      return null;
+    });
+
+    if (validResponse) {
+      return savedResponse;
+    } else {
+      return null;
+    }
+  }
+};
+
+export { conditionalPushToBucket, handleFinalResponse, fetchResponse };
