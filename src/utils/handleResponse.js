@@ -89,9 +89,7 @@ const fetchResponse = async (participantId) => {
   const storageConfig = getConfig();
 
   if (storageConfig.responsesStorageType === "firebase") {
-    /* GET CURRENT FIREBASE APP */
     getFirebaseApp();
-    /* GET CURRENT STORAGE REFERENCE */
     const storageRef = getStorageReference();
 
     // for firebase, the file with the name of the participant id should exist in the bucket
