@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "firebase/storage";
 import { AppContext } from "../context/appContext";
 import { toastError } from "../utils/toast";
 import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";

@@ -1,5 +1,4 @@
 import React from "react";
-import "firebase/storage";
 import InputTextField from "../minor-components/inputTextField";
 import InputTextArea from "../minor-components/inputTextArea";
 import InputRadio from "../minor-components/inputRadio";

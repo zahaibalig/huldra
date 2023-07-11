@@ -1,6 +1,6 @@
 import { fetchConfigVariable } from "./handleConfigVars";
 import getConfig from "../utils/handleStorageConfig";
-import { getStorageReference, getFirebaseApp } from "../utils/firebase";
+import { getStorageReference, getFirebaseApp, anonymousAuthentication } from "../utils/firebase";
 
 /**
  * prepare the response to be pushed to the bucket; only items in the outputJson array will be contained in the response
@@ -22,7 +22,7 @@ const prepareResponse = () => {
  * @param {string} jsonString the content of the file
  * @param {string} fileName the name of the file
  */
-const pushToBucket = (jsonString, fileName) => {
+const pushToBucket = async (jsonString, fileName) => {
   const blob = new Blob([jsonString], { type: "application/json" });
 
   getFirebaseApp();
@@ -30,7 +30,11 @@ const pushToBucket = (jsonString, fileName) => {
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
   const fileRef = storageRef.child(`${rootDirectory}/responses/${fileName}`);
 
-  fileRef.put(blob).catch((err) => console.log(err));
+  try {
+    await fileRef.put(blob);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 /**
@@ -81,7 +85,7 @@ const handleFinalResponse = () => {
 };
 
 /**
- * fetch saved response
+ * fetch saved response at the start of the app
  * @param {string} participantId the participant id
  * @returns {object|null} the response object or null if there is no saved response
  */
@@ -90,6 +94,7 @@ const fetchResponse = async (participantId) => {
 
   if (storageConfig.responsesStorageType === "firebase") {
     getFirebaseApp();
+    await anonymousAuthentication();
     const storageRef = getStorageReference();
 
     // for firebase, the file with the name of the participant id should exist in the bucket

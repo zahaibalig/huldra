@@ -20,7 +20,6 @@ import { generateTimeStamp } from "../utils/timestamp";
 import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
-import "firebase/storage";
 import { copyToClipboard } from "../utils/text";
 import ProtectedRoute from "../minor-components/protectedRoute";
 import Header from "../minor-components/header";
@@ -29,7 +28,6 @@ import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { fetchCases } from "../utils/loadAssets";
-import getConfig from "../utils/handleStorageConfig";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
 
 const Survey = ({
@@ -409,7 +407,9 @@ const Survey = ({
             REACT_APP_general["caseOrder"]["cases"],
             REACT_APP_general["caseOrder"]["shuffle"]
           );
-        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+        } else {
+          CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+        }
         const uuid = uuidv4();
         const ParticipantInfo = {
           ParticipantId: uuid,
