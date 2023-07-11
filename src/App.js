@@ -10,8 +10,7 @@ const App = () => {
   const [configuration, setConfiguration] = useState({});
   useEffect(() => {
     if (true) {
-      return 1;
-      console.log("Hello");
+    } else if (true) {
     }
     setConfiguration(
       fetchConfigVariablesBatch([
