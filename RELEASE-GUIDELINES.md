@@ -28,6 +28,7 @@
 
 ## Checklist
 
+- Check Github actions and check if all workflows are completed successfully. If any workflow fails, resolve the errors and push again.
 - Update codebase in the source branch (`dev` or `main`)
 - Go through the issues tagged with the relevant milestone, make sure all are closed
 - Go through all closed PRs associated with the release
