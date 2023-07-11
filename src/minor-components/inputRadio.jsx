@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormGroup, Label } from "reactstrap";
 import ReactTooltip from "react-tooltip";
-import _ from "lodash";
+import _, { set } from "lodash";
 import Asterisk from "./asterisk";
 import Icon from "./icon";
 
@@ -17,13 +17,17 @@ const RadioInput = ({
   useEffect(() => {
     setRadioOptions(options.filter((row) => row.length === numberOfColumns));
   }, [options]);
+
   const numberOfColumns = 3;
   const [radioOptions, setRadioOptions] = useState(options);
+  const [textValue, setTextValue] = useState("");
+  const [active, setActive] = useState(false);
   const [disableTextField, setDisableTextField] = useState(
-    _.range(1, numberOfColumns + 1).map((e) => {
+    _.range(0, numberOfColumns + 1).map((e) => {
       return true;
     })
   );
+
   return (
     <div className="radio-wrapper">
       <ReactTooltip
@@ -48,18 +52,32 @@ const RadioInput = ({
                 newState[index] = !newState[index];
                 setDisableTextField(newState);
                 onChange(option[0], e.currentTarget.checked);
+                if (option[0] === "Other" && !disableTextField[index]) {
+                  onTextChange("");
+                } else if (active) {
+                  onTextChange(textValue);
+                }
               }}
               type="checkbox"
             />{" "}
             {option[0]} {option[2] !== "" && `(${option[2]})`}
           </Label>
-          {option[1] === true && (
-            <input
-              disabled={disableTextField[index]}
-              onChange={(e) => onTextChange(e.currentTarget.value)}
-              className="input-radio-disabled-text"
-              type="text"
-            />
+
+          {option[1] === true && option[2] !== "" && (
+            <>
+              {disableTextField[index] === false && (
+                <input
+                  onChange={(e) => {
+                    setTextValue(e.currentTarget.value);
+                    onTextChange(e.currentTarget.value);
+                    setActive(true);
+                  }}
+                  className="input-radio-disabled-text"
+                  type="text"
+                  value={textValue}
+                />
+              )}
+            </>
           )}
         </FormGroup>
       ))}
