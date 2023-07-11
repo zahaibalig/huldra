@@ -14,6 +14,12 @@
 
 ## Development
 
+### Issue Tracking
+
+- We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
+- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
+- We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
+
 ### Use of Branches
 
 - We use the `dev` branch for development (protected branch: merge possible only after PR with at least 1 review)
@@ -46,17 +52,19 @@
 [^2]: Note that `indent` is an exception, and is not included in `.eslintrc.json`, as it might conflict with **Prettier**
 [^3]: Note that default values are used, or the rule is inactive, for some of the options
 
-### Issue Tracking
-
-- We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
-- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
-- We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
+### Testing
+- All code should work for all multimedia modalities (image, video, audio, text), and all storage (local, cloud) and deployment (local, cloud) options 
+<!---
+- All unit tests must pass on a feature branch before creating a PR towards `dev`
+- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
+-->
 
 ### Commits
 
 - Commits should be as atomic as possible (i.e., make minimal changes per commit)
 - Use common tense, e.g., [imperative mood](https://en.wikipedia.org/wiki/Imperative_mood) in all your commit messages
 - You can commit freely in issue/feature branches as long as your proposed changes do not break the development branch when merged
+- Never push breaking commits to `dev`
 
 ### Pull Requests
 
@@ -74,12 +82,6 @@
 - If you are assigned as a reviewer, try to provide your review within 2 days
 - Provide an assesment of the code as diligently as possible, and feel free to ask for as many changes as necessary
 - It is the responsibility of the developer who is making the PR to merge it into the development branch, however if you merge the PR, make sure to delete the associated branch afterwards (and inform the developer)
-
-<!---
-### Testing
-- All unit tests must pass on a feature branch before creating a PR towards `dev`
-- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
--->
 
 ### Versioning and Releases
 
