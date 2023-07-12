@@ -55,20 +55,19 @@
 ### Testing
 
 - All code should work for all multimedia modalities (image, video, audio, text), and all storage (local, cloud) and deployment (local, cloud) options
-<!---
-- All unit tests must pass on a feature branch before creating a PR towards `dev`
-- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
-  -->
-- As this project uses Create React App, we use the built-in Jest as the testing framework. See the documentation from [Create React App](https://create-react-app.dev/docs/running-tests) and [Jest](https://jestjs.io/docs/tutorial-react)
-  for further details
+- As this project uses Create React App, we use the built-in Jest as the testing framework (see the documentation from [Create React App](https://create-react-app.dev/docs/running-tests) and [Jest](https://jestjs.io/docs/tutorial-react) for further details)
 - We put test files in a `__tests__` folder in the same directory as the code they are testing, with the suffix `.test.js` (e.g., for `src/components/MyComponent.js`, we create `src/components/__tests__/MyComponent.test.js`)
   - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
 - Running tests:
   - Use `npm test -- --watchAll=false` to run all the tests once
-  - If you run `npm test`, Jest will launch in an interactive watch mode. Every time you save a file, it will re-run the tests automatically
-    - Note that by default it only runs the tests related to files changed since the last commit. This is the designed behavior of Jest and CRA
-    - In the interactive watch mode, you can press `a` to trigger all tests to run. You can also press `p` to filter tests by filename
-
+  - If you run `npm test`, Jest will launch in an interactive watch mode, it will re-run the tests automatically every time you save a file
+    - Note that by default it only runs the tests related to files that were changed since the last commit, this is the designed behavior of Jest and CRA
+    - In the interactive watch mode, you can press `a` to trigger all tests to run, you can also press `p` to filter tests by filename
+<!---
+- All unit tests must pass on a feature branch before creating a PR towards `dev`
+- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
+  -->
+  
 ### Commits
 
 - Commits should be as atomic as possible (i.e., make minimal changes per commit)
