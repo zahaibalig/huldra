@@ -19,9 +19,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
-      - name: install dependency
+      - name: Install dependencies
         run: npm ci
-      - name: lint files.
+      - name: Lint files
         run: npm run lint
         env:
           CI: false
