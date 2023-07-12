@@ -405,180 +405,87 @@ const Survey = ({
       history.push(`/survey/case${newPageNumber}`);
     }
   };
-  const registerParticipantInfo = async () => {
-    if (degree !== "NA (Development)") {
-      const updateDegree = degree && degree.filter((element) => element !== "Other");
-      setRouteIsAllowed(true);
-      localStorage.clear();
-      let CaseOrder;
-
-      if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
-        CaseOrder = await fetchCases(
-          true,
-          null,
-          REACT_APP_general["caseOrder"]["cases"],
-          REACT_APP_general["caseOrder"]["shuffle"]
-        );
-      } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-      let uuid = uuidv4();
-      //copy(uuid);
-      let ParticipantInfo = {
-        ParticipantId: uuid,
-        Name: name,
-        EmailAddress: email,
-        Country: country,
-        Comments: comments,
-        Degree: degreeOther ? [...updateDegree, degreeOther] : updateDegree,
-        FieldOfExpertise: fieldOfExpertise,
-        ActiveYears: parseInt(activeYears, 10),
-        Tickbox1: termsOfUse,
-        Tickbox2: notifications,
-      };
-      let SoftwareInfo = {
-        SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
-        Version: Version,
-        OperatingSystem: getOs(),
-        Browser: `${browserName} ${browserVersion}`,
-        ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
-      };
-      let SessionEvents = [
-        {
-          Location: "Registration",
-          ButtonType: "Get participant ID",
-          Timestamp: generateTimeStamp(),
-        },
-      ];
-      let saveToBucket = {
-        SoftwareInfo,
-        ParticipantInfo,
-        CaseOrder,
-        SessionInfo: {
-          SessionComplete: false,
-        },
-
-        CaseStudyAnswers: "",
-        FeedbackFormAnswers: "",
-        SessionEvents,
-      };
-
-      let jsonString = JSON.stringify(saveToBucket);
-      let blob = generateBlobFromJson(jsonString);
-      let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
-      fileRef.put(blob);
-      localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
-      setRouteIsAllowed(true);
-
-      localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-      localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
-      localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
-      history.replace("/survey/background");
-    } else {
-      /* FETCH CASE IDS FROM STORAGE */
-      setRouteIsAllowed(true);
-      localStorage.clear();
-      let CaseOrder;
-
-      if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
-        CaseOrder = await fetchCases(
-          true,
-          null,
-          REACT_APP_general["caseOrder"]["cases"],
-          REACT_APP_general["caseOrder"]["shuffle"]
-        );
-      } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-      let uuid = uuidv4();
-      //copy(uuid);
-      let ParticipantInfo = {
-        ParticipantId: uuid,
-        Name: name,
-        EmailAddress: email,
-        Country: country,
-        Comments: comments,
-        Degree: degreeOther ? [...degree, degreeOther] : degree,
-        FieldOfExpertise: fieldOfExpertise,
-        ActiveYears: parseInt(activeYears, 10),
-        Tickbox1: termsOfUse,
-        Tickbox2: notifications,
-      };
-      let SoftwareInfo = {
-        SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
-        Version: Version,
-        OperatingSystem: getOs(),
-        Browser: `${browserName} ${browserVersion}`,
-        ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
-      };
-      let SessionEvents = [
-        {
-          Location: "Registration",
-          ButtonType: "Get participant ID",
-          Timestamp: generateTimeStamp(),
-        },
-      ];
-      let saveToBucket = {
-        SoftwareInfo,
-        ParticipantInfo,
-        CaseOrder,
-        SessionInfo: {
-          SessionComplete: false,
-        },
-
-        CaseStudyAnswers: "",
-        FeedbackFormAnswers: "",
-        SessionEvents,
-      };
-
-      let jsonString = JSON.stringify(saveToBucket);
-      let blob = generateBlobFromJson(jsonString);
-      let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
-      fileRef.put(blob);
-      localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
-      setRouteIsAllowed(true);
-
-      localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-      localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
-      localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
-      history.replace("/survey/background");
-    }
-  };
   const getParticipantId = async (e) => {
     e && e.preventDefault();
-    const other = degree && degree.includes("Other");
     /* HANDLING INPUT ERRORS */
     if (
       country &&
       (degree.length > 0 || degreeOther) &&
       fieldOfExpertise.length > 0 &&
-      other &&
       termsOfUse
     ) {
-      if (degreeOther === "") {
-        toastError("Please verify mandatory fields.", "top-center", "req-error");
+      if (
+        (notifications && !email) ||
+        (notifications && !validateEmail(email)) ||
+        (email && !validateEmail(email))
+      ) {
+        toastError("Please provide your email address.", "top-center", "email-error");
       } else {
-        if (email) {
-          if (!validateEmail(email)) {
-            toastError("Please provide your email address.", "top-center", "email-error");
-          } else {
-            registerParticipantInfo();
-          }
-        } else {
-          registerParticipantInfo();
-        }
-      }
-    } else if (
-      country &&
-      degree.length > 0 &&
-      fieldOfExpertise.length > 0 &&
-      !other &&
-      termsOfUse
-    ) {
-      if (email) {
-        if (!validateEmail(email)) {
-          toastError("Please provide your email address.", "top-center", "email-error");
-        } else {
-          registerParticipantInfo();
-        }
-      } else {
-        registerParticipantInfo();
+        /* FETCH CASE IDS FROM STORAGE */
+        setRouteIsAllowed(true);
+        localStorage.clear();
+        let CaseOrder;
+
+        if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
+          CaseOrder = await fetchCases(
+            true,
+            null,
+            REACT_APP_general["caseOrder"]["cases"],
+            REACT_APP_general["caseOrder"]["shuffle"]
+          );
+        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+        let uuid = uuidv4();
+        //copy(uuid);
+        let ParticipantInfo = {
+          ParticipantId: uuid,
+          Name: name,
+          EmailAddress: email,
+          Country: country,
+          Comments: comments,
+          Degree: degreeOther ? [...degree, degreeOther] : degree,
+          FieldOfExpertise: fieldOfExpertise,
+          ActiveYears: parseInt(activeYears, 10),
+          Tickbox1: termsOfUse,
+          Tickbox2: notifications,
+        };
+        let SoftwareInfo = {
+          SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
+          Version: Version,
+          OperatingSystem: getOs(),
+          Browser: `${browserName} ${browserVersion}`,
+          ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
+        };
+        let SessionEvents = [
+          {
+            Location: "Registration",
+            ButtonType: "Get participant ID",
+            Timestamp: generateTimeStamp(),
+          },
+        ];
+        let saveToBucket = {
+          SoftwareInfo,
+          ParticipantInfo,
+          CaseOrder,
+          SessionInfo: {
+            SessionComplete: false,
+          },
+
+          CaseStudyAnswers: "",
+          FeedbackFormAnswers: "",
+          SessionEvents,
+        };
+
+        let jsonString = JSON.stringify(saveToBucket);
+        let blob = generateBlobFromJson(jsonString);
+        let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
+        fileRef.put(blob);
+        localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
+        setRouteIsAllowed(true);
+
+        localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
+        localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
+        localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
+        history.replace("/survey/background");
       }
     } else {
       toastError("Please verify mandatory fields.", "top-center", "req-error");
