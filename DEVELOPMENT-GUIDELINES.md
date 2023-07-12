@@ -34,9 +34,9 @@
 ### Code Syntax, Logging, Styling and Requirements
 
 - This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use [ESLint](https://eslint.org/) as the linter, [Prettier](https://prettier.io/) as the formatting tool, and [Husky](https://typicode.github.io/husky/) pre-commit hook
-     - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (all available [options](https://prettier.io/docs/en/options.html) for formatting rules are included in the configuration file `.prettierrc` in the root directory[^1])
-     - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (all available options for lint rules, including [general](https://eslint.org/docs/latest/rules/), as well as [specific](https://www.npmjs.com/package/eslint-plugin-react) for the plugin **eslint-plugin-react**, are included in the configuration file `.eslintrc.json` in the root directory[^2][^3])
-     - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
+  - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (all available [options](https://prettier.io/docs/en/options.html) for formatting rules are included in the configuration file `.prettierrc` in the root directory[^1])
+  - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (all available options for lint rules, including [general](https://eslint.org/docs/latest/rules/), as well as [specific](https://www.npmjs.com/package/eslint-plugin-react) for the plugin **eslint-plugin-react**, are included in the configuration file `.eslintrc.json` in the root directory[^2][^3])
+  - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
 - It is possible to lint the code with the commands `npm run lint` and `npm run lint:fix`, and to format the code with the command `npm run format` anytime
 - Try to resolve all warnings from the linter before you make a commit
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
@@ -53,11 +53,16 @@
 [^3]: Note that default values are used, or the rule is inactive, for some of the options
 
 ### Testing
-- All code should work for all multimedia modalities (image, video, audio, text), and all storage (local, cloud) and deployment (local, cloud) options 
+
+- All code should work for all multimedia modalities (image, video, audio, text), and all storage (local, cloud) and deployment (local, cloud) options
 <!---
 - All unit tests must pass on a feature branch before creating a PR towards `dev`
 - A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
--->
+  -->
+- As this project uses Create React App, we use the built-in Jest as the testing framework. See the documentation from [Create React App](https://create-react-app.dev/docs/running-tests) and [Jest](https://jestjs.io/docs/tutorial-react)
+  for further details
+- We put test files in a `__tests__` folder in the same directory as the code they are testing, with the suffix `.test.js` (e.g., for `src/components/MyComponent.js`, we create `src/components/__tests__/MyComponent.test.js`)
+  - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
 - Use `npm run test` to run the tests
 
 ### Commits
