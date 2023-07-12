@@ -63,7 +63,11 @@
   for further details
 - We put test files in a `__tests__` folder in the same directory as the code they are testing, with the suffix `.test.js` (e.g., for `src/components/MyComponent.js`, we create `src/components/__tests__/MyComponent.test.js`)
   - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
-- Use `npm run test` to run the tests
+- Running tests:
+  - Use `npm test -- --watchAll=false` to run all the tests once
+  - If you run `npm test`, Jest will launch in an interactive watch mode. Every time you save a file, it will re-run the tests automatically
+    - Note that by default it only runs the tests related to files changed since the last commit. This is the designed behavior of Jest and CRA
+    - In the interactive watch mode, you can press `a` to trigger all tests to run. You can also press `p` to filter tests by filename
 
 ### Commits
 
