@@ -6,7 +6,7 @@
 - The code is considered "production-ready" whenever it can also be shared publicly [in the public repo](https://github.com/simula/huldra)
 - We adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html), and use numeric values[^1] for all major, minor, patch, and pre-release identifiers
 
-[^1]: We do not use "alpha", "beta", etc. strings in pre-release versions, and instead use numeric values after the hyphen.
+[^1]: We do not use "alpha", "beta", etc. strings in pre-release versions, and instead use numeric values after the hyphen
 
 ### Pre-Releases
 
@@ -14,7 +14,7 @@
 - **Source branch:** pre-releases are made from `main`
 - **Version tag:** pre-releases use version tags in `vX.Y.Z-T` format[^2]
 
-[^2]: Releases are referred to in `[X.Y.Z(-T)] - yyyy-mm-dd` format in `CHANGELOG.md`, where `yyyy`, `mm`, and `dd` are the year, month, day of release respectively.
+[^2]: Releases are referred to in `[X.Y.Z(-T)] - yyyy-mm-dd` format in `CHANGELOG.md`, where `yyyy`, `mm`, and `dd` are the year, month, day of release respectively
 
 ### Regular Releases
 
@@ -28,18 +28,18 @@
 
 ## Checklist
 
-- Check Github actions and check if all workflows are completed successfully. If any workflow fails, resolve the errors and push again.
-- Update codebase in the source branch (`dev` or `main`)
-- Go through the issues tagged with the relevant milestone, make sure all are closed
-- Go through all closed PRs associated with the release
-- Update internal notes on dependencies and/or installation and/or configuration if necessary
-- Check and update `VERSION.md`
-- Update `CHANGELOG.md`
-- Confirm that both local and cloud deployment works for the source branch
-- [If source branch is `dev`] Merge `dev` into `main`[^3]
-- [If necessary] make further changes in `main`
-- Make the release from `main` using an appropriate version tag
-- [If applicable] Close the relevant milestone
-- Inform the team about the new release
+1. [If applicable] Go through the PRs tagged with the milestone(s) associated with the release, make sure all are closed
+2. [If applicable] Go through the issues tagged with the milestone(s) associated with the release, make sure all are closed
+3. Check and update `VERSION.md`
+4. Check and update `CHANGELOG.md`
+5. Update internal notes on dependencies and/or installation and/or configuration if necessary
+6. Check Github actions and see if all workflows are completed successfully (if any workflow fails, resolve the errors and push again)
+7. Confirm that both local and cloud deployment works for the `dev` branch
+8. [If source branch is `main`] Merge `dev` into `main`[^3]
+9. Make the release from the source branch using an appropriate version tag
+10. [If applicable] Close the relevant milestone
+11. Inform the team about the new release
 
-[^3]: If necessary, leave out features. You can use "squash and merge" to combine all commits into one.
+[^3]: You can use "squash and merge" to combine all commits into one
+<!---- [If necessary] make further changes in `main`-->
+<!---If necessary, leave out features-->
