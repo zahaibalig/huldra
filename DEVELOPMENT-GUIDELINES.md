@@ -58,6 +58,7 @@
 - All unit tests must pass on a feature branch before creating a PR towards `dev`
 - A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
 -->
+- Use `npm run test` to run the tests
 
 ### Commits
 
