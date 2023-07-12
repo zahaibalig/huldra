@@ -60,13 +60,15 @@
   - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
 - Running tests:
   - Use `npm test -- --watchAll=false` to run all the tests once
-  - If you run `npm test`, Jest will launch in an interactive watch mode, it will re-run the tests automatically every time you save a file
+  - If you run `npm test`[^4], Jest will launch in an interactive watch mode, it will re-run the tests automatically every time you save a file
     - Note that by default it only runs the tests related to files that were changed since the last commit, this is the designed behavior of Jest and CRA
     - In the interactive watch mode, you can press `a` to trigger all tests to run, you can also press `p` to filter tests by filename
 <!---
 - All unit tests must pass on a feature branch before creating a PR towards `dev`
 - A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
   -->
+
+[^4]: Note that `npm t`, `npm test`, and `npm run test` are equivalent commands
   
 ### Commits
 
