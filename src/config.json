@@ -310,8 +310,7 @@
       "SoftwareInfo",
       "CaseStudyAnswers",
       "SessionEvents",
-      "FeedbackFormAnswers",
-      "SessionInfo"
+      "FeedbackFormAnswers"
     ],
     "color": {
       "themeColor": "blue",
