@@ -20,7 +20,7 @@ You can customize your instance by changing configuration parameters in the `.en
 `.env` takes precedence over `config.json`.
 
 - See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
-- The `.env` file is not included in the repository. It's only necessary if you want to put your assets or participant responses in Firebase. See [**Assets and responses storage**](#assets-and-responses-storage) below for more information.
+- The `.env` file is not included in the repository. It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information.
 
 The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide.
 
@@ -83,7 +83,7 @@ REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ```
 
-Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [**Set up a Firebase project**](#set-up-a-firebase-project).
+Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
 
 For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `/dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` in the file. Don't forget to place a forward slash at the start of the path.
 
@@ -121,7 +121,7 @@ If you see CORS error messages from Firabase in the console, that means you must
 
 You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
 
-When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [**Deploy to a server**](#4-deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
+When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [Deploy to a server](#deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
 See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
 
@@ -248,8 +248,7 @@ If you change the value of these parameters, you need to go to the home page and
 
 ### Example assets
 
-We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages),
-so that when you clone the repo and [run directly](#3-run-on-your-local-computer), you can have a fully working example locally.
+We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages), so that when you clone the repo and [run directly](#run-on-your-local-computer), you can have a fully working example locally.
 The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution, as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
