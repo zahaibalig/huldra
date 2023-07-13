@@ -860,7 +860,7 @@ The `REACT_APP_general` block contains 11 elements.
 
   #### Visual Overview
 
-  <kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
+<kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
 
 - #### `header`
 
@@ -878,10 +878,10 @@ The `REACT_APP_general` block contains 11 elements.
 
   #### Visual Overview
 
-  <kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
-  <kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
-  <kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
-  <kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
+<kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
+<kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
+<kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
+<kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
 
 ### Sample Config
 
