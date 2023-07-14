@@ -8,6 +8,15 @@ import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
 import { pushToBucket } from "../utils/cloudStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
+
+var myVar = 3;
+if (myVar == 7) {
+  return <p> Test statement IF </p>;
+} else {
+  return <p> Test statement ELSE </p>;
+}
+return <p> Test statement RETURN </p>;
+
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   const { firebaseConfig, rootDirectory, REACT_APP_general } = useContext(AppContext);
   const [participantId, setParticipantId] = useState("");
@@ -15,7 +24,6 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   useEffect(() => {
     if (localStorage.getItem("ParticipantInfo")) {
       let data = JSON.parse(localStorage.getItem("ParticipantInfo"));
-      var myVar = 'This is a string with a single quote.';
       setParticipantId(data.ParticipantId);
     }
   }, []);
