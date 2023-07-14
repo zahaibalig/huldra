@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { getAsset } from "../utils/loadAssets";
 
-const RankedText = ({ url, width, height, className, label, storageType, scrollClassName }) => {
-  const [textUrl, setTextUrl] = useState("");
+const RankedText = ({ url, className, label, scrollClassName }) => {
   const [textContent, setTextContent] = useState("");
-
   const [subscribed, setSubscribed] = useState(false);
   useEffect(() => {
     setSubscribed(true);
 
     (async () => {
       const textUrl = await getAsset(url);
-      setTextUrl(textUrl);
-      console.log("textUrl", textUrl);
       const fetchText = async () => {
         try {
           const response = await fetch(textUrl);

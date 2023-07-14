@@ -121,6 +121,7 @@ const validateCase = async (caseName) => {
       extensions.text.map((ext) => `${fileNameBase}-a.${ext}`),
       extensions.text.map((ext) => `${fileNameBase}-b.${ext}`),
     ];
+
     const group = await getFileNameGroup(fileNameArrayArray, "text");
     if (!group) {
       return false;
@@ -195,7 +196,11 @@ const fileExists = async (fullPath, fileType) => {
     };
 
     const contentType = response.headers.get("content-type");
-    if (contentType && contentType.startsWith(types[fileType])) {
+    if (
+      contentType &&
+      contentType.startsWith(types[fileType]) &&
+      !contentType.startsWith("text/html")
+    ) {
       return true;
     }
   } catch (err) {

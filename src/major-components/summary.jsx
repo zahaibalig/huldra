@@ -102,7 +102,7 @@ const Summary = ({
                     casePrefix === "video"
                       ? videoPlaceholderIconPath
                       : casePrefix === "text"
-                      ? videoPlaceholderIconPath
+                      ? textPlaceholderIconPath
                       : casePrefix === "audio"
                       ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
@@ -120,7 +120,7 @@ const Summary = ({
                     casePrefix === "video"
                       ? videoPlaceholderIconPath
                       : casePrefix === "text"
-                      ? videoPlaceholderIconPath
+                      ? textPlaceholderIconPath
                       : casePrefix === "audio"
                       ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"

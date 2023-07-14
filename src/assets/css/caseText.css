@@ -50,7 +50,7 @@
   
 }
 
-/* Main class name was 'survey-box-text-right', used files 'caseAudio, caseVideo' */
+/* Main class name was 'survey-box-text-right', used files 'caseAudio, caseVideo'   */ 
 .text-survey-box-right {
   width: 430px;
   height: 560px;
@@ -62,10 +62,10 @@
   outline: solid var(--primary-color) 5px;
   border-radius: 0.2em;
   box-shadow: 0px 0px 10px grey;
-
+  background-color: ;
 }
 
-/* Main class name was 'scaled-image-fit-height' used in multiple files 'caseAudio, caseVideo, caseHybrid, caseImage' */
+/* Main class name was 'scaled-image-fit-height' used in multiple files 'caseAudio, caseVideo, caseHybrid, caseImage' varun check this one */
 .text-scaled-image-fit-height {
   width: auto;
   height: 100%;
@@ -116,6 +116,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: ;
 }
 
 ::-webkit-scrollbar {

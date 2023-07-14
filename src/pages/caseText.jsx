@@ -6,17 +6,11 @@ import "../assets/css/caseText.css";
 import getConfig from "../utils/handleStorageConfig";
 
 const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
-  // console.log("REACT_APP_caseText", REACT_APP_caseText);
-  // console.log("console of param", `${REACT_APP_caseText["caseTextColumnLeft"].label}`);
-  console.log("console of caseId", `${caseId}`);
-
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
-
   const storageConfig = getConfig();
-  let storageType = storageConfig.assetsStorageType ? storageConfig.assetsStorageType : "firebase";
   let choiceA = "";
   let choiceB = "";
   if (storageConfig.assetsStorageType === "local") {
@@ -31,8 +25,6 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
     choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
     choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
   }
-
-  // title={`${REACT_APP_caseText["CaseTextColumnLeft"].label} ${caseId}/${totalCases}`}
 
   useEffect(() => {
     localStorage.setItem("PageLocator", caseId);
@@ -53,8 +45,6 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
       setDisableNextButton(true);
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
-  // const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
-  // const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     const newAnswers = { ...CaseStudyAnswers };
@@ -74,15 +64,12 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
   return (
     <div className="text-sections-wrapper">
       <CaseTextColumnLeft
-        storageType={storageType}
         title={`${REACT_APP_caseText["caseTextColumnLeft"].label} ${caseId}/${totalCases}`}
         className="text-survey-box-left"
         textClassName="text-background-content"
         scrollClassName="scroll-text"
         sectionTextAUrl={choiceA}
         sectionTextBUrl={choiceB}
-        sectionTextHeight={REACT_APP_caseText["caseTextColumnLeft"].sectionTextHeight}
-        sectionTextWidth={REACT_APP_caseText["caseTextColumnLeft"].sectionTextWidth}
         sectionTextClassName="text"
         rightSectionTextLabel={REACT_APP_caseText["caseTextColumnLeft"].rightSectionTextLabel}
         leftSectionTextLabel={REACT_APP_caseText["caseTextColumnLeft"].leftSectionTextLabel}

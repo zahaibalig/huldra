@@ -494,7 +494,6 @@ const Survey = ({
     }
   };
 
-  console.log("prefix abc = ", localStorage.getItem("CaseOrder"));
   return (
     <div
       className={
@@ -710,21 +709,23 @@ const Survey = ({
                 caseId={PageLocator}
                 REACT_APP_caseVideo={REACT_APP_caseVideo}
               />
-            ) : (
-              <CaseText
+            ) : prefix === "image" ? (
+              <CaseImage
                 {...props}
                 totalCases={casesCount}
                 caseId={PageLocator}
-                REACT_APP_caseText={REACT_APP_caseText}
+                REACT_APP_caseImage={REACT_APP_caseImage}
+                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
+              />
+            ) : (
+              <CaseImage
+                {...props}
+                totalCases={casesCount}
+                caseId={PageLocator}
+                REACT_APP_caseImage={REACT_APP_caseImage}
+                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
               />
             );
-            // <CaseImage
-            //   {...props}
-            //   totalCases={casesCount}
-            //   caseId={PageLocator}
-            //   REACT_APP_caseImage={REACT_APP_caseImage}
-            //   REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-            // />
           }}
         />
         <Route
