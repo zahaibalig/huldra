@@ -81,7 +81,7 @@ See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more informat
 
 ### Color scheme
 
-To specify a color scheme, you need to navigate to src/config.json. Inside this file, you will find an element named 'REACT_APP_general'. Within this element, you can define the color scheme using the 'color' element, as shown below:
+To specify a color scheme, you need to navigate to `/src/config.json`. Inside this file, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
 
 ```
 "REACT_APP_general": {
@@ -123,7 +123,7 @@ As the cases are fetched at the beginning of the survey, if you change the value
 
 In either storage type, the assets have to adhere to the following folder structure and naming convention.
 
-If a case folder misses any of the required files, the case will be skipped.
+If a case folder is missing any of the required files, the case will be skipped.
 
 ### Directory tree
 
@@ -202,9 +202,9 @@ If you change the value of these parameters, you need to go to the home page and
 
 ### Example assets
 
-We put some example assets in /public/gallery (minimal working example with all case types, as well as placeholder images and example assets for other pages),
-so that when people clone the repo and run directly, they will run a fully working example locally.
-The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution as well as modification (see https://www.pexels.com/license/ for details).
+We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages),
+so that when you clone the repo and [run directly](#3-run-on-your-local-computer), you can have a fully working example locally.
+The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution, as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
 
