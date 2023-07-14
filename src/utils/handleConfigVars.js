@@ -6,7 +6,24 @@ import configuration from "../config.json";
  * @returns {string|object|Array } the value of the variable
  */
 const fetchConfigVariable = (param) => {
-  return process.env[param] !== undefined ? process.env[param] : configuration[param];
+  // read from environment variables if available
+  const envVar = process.env[param];
+
+  let result;
+
+  if (envVar !== undefined) {
+    // try to parse the value as JSON; if it fails, just return the string
+    try {
+      result = JSON.parse(envVar);
+    } catch (e) {
+      result = envVar;
+    }
+  } else {
+    // read from config file if environment variable is not available
+    result = configuration[param];
+  }
+
+  return result;
 };
 
 /**
