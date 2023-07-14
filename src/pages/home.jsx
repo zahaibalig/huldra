@@ -14,7 +14,7 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
 
   useEffect(() => {
     if (localStorage.getItem("ParticipantInfo")) {
-      let data = JSON.parse(localStorage.getItem("ParticipantInfo"));
+      let data = JSON.parse(localStorage.getItem("ParticipantInfo"))
       setParticipantId(data.ParticipantId);
     }
   }, []);
