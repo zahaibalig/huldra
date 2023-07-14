@@ -12,7 +12,6 @@ import {
 
 const fetchCases = async (configExists, path, cases, shuffle) => {
   const config = getConfig();
-  //varun do here
   let validCases;
 
   if (config.assetsStorageType === "local") {

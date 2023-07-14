@@ -36,7 +36,6 @@
   flex-direction: column;
   align-items: center;
 }
-/* Varun come back here */
 .scroll-text{
   overflow-y:scroll;
   overflow-x: hidden;

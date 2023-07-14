@@ -26,7 +26,6 @@ const fetchCases = async () => {
   // the file names of the valid cases
   let validCaseFiles = [];
 
-  // shuffle the cases according to the config //varun do here
   if (shuffle === "categorized") {
     let casesByType = {
       image: [],
