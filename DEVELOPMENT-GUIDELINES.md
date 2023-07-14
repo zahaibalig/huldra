@@ -14,6 +14,12 @@
 
 ## Development
 
+### Issue Tracking
+
+- We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
+- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
+- We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
+
 ### Use of Branches
 
 - We use the `dev` branch for development (protected branch: merge possible only after PR with at least 1 review)
@@ -28,9 +34,9 @@
 ### Code Syntax, Logging, Styling and Requirements
 
 - This project uses [lint](<https://en.wikipedia.org/wiki/Lint_(software)>) for syntax and style checks on our codebase: we use [ESLint](https://eslint.org/) as the linter, [Prettier](https://prettier.io/) as the formatting tool, and [Husky](https://typicode.github.io/husky/) pre-commit hook
-     - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (all available [options](https://prettier.io/docs/en/options.html) for formatting rules are included in the configuration file `.prettierrc` in the root directory[^1])
-     - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (all available options for lint rules, including [general](https://eslint.org/docs/latest/rules/), as well as [specific](https://www.npmjs.com/package/eslint-plugin-react) for the plugin **eslint-plugin-react**, are included in the configuration file `.eslintrc.json` in the root directory[^2][^3])
-     - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
+  - [Prettier](https://prettier.io/), the formatting tool, will format the code according to defined rules (all available [options](https://prettier.io/docs/en/options.html) for formatting rules are included in the configuration file `.prettierrc` in the root directory[^1])
+  - [ESLint](https://eslint.org/), the linter, will identify, warn, and in some cases throw errors if any portion of the code goes against the defined rules (all available options for lint rules, including [general](https://eslint.org/docs/latest/rules/), as well as [specific](https://www.npmjs.com/package/eslint-plugin-react) for the plugin **eslint-plugin-react**, are included in the configuration file `.eslintrc.json` in the root directory[^2][^3])
+  - [Husky](https://typicode.github.io/husky/) pre-commit hook will execute `eslint --fix .` and `prettier --write .` commands to format the staged files according to the styling configuration and lint them for any potential errors (in case of errors that cannot be fixed by the linter, the commit process will be terminated and the errors have to be fixed manually)
 - It is possible to lint the code with the commands `npm run lint` and `npm run lint:fix`, and to format the code with the command `npm run format` anytime
 - Try to resolve all warnings from the linter before you make a commit
 - Document your code as well as possible, including inline comments as well as updates to existing documents if any
@@ -46,17 +52,30 @@
 [^2]: Note that `indent` is an exception, and is not included in `.eslintrc.json`, as it might conflict with **Prettier**
 [^3]: Note that default values are used, or the rule is inactive, for some of the options
 
-### Issue Tracking
+### Testing
 
-- We use the [Huldra Project Board](https://github.com/orgs/simulamet-host/projects/4/views/1) for issue tracking
-- You can find the list of all labels [here](https://github.com/simulamet/host/huldra-internal/labels)
-- We use [milestones](https://github.com/simulamet-host/huldra-internal/milestones) to associate all our issues with planned releases or completion dates
+- All code should work for all multimedia modalities (image, video, audio, text), and all storage (local, cloud) and deployment (local, cloud) options
+- As this project uses Create React App, we use the built-in Jest as the testing framework (see the documentation from [Create React App](https://create-react-app.dev/docs/running-tests) and [Jest](https://jestjs.io/docs/tutorial-react) for further details)
+- We put test files in a `__tests__` folder in the same directory as the code they are testing, with the suffix `.test.js` (e.g., for `src/components/MyComponent.js`, we create `src/components/__tests__/MyComponent.test.js`)
+  - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
+- Running tests:
+  - Use `npm test -- --watchAll=false` to run all the tests once
+  - If you run `npm test`[^4], Jest will launch in an interactive watch mode, and it will re-run the tests automatically every time you save a file
+    - Note that by default it only runs the tests related to files that were changed since the last commit (this is the designed behavior of Jest and CRA)
+    - In the interactive watch mode, you can press `a` to trigger all tests to run, and you can also press `p` to filter tests by filename
+<!---
+- All unit tests must pass on a feature branch before creating a PR towards `dev`
+- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
+  -->
 
+[^4]: Note that `npm t`, `npm test`, and `npm run test` are equivalent commands
+  
 ### Commits
 
 - Commits should be as atomic as possible (i.e., make minimal changes per commit)
 - Use common tense, e.g., [imperative mood](https://en.wikipedia.org/wiki/Imperative_mood) in all your commit messages
 - You can commit freely in issue/feature branches as long as your proposed changes do not break the development branch when merged
+- Never push breaking commits to `dev`
 
 ### Pull Requests
 
@@ -74,12 +93,6 @@
 - If you are assigned as a reviewer, try to provide your review within 2 days
 - Provide an assesment of the code as diligently as possible, and feel free to ask for as many changes as necessary
 - It is the responsibility of the developer who is making the PR to merge it into the development branch, however if you merge the PR, make sure to delete the associated branch afterwards (and inform the developer)
-
-<!---
-### Testing
-- All unit tests must pass on a feature branch before creating a PR towards `dev`
-- A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
--->
 
 ### Versioning and Releases
 
