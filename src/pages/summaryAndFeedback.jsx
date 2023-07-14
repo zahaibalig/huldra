@@ -34,6 +34,7 @@ const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
           audioPlaceholderIconPath={
             REACT_APP_summaryAndFeedback["summary"].audioPlaceholderIconPath
           }
+          textPlaceholderIconPath={REACT_APP_summaryAndFeedback["summary"].textPlaceholderIconPath}
         />
         <FeedbackForm
           title={REACT_APP_summaryAndFeedback["feedbackForm"].title}

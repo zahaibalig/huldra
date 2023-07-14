@@ -5,6 +5,7 @@ const CaseTextColumnLeft = ({
   title,
   text,
   textClassName,
+  scrollClassName,
   sectionClassName,
   sectionText,
   sectionTextClassName,
@@ -40,6 +41,7 @@ const CaseTextColumnLeft = ({
           className={sectionClassName}
           text={sectionText}
           textClassName={sectionTextClassName}
+          scrollClassName={scrollClassName}
           imageUrl={sectionImageUrl}
           imageAlternativeText={sectionImageAlternativeText}
           title={sectionTitle}
@@ -64,6 +66,7 @@ const CaseTextColumnLeft = ({
           className={sectionClassName}
           text={sectionText}
           textClassName={sectionTextClassName}
+          scrollClassName={scrollClassName}
           imageUrl={sectionImageUrl}
           imageAlternativeText={sectionImageAlternativeText}
           title={sectionTitle}

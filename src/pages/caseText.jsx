@@ -9,12 +9,7 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
   // console.log("REACT_APP_caseText", REACT_APP_caseText);
   // console.log("console of param", `${REACT_APP_caseText["caseTextColumnLeft"].label}`);
   console.log("console of caseId", `${caseId}`);
-  let choiceAHighRes = "";
-  let choiceBHighRes = "";
-  let choiceAThumbnail = "";
-  let choiceBThumbnail = "";
-  let originalThumbnail = "";
-  let originalHighRes = "";
+
   const [first, setFirst] = useState("");
   const [second, setSecond] = useState("");
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
@@ -22,26 +17,19 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
 
   const storageConfig = getConfig();
   let storageType = storageConfig.assetsStorageType ? storageConfig.assetsStorageType : "firebase";
+  let choiceA = "";
+  let choiceB = "";
   if (storageConfig.assetsStorageType === "local") {
     const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
-    console.log("validCaseFiles", validCaseFiles);
     if (validCaseFiles && validCaseFiles[caseId - 1]) {
       const caseFiles = validCaseFiles[caseId - 1];
-      choiceAHighRes = caseFiles[2];
-      choiceBHighRes = caseFiles[3];
-      choiceAThumbnail = caseFiles[2];
-      choiceBThumbnail = caseFiles[3];
-      originalThumbnail = caseFiles[1];
-      originalHighRes = caseFiles[1];
+      choiceA = caseFiles[0];
+      choiceB = caseFiles[1];
     }
   } else if (storageConfig.assetsStorageType === "firebase") {
     // the following file extensions will actually be overwritten in firebase.js
-    choiceAHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
-    choiceBHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
-    choiceAThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.png`;
-    choiceBThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.png`;
-    originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
-    originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
+    choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
+    choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
   }
 
   // title={`${REACT_APP_caseText["CaseTextColumnLeft"].label} ${caseId}/${totalCases}`}
@@ -65,8 +53,8 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
       setDisableNextButton(true);
     }
   }, [caseId, disableNextButton, setDisableNextButton]);
-  const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
-  const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
+  // const choiceA = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-a.txt`;
+  // const choiceB = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}-b.txt`;
   const selectAsFirst = (choice) => {
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     const newAnswers = { ...CaseStudyAnswers };
@@ -84,12 +72,13 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
     setDisableNextButton(false);
   };
   return (
-    <div className="video-sections-wrapper">
+    <div className="text-sections-wrapper">
       <CaseTextColumnLeft
         storageType={storageType}
         title={`${REACT_APP_caseText["caseTextColumnLeft"].label} ${caseId}/${totalCases}`}
-        className="video-survey-box-left"
-        textClassName="video-background-content"
+        className="text-survey-box-left"
+        textClassName="text-background-content"
+        scrollClassName="scroll-text"
         sectionTextAUrl={choiceA}
         sectionTextBUrl={choiceB}
         sectionTextHeight={REACT_APP_caseText["caseTextColumnLeft"].sectionTextHeight}
@@ -106,22 +95,23 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
         sectionButtonlabel={REACT_APP_caseText["caseTextColumnLeft"].sectionButtonlabel}
         sectionButtonClassName="btn control"
         sectionHasButton={true}
+        sectionClassName={"section-class"}
       />
       <CaseTextColumnRight
-        className="video-survey-box-right"
+        className="text-survey-box-right"
         title={REACT_APP_caseText["caseTextColumnRight"].title}
         text={REACT_APP_caseText["caseTextColumnRight"].text}
-        textClassName="video-background-content"
+        textClassName="text-background-content"
         topSectionImageHasRank={true}
         topSectionImageRank={1}
-        topSectionImageClassName="video-scaled-image-fit-height"
-        topSectionClassName="video-generic-image-section"
-        bottomSectionClassName="video-generic-image-section"
+        topSectionImageClassName="text-scaled-image-fit-height"
+        topSectionClassName="text-generic-image-section"
+        bottomSectionClassName="text-generic-image-section"
         bottomSectionImageHasRank={true}
         bottomSectionImageRank={2}
-        bottomSectionImageClassName="video-scaled-image-fit-height"
-        topSectionTextRankClassName="video-text-rank-section"
-        bottomSectionTextRankClassName="video-text-rank-section"
+        bottomSectionImageClassName="text-scaled-image-fit-height"
+        topSectionTextRankClassName="text-text-rank-section"
+        bottomSectionTextRankClassName="text-text-rank-section"
         topSectionImageHasTextRank={true}
         topSectionImageRankText={first}
         bottomSectionImageHasTextRank={true}

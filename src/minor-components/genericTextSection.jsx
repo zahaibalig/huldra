@@ -7,6 +7,7 @@ const GenericTextSection = ({
   className,
   text,
   textClassName,
+  scrollClassName,
   textUrl,
   imageAlternativeText,
   title,
@@ -48,6 +49,7 @@ const GenericTextSection = ({
         onClick={imageOnClick}
         label={textLabel}
         storageType={storageType}
+        scrollClassName={scrollClassName}
       />
       {hasButton && (
         <div className="generic-text-section-button">

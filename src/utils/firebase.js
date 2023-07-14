@@ -196,7 +196,7 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         : prefix === "hybrid"
         ? hybridCases.push(element)
         : prefix === "text"
-        ? textCases.push(element) //varun do here
+        ? textCases.push(element)
         : imageCases.push(element);
     });
 

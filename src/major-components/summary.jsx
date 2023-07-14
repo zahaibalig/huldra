@@ -12,6 +12,7 @@ const Summary = ({
   label,
   videoPlaceholderIconPath,
   audioPlaceholderIconPath,
+  textPlaceholderIconPath,
 }) => {
   const { casesCount } = useContext(AppContext);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
@@ -82,6 +83,8 @@ const Summary = ({
                   path={
                     casePrefix === "video"
                       ? videoPlaceholderIconPath
+                      : casePrefix === "text"
+                      ? textPlaceholderIconPath
                       : casePrefix === "audio"
                       ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
@@ -98,6 +101,8 @@ const Summary = ({
                   path={
                     casePrefix === "video"
                       ? videoPlaceholderIconPath
+                      : casePrefix === "text"
+                      ? videoPlaceholderIconPath
                       : casePrefix === "audio"
                       ? audioPlaceholderIconPath
                       : casePrefix === "hybrid"
@@ -113,6 +118,8 @@ const Summary = ({
                 <RankedImage
                   path={
                     casePrefix === "video"
+                      ? videoPlaceholderIconPath
+                      : casePrefix === "text"
                       ? videoPlaceholderIconPath
                       : casePrefix === "audio"
                       ? audioPlaceholderIconPath

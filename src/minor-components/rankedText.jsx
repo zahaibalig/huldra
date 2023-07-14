@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAsset } from "../utils/loadAssets";
 
-const RankedText = ({ url, width, height, className, label, storageType }) => {
+const RankedText = ({ url, width, height, className, label, storageType, scrollClassName }) => {
   const [textUrl, setTextUrl] = useState("");
   const [textContent, setTextContent] = useState("");
 
@@ -9,34 +9,29 @@ const RankedText = ({ url, width, height, className, label, storageType }) => {
   useEffect(() => {
     setSubscribed(true);
 
-    if (storageType == "firebase") {
-      (async () => {
-        const textUrl = await getAsset(url);
-        setTextUrl(textUrl);
-        const fetchText = async () => {
-          try {
-            const response = await fetch(textUrl);
-            const text = await response.text();
-            setTextContent(text);
-          } catch (error) {
-            console.error("Error fetching text:", error);
-          }
-        };
+    (async () => {
+      const textUrl = await getAsset(url);
+      setTextUrl(textUrl);
+      console.log("textUrl", textUrl);
+      const fetchText = async () => {
+        try {
+          const response = await fetch(textUrl);
+          const text = await response.text();
+          setTextContent(text);
+        } catch (error) {
+          console.error("Error fetching text:", error);
+        }
+      };
 
-        fetchText();
-      })();
-    } else if (storageType == "local") {
-      fetch(url)
-        .then((response) => response.text())
-        .then((text) => console.log("final text is ", text));
-      //put local code here to set the text content
-    }
+      fetchText();
+    })();
+
     return () => setSubscribed(false);
   }, [url, subscribed]);
   return (
     <div className={className}>
       <span className="text-label">{label}</span>
-      <p>{textContent}</p>
+      <p className={scrollClassName}>{textContent}</p>
     </div>
   );
 };

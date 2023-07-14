@@ -249,6 +249,7 @@
       "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
       "label": "Case",
       "videoPlaceholderIconPath": "/gallery/video-placeholder.png",
+      "textPlaceholderIconPath": "/gallery/video-placeholder.png",
       "audioPlaceholderIconPath": "/gallery/audio-placeholder.png",
       "imagePlaceholderIconPath": "/gallery/empty.png"
     },
@@ -311,8 +312,8 @@
     "caseImageViewDetailsMandatory": true,
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
-      "cases": ["text-txt"],
-      "shuffle": ""
+      "cases": ["audio-bird","text-sample","text-txt"],
+      "shuffle": "categorized"
     },
     "storage": {
       "assetsStorageType": "local",
