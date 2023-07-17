@@ -1,0 +1,24 @@
+name: Test build
+on:
+  push:
+    branches:
+      - 'dev'
+      - 'main'
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+      - name: Install Dependency
+        run: npm ci
+      - name: Build
+        run: npm run build
+        env:
+          CI: false
+        
