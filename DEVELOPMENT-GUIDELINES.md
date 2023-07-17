@@ -96,8 +96,8 @@
 
 ### Resolving Problems Post-Merge
 
-- If you need to comment further on a merged and closed PR (with code comments referring to the diff), do so using the PR page (even though the feature branch does not exist anymore, and the PR is merged and closed, this page is active)
-- Do not touch the merged PR and closed feature branch, keep them as they are
+- If you need to comment further on a merged and closed PR (with code comments referring to the diff), do so using the relevant PR page (even though the feature branch might not exist anymore, and the PR is merged and closed, this page is accessible under ["Closed"](https://github.com/simulamet-host/huldra-internal/pulls?q=is%3Apr+is%3Aclosed))
+- Do not touch the merged PR and the (deleted) feature branch, keep them as they are
 - Discuss potentially problematic (but merged and closed) PRs in GitHub/Discord, if the need for changes is agreed upon:
      - The corresponding issue should be reopened
      - The assignee of the issue should start working on the issue again, by starting a new feature branch from `dev`
