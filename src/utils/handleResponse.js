@@ -130,6 +130,10 @@ const fetchResponse = async (participantId) => {
     return null;
   } else if (storageConfig.responsesStorageType === "download") {
     // the participantId should be the same as the one in localStorage
+    // check if localStorage has participantInfo first
+    if (!localStorage.getItem("ParticipantInfo")) {
+      return null;
+    }
     const savedId = JSON.parse(localStorage.getItem("ParticipantInfo")).ParticipantId;
     if (savedId !== participantId) {
       return null;
