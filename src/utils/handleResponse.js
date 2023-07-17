@@ -19,15 +19,16 @@ const prepareResponse = () => {
   ];
 
   // the optional items are decided by the outputJson config variable
-  // if outputJson is not set, push the default items to the bucket; otherwise, push only the items in outputJson
+  // if outputJson is an array containing valid items, those items will also be pushed to the bucket
   const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
   const defaultItems = ["SoftwareInfo", "SessionEvents"];
   let optionalItems;
-  if (outputJson === undefined || outputJson === null || outputJson.length === 0) {
-    optionalItems = defaultItems;
-  } else {
+  if (Array.isArray(outputJson) && outputJson.length > 0) {
     // add the items which are valid possible values of outputJson
-    optionalItems = defaultItems.filter((item) => outputJson.includes(item));
+    optionalItems = outputJson.filter((item) => defaultItems.includes(item));
+  } else {
+    // not push any optional items if outputJson is not an array or is an empty array
+    optionalItems = [];
   }
 
   const itemsToPush = mandatoryItems.concat(optionalItems);
