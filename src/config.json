@@ -305,12 +305,8 @@
       "responsesStorageType": "download"
     },
     "outputJson": [
-      "ParticipantInfo",
-      "CaseOrder",
       "SoftwareInfo",
-      "CaseStudyAnswers",
-      "SessionEvents",
-      "FeedbackFormAnswers"
+      "SessionEvents"
     ],
     "color": {
       "themeColor": "blue",

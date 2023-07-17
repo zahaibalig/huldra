@@ -9,25 +9,28 @@ import { getStorageReference, getFirebaseApp, anonymousAuthentication } from "..
 const prepareResponse = () => {
   const storeToBucket = {};
 
-  // SessionInfo will always be pushed to the bucket because it is needed when the user logs in again
-  storeToBucket["SessionInfo"] = JSON.parse(localStorage.getItem("SessionInfo"));
-
-  // if outputJson is not set, push the default items to the bucket; otherwise, push only the items in outputJson
-  const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
-  const defaultItems = [
+  // these items are mandatory and will always be pushed to the bucket
+  const mandatoryItems = [
     "ParticipantInfo",
     "CaseOrder",
-    "SoftwareInfo",
+    "SessionInfo",
     "CaseStudyAnswers",
-    "SessionEvents",
     "FeedbackFormAnswers",
   ];
-  let itemsToPush;
+
+  // the optional items are decided by the outputJson config variable
+  // if outputJson is not set, push the default items to the bucket; otherwise, push only the items in outputJson
+  const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
+  const defaultItems = ["SoftwareInfo", "SessionEvents"];
+  let optionalItems;
   if (outputJson === undefined || outputJson === null || outputJson.length === 0) {
-    itemsToPush = defaultItems;
+    optionalItems = defaultItems;
   } else {
-    itemsToPush = outputJson;
+    // add the items which are valid possible values of outputJson
+    optionalItems = defaultItems.filter((item) => outputJson.includes(item));
   }
+
+  const itemsToPush = mandatoryItems.concat(optionalItems);
 
   itemsToPush.map((prop) => {
     storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
