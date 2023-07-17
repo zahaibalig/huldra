@@ -270,14 +270,18 @@ const Survey = ({
   };
   const handleEndSurvey = () => {
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
-    let hasError = validateFeedbackForm(
-      REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
-      FeedbackFormAnswers
-    ).hasError;
-    if (hasError) {
-      toastError("Please verify mandatory fields.", "top-center", "req-error");
-    } else {
+    if (REACT_APP_summaryAndFeedback["feedbackForm"].display === false) {
       setOpenEndDialog(true);
+    } else if (REACT_APP_summaryAndFeedback["feedbackForm"].display === true) {
+      let hasError = validateFeedbackForm(
+        REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
+        FeedbackFormAnswers
+      ).hasError;
+      if (hasError) {
+        toastError("Please verify mandatory fields.", "top-center", "req-error");
+      } else {
+        setOpenEndDialog(true);
+      }
     }
   };
 
