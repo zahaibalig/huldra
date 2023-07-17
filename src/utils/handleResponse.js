@@ -140,14 +140,18 @@ const fetchResponse = async (participantId) => {
     }
 
     // for a valid locally-saved response, all these items should be in localStorage
-    const neededItems = [
+    let neededItems = [
       "ParticipantInfo",
       "CaseOrder",
       "SessionEvents",
       "SessionInfo",
       "SoftwareInfo",
-      "validCaseFiles",
     ];
+
+    // if assetsStorageType is "local", validCaseFiles is also needed
+    if (storageConfig.assetsStorageType === "local") {
+      neededItems.push("validCaseFiles");
+    }
 
     const savedResponse = {};
     let validResponse = true;
