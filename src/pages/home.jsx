@@ -8,6 +8,7 @@ import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
 import { pushToBucket } from "../utils/cloudStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
+
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   const { firebaseConfig, rootDirectory, REACT_APP_general } = useContext(AppContext);
   const [participantId, setParticipantId] = useState("");
