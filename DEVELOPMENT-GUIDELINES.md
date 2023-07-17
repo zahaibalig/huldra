@@ -60,16 +60,14 @@
   - The only exception is for `src/App.js`, which is tested in `src/App.test.js`
 - Running tests:
   - Use `npm test -- --watchAll=false` to run all the tests once
-  - If you run `npm test`[^4], Jest will launch in an interactive watch mode, and it will re-run the tests automatically every time you save a file
-    - Note that by default it only runs the tests related to files that were changed since the last commit (this is the designed behavior of Jest and CRA)
-    - In the interactive watch mode, you can press `a` to trigger all tests to run, and you can also press `p` to filter tests by filename
-<!---
+  - If you run `npm test`[^4], Jest will launch in an interactive watch mode, and it will re-run the tests automatically every time you save a file - Note that by default it only runs the tests related to files that were changed since the last commit (this is the designed behavior of Jest and CRA) - In the interactive watch mode, you can press `a` to trigger all tests to run, and you can also press `p` to filter tests by filename
+  <!---
 - All unit tests must pass on a feature branch before creating a PR towards `dev`
 - A Continuous Integration (CI) framework is being developed for the purpose of automated branch testing
   -->
 
 [^4]: Note that `npm t`, `npm test`, and `npm run test` are equivalent commands
-  
+
 ### Commits
 
 - Commits should be as atomic as possible (i.e., make minimal changes per commit)
@@ -93,6 +91,10 @@
 - If you are assigned as a reviewer, try to provide your review within 2 days
 - Provide an assesment of the code as diligently as possible, and feel free to ask for as many changes as necessary
 - It is the responsibility of the developer who is making the PR to merge it into the development branch, however if you merge the PR, make sure to delete the associated branch afterwards (and inform the developer)
+
+### Continuous Integration / Continuous Deployment
+
+Please see `GITHUB-ACTIONS.md` for details.
 
 ### Versioning and Releases
 
