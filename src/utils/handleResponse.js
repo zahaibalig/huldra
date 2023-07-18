@@ -116,6 +116,16 @@ const handleFinalResponse = () => {
 const fetchResponse = async (participantId) => {
   const storageConfig = getConfig();
 
+  // if assetsStorageType is "local", validCaseFiles is needed in localStorage, no matter what responsesStorageType is
+  if (storageConfig.assetsStorageType === "local") {
+    if (!localStorage.getItem("validCaseFiles")) {
+      return null;
+    }
+  }
+
+  // for a valid saved response, all these items should be present in the respective storage
+  const neededItems = ["ParticipantInfo", "CaseOrder", "SessionInfo"];
+
   if (storageConfig.responsesStorageType === "firebase") {
     getFirebaseApp();
     await anonymousAuthentication();
@@ -129,6 +139,15 @@ const fetchResponse = async (participantId) => {
     });
     if (response) {
       const responseJson = await fetch(response).then((res) => res.json());
+      // check if the file from firebase contains all the needed items
+      let validResponse = true;
+      neededItems.map((item) => {
+        if (!responseJson[item]) {
+          validResponse = false;
+        }
+        return null;
+      });
+
       return responseJson;
     }
     return null;
@@ -143,20 +162,7 @@ const fetchResponse = async (participantId) => {
       return null;
     }
 
-    // for a valid locally-saved response, all these items should be in localStorage
-    let neededItems = [
-      "ParticipantInfo",
-      "CaseOrder",
-      "SessionEvents",
-      "SessionInfo",
-      "SoftwareInfo",
-    ];
-
-    // if assetsStorageType is "local", validCaseFiles is also needed
-    if (storageConfig.assetsStorageType === "local") {
-      neededItems.push("validCaseFiles");
-    }
-
+    // check if the needed items are all present in localStorage
     const savedResponse = {};
     let validResponse = true;
     neededItems.map((item) => {
