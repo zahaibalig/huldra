@@ -5,7 +5,7 @@ import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
 import { conditionalPushToBucket, fetchResponse } from "../utils/handleResponse";
-import getConfig from "../utils/handleStorageConfig";
+import getConfig, { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 
 const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   const { REACT_APP_general } = useContext(AppContext);
@@ -23,6 +23,8 @@ const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
   };
 
   const handleLogin = async () => {
+    conditionalInitializeFirebase();
+
     const response = await fetchResponse(participantId);
     if (!response) {
       toastError(`The participant ID you entered is invalid.`, "top-center", "error");

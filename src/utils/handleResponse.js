@@ -49,7 +49,6 @@ const prepareResponse = () => {
 const pushToBucket = async (jsonString, fileName) => {
   const blob = new Blob([jsonString], { type: "application/json" });
 
-  getFirebaseApp();
   const storageRef = getStorageReference();
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
   const fileRef = storageRef.child(`${rootDirectory}/responses/${fileName}`);
@@ -127,8 +126,6 @@ const fetchResponse = async (participantId) => {
   const neededItems = ["ParticipantInfo", "CaseOrder", "SessionInfo"];
 
   if (storageConfig.responsesStorageType === "firebase") {
-    getFirebaseApp();
-    await anonymousAuthentication();
     const storageRef = getStorageReference();
 
     // for firebase, the file with the name of the participant id should exist in the bucket

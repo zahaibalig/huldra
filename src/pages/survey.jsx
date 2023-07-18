@@ -29,6 +29,7 @@ import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { fetchCases } from "../utils/loadAssets";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
+import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 
 const Survey = ({
   history,
@@ -395,6 +396,8 @@ const Survey = ({
       ) {
         toastError("Please provide your email address.", "top-center", "email-error");
       } else {
+        conditionalInitializeFirebase();
+
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
         localStorage.clear();

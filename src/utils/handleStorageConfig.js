@@ -1,4 +1,5 @@
-import { fetchConfigVariable } from "./handleConfigVars";
+import { fetchConfigVariable } from "../utils/handleConfigVars";
+import { getFirebaseApp, anonymousAuthentication } from "../utils/firebase";
 
 /**
  * read from config. use the default values if the parameters are not defined or invalid
@@ -29,4 +30,16 @@ const getConfig = () => {
   return config;
 };
 
+const conditionalInitializeFirebase = async () => {
+  // if either assets or responses are stored in firebase, initialize firebase
+  if (
+    getConfig().assetsStorageType === "firebase" ||
+    getConfig().responsesStorageType === "firebase"
+  ) {
+    getFirebaseApp();
+    await anonymousAuthentication();
+  }
+};
+
 export default getConfig;
+export { conditionalInitializeFirebase };
