@@ -26,6 +26,7 @@
     "react-toastify": "^7.0.3",
     "react-tooltip": "^4.4.3",
     "reactstrap": "^8.10.1",
+    "stack-trace": "^1.0.0-pre2",
     "uuid": "^8.3.2"
   },
   "scripts": {
