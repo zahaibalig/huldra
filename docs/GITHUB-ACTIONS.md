@@ -24,5 +24,5 @@ Currently, the GitHub repository `huldra-internal` has 3 workflows in [GitHub ac
 ### Build Docker Image
 
 - **Defined in:** `/.github/workflows/docker_build.yml`
-- **Triggers on:** Successful completion of the **`Build on Push`** workflow
+- **Triggers on:** Successful completion of the [**`Build on Push`**](#build-on-push) workflow.
 - **Operation:** This workflow builds a docker image of the application and pushes it to a private repository on [Dockerhub](https://hub.docker.com/).
