@@ -1,4 +1,4 @@
-# Configuration File Documentation
+# Huldra Configuration Parameters
 
 This document serves as a comprehensive guide to the parameters in the `config.json` file.
 
