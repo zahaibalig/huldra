@@ -94,6 +94,16 @@
 - Provide an assesment of the code as diligently as possible, and feel free to ask for as many changes as necessary
 - It is the responsibility of the developer who is making the PR to merge it into the development branch, however if you merge the PR, make sure to delete the associated branch afterwards (and inform the developer)
 
+### Resolving Problems Post-Merge
+
+- If you need to comment further on a merged and closed PR (with code comments referring to the diff), do so using the relevant PR page (even though the feature branch might not exist anymore, and the PR is merged and closed, this page is accessible under ["Closed"](https://github.com/simulamet-host/huldra-internal/pulls?q=is%3Apr+is%3Aclosed))
+- Do not touch the merged PR and the (deleted) feature branch, keep them as they are
+- Discuss potentially problematic (but merged and closed) PRs in GitHub/Discord, if the need for changes is agreed upon:
+     - The corresponding issue should be reopened
+     - The assignee of the issue should start working on the issue again, by starting a new feature branch from `dev`
+     - When the assignee is ready, they should make a new PR towards `dev` from the new feature branch
+- Never revert a merged and closed PR
+
 ### Versioning and Releases
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
