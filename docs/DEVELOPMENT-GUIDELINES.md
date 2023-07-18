@@ -94,7 +94,7 @@
 
 ### Continuous Integration / Continuous Deployment
 
-Please see `GITHUB-ACTIONS.md` for details.
+- See `GITHUB-ACTIONS.md` for details
 
 ### Resolving Problems Post-Merge
 

@@ -1,4 +1,4 @@
-# HULDRA-INTERNAL Changelog
+# Huldra Changelog
 
 All notable changes to the `dev` branch will be documented in this file, per release.
 
