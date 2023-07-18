@@ -5,6 +5,22 @@ All notable changes to the `dev` branch will be documented in this file, per rel
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-28] - 2023-07-18
+
+### Added
+
+- Create GitHub action for automatic linting and formatting ([#211](https://github.com/simulamet-host/huldra-internal/issues/211))
+- Create GitHub action for automatic building ([#234](https://github.com/simulamet-host/huldra-internal/issues/234))
+
+### Changed
+
+- Update documentation with information on testing ([#231](https://github.com/simulamet-host/huldra-internal/issues/231))
+- Update `DEVELOPMENT-GUIDELINES.md`([#236](https://github.com/simulamet-host/huldra-internal/issues/236))
+
+### Fixed
+
+- Remove any personal info from the codebase ([#239](https://github.com/simulamet-host/huldra-internal/issues/239)
+
 
 ## [2.0.0-27] - 2023-07-10
 
