@@ -272,7 +272,7 @@ const Survey = ({
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
     if (REACT_APP_summaryAndFeedback["feedbackForm"].display === false) {
       setOpenEndDialog(true);
-    } else if (REACT_APP_summaryAndFeedback["feedbackForm"].display === true) {
+    } else {
       let hasError = validateFeedbackForm(
         REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
         FeedbackFormAnswers

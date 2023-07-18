@@ -229,7 +229,7 @@
   },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
-      "display": false,
+      "display": true,
       "highlightAnswers": true,
       "title": "Summary of cases",
       "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",

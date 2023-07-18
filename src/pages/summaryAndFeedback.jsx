@@ -50,7 +50,7 @@ const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
     REACT_APP_summaryAndFeedback["summary"].display === true
   ) {
     return summarySection();
-  } else return <h2>Press End Survey To Submit Your Answer(s)</h2>;
+  } else return <h2>Click "End Survey" to submit your response</h2>;
 };
 
 export default SummaryAndFeedback;
