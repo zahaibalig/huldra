@@ -5,8 +5,11 @@ Our proposed framework can be used as an online survey tool by researchers worki
 
 Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), a survey for the collection of feedback from medical experts about how they perceive different eXplainable Artificial Intelligence (XAI) methods demonstrated on images from the gastrointestinal (GI) tract, and [HOST-ATS](https://host-ats.herokuapp.com), a survey for the collection of feedback from the general public about how they perceive alternative thumbnails for a given soccer video clip, both of which use customized versions of Huldra.
 
-## How to deploy from scratch
+## Quick Start
 
+This section describes how to deploy Huldra from scratch and run entirely on your local computer.
+
+<!-- 
 ### Quick start - Run on your local computer
 
 - You need to have [Node.js](https://nodejs.org/) installed on your computer.
@@ -115,7 +118,13 @@ If you see CORS error messages from Firabase in the console, that means you must
 
 </details>
 
-# More about Huldra
+-->
+
+## Detailed Information
+
+This section provides detailed information about Huldra.
+
+<!-- (add TOC here)
 
 ## Configuration
 
@@ -260,7 +269,12 @@ The app will generate a file containing the responses of the participant. The fi
 
 In case of `firebase`, the responses will be stored in `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
 
-## References
+-->
+
+
+## Resources
+
+<!--
 
 - [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887)
 - [Experiences and Lessons Learned from a Crowdsourced-Remote Hybrid User Survey Framework](https://ieeexplore.ieee.org/document/10019678)
@@ -284,18 +298,22 @@ If you find our work useful for your research, please include the following cita
   booktitle = {Proceedings of the 13th {ACM} Multimedia Systems Conference}
 }
 ```
+-->
 
-# Internal only
+## Internal Notes
 
-## Guidelines
+<!--
+### Guidelines
 
 - `DEVELOPMENT-GUIDELINES.md`
 - `RELEASE-GUIDELINES.md`
 
-## Keyboard shortcuts
+### Keyboard Shortcuts
 
 `Enter`: imitates the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
 
 `Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)
 
 `Shift + F`: on the registration page which opens after clicking `Get participant ID`, automatically fill out the form and make the "Start Survey" button clickable (applicable fields are filled with the string "NA", in order to facilitate the filtering of such development/test/debug responses from Firebase later on)
+-->
+
