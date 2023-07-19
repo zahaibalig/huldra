@@ -10,7 +10,6 @@ Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), 
 This section describes how to deploy Huldra from scratch and run entirely on your local computer.
 
 <!-- 
-### Quick start - Run on your local computer
 
 - You need to have [Node.js](https://nodejs.org/) installed on your computer.
 - Clone or download the source code of Huldra.
@@ -124,7 +123,17 @@ If you see CORS error messages from Firabase in the console, that means you must
 
 This section provides detailed information about Huldra.
 
-<!-- (add TOC here)
+1. [Configuration](#configuration)
+2. [Assets](#assets)
+3. [Deployment](#deployment)
+4. [Responses](#responses)
+
+### Configuration
+### Assets
+### Deployment
+### Responses
+
+<!-- 
 
 ## Configuration
 
