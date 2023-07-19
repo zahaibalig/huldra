@@ -1,29 +1,24 @@
-const stackTrace = require("stack-trace");
-
+import { get } from "stack-trace";
+import { generateTimeStamp } from "./timestamp";
 const logger = {
-  log: (level, message, metadata = "") => {
-    const date = Date.now();
-    const timeFormat = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "full",
-      timeStyle: "long",
-      timeZone: "Europe/Oslo",
-    }).format(date);
+  log: (message, level = "info", metadata = "") => {
+    const timestamp = generateTimeStamp();
     const coloredLevel = getColorizedLevel(level);
     const codeLocation = getCodeLocation();
-    const logEntry = `${timeFormat} [${coloredLevel}]: ${message} ${metadata}  ${codeLocation}`;
+    const logEntry = `${timestamp} [${coloredLevel}]: ${message} ${metadata}  ${codeLocation}`;
     console.log(logEntry);
   },
-  info: (message, metadata) => {
-    logger.log("info", message, metadata);
+  error: (message = "", metadata = "") => {
+    logger.log(message, "error", metadata);
   },
-  error: (message, metadata) => {
-    logger.log("error", message, metadata);
+  warn: (message = "", metadata = "") => {
+    logger.log(message, "warn", metadata);
   },
-  warn: (message, metadata) => {
-    logger.log("warn", message, metadata);
+  debug: (message = "", metadata = "") => {
+    logger.log(message, "debug", metadata);
   },
-  debug: (message, metadata) => {
-    logger.log("debug", message, metadata);
+  info: (message = "", metadata = "") => {
+    logger.log(message, "info", metadata);
   },
 };
 const getColorizedLevel = (level) => {
@@ -37,7 +32,7 @@ const getColorizedLevel = (level) => {
   return colors[level] || level.toUpperCase();
 };
 const getCodeLocation = () => {
-  const trace = stackTrace.get();
+  const trace = get();
   const callerFrame = trace[3];
   const fileName = callerFrame.getFileName() || "";
   const lineNumber = callerFrame.getLineNumber() || "";
