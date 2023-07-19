@@ -131,6 +131,11 @@ const Survey = ({
     setFieldOfExpertise(e.currentTarget.value);
   };
   const handleDegreeChange = (option, state) => {
+    // do nothing here if "Other" is selected
+    if (option === "Other") {
+      return;
+    }
+
     let newArray = Array.from(degree);
     if (state) {
       if (newArray.indexOf(option) < 0) {
