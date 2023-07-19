@@ -627,6 +627,7 @@ const Survey = ({
               onCommentsChange={onCommentsChange}
               handleDegreeChange={handleDegreeChange}
               handleOtherDegreeChange={handleOtherDegreeChange}
+              degreeOther={degreeOther}
               onFieldOfExpertiseChange={onFieldOfExpertiseChange}
               onActiveYearsChange={onActiveYearsChange}
               setTermsOfUse={setTermsOfUse}
