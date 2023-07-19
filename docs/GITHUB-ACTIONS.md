@@ -10,16 +10,16 @@ Currently, the GitHub repository `huldra-internal` has 3 workflows in [GitHub ac
 
 - **Defined in:** `/.github/workflows/linter.yml`
 - **Triggers on:** Push to all branches except `dev` and `main`, PR to `dev` and `main`.
-- **Operation:** This workflow lints the codebase and logs the errors or warnings. 
-     - If there are any errors, the workflow will fail, and a cross mark (❌) will appear on the PR/commit. In case of failure, please resolve the errors and push again.
-     - If there are no errors, the workflow will pass, and a check mark (✔️) will appear on the PR/commit.
+- **Operation:** This workflow lints the codebase and logs the errors or warnings.
+  - If there are any errors, the workflow will fail, and a cross mark (❌) will appear on the PR/commit. In case of failure, please resolve the errors and push again.
+  - If there are no errors, the workflow will pass, and a check mark (✔️) will appear on the PR/commit.
 
 ### Build on Push
 
 - **Defined in:** `/.github/workflows/build.yml`
 - **Triggers on:** Push to `dev` and `main``.
-- **Operation:** This workflow runs `npm run build` and creates a build of the application, in order to ensure that the latest push to `dev`/`main` is working before it can be deployed successfully. 
-     - On successful completion of this workflow, the application will be deployed to the current hosting platform [Heroku](https://heroku.com/).
+- **Operation:** This workflow runs `npm run build` and creates a build of the application, in order to ensure that the latest push to `dev`/`main` is working before it can be deployed successfully.
+  - On successful completion of this workflow, the application will be deployed to the current hosting platform [Heroku](https://heroku.com/).
 
 ### Build Docker Image
 

@@ -3,7 +3,7 @@ import Likert from "react-likert-scale";
 import Icon from "./icon";
 import Asterisk from "./asterisk";
 import { generateLikertScheme } from "../utils/generateLikertScheme";
-import { pushToBucket } from "../utils/cloudStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const InputLikert = ({
   label,
@@ -34,14 +34,14 @@ const InputLikert = ({
 
   return (
     <div id={id} className={likertWrapperClassName}>
-      <label className={titleClassName}>
+      <p className={titleClassName}>
         {showTooltip && (
           <Icon tooltipMessage={tooltipMessage} className=" fa fa-info-circle form-tooltip ml-1" />
         )}{" "}
         {label}
         {optional && <span className="input-likert-optional-text"> (optional)</span>}{" "}
         {!optional && <Asterisk />}
-      </label>
+      </p>
       {likertQuestions.map((e, index = 0) => {
         let likertOptions = { ...likertQuestions[index] };
         likertOptions.responses = generateLikertScheme(likertOptions.size);
@@ -62,7 +62,7 @@ const InputLikert = ({
             `${likertQuestions[index].label}`
           ] = `${val.value}/${likertOptions.responses.length}`;
           localStorage.setItem("FeedbackFormAnswers", JSON.stringify(answers));
-          pushToBucket();
+          conditionalPushToBucket();
         };
         return <Likert {...likertOptions} key={index} />;
       })}

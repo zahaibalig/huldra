@@ -41,5 +41,6 @@
 11. Inform the team about the new release
 
 [^3]: You can use "squash and merge" to combine all commits into one
+
 <!---- [If necessary] make further changes in `main`-->
 <!---If necessary, leave out features-->

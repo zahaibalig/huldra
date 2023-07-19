@@ -1,7 +1,7 @@
 import Icon from "./icon";
 import React from "react";
 import Asterisk from "./asterisk";
-import { pushToBucket } from "../utils/cloudStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 // this component is used in both "registration" and "feedbackForm"!
 const InputTextArea = ({
@@ -50,7 +50,7 @@ const InputTextArea = ({
         id={id}
         onChange={onChange}
         defaultValue={getSavedAnswer(id)}
-        onBlur={pushToBucket}
+        onBlur={conditionalPushToBucket}
       />
     </div>
   );

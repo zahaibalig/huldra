@@ -3,6 +3,8 @@ import {
   fetchCases as fetchCasesFirebase,
   getAssetDownloadUrl as getAssetFirebase,
   fetchJsonAttributeValue as fetchJsonFirebase,
+  getFirebaseApp,
+  anonymousAuthentication,
 } from "../utils/firebase";
 import {
   fetchCases as fetchCasesLocal,
@@ -10,6 +12,7 @@ import {
   fetchJsonAttributeValue as fetchJsonLocal,
 } from "../utils/loadLocalAssets";
 
+// fetch cases at the start of the app
 const fetchCases = async (configExists, path, cases, shuffle) => {
   const config = getConfig();
 
@@ -18,6 +21,8 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
   if (config.assetsStorageType === "local") {
     validCases = await fetchCasesLocal(configExists, path, cases, shuffle);
   } else if (config.assetsStorageType === "firebase") {
+    getFirebaseApp();
+    await anonymousAuthentication();
     validCases = await fetchCasesFirebase(configExists, path, cases, shuffle);
   }
 

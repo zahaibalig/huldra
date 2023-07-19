@@ -17,22 +17,19 @@ import { ToastContainer } from "react-toastify";
 import { toastError, toastInfo } from "../utils/toast";
 import { v4 as uuidv4 } from "uuid";
 import { generateTimeStamp } from "../utils/timestamp";
-import { generateBlobFromJson } from "../utils/transform";
 import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
-import copy from "copy-to-clipboard";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
-import "firebase/storage";
 import { copyToClipboard } from "../utils/text";
 import ProtectedRoute from "../minor-components/protectedRoute";
 import Header from "../minor-components/header";
-import { pushToBucket } from "../utils/cloudStorage";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { getFolderReference } from "../utils/firebase";
 import { fetchCases } from "../utils/loadAssets";
+import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
+import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 
 const Survey = ({
   history,
@@ -107,7 +104,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
-  }, [disableNextButton]);
+  }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
   useHotkeys("Shift+f", () => {
     if (history.location.pathname === "/survey/registration") {
@@ -233,41 +230,19 @@ const Survey = ({
   const submitSurvey = () => {
     setOpenEndDialog(false);
 
-    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
-    const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers"));
-    const ParticipantInfo = JSON.parse(localStorage.getItem("ParticipantInfo"));
-    const SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
-    const SoftwareInfo = JSON.parse(localStorage.getItem("SoftwareInfo"));
-    const CaseOrder = JSON.parse(localStorage.getItem("CaseOrder"));
+    logSessionEvent("End survey", "Summary and feedback", PageLocator);
 
-    const storeToBucket = {
-      SoftwareInfo,
-      ParticipantInfo,
-      CaseOrder,
-      SessionInfo: {
-        PageLocator: PageLocator,
-        SessionComplete: true,
-      },
-      SessionEvents: [
-        ...SessionEvents,
-        {
-          Location: "Summary and feedback",
-          ButtonType: "End survey",
-          Timestamp: generateTimeStamp(),
-        },
-      ],
-      CaseStudyAnswers: CaseStudyAnswers,
-      FeedbackFormAnswers: FeedbackFormAnswers,
+    const SessionInfo = {
+      PageLocator: PageLocator,
+      SessionComplete: true,
     };
+    localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 
-    let jsonString = JSON.stringify(storeToBucket);
-    let blob = generateBlobFromJson(jsonString);
-    let fileRef = getFolderReference(
-      `${rootDirectory}/responses/${ParticipantInfo.ParticipantId}.json`
-    );
-    fileRef.put(blob);
+    handleFinalResponse();
+
     history.replace("/survey/end");
   };
+
   const handleEndSurvey = () => {
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
     let hasError = validateFeedbackForm(
@@ -300,7 +275,7 @@ const Survey = ({
 
     if (history.location.pathname === "/survey/background") {
       logSessionEvent("Next", "Background", 0);
-      pushToBucket();
+      conditionalPushToBucket();
       if (REACT_APP_demonstration.length === 0) {
         setPageLocator(1);
         history.push(`/survey/case1`);
@@ -311,7 +286,7 @@ const Survey = ({
       }
     } else if (history.location.pathname === "/survey/demonstration") {
       logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
-      pushToBucket();
+      conditionalPushToBucket();
 
       if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
         setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
@@ -324,13 +299,13 @@ const Survey = ({
       }
     } else if (PageLocator < casesCount) {
       logSessionEvent("Next", `Case${PageLocator}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       const newPageNumber = PageLocator + 1;
       setPageLocator(newPageNumber);
       history.push(`/survey/case${newPageNumber}`);
     } else if (PageLocator === casesCount) {
       logSessionEvent("Next", `Case${casesCount}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       history.push(`/survey/summary-and-feedback`);
     } else {
       return;
@@ -340,11 +315,11 @@ const Survey = ({
     getCurrentPageIndex();
     if (history.location.pathname === "/survey/summary-and-feedback") {
       logSessionEvent("Previous", `Summary and feedback`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       history.push(`/survey/case${casesCount}`);
     } else if (history.location.pathname === "/survey/demonstration") {
       logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       switch (currentDemonstrationPageIndex) {
         case 1:
           setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex - 1);
@@ -372,7 +347,7 @@ const Survey = ({
       history.push(`/`);
     } else if (PageLocator === 1) {
       logSessionEvent("Previous", `Case1`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       setCurrentDemonstrationPageIndex(Math.min(REACT_APP_demonstration.length, 3));
       switch (REACT_APP_demonstration.length) {
         case 0:
@@ -399,7 +374,7 @@ const Survey = ({
       }
     } else {
       logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
-      pushToBucket();
+      conditionalPushToBucket();
       const newPageNumber = PageLocator - 1;
       setPageLocator(newPageNumber);
       history.push(`/survey/case${newPageNumber}`);
@@ -421,6 +396,8 @@ const Survey = ({
       ) {
         toastError("Please provide your email address.", "top-center", "email-error");
       } else {
+        conditionalInitializeFirebase();
+
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
         localStorage.clear();
@@ -433,10 +410,11 @@ const Survey = ({
             REACT_APP_general["caseOrder"]["cases"],
             REACT_APP_general["caseOrder"]["shuffle"]
           );
-        } else CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-        let uuid = uuidv4();
-        //copy(uuid);
-        let ParticipantInfo = {
+        } else {
+          CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+        }
+        const uuid = uuidv4();
+        const ParticipantInfo = {
           ParticipantId: uuid,
           Name: name,
           EmailAddress: email,
@@ -448,43 +426,33 @@ const Survey = ({
           Tickbox1: termsOfUse,
           Tickbox2: notifications,
         };
-        let SoftwareInfo = {
+        const SoftwareInfo = {
           SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
           Version: Version,
           OperatingSystem: getOs(),
           Browser: `${browserName} ${browserVersion}`,
           ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
         };
-        let SessionEvents = [
+        const SessionEvents = [
           {
             Location: "Registration",
             ButtonType: "Get participant ID",
             Timestamp: generateTimeStamp(),
           },
         ];
-        let saveToBucket = {
-          SoftwareInfo,
-          ParticipantInfo,
-          CaseOrder,
-          SessionInfo: {
-            SessionComplete: false,
-          },
-
-          CaseStudyAnswers: "",
-          FeedbackFormAnswers: "",
-          SessionEvents,
+        const SessionInfo = {
+          SessionComplete: false,
         };
 
-        let jsonString = JSON.stringify(saveToBucket);
-        let blob = generateBlobFromJson(jsonString);
-        let fileRef = getFolderReference(`${rootDirectory}/responses/${uuid}.json`);
-        fileRef.put(blob);
         localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
         setRouteIsAllowed(true);
 
         localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
+        localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
         localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
         localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
+
+        conditionalPushToBucket();
         history.replace("/survey/background");
       }
     } else {
