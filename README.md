@@ -16,30 +16,18 @@ This section describes how to deploy Huldra from scratch and run entirely on you
 - Inside the folder of the source (where `package.json` is located), run `npm install`.
 - Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
-### Configuration and custom assets
-
-You can customize your instance by changing configuration parameters in the `.env` file or the `src/config.json` file.
-`.env` takes precedence over `config.json`.
-
-- See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
-- The `.env` file is not included in the repository. It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information.
-
-The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide.
+### Assets and responses
 
 - They should be put in the `public/gallery` folder. We have put some examples there. You can add your own assets.
 - The names of the asset folders and asset files should follow the naming convention described in [Assets](#assets) below.
 - You also need to specify the names of the asset folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` if you run Huldra locally.
 - See [Assets](#assets) below for more details.
 
-### Assets and responses storage
-
-By default, Huldra reads assets from the `public/gallery` folder.
-
 You can change this by setting `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` in `config.json`. Then Huldra will read assets from your Firebase storage bucket.
 
 As for participant responses, by default Huldra will prompt the participant to download a file containing the responses at the end of the survey. You can change this by setting `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` in `config.json`. Then Huldra will store responses in your Firebase storage bucket.
 
-This two parameters are independent of each other, which means you can have the following combinations:
+These two parameters are independent of each other, which means you can have the following combinations:
 
 - `assetsStorageType` is `"local"` and `responsesStorageType` is `"download"` (default)
 - `assetsStorageType` is `"local"` and `responsesStorageType` is `"firebase"`
@@ -49,7 +37,7 @@ This two parameters are independent of each other, which means you can have the 
 If you want to put either your assets or responses in Firebase, you need to do the following:
 
 <details>
-  <summary>Click me to see the details</summary>
+  <summary>Click to see/hide the details</summary>
 
 #### Set up a Firebase project
 
@@ -129,23 +117,21 @@ This section provides detailed information about Huldra.
 4. [Responses](#responses)
 
 ### Configuration
-### Assets
-### Deployment
-### Responses
 
-<!-- 
+You can customize your instance by changing configuration parameters using the `.env` file or the `/src/config.json` file. 
+Configuration parameters specified as environment variables in `.env` take precedence over those specified in `config.json`.
 
-## Configuration
+Note that the `.env` file is not included in the repository. 
+<!-- It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information. -->
 
-You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
-
-When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [Deploy to a server](#deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
+When you deploy to a server such as Heroku, you can upload a `.env` file or specify configuration parameters through the Heroku interface (see [Deployment](#deployment) for more information), which take precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
 See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
 
-### Color scheme
+<!-- 
+#### Color Scheme
 
-To specify a color scheme, you need to navigate to `/src/config.json`. Inside this file, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
+To specify a color scheme, you need to navigate to `/src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
 
 ```
 "REACT_APP_general": {
@@ -168,6 +154,21 @@ The values of the colors are:
 - yellow: $\color{#f9e45b}{■}$ (#f9e45b);
 - teal: $\color{#2b6777}{■}$ (#2b6777);
 - orange: $\color{#eb6b40}{■}$ (#eb6b40);
+
+-->
+
+### Assets
+
+The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide. 
+
+By default, Huldra reads assets from the `public/gallery` folder.
+
+### Deployment
+
+
+### Responses
+
+<!-- 
 
 ## Assets
 
