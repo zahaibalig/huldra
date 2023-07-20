@@ -9,7 +9,7 @@
 
 ### Documentation
 
-- This repository includes a `README.md` file, which refers to all other relevant documentation
+- This repository includes a [README.md](../README.md) file, which refers to all other relevant documentation
 - Format cheat sheets for all documentation can be found [here](https://help.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax) and [here](https://guides.github.com/features/mastering-markdown/)
 
 ## Development
@@ -94,7 +94,7 @@
 
 ### Continuous Integration / Continuous Deployment
 
-- See `GITHUB-ACTIONS.md` for details
+- See [GITHUB-ACTIONS.md](GITHUB-ACTIONS.md) for details
 
 ### Resolving Problems Post-Merge
 
@@ -110,7 +110,7 @@
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
 - All releases must include sufficient documentation
-- See `RELEASE-GUIDELINES.md` for further details
+- See [RELEASE-GUIDELINES.md](RELEASE-GUIDELINES.md) for further details
 
 ## Additional Notes
 
