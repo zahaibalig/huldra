@@ -41,36 +41,7 @@ Note that the `.env` file is not included in the repository.
 
 When you deploy to a server such as Heroku, you can upload a `.env` file or specify configuration parameters through the Heroku interface (see [Deployment](#deployment) for more information), which take precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
-See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
-
-<!-- 
-#### Color Scheme
-
-To specify a color scheme, you need to navigate to `src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
-
-```
-"REACT_APP_general": {
-  "color": {
-    "themeColor" : "<value>",
-    "buttonColor" : "<value>"
-  }
-}
-```
-
-Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
-
-If no color/an invalid value is specified, the default themeColor is `blue`, the default buttonColor is `yellow`.
-
-The values of the colors are:
-
-- blue: $\color{#38c3f2}{■}$ (#38c3f2)
-- green: $\color{#6db784}{■}$ (#6db784);
-- purple: $\color{#9b45b2}{■}$ (#9b45b2);
-- yellow: $\color{#f9e45b}{■}$ (#f9e45b);
-- teal: $\color{#2b6777}{■}$ (#2b6777);
-- orange: $\color{#eb6b40}{■}$ (#eb6b40);
-
--->
+See [CONFIGURATION-PARAMETERS.md](/docs/CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
 
 ### Storage
 
@@ -270,8 +241,8 @@ Relevant publications:
 - [CHANGELOG.md](CHANGELOG.md): Documents notable changes to the `dev` branch, per release.
 - [CONFIGURATION-PARAMETERS.md](/docs/CONFIGURATION-PARAMETERS.md): Serves as a comprehensive guide to the configuration parameters.
 - [DEVELOPMENT-GUIDELINES.md](/docs/DEVELOPMENT-GUIDELINES.md): [INTERNAL] Provides guidelines for development.
-- [GITHUB-ACTIONS.md](/docs/GITHUB-ACTIONS.md`): [INTERNAL] Describes all GitHub action workflows set up in the repository.
-- [RELEASE-GUIDELINES.md](/docs/RELEASE-GUIDELINES.md`): [INTERNAL] Provides guidelines for making releases.
+- [GITHUB-ACTIONS.md](/docs/GITHUB-ACTIONS.md): [INTERNAL] Describes all GitHub action workflows set up in the repository.
+- [RELEASE-GUIDELINES.md](/docs/RELEASE-GUIDELINES.md): [INTERNAL] Provides guidelines for making releases.
 
 ### Keyboard Shortcuts
 
