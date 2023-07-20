@@ -38,7 +38,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
 
   const storageConfig = getConfig();
   if (storageConfig.assetsStorageType === "local") {
-    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    const validCaseFiles = JSON.parse(localStorage.getItem("ValidCaseFiles"));
     // console.log("validCaseFiles", validCaseFiles);
     if (validCaseFiles && validCaseFiles[caseId - 1]) {
       const caseFiles = validCaseFiles[caseId - 1];
@@ -100,7 +100,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
 
       let jsonPath = "";
       if (storageConfig.assetsStorageType === "local") {
-        const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+        const validCaseFiles = JSON.parse(localStorage.getItem("ValidCaseFiles"));
         if (validCaseFiles && validCaseFiles[caseId - 1]) {
           const caseFiles = validCaseFiles[caseId - 1];
           jsonPath = caseFiles[0];

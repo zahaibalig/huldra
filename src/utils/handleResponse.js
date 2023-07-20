@@ -117,7 +117,7 @@ const fetchResponse = async (participantId) => {
 
   // if assetsStorageType is "local", validCaseFiles is needed in localStorage, no matter what responsesStorageType is
   if (storageConfig.assetsStorageType === "local") {
-    if (!localStorage.getItem("validCaseFiles")) {
+    if (!localStorage.getItem("ValidCaseFiles")) {
       return null;
     }
   }
