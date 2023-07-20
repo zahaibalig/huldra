@@ -74,8 +74,6 @@ The values of the colors are:
 
 ### Storage
 
-<!-- #### Firebase -->
-
 In order to use Google Firebase to store assets and/or responses, you need to set up a Firebase project first.
 
 - Login to https://firebase.google.com/ with your Google account.
@@ -85,9 +83,9 @@ In order to use Google Firebase to store assets and/or responses, you need to se
 - Once the web app is created, the project configuration page will be opened automatically. Here you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
 - In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
 
-<!-- #### `.env` file -->
+In order for Huldra to be able to connect to your Firebase project, you need to set up environment variables with the relevant credentials. 
 
-Create a file named `.env` in the same folder as `package.json`. The content of the file should be in the following format:
+- Create a file named `.env` in the same folder as `package.json`. The content of the file should be in the following format:
 
 ```
 REACT_APP_FIREBASE_API_KEY="Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp"
@@ -99,83 +97,32 @@ REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ```
 
-Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
-
-For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `/dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` in the file. Don't forget to place a forward slash at the start of the path.
-
+- Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
+- You can choose whichever directory you like for `REACT_APP_FIREBASE_ROOT_DIRECTORY`. However, make sure that your `gallery` folder is under it. For instance, if you would like to have a folder structure as `/dev/gallery`, you should specify `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"`. Don't forget to place a forward slash at the start of the path.
 
 
 ### Assets
 
-The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide. 
+The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra automatically generates the question pages in the survey based on the assets you provide. 
 
-- By default, Huldra reads assets from the `public/gallery` folder.
-- The names of the asset folders and asset files should follow the naming convention described below.
-- You also need to specify the names of the asset folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` if you run Huldra locally.
-- You can change storage settings of the assets by setting `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` in `config.json`. Then Huldra will read assets from your Firebase storage bucket.
-<!-- Edit `src/config.json` and set `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` if you want to put your assets in Firebase -->
+- The assets can be placed either locally or in your Firebase bucket. You can configure this in `config.json` under `REACT_APP_general` -> `storage` -> `assetsStorageType` (possible values for `assetsStorageType`: `"local"`, `"firebase"`).
+- By default, Huldra reads assets from the `public/gallery` folder (default value for `assetsStorageType`: `"local"`). 
+- As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the homepage and restart the survey from scratch by clicking the "Get participant ID" button.
+- In either storage type, the asset folders and files have to adhere to the [folder structure](#directory-tree) and [naming convention](#naming-convention) given below.
+- If a case folder is missing any of the required files, the case will be skipped.
 
-If you want to put your assets in Firebase, you need to [set up a Firebase project](#storage), and upload the assets to your Firebase storage bucket.
+If `assetsStorageType` is `"local"`:
+- We look for assets in `/public/gallery`.
+- You need to specify the names of the case folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` (this field must be populated as an array of strings, with the case foldernames in the order you would like them to appear in the survey).
 
-- In Firebase console, find **Storage** in **All Products**.
-- You can create folders in your storage bucket. Huldra reads assets from the `gallery` folder by default, so upload your assets (images, audio and/or video clips) in this folder.
+If `assetsStorageType` is `"firebase"`:
+- If you want to put your assets in Firebase, you need to [set up a Firebase project](#storage), and upload the assets to your Firebase storage bucket.
+- In Firebase console, find **Storage** in **All Products**. You can create folders in your storage bucket.
+- Huldra reads assets from the `gallery` folder by default[^1], so upload your assets (images, audio and/or video clips) in this folder.
 
-
-
-### Responses
-
-As for participant responses, by default Huldra will prompt the participant to download a file containing the responses at the end of the survey. 
-You can change this by setting `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` in `config.json`. Then Huldra will store responses in your Firebase storage bucket.
-<!-- set `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` if you want to put your responses in Firebase. -->
-
-The two parameters `assetsStorageType` and `responsesStorageType` are independent of each other, which means you can have the following combinations:
-
-- `assetsStorageType` is `"local"` and `responsesStorageType` is `"download"` (default)
-- `assetsStorageType` is `"local"` and `responsesStorageType` is `"firebase"`
-- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"download"`
-- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"firebase"`
-
-
-
-
-### Deployment
-
-You can delopy Huldra to servers that support Node.js, such as [Heroku](https://heroku.com/), [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/).
-
-For Heroku, you can set Firebase connection parameters in the Heroku interface as config vars for your app (from the project page: **Settings** -> **Config Vars**). See [Heroku's documantation](https://devcenter.heroku.com/articles/github-integration) if you need help on how to deploy to Heroku from GitHub.
-
-For Netlify, you can set variables under **Site settings** -> **Build & deploy** -> **Environment** -> **Environment variables**.
-
-For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
-
-<!-- You can change Firebase settings to suit your needs.-->
-**CORS error messages from Firebase:** If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
-
-</details>
-
-<!-- 
-
-## Assets
-
-### Overview
-
-The assets can be placed either locally or in your Firebase bucket. You can congifure this in `config.json` under `REACT_APP_general` -> `storage` -> `assetsStorageType`:
-
-- Default value: `"local"`
-- Possible values: `"local"`, `"firebase"`
-
-We look for assets in `/public/gallery` if `assetsStorageType` is `local`, and
-`<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`) if `assetsStorageType` is `firebase`.
-
-If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
-
-As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button.
-
-In either storage type, the assets have to adhere to the following folder structure and naming convention.
-
-If a case folder is missing any of the required files, the case will be skipped.
-
-### Directory tree
+[^1]: If `assetsStorageType` is `"firebase"`, Huldra looks for assets in `<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
+ 
+#### Directory Tree
 
 ```
 gallery
@@ -205,7 +152,7 @@ For an image case, a json file is also necessary. The json file should contain t
 }
 ```
 
-### Naming convention
+#### Naming Convention
 
 The assets have to adhere to the following naming convention:
 
@@ -217,9 +164,9 @@ The assets have to adhere to the following naming convention:
 
 `<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
 
-Refer to the **Directory tree** section for which assets are required for each type.
+Refer to the [Directory Tree](#directory-tree) section about which assets are required for each type.
 
-### Supported file extensions
+#### Supported File Extensions
 
 ```
 image: ["jpg", "jpeg", "png", "gif"],
@@ -229,13 +176,13 @@ video: ["mp4", "webm", "mov"],
 
 The file extensions must be lowercase.
 
-This is also the order in which the app will look for assets. For example, if you have `image-sit.jpg` and `image-sit.png`, the app will use `image-sit.jpg`.
+This is also the order in which the app will look for assets. For example, if you have both `image-sit.jpg` and `image-sit.png`, the app will use `image-sit.jpg`.
 
-### Case order
+#### Case Order
 
-If `assetsStorageType` is `local`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
+If `assetsStorageType` is `"local"`, `REACT_APP_general` -> `caseOrder` -> `cases` in `config.json` must be populated with the list of case foldernames.
 
-If `assetsStorageType` is `firebase`, the `cases` array can be empty.
+If `assetsStorageType` is `"firebase"`, the `cases` array can be empty.
 If `cases` is not empty, the app uses these cases; if empty, the app fetches all cases from Firebase.
 
 The app only uses valid cases (cases with all the necessary assets) and the order of cases is decided by the `shuffle` parameter as described below.
@@ -250,12 +197,25 @@ The `shuffle` parameter under `caseOrder` has the following effects:
 
 If you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button
 
-### Example assets
+#### Example Assets
 
-We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages), so that when you clone the repo and [run directly](#run-on-your-local-computer), you can have a fully working example locally.
+We put some example assets in `public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages), so that when you clone the repo and [run directly](#quick-start), you can have a fully working example locally.
+
 The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution, as well as modification (see https://www.pexels.com/license/ for details).
 
-## Outputs
+
+### Responses
+
+As for participant responses, by default Huldra will prompt the participant to download a file containing the responses at the end of the survey. 
+You can change this by setting `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` in `config.json`. Then Huldra will store responses in your Firebase storage bucket.
+<!-- set `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` if you want to put your responses in Firebase. -->
+
+The two parameters `assetsStorageType` and `responsesStorageType` are independent of each other, which means you can have the following combinations:
+
+- `assetsStorageType` is `"local"` and `responsesStorageType` is `"download"` (default)
+- `assetsStorageType` is `"local"` and `responsesStorageType` is `"firebase"`
+- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"download"`
+- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"firebase"`
 
 The app will generate a file containing the responses of the participant. The file can either be downloaded or pushed to Firebase, depending on the value of `REACT_APP_general` -> `storage` -> `responsesStorageType` in `config.json`:
 
@@ -264,20 +224,25 @@ The app will generate a file containing the responses of the participant. The fi
 
 In case of `firebase`, the responses will be stored in `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
 
--->
 
 
-## Resources
+### Deployment
 
-<!--
+You can delopy Huldra to servers that support Node.js, such as [Heroku](https://heroku.com/), [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/).
 
-- [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887)
-- [Experiences and Lessons Learned from a Crowdsourced-Remote Hybrid User Survey Framework](https://ieeexplore.ieee.org/document/10019678)
-- [Automatic thumbnail selection for soccer videos using machine learning](https://dl.acm.org/doi/abs/10.1145/3524273.3528182)
-- [HOST-ATS: automatic thumbnail selection with dashboard-controlled ML pipeline and dynamic user survey](https://dl.acm.org/doi/abs/10.1145/3524273.3532908)
-- [Visual explanations for polyp detection: How medical doctors assess intrinsic versus extrinsic explanations](https://arxiv.org/abs/2204.00617)
+For Heroku, you can set Firebase connection parameters in the Heroku interface as config vars for your app (from the project page: **Settings** -> **Config Vars**). See [Heroku's documantation](https://devcenter.heroku.com/articles/github-integration) if you need help on how to deploy to Heroku from GitHub.
 
-## Citation
+For Netlify, you can set variables under **Site settings** -> **Build & deploy** -> **Environment** -> **Environment variables**.
+
+For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
+
+<!-- You can change Firebase settings to suit your needs.-->
+**CORS error messages from Firebase:** If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
+
+</details>
+
+
+## References
 
 If you find our work useful for your research, please include the following citation:
 
@@ -289,11 +254,18 @@ If you find our work useful for your research, please include the following cita
   month = jun,
   publisher = {{ACM}},
   author = {Malek Hammou and Cise Midoglu and Steven A. Hicks and Andrea Stor{\aa}s and Saeed Shafiee Sabet and Inga Str\"{u}mke and Michael A. Riegler and P{\aa}l Halvorsen},
-  title = {Huldra},
+  title = {Huldra: a framework for collecting crowdsourced feedback on multimedia assets},
   booktitle = {Proceedings of the 13th {ACM} Multimedia Systems Conference}
 }
 ```
--->
+
+Relevant publications:
+- Hammou et al., [Huldra: a framework for collecting crowdsourced feedback on multimedia assets](https://dl.acm.org/doi/abs/10.1145/3524273.3532887), 2022
+- Midoglu et al., [Experiences and Lessons Learned from a Crowdsourced-Remote Hybrid User Survey Framework](https://ieeexplore.ieee.org/document/10019678), 2022
+- Husa et al., [Automatic thumbnail selection for soccer videos using machine learning](https://dl.acm.org/doi/abs/10.1145/3524273.3528182), 2022
+- Husa et al., [HOST-ATS: automatic thumbnail selection with dashboard-controlled ML pipeline and dynamic user survey](https://dl.acm.org/doi/abs/10.1145/3524273.3532908), 2022
+- Hicks et al., [Visual explanations for polyp detection: How medical doctors assess intrinsic versus extrinsic explanations](https://arxiv.org/abs/2204.00617)
+
 
 ## Internal Notes
 
