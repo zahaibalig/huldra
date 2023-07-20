@@ -46,7 +46,7 @@ See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more informat
 <!-- 
 #### Color Scheme
 
-To specify a color scheme, you need to navigate to `/src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
+To specify a color scheme, you need to navigate to `src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
 
 ```
 "REACT_APP_general": {
@@ -98,7 +98,7 @@ REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ```
 
 - Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
-- You can choose whichever directory you like for `REACT_APP_FIREBASE_ROOT_DIRECTORY`. However, make sure that your `gallery` folder is under it. For instance, if you would like to have a folder structure as `/dev/gallery`, you should specify `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"`. Don't forget to place a forward slash at the start of the path.
+- You can choose whichever directory you like for `REACT_APP_FIREBASE_ROOT_DIRECTORY`. However, make sure that your `gallery` folder is under it. For instance, if you would like to have a folder structure as `dev/gallery`, you should specify `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"`. Don't forget to place a forward slash at the start of the path.
 
 
 ### Assets
@@ -112,7 +112,7 @@ The assets are the images, audio and/or video clips that you want to collect fee
 - If a case folder is missing any of the required files, the case will be skipped.
 
 If `assetsStorageType` is `"local"`:
-- We look for assets in `/public/gallery`.
+- We look for assets in `public/gallery`.
 - You need to specify the names of the case folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` (this field must be populated as an array of strings, with the case foldernames in the order you would like them to appear in the survey).
 
 If `assetsStorageType` is `"firebase"`:
