@@ -9,12 +9,72 @@ Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), 
 
 This section describes how to deploy Huldra from scratch and run entirely on your local computer.
 
-<!-- 
+1. You need to have [Node.js](https://nodejs.org/) installed on your computer.
+2. Clone or download the source code of Huldra.
+3. Inside the folder of the source (where `package.json` is located), run `npm install`.
+4. Configuration parameters should be specified in `src/config.json`. This file already includes an example configuration by default, but you can update it according to your needs. See [Configuration](#configuration) below for details. 
+5. Assets should be put in the `public/gallery` folder. The codebase already has some examples there by default, but you can replace them with your own assets. See [Assets](#assets) below for details.
+6. Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
-- You need to have [Node.js](https://nodejs.org/) installed on your computer.
-- Clone or download the source code of Huldra.
-- Inside the folder of the source (where `package.json` is located), run `npm install`.
-- Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
+
+## Detailed Information
+
+This section provides detailed information about Huldra.
+
+1. [Configuration](#configuration)
+2. [Assets](#assets)
+3. [Deployment](#deployment)
+4. [Responses](#responses)
+
+### Configuration
+
+You can customize your instance by changing configuration parameters using the `.env` file or the `src/config.json` file. 
+Configuration parameters specified as environment variables in `.env` take precedence over those specified in `config.json`.
+
+Note that the `.env` file is not included in the repository. 
+<!-- It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information. -->
+
+When you deploy to a server such as Heroku, you can upload a `.env` file or specify configuration parameters through the Heroku interface (see [Deployment](#deployment) for more information), which take precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
+
+See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
+
+<!-- 
+#### Color Scheme
+
+To specify a color scheme, you need to navigate to `/src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
+
+```
+"REACT_APP_general": {
+  "color": {
+    "themeColor" : "<value>",
+    "buttonColor" : "<value>"
+  }
+}
+```
+
+Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
+
+If no color/an invalid value is specified, the default themeColor is `blue`, the default buttonColor is `yellow`.
+
+The values of the colors are:
+
+- blue: $\color{#38c3f2}{■}$ (#38c3f2)
+- green: $\color{#6db784}{■}$ (#6db784);
+- purple: $\color{#9b45b2}{■}$ (#9b45b2);
+- yellow: $\color{#f9e45b}{■}$ (#f9e45b);
+- teal: $\color{#2b6777}{■}$ (#2b6777);
+- orange: $\color{#eb6b40}{■}$ (#eb6b40);
+
+-->
+
+### Assets
+
+The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide. 
+
+By default, Huldra reads assets from the `public/gallery` folder.
+
+
+<!-- 
 
 ### Assets and responses
 
@@ -77,13 +137,7 @@ Don't use the values given as examples above because they are only dummy content
 
 For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `/dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` in the file. Don't forget to place a forward slash at the start of the path.
 
-#### Run on your local computer
-
-- You need to have [Node.js](https://nodejs.org/) installed on your computer.
-- Clone or download the source code of Huldra.
 - Edit `src/config.json` and set `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` if you want to put your assets in Firebase, or set `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` if you want to put your responses in Firebase.
-- Inside the folder of the source (where `package.json` is located), run `npm install`.
-- Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
 #### Deploy to a server
 
@@ -97,7 +151,7 @@ For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter th
 
 #### Other issues about deployment
 
-##### CORS error messages from Firabase
+##### CORS error messages from Firebase
 
 You can change Firebase settings to suit your needs.
 
@@ -107,61 +161,6 @@ If you see CORS error messages from Firabase in the console, that means you must
 
 -->
 
-## Detailed Information
-
-This section provides detailed information about Huldra.
-
-1. [Configuration](#configuration)
-2. [Assets](#assets)
-3. [Deployment](#deployment)
-4. [Responses](#responses)
-
-### Configuration
-
-You can customize your instance by changing configuration parameters using the `.env` file or the `/src/config.json` file. 
-Configuration parameters specified as environment variables in `.env` take precedence over those specified in `config.json`.
-
-Note that the `.env` file is not included in the repository. 
-<!-- It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information. -->
-
-When you deploy to a server such as Heroku, you can upload a `.env` file or specify configuration parameters through the Heroku interface (see [Deployment](#deployment) for more information), which take precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
-
-See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
-
-<!-- 
-#### Color Scheme
-
-To specify a color scheme, you need to navigate to `/src/config.json`. In `config.json`, you will find an element named `REACT_APP_general`. Within this element, you can define the color scheme using the `color` element, as shown below:
-
-```
-"REACT_APP_general": {
-  "color": {
-    "themeColor" : "<value>",
-    "buttonColor" : "<value>"
-  }
-}
-```
-
-Supported values are: `green`, `purple`, `yellow`, `teal`, and `orange`.
-
-If no color/an invalid value is specified, the default themeColor is `blue`, the default buttonColor is `yellow`.
-
-The values of the colors are:
-
-- blue: $\color{#38c3f2}{■}$ (#38c3f2)
-- green: $\color{#6db784}{■}$ (#6db784);
-- purple: $\color{#9b45b2}{■}$ (#9b45b2);
-- yellow: $\color{#f9e45b}{■}$ (#f9e45b);
-- teal: $\color{#2b6777}{■}$ (#2b6777);
-- orange: $\color{#eb6b40}{■}$ (#eb6b40);
-
--->
-
-### Assets
-
-The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide. 
-
-By default, Huldra reads assets from the `public/gallery` folder.
 
 ### Deployment
 
@@ -312,18 +311,17 @@ If you find our work useful for your research, please include the following cita
 
 ## Internal Notes
 
-<!--
-### Guidelines
+### Documentation and Guidelines
 
-- `DEVELOPMENT-GUIDELINES.md`
-- `RELEASE-GUIDELINES.md`
+- [CHANGELOG.md](CHANGELOG.md): Documents notable changes to the `dev` branch, per release.
+- [CONFIGURATION-PARAMETERS.md](/docs/CONFIGURATION-PARAMETERS.md): Serves as a comprehensive guide to the configuration parameters.
+- [DEVELOPMENT-GUIDELINES.md](/docs/DEVELOPMENT-GUIDELINES.md): [INTERNAL] Provides guidelines for development.
+- [GITHUB-ACTIONS.md](/docs/GITHUB-ACTIONS.md`): [INTERNAL] Describes all GitHub action workflows set up in the repository.
+- [RELEASE-GUIDELINES.md](/docs/RELEASE-GUIDELINES.md`): [INTERNAL] Provides guidelines for making releases.
 
 ### Keyboard Shortcuts
 
-`Enter`: imitates the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
-
-`Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)
-
-`Shift + F`: on the registration page which opens after clicking `Get participant ID`, automatically fill out the form and make the "Start Survey" button clickable (applicable fields are filled with the string "NA", in order to facilitate the filtering of such development/test/debug responses from Firebase later on)
--->
+- `Enter`: imitate the press of the Next button, with all its requirements where applicable (e.g., if the cases need to be viewed before the button can be pressed, `Enter` also doesn't work until then)
+- `Shift + Enter`: forcefully skip to the next page (also possible to skip to the next case without answering the current one)
+- `Shift + F`: automatically fill out the form on the registration page (which opens after clicking `Get participant ID` in the homepage), and make the "Start Survey" button clickable (applicable fields are filled with the string "NA", in order to facilitate the filtering of such development/test/debug responses from Firebase later on)
 
