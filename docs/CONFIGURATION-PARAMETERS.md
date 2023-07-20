@@ -1,4 +1,4 @@
-# Configuration File Documentation
+# Huldra Configuration Parameters
 
 This document serves as a comprehensive guide to the parameters in the `config.json` file.
 
@@ -809,7 +809,7 @@ This component is a general component which configures various properties of the
 
 ### Parameters
 
-The `REACT_APP_general` block contains 11 elements.
+The `REACT_APP_general` block contains the following elements.
 
 - `softwareInfoTag`: This tag serves the purpose of defining the software version or providing software information. The details specified here are prominently displayed in the generated JSON output file.
 - `appName`: This tag is used to congigure the app name which is displayed on the header. (Refer to the visual overview under the header subsection here for better understanding.)
@@ -818,6 +818,7 @@ The `REACT_APP_general` block contains 11 elements.
 - `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseOrder`: This parameter defines the order of the cases shown to the user.
+- `outputJson`: This parameter defines what optional data is included in the output JSON file. It expects an array of strings. The following values are allowed: 'SoftwareInfo' and 'SessionEvents'. (Other required data is always included in the output JSON file, such as the survey questions and responses.)
 
   #### Parameters
 
@@ -899,13 +900,8 @@ The `REACT_APP_general` block contains 11 elements.
       "shuffle": "categorized"
     },
     "outputJson": [
-      "ParticipantInfo",
-      "CaseOrder",
       "SoftwareInfo",
-      "CaseStudyAnswers",
-      "SessionEvents",
-      "FeedbackFormAnswers",
-      "SessionInfo"
+      "SessionEvents"
     ],
     "color": {
       "themeColor": "blue",

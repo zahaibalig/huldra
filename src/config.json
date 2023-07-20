@@ -252,6 +252,7 @@
       "imagePlaceholderIconPath": "/gallery/empty.png"
     },
     "feedbackForm": {
+      "display": true,
       "title": "Overall feedback",
       "text": "Lorem ipsum tur repudiandae nobis! Vero itaque dolorum dicta!",
       "feedbackFormQuestions": [
@@ -318,13 +319,8 @@
       "responsesStorageType": "download"
     },
     "outputJson": [
-      "ParticipantInfo",
-      "CaseOrder",
       "SoftwareInfo",
-      "CaseStudyAnswers",
-      "SessionEvents",
-      "FeedbackFormAnswers",
-      "SessionInfo"
+      "SessionEvents"
     ],
     "color": {
       "themeColor": "blue",

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { toastInfo } from "../utils/toast";
 import { AppContext } from "../context/appContext";
-import { getFirebaseApp, listFiles } from "../utils/firebase";
+import { listFiles } from "../utils/firebase";
 import { getCaseJsonFile } from "../utils/urlHandler";
 import CaseImageColumnMiddle from "../major-components/caseImageColumnMiddle";
 import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
@@ -77,7 +77,6 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
   useEffect(() => {
     setDisableNextButton(true);
     setSubscribed(true);
-    getFirebaseApp();
 
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
@@ -97,12 +96,6 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
     }
 
     (async () => {
-      let gallery = await listFiles(
-        `/gallery/cases/${pagesOrder[caseId - 1]}/`,
-        REACT_APP_caseImage["caseImageColumnMiddle"].popupB["gallerySubstring"]
-      );
-      setGalleryImages(gallery);
-
       const caseUuid = pagesOrder[caseId - 1];
 
       let jsonPath = "";
@@ -114,6 +107,12 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
         }
       } else if (storageConfig.assetsStorageType === "firebase") {
         jsonPath = getCaseJsonFile(rootDirectory, caseUuid);
+
+        let gallery = await listFiles(
+          `/gallery/cases/${pagesOrder[caseId - 1]}/`,
+          REACT_APP_caseImage["caseImageColumnMiddle"].popupB["gallerySubstring"]
+        );
+        setGalleryImages(gallery);
       }
       setCaseDescription(await fetchJsonAttributeValue(jsonPath, "description"));
     })();

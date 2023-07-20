@@ -7,9 +7,51 @@ Example use-cases of Huldra include [HOST-XAI](https://host-xai.herokuapp.com), 
 
 ## How to deploy from scratch
 
-### 1. Set up a Firebase project
+### Quick start - Run on your local computer
 
-Currenty Huldra uses Google Firebase to store assets and responses (we may support other types of storage solutions in the future).
+- You need to have [Node.js](https://nodejs.org/) installed on your computer.
+- Clone or download the source code of Huldra.
+- Inside the folder of the source (where `package.json` is located), run `npm install`.
+- Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
+
+### Configuration and custom assets
+
+You can customize your instance by changing configuration parameters in the `.env` file or the `src/config.json` file.
+`.env` takes precedence over `config.json`.
+
+- See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
+- The `.env` file is not included in the repository. It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information.
+
+The assets are the images, audio and/or video clips that you want to collect feedback on. Huldra can automatically generate survey pages based on the assets you provide.
+
+- They should be put in the `public/gallery` folder. We have put some examples there. You can add your own assets.
+- The names of the asset folders and asset files should follow the naming convention described in [Assets](#assets) below.
+- You also need to specify the names of the asset folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` if you run Huldra locally.
+- See [Assets](#assets) below for more details.
+
+### Assets and responses storage
+
+By default, Huldra reads assets from the `public/gallery` folder.
+
+You can change this by setting `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` in `config.json`. Then Huldra will read assets from your Firebase storage bucket.
+
+As for participant responses, by default Huldra will prompt the participant to download a file containing the responses at the end of the survey. You can change this by setting `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` in `config.json`. Then Huldra will store responses in your Firebase storage bucket.
+
+This two parameters are independent of each other, which means you can have the following combinations:
+
+- `assetsStorageType` is `"local"` and `responsesStorageType` is `"download"` (default)
+- `assetsStorageType` is `"local"` and `responsesStorageType` is `"firebase"`
+- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"download"`
+- `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"firebase"`
+
+If you want to put either your assets or responses in Firebase, you need to do the following:
+
+<details>
+  <summary>Click me to see the details</summary>
+
+#### Set up a Firebase project
+
+In order to use Google Firebase to store assets and/or responses, you need to set up a Firebase project first.
 
 - Login to https://firebase.google.com/ with your Google account.
 - Click **Go to console**.
@@ -18,22 +60,18 @@ Currenty Huldra uses Google Firebase to store assets and responses (we may suppo
 - Once the web app is created, the project configuration page will be opened automatically. Here you can see Firebase connection parameters such as `apiKey` and `appId`. Save these for later use. (If you forget, you can find this info under **Project Overview** -> **Project settings** -> **General**.)
 - In your project, go to **All Products** -> **Authentication**. On the **Sign-in Methods** page, enable the **Anonymous** sign-in method
 
-### 2. Upload assets
+#### Upload assets
 
-Huldra uses assets in Firebase Storage to automatically generate survey pages.
+If you want to put your assets in Firebase, you need to upload them to your Firebase storage bucket.
 
 - In Firebase console, find **Storage** in **All Products**.
 - You can create folders in your storage bucket. Huldra reads assets from the `gallery` folder by default, so upload your assets (images, audio and/or video clips) in this folder.
 
 See [Assets](#assets) below for details about assets.
 
-### 3. Run on your local computer
+#### Create a `.env` file
 
-You need to have [Node.js](https://nodejs.org/) installed on your computer.
-
-- Clone or download the source code of Huldra.
-- Inside the folder of the source (where `package.json` is located), run `npm install`.
-- Create a file named `.env` in the same folder as `package.json`. The content of the file should be in the following format:
+Create a file named `.env` in the same folder as `package.json`. The content of the file should be in the following format:
 
 ```
 REACT_APP_FIREBASE_API_KEY="Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp4B8AgT@n!6*p@Hmp"
@@ -45,13 +83,19 @@ REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ```
 
-Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [**Set up a Firebase project**](#1-set-up-a-firebase-project).
+Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
 
 For `REACT_APP_FIREBASE_ROOT_DIRECTORY` you can choose whatever directory you like. Just make sure that your `gallery` folder is under it. For instance, if your folder structure is `/dev/gallery`, you should put `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"` in the file. Don't forget to place a forward slash at the start of the path.
 
+#### Run on your local computer
+
+- You need to have [Node.js](https://nodejs.org/) installed on your computer.
+- Clone or download the source code of Huldra.
+- Edit `src/config.json` and set `REACT_APP_general` -> `storage` -> `assetsStorageType` to `"firebase"` if you want to put your assets in Firebase, or set `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` if you want to put your responses in Firebase.
+- Inside the folder of the source (where `package.json` is located), run `npm install`.
 - Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
 
-### 4. Deploy to a server
+#### Deploy to a server
 
 You can delopy Huldra to servers that support Node.js, such as [Heroku](https://heroku.com/), [Netlify](https://www.netlify.com/) or [GitHub Pages](https://pages.github.com/).
 
@@ -61,13 +105,15 @@ For Netlify, you can set variables under **Site settings** -> **Build & deploy**
 
 For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter the Firebase connection parameters.
 
-## Other issues about deployment
+#### Other issues about deployment
 
-### CORS error messages from Firabase
+##### CORS error messages from Firabase
 
 You can change Firebase settings to suit your needs.
 
 If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
+
+</details>
 
 # More about Huldra
 
@@ -75,7 +121,7 @@ If you see CORS error messages from Firabase in the console, that means you must
 
 You can customize your instance by changing configuration parameters in the `.env` file or the `config.json` file. `.env` takes precedence over `config.json`.
 
-When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [**Deploy to a server**](#4-deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
+When you deploy to a server such as Heroku, you can specify configuration parameters through the Heroku interface (see [Deploy to a server](#deploy-to-a-server) for more information), which also takes precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
 See [CONFIGURATION-PARAMETERS.md](CONFIGURATION-PARAMETERS.md) for more information about the configuration parameters.
 
@@ -202,13 +248,17 @@ If you change the value of these parameters, you need to go to the home page and
 
 ### Example assets
 
-We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages),
-so that when you clone the repo and [run directly](#3-run-on-your-local-computer), you can have a fully working example locally.
+We put some example assets in `/public/gallery` (minimal working example with all case types, as well as placeholder images and example assets for other pages), so that when you clone the repo and [run directly](#run-on-your-local-computer), you can have a fully working example locally.
 The case assets were downloaded from [Pexels](https://www.pexels.com/), which allows free use of their images and videos without attribution, as well as modification (see https://www.pexels.com/license/ for details).
 
 ## Outputs
 
-You can retrieve participant response files from your Firebase storage bucket (`<root directory>` -> `responses`) at your convenience.
+The app will generate a file containing the responses of the participant. The file can either be downloaded or pushed to Firebase, depending on the value of `REACT_APP_general` -> `storage` -> `responsesStorageType` in `config.json`:
+
+- Default value: `"download"`
+- Possible values: `"download"`, `"firebase"`
+
+In case of `firebase`, the responses will be stored in `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
 
 ## References
 

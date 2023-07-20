@@ -1,4 +1,4 @@
-import { pushToBucket } from "../utils/cloudStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const handleRadioChange = (e, id, index, config) => {
   let FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
@@ -15,6 +15,6 @@ const handleRadioChange = (e, id, index, config) => {
   FeedbackFormAnswers[id] = answer;
 
   localStorage.setItem("FeedbackFormAnswers", JSON.stringify(FeedbackFormAnswers));
-  pushToBucket();
+  conditionalPushToBucket();
 };
 export { handleRadioChange };
