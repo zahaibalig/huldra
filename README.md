@@ -22,15 +22,17 @@ This section describes how to deploy Huldra from scratch and run entirely on you
 
 This section provides detailed information about Huldra.
 
-<details>
-  <summary>Click to see/hide details</summary>
-
 - [Configuration](#configuration)
 - [Storage](#storage)
 - [Assets](#assets)
 - [Responses](#responses)
 - [Deployment](#deployment)
 
+<!--
+<details>
+  <summary>Click to see/hide details</summary>
+  -->
+  
 ### Configuration
 
 You can customize your instance by changing configuration parameters using the `.env` file or the `src/config.json` file. 
@@ -206,7 +208,9 @@ For GitHub Pages, go to your repository's **Setting** -> **Secrets** to enter th
 <!-- You can change Firebase settings to suit your needs.-->
 **CORS error messages from Firebase:** If you see CORS error messages from Firabase in the console, that means you must [configure your Cloud Storage bucket for cross-origin access (CORS)](https://firebase.google.com/docs/storage/web/download-files#cors_configuration). [Here](https://stackoverflow.com/a/71193349/802678) is a guide on how to do it.
 
+<!--
 </details>
+-->
 
 
 ## References
