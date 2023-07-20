@@ -120,7 +120,7 @@ If `assetsStorageType` is `"firebase"`:
 - In Firebase console, find **Storage** in **All Products**. You can create folders in your storage bucket.
 - Huldra reads assets from the `gallery` folder by default[^1], so upload your assets (images, audio and/or video clips) in this folder.
 
-[^1]: If `assetsStorageType` is `"firebase"`, Huldra looks for assets in `<Firebase root>/gallery` (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
+[^1]: If `assetsStorageType` is `"firebase"`, Huldra looks for assets in the `<Firebase root>/gallery` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
  
 #### Directory Tree
 
@@ -206,24 +206,19 @@ The case assets were downloaded from [Pexels](https://www.pexels.com/), which al
 
 ### Responses
 
-As for participant responses, by default Huldra will prompt the participant to download a file containing the responses at the end of the survey. 
-You can change this by setting `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` in `config.json`. Then Huldra will store responses in your Firebase storage bucket.
-<!-- set `REACT_APP_general` -> `storage` -> `responsesStorageType` to `"firebase"` if you want to put your responses in Firebase. -->
+At the end of the survey, Huldra generates a file containing the responses of the participant. 
 
-The two parameters `assetsStorageType` and `responsesStorageType` are independent of each other, which means you can have the following combinations:
+- The responses can be either be downloaded or pushed to the Firebase bucket[^2]. You can configure this in `config.json` under `REACT_APP_general` -> `storage` -> `responsesStorageType` (possible values for `responsesStorageType`: `"download"`, `"firebase"`).
+- By default, Huldra will prompt the participant to download the file containing their responses at the end of the survey (default value for `responsessStorageType`: `"download"`). 
+
+[^2]: If `responsesStorageType` is `"firebase"`, Huldra stores responses in the `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
+
+Note that the two parameters `assetsStorageType` and `responsesStorageType` are independent of each other, which means you can have the following combinations:
 
 - `assetsStorageType` is `"local"` and `responsesStorageType` is `"download"` (default)
 - `assetsStorageType` is `"local"` and `responsesStorageType` is `"firebase"`
 - `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"download"`
 - `assetsStorageType` is `"firebase"` and `responsesStorageType` is `"firebase"`
-
-The app will generate a file containing the responses of the participant. The file can either be downloaded or pushed to Firebase, depending on the value of `REACT_APP_general` -> `storage` -> `responsesStorageType` in `config.json`:
-
-- Default value: `"download"`
-- Possible values: `"download"`, `"firebase"`
-
-In case of `firebase`, the responses will be stored in `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
-
 
 
 ### Deployment
