@@ -110,6 +110,7 @@ The assets are the images, audio and/or video clips that you want to collect fee
 - As the cases are fetched at the beginning of the survey, if you change the value of these parameters, you need to go to the homepage and restart the survey from scratch by clicking the "Get participant ID" button.
 - In either storage type, the asset folders and files have to adhere to the [folder structure](#directory-tree) and [naming convention](#naming-convention) given below.
 - If a case folder is missing any of the required files, the case will be skipped.
+- See the [Case Order](#case-order) section below for details about the ordering of cases.
 
 If `assetsStorageType` is `"local"`:
 - We look for assets in `public/gallery`.
