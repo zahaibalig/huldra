@@ -817,16 +817,18 @@ The `REACT_APP_general` block contains the following elements.
 - `allowProceedingWithoutAnswering`: This tag can take 2 values, i.e., True or False. Setting the value to True will let users move on to another question without answering it, basically making the questions optional to answer.
 - `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
-- `caseOrder`: This parameter defines the order of the cases shown to the user.
-- `outputJson`: This parameter defines what optional data is included in the output JSON file. It expects an array of strings. The following values are allowed: 'SoftwareInfo' and 'SessionEvents'. (Other required data is always included in the output JSON file, such as the survey questions and responses.)
+- `caseOrder`: This parameter defines the order of the cases shown to the user. 
 
   #### Parameters
 
   - `cases:` This is where you write the list of cases (folder names in local/firebase directory) that you want to show to the user.
-  - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
+  - `shuffle:` This where you define if/how the cases should be shuffled when shown to the user. 
 
-  **NB:** If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+  **NB:** See [README.md](/README.md#case-order) for more details about `caseOrder`, `cases`, and shuffle.
+  
+  **NB:** If you change the case order, you might have to restart the browser or clear the local storage for it to take effect.
 
+- `outputJson`: This parameter defines what optional data is included in the output JSON file. It expects an array of strings. The following values are allowed: 'SoftwareInfo' and 'SessionEvents'. (Other required data is always included in the output JSON file, such as the survey questions and responses.)
 - `color`: This element can be used to define the color scheme of the app. It has 2 subelements.
 
   #### Parameters
