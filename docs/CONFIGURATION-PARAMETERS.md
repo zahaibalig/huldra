@@ -835,14 +835,14 @@ The `REACT_APP_general` block contains the following elements.
 
   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
 
-  NB: You can pick from the following lists of colors only:
+**  NB:** Supported values are `blue`, `green`, `orange`, `purple`, `teal`, and `yellow` (you can pick from the following lists of colors only):
 
   - 'blue': $\color{#38c3f2}{■}$ (#38c3f2)
   - 'green': $\color{#6db784}{■}$ (#6db784);
-  - 'purple': $\color{#9b45b2}{■}$ (#9b45b2);
-  - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
-  - 'teal': $\color{#2b6777}{■}$ (#2b6777);
   - 'orange': $\color{#eb6b40}{■}$ (#eb6b40);
+  - 'purple': $\color{#9b45b2}{■}$ (#9b45b2);
+  - 'teal': $\color{#2b6777}{■}$ (#2b6777);
+  - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
 
 - `footer`:
 
