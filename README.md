@@ -22,14 +22,14 @@ This section describes how to deploy Huldra from scratch and run entirely on you
 
 This section provides detailed information about Huldra.
 
+<details>
+  <summary>Click to see/hide details</summary>
+
 - [Configuration](#configuration)
 - [Storage](#storage)
 - [Assets](#assets)
 - [Responses](#responses)
 - [Deployment](#deployment)
-
-<details>
-  <summary>Click to see/hide details</summary>
 
 ### Configuration
 
