@@ -114,7 +114,7 @@ The assets are the images, audio and/or video clips that you want to collect fee
 
 If `assetsStorageType` is `"local"`:
 - We look for assets in `public/gallery`.
-- You need to specify the names of the case folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases` (this field must be populated as an array of strings, with the case foldernames in the order you would like them to appear in the survey).
+- You need to specify the names of the case folders in `config.json` under `REACT_APP_general` -> `caseOrder` -> `cases`. This field must be populated as an array of strings, with the case foldernames in the order you would like them to appear in the survey (subject to potential shuffling as described in [Case Order](#case-order)).
 
 If `assetsStorageType` is `"firebase"`:
 - If you want to put your assets in Firebase, you need to [set up a Firebase project](#storage), and upload the assets to your Firebase storage bucket.
