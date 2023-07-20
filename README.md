@@ -37,7 +37,7 @@ You can customize your instance by changing configuration parameters using the `
 Configuration parameters specified as environment variables in `.env` take precedence over those specified in `config.json`.
 
 Note that the `.env` file is not included in the repository. 
-<!-- It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets and responses storage](#assets-and-responses-storage) below for more information. -->
+<!-- It's only necessary if you want to put your assets or participant responses in Firebase. See [Assets](#assets) and [Responses](#responses) sections below for more information. -->
 
 When you deploy to a server such as Heroku, you can upload a `.env` file or specify configuration parameters through the Heroku interface (see [Deployment](#deployment) for more information), which take precedence over `config.json`. This can be useful if you want to customize your instance without changing any code.
 
@@ -68,7 +68,7 @@ REACT_APP_FIREBASE_APP_ID="Hmp4B8AgT@n!6*p@"
 REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 ```
 
-- Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of [Set up a Firebase project](#set-up-a-firebase-project).
+- Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of setting up a Firebase project.
 - You can choose whichever directory you like for `REACT_APP_FIREBASE_ROOT_DIRECTORY`. However, make sure that your `gallery` folder is under it. For instance, if you would like to have a folder structure as `dev/gallery`, you should specify `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"`. Don't forget to place a forward slash at the start of the path.
 
 
