@@ -709,14 +709,6 @@ const Survey = ({
                 caseId={PageLocator}
                 REACT_APP_caseVideo={REACT_APP_caseVideo}
               />
-            ) : prefix === "image" ? (
-              <CaseImage
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-              />
             ) : (
               <CaseImage
                 {...props}

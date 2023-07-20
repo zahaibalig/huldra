@@ -26,6 +26,8 @@ const fetchCases = async () => {
   // the file names of the valid cases
   let validCaseFiles = [];
 
+  // shuffle the cases according to the config
+
   if (shuffle === "categorized") {
     let casesByType = {
       image: [],
@@ -191,15 +193,11 @@ const fileExists = async (fullPath, fileType) => {
       image: "image",
       audio: "audio",
       video: "video",
-      text: "text",
+      text: "text/plain",
     };
 
     const contentType = response.headers.get("content-type");
-    if (
-      contentType &&
-      contentType.startsWith(types[fileType]) &&
-      !contentType.startsWith("text/html")
-    ) {
+    if (contentType && contentType.startsWith(types[fileType])) {
       return true;
     }
   } catch (err) {

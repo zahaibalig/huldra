@@ -310,7 +310,7 @@
     "caseImageViewDetailsMandatory": true,
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
-      "cases": ["audio-bird","text-sample","text-txt","audio-wrongspelling","hybrid-flowerbird","image-flower","video-bird","text-samplecopy","audio-birdcopy"],
+      "cases": ["audio-bird","text-sample","hybrid-flowerbird","image-flower","video-bird"],
       "shuffle": "categorized"
     },
     "storage": {
