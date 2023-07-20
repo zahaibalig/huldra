@@ -12,10 +12,10 @@ This section describes how to deploy Huldra from scratch and run entirely on you
 1. You need to have [Node.js](https://nodejs.org/) installed on your computer.
 2. Clone or download the source code of Huldra.
 3. Inside the folder of the source (where `package.json` is located), run `npm install`.
-4. Configuration parameters should be specified in `src/config.json`. This file already includes an example configuration by default, but you can update it according to your needs. See [Configuration](#configuration) below for details.
-5. Assets should be put in the `public/gallery` folder. The codebase already has some examples there by default, but you can replace them with your own assets. See [Assets](#assets) below for details.
-6. By default, the participant responses will be stored locally. See [Responses](#responses) below for details.
-7. Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/ in development mode. Enjoy!
+- [Optional] Configuration parameters can be specified in `src/config.json`. The codebase already includes an example configuration by default, but you can update it according to your needs. See [Configuration](#configuration) below for details.
+- [Optional] Assets can be updated in the `public/gallery` folder. The codebase already includes some examples there by default, but you can replace them with your own assets. See [Assets](#assets) below for details.
+- [Optional] By default, the participant responses will be stored locally, but you can change this. See [Responses](#responses) below for details.
+4. Run `npm start` and wait a little while. Then you should see your browser opens Huldra at http://localhost:3000/. Enjoy!
 
 
 ## Detailed Information
