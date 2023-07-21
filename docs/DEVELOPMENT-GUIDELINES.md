@@ -106,6 +106,10 @@
   - When the assignee is ready, they should make a new PR towards `dev` from the new feature branch
 - Never revert a merged and closed PR
 
+### Security Vulnerabilities from Dependabot
+
+- See `Security-Vulnerabilities.md` for more details.
+
 ### Versioning and Releases
 
 - We use [software versioning](https://en.wikipedia.org/wiki/Software_versioning) on our releases
