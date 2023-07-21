@@ -390,7 +390,7 @@ const Survey = ({
       (!degree.includes("Other") && degree.length > 0) ||
       (degree.includes("Other") && degreeOther !== "");
 
-    if (country && degreeIsValid && fieldOfExpertise.length > 0 && termsOfUse) {
+    if (name && country && degreeIsValid && fieldOfExpertise.length > 0 && termsOfUse) {
       if (
         (notifications && !email) ||
         (notifications && !validateEmail(email)) ||
