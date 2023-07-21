@@ -96,7 +96,7 @@ describe("mocking process.env", () => {
     process.env = OLD_ENV;
   });
 
-  test("should return the value of the environment variable when it exists", () => {
+  test("should return the value of the environment variable when it exists and it not a JSON string", () => {
     // mock the environment variable
     process.env.REACT_APP_FIREBASE_ROOT_DIRECTORY = "root";
 
@@ -123,7 +123,7 @@ describe("mocking process.env", () => {
     expect(result.appName).toBe("Huldra2");
   });
 
-  test("should deep merge the environment variable with the variable from the config file when the environment variable exists and is a valid JSON string, with the environment variable take priority", () => {
+  test("should return the value of the environment variable as an object when it exists and is a valid JSON string, and completely overwrite the corresponding value in config.json", () => {
     // mock the environment variable
     process.env.REACT_APP_general = JSON.stringify({
       appName: "Huldra2",
@@ -137,11 +137,8 @@ describe("mocking process.env", () => {
     expect(typeof result).toBe("object");
     expect(result.appName).toBe("Huldra2");
     expect(result.header.labelBackground).toBe("Background2");
-    expect(result.allowRevisitingAnswers).toBe(true);
-    expect(result.allowProceedingWithoutAnswering).toBe(false);
-    expect(result.caseOrder.shuffle).toBe("");
-
-    expect(result.caseOrder.cases).toEqual(["image-test", "image-flower"]);
-    // the above expectation sometimes fails, and we get more than two cases in the array
+    expect(result.allowRevisitingAnswers).toBe(undefined);
+    expect(result.allowProceedingWithoutAnswering).toBe(undefined);
+    expect(result.caseOrder).toBe(undefined);
   });
 });

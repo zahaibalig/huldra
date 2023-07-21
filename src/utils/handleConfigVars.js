@@ -1,5 +1,4 @@
 import configuration from "../config.json";
-import _ from "lodash";
 
 /**
  * check if a string is a valid JSON string
@@ -17,21 +16,7 @@ const isJsonString = (str) => {
 };
 
 /**
- * customizer function for deep merging two objects
- * @param {object} objValue the value of the object
- * @param {object} srcValue the value of the source object
- * @returns {object} the merged object
- * @see https://lodash.com/docs/4.17.15#mergeWith
- */
-const customizer = (objValue, srcValue) => {
-  if (_.isArray(objValue)) {
-    return objValue.concat(srcValue);
-  }
-};
-
-/**
- * fetch a config variable from the config file or from the environment variables. the environment variables have priority. supports deep merging of objects
- * We support deep merging of variables between the config file and environment variables. This allows us to override specific parts of an object variable in the config file with environment variables. For example, we can override one key of a three-key object variable with an environment variable, while keeping the other two keys unchanged. However, we caution **against** using more than two levels of nesting, as it might lead to confusion and unexpected outcomes.
+ * fetch a config variable from the config file or from the environment variables. the environment variables have priority.
  * @param {string} param the name of the variable
  * @returns {string|object|Array } the value of the variable
  */
@@ -51,10 +36,9 @@ const fetchConfigVariable = (param) => {
       result = envVarRaw;
     } else {
       // if the environment variable exists and is a valid JSON string, parse it
-      // and deep merge it with the variable from the config file
-      // the environment variable has priority
+      // and return the parsed object
       const envVarObj = JSON.parse(envVarRaw);
-      result = _.mergeWith(configVar, envVarObj, customizer);
+      result = envVarObj;
     }
   }
 
