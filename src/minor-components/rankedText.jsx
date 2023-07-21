@@ -4,6 +4,7 @@ import { getAsset } from "../utils/loadAssets";
 const RankedText = ({ url, className, label, scrollClassName }) => {
   const [textContent, setTextContent] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+
   useEffect(() => {
     setSubscribed(true);
 
@@ -24,10 +25,21 @@ const RankedText = ({ url, className, label, scrollClassName }) => {
 
     return () => setSubscribed(false);
   }, [url, subscribed]);
+
+  // Function to convert newlines to <br> tags
+  const convertNewlinesToBreaks = (text) => {
+    return text.split("\n").map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        <br />
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div className={className}>
       <span className="text-label">{label}</span>
-      <p className={scrollClassName}>{textContent}</p>
+      <p className={scrollClassName}>{convertNewlinesToBreaks(textContent)}</p>
     </div>
   );
 };

@@ -765,11 +765,11 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
           "label": "Example multiple choice question.",
           "optional": false,
           "choices": [
-            "Example  1.",
-            "Example  2."
+            "Example 1.",
+            "Example 2."
           ],
           "hasCommentBox": true,
-          "commentBoxLabel": " to the multiple choice question Q3."
+          "commentBoxLabel": "To the multiple choice question Q3."
         }
       ]
     }

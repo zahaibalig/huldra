@@ -312,7 +312,7 @@
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
       "cases": ["audio-bird","text-sample","hybrid-flowerbird","image-flower","video-bird"],
-      "shuffle": "categorized"
+      "shuffle": ""
     },
     "storage": {
       "assetsStorageType": "local",
