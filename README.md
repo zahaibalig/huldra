@@ -169,7 +169,7 @@ The `shuffle` parameter under `caseOrder` has the following effects:
   - `"shuffle": "full"`: all the cases are shuffled
   - If `shuffle` is not specified: the app uses the order specified in `cases`
 
-If you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button
+If you change the value of these parameters, you need to go to the home page and restart the survey from scratch by clicking the "Get participant ID" button.
 
 #### Example Assets
 
