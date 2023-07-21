@@ -1,10 +1,10 @@
 import { fetchResponse } from "../handleResponse";
-import * as fetchConfig from "../handleConfigVars";
+import * as f from "../handleStorageConfig";
 
-describe("fetchResponse", () => {
-  test("if assetsStorageType is local and responsesStorageType is download, should return null if ParticipantInfo is not found in localStorage", async () => {
+describe("fetchResponse, assetsStorageType is local and responsesStorageType is download", () => {
+  test("should return null if ParticipantInfo is not found in localStorage", async () => {
     // mock test data
-    fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
+    f.getConfig = jest.fn().mockReturnValue({
       assetsStorageType: "local",
       responsesStorageType: "download",
     });
@@ -14,9 +14,9 @@ describe("fetchResponse", () => {
     expect(result).toBeNull();
   });
 
-  test("if assetsStorageType is local and responsesStorageType is download, should return null if ParticipantInfo is found in localStorage but ParticipantId is not the same", async () => {
+  test("should return null if ParticipantInfo is found in localStorage but ParticipantId is not the same", async () => {
     // mock test data
-    fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
+    f.getConfig = jest.fn().mockReturnValue({
       assetsStorageType: "local",
       responsesStorageType: "download",
     });
@@ -30,9 +30,9 @@ describe("fetchResponse", () => {
     expect(result).toBeNull();
   });
 
-  test("if assetsStorageType is local and responsesStorageType is download, should return the response object if all the needed items are found in localStorage", async () => {
+  test("should return the response object if all the needed items are found in localStorage", async () => {
     // mock test data
-    fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
+    f.getConfig = jest.fn().mockReturnValue({
       assetsStorageType: "local",
       responsesStorageType: "download",
     });
@@ -65,9 +65,9 @@ describe("fetchResponse", () => {
     expect(result).toEqual(expected);
   });
 
-  test("if assetsStorageType is local and responsesStorageType is download, should return null if one of the needed items is missing in localStorage", async () => {
+  test("should return null if one of the needed items is missing in localStorage", async () => {
     // mock test data
-    fetchConfig.fetchConfigVariable = jest.fn().mockReturnValue({
+    f.getConfig = jest.fn().mockReturnValue({
       assetsStorageType: "local",
       responsesStorageType: "download",
     });

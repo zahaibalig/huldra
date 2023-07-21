@@ -1,5 +1,5 @@
 import { fetchConfigVariable } from "./handleConfigVars";
-import getConfig from "../utils/handleStorageConfig";
+import { getConfig } from "../utils/handleStorageConfig";
 import { getStorageReference } from "../utils/firebase";
 
 /**
