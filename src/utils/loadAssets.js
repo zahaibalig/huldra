@@ -15,7 +15,6 @@ import {
 // fetch cases at the start of the app
 const fetchCases = async (configExists, path, cases, shuffle) => {
   const config = getConfig();
-
   let validCases;
 
   if (config.assetsStorageType === "local") {

@@ -27,6 +27,7 @@ const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
       imagePlaceholderIconPath={REACT_APP_summaryAndFeedback["summary"].imagePlaceholderIconPath}
       videoPlaceholderIconPath={REACT_APP_summaryAndFeedback["summary"].videoPlaceholderIconPath}
       audioPlaceholderIconPath={REACT_APP_summaryAndFeedback["summary"].audioPlaceholderIconPath}
+      textPlaceholderIconPath={REACT_APP_summaryAndFeedback["summary"].textPlaceholderIconPath}
     />
   );
 

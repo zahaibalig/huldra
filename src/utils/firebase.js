@@ -137,6 +137,11 @@ const checkAssets = async (folderPath, caseType) => {
       result = assets.length >= 2;
       break;
     }
+    case "text": {
+      let assets = await listFiles(folderPath, "");
+      result = assets.length >= 2;
+      break;
+    }
     case "video": {
       let assets = await listFiles(folderPath, "");
       result = assets.length >= 2;
@@ -157,6 +162,7 @@ const validateCases = async (cases) => {
     audio: "audio",
     video: "video",
     hybrid: "hybrid",
+    text: "text",
   };
   return Promise.all(
     cases.map(async (e) => {
@@ -174,6 +180,7 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
   let imageCases = [];
   let audioCases = [];
   let hybridCases = [];
+  let textCases = [];
   let check;
   let validCases;
 
@@ -188,6 +195,8 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ? audioCases.push(element)
         : prefix === "hybrid"
         ? hybridCases.push(element)
+        : prefix === "text"
+        ? textCases.push(element)
         : imageCases.push(element);
     });
 
@@ -197,6 +206,7 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ..._.shuffle(hybridCases),
         ..._.shuffle(videoCases),
         ..._.shuffle(audioCases),
+        ..._.shuffle(textCases),
       ];
       return res;
     } else if (shuffle === "full") {
@@ -214,6 +224,8 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ? videoCases.push(element)
         : prefix === "audio"
         ? audioCases.push(element)
+        : prefix === "text"
+        ? textCases.push(element)
         : prefix === "hybrid"
         ? hybridCases.push(element)
         : imageCases.push(element);
@@ -224,6 +236,7 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
       ..._.shuffle(hybridCases),
       ..._.shuffle(videoCases),
       ..._.shuffle(audioCases),
+      ..._.shuffle(textCases),
     ];
   }
 };
