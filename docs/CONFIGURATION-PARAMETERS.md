@@ -825,8 +825,6 @@ The `REACT_APP_general` block contains the following elements.
   - `shuffle:` This where you define if/how the cases should be shuffled when shown to the user. 
 
   **NB:** See [README.md](/README.md#case-order) for more details about `caseOrder`, `cases`, and shuffle.
-  
-  **NB:** If you change the case order, you might have to restart the browser or clear the local storage for it to take effect.
 
 - `outputJson`: This parameter defines what optional data is included in the output JSON file. It expects an array of strings. The following values are allowed: 'SoftwareInfo' and 'SessionEvents'. (Other required data is always included in the output JSON file, such as the survey questions and responses.)
 - `color`: This element can be used to define the color scheme of the app. It has 2 subelements.
