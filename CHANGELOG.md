@@ -1,16 +1,31 @@
-# HULDRA-INTERNAL Changelog
+# Huldra Changelog
 
 All notable changes to the `dev` branch will be documented in this file, per release.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-28] - 2023-07-18
+
+### Added
+
+- Create GitHub action for automatic linting and formatting ([#211](https://github.com/simulamet-host/huldra-internal/issues/211))
+- Create GitHub action for automatic building ([#234](https://github.com/simulamet-host/huldra-internal/issues/234))
+
+### Changed
+
+- Update documentation with information on testing ([#231](https://github.com/simulamet-host/huldra-internal/issues/231))
+- Update `DEVELOPMENT-GUIDELINES.md`([#236](https://github.com/simulamet-host/huldra-internal/issues/236))
+
+### Fixed
+
+- Remove any personal info from the codebase ([#239](https://github.com/simulamet-host/huldra-internal/issues/239)
 
 ## [2.0.0-27] - 2023-07-10
 
 ### Added
 
-- Integrate linter, formatter, and pre-commit hook ([#23](https://github.com/simulamet-host/huldra-internal/issues/23), [#172](https://github.com/simulamet-host/huldra-internal/issues/172), [#201](https://github.com/simulamet-host/huldra-internal/issues/201)) and relevant documentation ([#5](https://github.com/simulamet-host/huldra-internal/issues/5)) <!--- i.e., update `DEVELOPMENT-GUIDELINES.md` with information on lint rules --> 
+- Integrate linter, formatter, and pre-commit hook ([#23](https://github.com/simulamet-host/huldra-internal/issues/23), [#172](https://github.com/simulamet-host/huldra-internal/issues/172), [#201](https://github.com/simulamet-host/huldra-internal/issues/201)) and relevant documentation ([#5](https://github.com/simulamet-host/huldra-internal/issues/5)) <!--- i.e., update `DEVELOPMENT-GUIDELINES.md` with information on lint rules -->
 - Add support for using local gallery files ([#132](https://github.com/simulamet-host/huldra-internal/issues/132))
 
 ### Changed
@@ -27,7 +42,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Remove unnecessary imports ([#73](https://github.com/simulamet-host/huldra-internal/issues/73), [#181](https://github.com/simulamet-host/huldra-internal/issues/181))
 - Remove `TODO` blocks ([#74](https://github.com/simulamet-host/huldra-internal/issues/74))
-
 
 ## [2.0.0-26] - 2023-06-26
 

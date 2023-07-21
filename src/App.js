@@ -18,6 +18,7 @@ const App = () => {
         "REACT_APP_registration",
         "REACT_APP_caseImage",
         "REACT_APP_caseVideo",
+        "REACT_APP_caseText",
         "REACT_APP_caseAudio",
         "REACT_APP_summaryAndFeedback",
         "REACT_APP_end",
@@ -82,6 +83,7 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
+                REACT_APP_caseText={configuration["REACT_APP_caseText"]}
                 REACT_APP_caseImage={configuration["REACT_APP_caseImage"]}
                 REACT_APP_caseVideo={configuration["REACT_APP_caseVideo"]}
                 REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}

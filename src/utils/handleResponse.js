@@ -9,25 +9,29 @@ import { getStorageReference, getFirebaseApp, anonymousAuthentication } from "..
 const prepareResponse = () => {
   const storeToBucket = {};
 
-  // SessionInfo will always be pushed to the bucket because it is needed when the user logs in again
-  storeToBucket["SessionInfo"] = JSON.parse(localStorage.getItem("SessionInfo"));
-
-  // if outputJson is not set, push the default items to the bucket; otherwise, push only the items in outputJson
-  const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
-  const defaultItems = [
+  // these items are mandatory and will always be pushed to the bucket
+  const mandatoryItems = [
     "ParticipantInfo",
     "CaseOrder",
-    "SoftwareInfo",
+    "SessionInfo",
     "CaseStudyAnswers",
-    "SessionEvents",
     "FeedbackFormAnswers",
   ];
-  let itemsToPush;
-  if (outputJson === undefined || outputJson === null || outputJson.length === 0) {
-    itemsToPush = defaultItems;
+
+  // the optional items are decided by the outputJson config variable
+  // if outputJson is an array containing valid items, those items will also be pushed to the bucket
+  const outputJson = fetchConfigVariable("REACT_APP_general").outputJson;
+  const defaultItems = ["SoftwareInfo", "SessionEvents"];
+  let optionalItems;
+  if (Array.isArray(outputJson) && outputJson.length > 0) {
+    // add the items which are valid possible values of outputJson
+    optionalItems = outputJson.filter((item) => defaultItems.includes(item));
   } else {
-    itemsToPush = outputJson;
+    // not push any optional items if outputJson is not an array or is an empty array
+    optionalItems = [];
   }
+
+  const itemsToPush = mandatoryItems.concat(optionalItems);
 
   itemsToPush.map((prop) => {
     storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
@@ -45,7 +49,6 @@ const prepareResponse = () => {
 const pushToBucket = async (jsonString, fileName) => {
   const blob = new Blob([jsonString], { type: "application/json" });
 
-  getFirebaseApp();
   const storageRef = getStorageReference();
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
   const fileRef = storageRef.child(`${rootDirectory}/responses/${fileName}`);
@@ -112,9 +115,17 @@ const handleFinalResponse = () => {
 const fetchResponse = async (participantId) => {
   const storageConfig = getConfig();
 
+  // if assetsStorageType is "local", validCaseFiles is needed in localStorage, no matter what responsesStorageType is
+  if (storageConfig.assetsStorageType === "local") {
+    if (!localStorage.getItem("validCaseFiles")) {
+      return null;
+    }
+  }
+
+  // for a valid saved response, all these items should be present in the respective storage
+  const neededItems = ["ParticipantInfo", "CaseOrder", "SessionInfo"];
+
   if (storageConfig.responsesStorageType === "firebase") {
-    getFirebaseApp();
-    await anonymousAuthentication();
     const storageRef = getStorageReference();
 
     // for firebase, the file with the name of the participant id should exist in the bucket
@@ -125,26 +136,30 @@ const fetchResponse = async (participantId) => {
     });
     if (response) {
       const responseJson = await fetch(response).then((res) => res.json());
+      // check if the file from firebase contains all the needed items
+      let validResponse = true;
+      neededItems.map((item) => {
+        if (!responseJson[item]) {
+          validResponse = false;
+        }
+        return null;
+      });
+
       return responseJson;
     }
     return null;
   } else if (storageConfig.responsesStorageType === "download") {
     // the participantId should be the same as the one in localStorage
+    // check if localStorage has participantInfo first
+    if (!localStorage.getItem("ParticipantInfo")) {
+      return null;
+    }
     const savedId = JSON.parse(localStorage.getItem("ParticipantInfo")).ParticipantId;
     if (savedId !== participantId) {
       return null;
     }
 
-    // for a valid locally-saved response, all these items should be in localStorage
-    const neededItems = [
-      "ParticipantInfo",
-      "CaseOrder",
-      "SessionEvents",
-      "SessionInfo",
-      "SoftwareInfo",
-      "validCaseFiles",
-    ];
-
+    // check if the needed items are all present in localStorage
     const savedResponse = {};
     let validResponse = true;
     neededItems.map((item) => {

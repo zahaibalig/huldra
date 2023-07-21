@@ -1,4 +1,4 @@
-# Configuration File Documentation
+# Huldra Configuration Parameters
 
 This document serves as a comprehensive guide to the parameters in the `config.json` file.
 
@@ -20,7 +20,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 - **Summary and Feedback:** Page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
 - **End:** Final page of the survey, which is displayed after users complete the survey and submit their responses.
 
-![Overview](./src/assets/documentation/documentation-main.png)
+![Overview](/src/assets/documentation/documentation-main.png)
 
 [^1]: Please refer to the paper [Hammou et al.](https://dl.acm.org/doi/pdf/10.1145/3524273.3532887) for a more detailed overview of Huldra pages.
 
@@ -53,7 +53,7 @@ The `REACT_APP_warning` block contains 2 elements.
 
 ### Visual Overview
 
-<kbd>![Warning](./src/assets/documentation/warning.png)</kbd>
+<kbd>![Warning](/src/assets/documentation/warning.png)</kbd>
 
 ### Sample Config
 
@@ -80,7 +80,7 @@ The `REACT_APP_homepage` block contains 4 elements.
 
 ### Visual Overview
 
-<kbd>![Home](./src/assets/documentation/home.png)</kbd>
+<kbd>![Home](/src/assets/documentation/home.png)</kbd>
 
 ### Sample Config
 
@@ -182,7 +182,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
 
 ### Visual Overview
 
-<kbd>![Background](./src/assets/documentation/background.png)</kbd>
+<kbd>![Background](/src/assets/documentation/background.png)</kbd>
 
 ### Sample Config
 
@@ -338,10 +338,10 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
 
 ### Visual Overview
 
-<kbd>![Demonstration (video and image)](./src/assets/documentation/demonstration_video_image.png)</kbd>
-<kbd>![Demonstration (image)](./src/assets/documentation/demonstration_image.png)</kbd>
-<kbd>![Demonstration (video)](./src/assets/documentation/demonstration_video.png)</kbd>
-<kbd>![Demonstration (audio)](./src/assets/documentation/demonstration_audio.png)</kbd>
+<kbd>![Demonstration (video and image)](/src/assets/documentation/demonstration_video_image.png)</kbd>
+<kbd>![Demonstration (image)](/src/assets/documentation/demonstration_image.png)</kbd>
+<kbd>![Demonstration (video)](/src/assets/documentation/demonstration_video.png)</kbd>
+<kbd>![Demonstration (audio)](/src/assets/documentation/demonstration_audio.png)</kbd>
 
 ### Sample Config
 
@@ -423,8 +423,8 @@ The `caseImageColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![CaseImage](./src/assets/documentation/caseImage.png)</kbd>
-<kbd>![CaseImage popup](./src/assets/documentation/caseImage_popup.png)</kbd>
+<kbd>![CaseImage](/src/assets/documentation/caseImage.png)</kbd>
+<kbd>![CaseImage popup](/src/assets/documentation/caseImage_popup.png)</kbd>
 
 ### Sample Config
 
@@ -509,8 +509,8 @@ The `caseHybridColumnRight` sub-block is used to configure the right column, and
 
 ### Visual Overview
 
-<kbd>![CaseHybrid](./src/assets/documentation/caseHybrid.png)</kbd>
-<kbd>![CaseHybrid popup](./src/assets/documentation/caseHybrid_popup.png)</kbd>
+<kbd>![CaseHybrid](/src/assets/documentation/caseHybrid.png)</kbd>
+<kbd>![CaseHybrid popup](/src/assets/documentation/caseHybrid_popup.png)</kbd>
 
 ### Sample Config
 
@@ -577,7 +577,7 @@ The `caseVideoColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![CaseVideo](./src/assets/documentation/caseVideo.png)</kbd>
+<kbd>![CaseVideo](/src/assets/documentation/caseVideo.png)</kbd>
 
 ### Sample Config
 
@@ -626,7 +626,7 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
 
 ### Visual Overview
 
-<kbd>![CaseAudio](./src/assets/documentation/caseAudio.png)</kbd>
+<kbd>![CaseAudio](/src/assets/documentation/caseAudio.png)</kbd>
 
 ### Sample Config
 
@@ -697,7 +697,7 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
 
 ### Visual Overview
 
-<kbd>![Summary and Feedback](./src/assets/documentation/summaryAndFeedback.png)</kbd>
+<kbd>![Summary and Feedback](/src/assets/documentation/summaryAndFeedback.png)</kbd>
 
 ### Sample Config
 
@@ -765,11 +765,11 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
           "label": "Example multiple choice question.",
           "optional": false,
           "choices": [
-            "Example varun 1.",
-            "Example varun 2."
+            "Example 1.",
+            "Example 2."
           ],
           "hasCommentBox": true,
-          "commentBoxLabel": "varun to the multiple choice question Q3."
+          "commentBoxLabel": "To the multiple choice question Q3."
         }
       ]
     }
@@ -791,7 +791,7 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 ### Visual Overview
 
-<kbd>![End](./src/assets/documentation/end.png)</kbd>
+<kbd>![End](/src/assets/documentation/end.png)</kbd>
 
 ### Sample Config
 
@@ -809,7 +809,7 @@ This component is a general component which configures various properties of the
 
 ### Parameters
 
-The `REACT_APP_general` block contains 11 elements.
+The `REACT_APP_general` block contains the following elements.
 
 - `softwareInfoTag`: This tag serves the purpose of defining the software version or providing software information. The details specified here are prominently displayed in the generated JSON output file.
 - `appName`: This tag is used to congigure the app name which is displayed on the header. (Refer to the visual overview under the header subsection here for better understanding.)
@@ -817,31 +817,31 @@ The `REACT_APP_general` block contains 11 elements.
 - `allowProceedingWithoutAnswering`: This tag can take 2 values, i.e., True or False. Setting the value to True will let users move on to another question without answering it, basically making the questions optional to answer.
 - `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
-- `caseOrder`: This parameter defines the order of the cases shown to the user.
+- `caseOrder`: This parameter defines the order of the cases shown to the user. 
 
   #### Parameters
 
   - `cases:` This is where you write the list of cases (folder names in local/firebase directory) that you want to show to the user.
-  - `shuffle:` This where you defined how the cases should be shuffled when shown to the user. It takes 2 values: 'categorized', and 'full'. With 'categorized': the order of the cases is shuffled within each media type, but the order of the types is hardcoded (image, hybrid, video, and audio). And with 'full': all the cases are shuffled.
+  - `shuffle:` This where you define if/how the cases should be shuffled when shown to the user. 
 
-  NB: If you changed case order, sometimes you have to restart the browser or clear the local storage for it to take effect.
+  **NB:** See [README.md](/README.md#case-order) for more details about `caseOrder`, `cases`, and shuffle.
 
+- `outputJson`: This parameter defines what optional data is included in the output JSON file. It expects an array of strings. The following values are allowed: 'SoftwareInfo' and 'SessionEvents'. (Other required data is always included in the output JSON file, such as the survey questions and responses.)
 - `color`: This element can be used to define the color scheme of the app. It has 2 subelements.
 
   #### Parameters
 
   - `themeColor:` Here you can define the theme color of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
-
   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
-
-  NB: You can pick from the following lists of colors only:
+  
+  **NB:** Supported values are `blue`, `green`, `orange`, `purple`, `teal`, and `yellow` (you can pick from the following lists of colors only):
 
   - 'blue': $\color{#38c3f2}{■}$ (#38c3f2)
   - 'green': $\color{#6db784}{■}$ (#6db784);
-  - 'purple': $\color{#9b45b2}{■}$ (#9b45b2);
-  - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
-  - 'teal': $\color{#2b6777}{■}$ (#2b6777);
   - 'orange': $\color{#eb6b40}{■}$ (#eb6b40);
+  - 'purple': $\color{#9b45b2}{■}$ (#9b45b2);
+  - 'teal': $\color{#2b6777}{■}$ (#2b6777);
+  - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
 
 - `footer`:
 
@@ -860,7 +860,7 @@ The `REACT_APP_general` block contains 11 elements.
 
   #### Visual Overview
 
-<kbd>![Footer](./src/assets/documentation/footer.png)</kbd>
+<kbd>![Footer](/src/assets/documentation/footer.png)</kbd>
 
 - #### `header`
 
@@ -878,10 +878,10 @@ The `REACT_APP_general` block contains 11 elements.
 
   #### Visual Overview
 
-<kbd>![Header (Background)](./src/assets/documentation/header_background.png)</kbd>
-<kbd>![Header (Demonstration)](./src/assets/documentation/header_demonstration.png)</kbd>
-<kbd>![Header (Case)](./src/assets/documentation/header_case.png)</kbd>
-<kbd>![Header (Summary and Feedback)](./src/assets/documentation/header_summaryAndFeedback.png)</kbd>
+<kbd>![Header (Background)](/src/assets/documentation/header_background.png)</kbd>
+<kbd>![Header (Demonstration)](/src/assets/documentation/header_demonstration.png)</kbd>
+<kbd>![Header (Case)](/src/assets/documentation/header_case.png)</kbd>
+<kbd>![Header (Summary and Feedback)](/src/assets/documentation/header_summaryAndFeedback.png)</kbd>
 
 ### Sample Config
 
@@ -899,13 +899,8 @@ The `REACT_APP_general` block contains 11 elements.
       "shuffle": "categorized"
     },
     "outputJson": [
-      "ParticipantInfo",
-      "CaseOrder",
       "SoftwareInfo",
-      "CaseStudyAnswers",
-      "SessionEvents",
-      "FeedbackFormAnswers",
-      "SessionInfo"
+      "SessionEvents"
     ],
     "color": {
       "themeColor": "blue",

@@ -8,6 +8,7 @@ import CaseImage from "./caseImage";
 import CaseVideo from "./caseVideo";
 import CaseHybrid from "./caseHybrid";
 import CaseAudio from "./caseAudio";
+import CaseText from "./caseText";
 import End from "./end";
 import Footer from "../minor-components/footer";
 import { Route, Switch } from "react-router-dom";
@@ -29,6 +30,7 @@ import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { fetchCases } from "../utils/loadAssets";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
+import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 
 const Survey = ({
   history,
@@ -40,6 +42,7 @@ const Survey = ({
   REACT_APP_caseVideo,
   REACT_APP_caseAudio,
   REACT_APP_caseHybrid,
+  REACT_APP_caseText,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
@@ -244,14 +247,18 @@ const Survey = ({
 
   const handleEndSurvey = () => {
     const FeedbackFormAnswers = JSON.parse(localStorage.getItem("FeedbackFormAnswers")) || {};
-    let hasError = validateFeedbackForm(
-      REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
-      FeedbackFormAnswers
-    ).hasError;
-    if (hasError) {
-      toastError("Please verify mandatory fields.", "top-center", "req-error");
-    } else {
+    if (REACT_APP_summaryAndFeedback["feedbackForm"].display === false) {
       setOpenEndDialog(true);
+    } else {
+      let hasError = validateFeedbackForm(
+        REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions,
+        FeedbackFormAnswers
+      ).hasError;
+      if (hasError) {
+        toastError("Please verify mandatory fields.", "top-center", "req-error");
+      } else {
+        setOpenEndDialog(true);
+      }
     }
   };
 
@@ -395,6 +402,8 @@ const Survey = ({
       ) {
         toastError("Please provide your email address.", "top-center", "email-error");
       } else {
+        conditionalInitializeFirebase();
+
         /* FETCH CASE IDS FROM STORAGE */
         setRouteIsAllowed(true);
         localStorage.clear();
@@ -644,12 +653,12 @@ const Survey = ({
             let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
               [PageLocator - 1].split("-")[0]
               .toLowerCase();
-            return prefix === "video" ? (
-              <CaseVideo
+            return prefix === "text" ? (
+              <CaseText
                 {...props}
                 totalCases={casesCount}
                 caseId={PageLocator}
-                REACT_APP_caseVideo={REACT_APP_caseVideo}
+                REACT_APP_caseText={REACT_APP_caseText}
               />
             ) : prefix === "audio" ? (
               <CaseAudio
@@ -664,6 +673,13 @@ const Survey = ({
                 totalCases={casesCount}
                 caseId={PageLocator}
                 REACT_APP_caseHybrid={REACT_APP_caseHybrid}
+              />
+            ) : prefix === "video" ? (
+              <CaseVideo
+                {...props}
+                totalCases={casesCount}
+                caseId={PageLocator}
+                REACT_APP_caseVideo={REACT_APP_caseVideo}
               />
             ) : (
               <CaseImage
