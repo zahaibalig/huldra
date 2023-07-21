@@ -135,11 +135,11 @@ const fetchResponse = async (participantId) => {
     // for firebase, the file with the name of the participant id should exist in the bucket
     const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
     const fileRef = storageRef.child(`${rootDirectory}/responses/${participantId}.json`);
-    const response = await fileRef.getDownloadURL().catch((err) => {
+    const url = await fileRef.getDownloadURL().catch((err) => {
       console.log(err);
     });
-    if (response) {
-      const responseJson = await fetch(response).then((res) => res.json());
+    if (url) {
+      const responseJson = await fetch(url).then((res) => res.json());
       // check if the file from firebase contains all the needed items
       let validResponse = true;
       neededItems.map((item) => {
