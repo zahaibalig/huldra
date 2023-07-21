@@ -9,6 +9,7 @@ const RadioInput = ({
   label,
   onChange,
   onTextChange,
+  degreeOther,
   optional,
   options,
   showTooltip,
@@ -53,12 +54,12 @@ const RadioInput = ({
             />{" "}
             {option[0]} {option[2] !== "" && `(${option[2]})`}
           </Label>
-          {option[1] === true && (
+          {option[1] && disableTextField[index] && (
             <input
-              disabled={disableTextField[index]}
               onChange={(e) => onTextChange(e.currentTarget.value)}
               className="input-radio-disabled-text"
               type="text"
+              value={degreeOther}
             />
           )}
         </FormGroup>

@@ -9,6 +9,7 @@ const Registration = ({
   onCommentsChange,
   handleDegreeChange,
   handleOtherDegreeChange,
+  degreeOther,
   onNameChange,
   onEmailChange,
   onFieldOfExpertiseChange,
@@ -55,6 +56,7 @@ const Registration = ({
               label={REACT_APP_registration && REACT_APP_registration["Q5"].label}
               onChange={handleDegreeChange}
               onTextChange={handleOtherDegreeChange}
+              degreeOther={degreeOther}
               optional={false}
               options={[
                 ["BSc", false, ""],

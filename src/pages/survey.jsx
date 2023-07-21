@@ -388,13 +388,15 @@ const Survey = ({
   };
   const getParticipantId = async (e) => {
     e && e.preventDefault();
+
     /* HANDLING INPUT ERRORS */
-    if (
-      country &&
-      (degree.length > 0 || degreeOther) &&
-      fieldOfExpertise.length > 0 &&
-      termsOfUse
-    ) {
+
+    // for degree, if "Other" is not selected, one of the other options must be selected; if "Other" is selected, the text field must also be filled out
+    const degreeIsValid =
+      (!degree.includes("Other") && degree.length > 0) ||
+      (degree.includes("Other") && degreeOther !== "");
+
+    if (name && country && degreeIsValid && fieldOfExpertise.length > 0 && termsOfUse) {
       if (
         (notifications && !email) ||
         (notifications && !validateEmail(email)) ||
@@ -420,13 +422,22 @@ const Survey = ({
           CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
         }
         const uuid = uuidv4();
+
+        // the final degree info is the selected degree(s) (excluding "Other") + the text field if "Other" is selected
+        let degreeInfo;
+        if (degree.includes("Other")) {
+          degreeInfo = [...degree.filter((item) => item !== "Other"), degreeOther];
+        } else {
+          degreeInfo = degree;
+        }
+
         const ParticipantInfo = {
           ParticipantId: uuid,
           Name: name,
           EmailAddress: email,
           Country: country,
           Comments: comments,
-          Degree: degreeOther ? [...degree, degreeOther] : degree,
+          Degree: degreeInfo,
           FieldOfExpertise: fieldOfExpertise,
           ActiveYears: parseInt(activeYears, 10),
           Tickbox1: termsOfUse,
@@ -633,6 +644,7 @@ const Survey = ({
               onCommentsChange={onCommentsChange}
               handleDegreeChange={handleDegreeChange}
               handleOtherDegreeChange={handleOtherDegreeChange}
+              degreeOther={degreeOther}
               onFieldOfExpertiseChange={onFieldOfExpertiseChange}
               onActiveYearsChange={onActiveYearsChange}
               setTermsOfUse={setTermsOfUse}
