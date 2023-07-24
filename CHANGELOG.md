@@ -8,8 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.0.0-29] - 2023-07-24
 
 ### Added
+
+- Add configuration parameter to conditionally display feedback form ([#99](https://github.com/simulamet-host/huldra-internal/issues/99))
+- Add support for using local responses folder ([#123](https://github.com/simulamet-host/huldra-internal/issues/123))
+- Add uniform logging utility ([#147](https://github.com/simulamet-host/huldra-internal/issues/147))
+- Add new case page type `caseText` ([#153](https://github.com/simulamet-host/huldra-internal/issues/153))
+
 ### Changed
+
+- Update documentation with information on assets and outputs ([#54](https://github.com/simulamet-host/huldra-internal/issues/54))
+- Handle fields to be written to the output dynamically ([#79](https://github.com/simulamet-host/huldra-internal/issues/79))
+- Update documentation with information on GitHub actions ([#237](https://github.com/simulamet-host/huldra-internal/issues/237))
+- Store the actual valid case list for each participant ID ([#264](https://github.com/simulamet-host/huldra-internal/issues/264))
+
 ### Fixed
+
+- Fix "Other" box in the registration page ([#149](https://github.com/simulamet-host/huldra-internal/issues/149))
+- Resolve security vulnerabilities using Dependabot ([#232](https://github.com/simulamet-host/huldra-internal/issues/232))
+
 ### Removed
 
 ## [2.0.0-28] - 2023-07-18
