@@ -16,7 +16,7 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 - **Registration:** Page used to retrieve participant information/metadata.
 - **Background:** Page used to display background information related to the study.
 - **Demonstration:** Page that can be configured to display various multimedia content. This page can be used to check participant requirements (auditory/visual acuity, hardware/software, etc.), and/or display additional orientation information related to the study.
-- **Case:** Main questionnaire page which displays survey questions. A case page can be one of 4 different types: _caseImage_, _caseHybrid_, _caseVideo_, _caseAudio_.
+- **Case:** Main questionnaire page which displays survey questions. A case page can be one of 6 different types: _caseImage_, _caseHybrid_, _caseVideo_, _caseAudio_, _caseText_, _caseFeedback_.
 - **Summary and Feedback:** Page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
 - **End:** Final page of the survey, which is displayed after users complete the survey and submit their responses.
 
@@ -35,9 +35,11 @@ The Huldra framework supports 8 type of pages[^1]. All pages are configurable us
 7. [REACT_APP_caseHybrid](#react_app_casehybrid)
 8. [REACT_APP_caseVideo](#react_app_casevideo)
 9. [REACT_APP_caseAudio](#react_app_caseaudio)
-10. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
-11. [REACT_APP_end](#react_app_end)
-12. [REACT_APP_general](#react_app_general)
+10. [REACT_APP_caseText](#react_app_casetext)
+11. [REACT_APP_caseFeedback](#react_app_casefeedback)
+12. [REACT_APP_summaryAndFeedback](#react_app_summaryandfeedback)
+13. [REACT_APP_end](#react_app_end)
+14. [REACT_APP_general](#react_app_general)
 
 ## REACT_APP_warning
 
@@ -643,6 +645,51 @@ The `caseAudioColumnRight` sub-block is used to configure the right column, and 
     "caseAudioColumnRight": {
       "title": "Your Answer",
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
+    }
+  },
+```
+
+## REACT_APP_caseText
+
+The caseText page is a main questionnaire page which displays a _caseText_ type survey question.
+
+<!--- where a user can rank 2 texts -->
+
+All case pages identified as being of type _caseText_ are configured using the `REACT_APP_caseText` block in the `config.json` file.
+
+### Parameters
+
+The `REACT_APP_caseText` block contains 2 sub-blocks.
+
+The `caseTextColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+
+- `label`: This element is used to configure the heading on the left column of case Text page.
+- `rightSectionTextLabel`: This element is used to configure the heading of the right text column on the left section of case text page.
+- `leftSectionTextLabel`: This element is used to configure the heading of the left text column on the left section of case text page.
+- `sectionButtonlabel`: This element is used to configure the label of the buttons below the texts on the left section of case text page.
+
+The `caseTextColumnRight` sub-block is used to configure the right column, and contains the following elements.
+
+- `title`: This element is used to configure the heading on the right column of case text page.
+- `text`: This element is used to configure the text description on the right column of case text page.
+
+### Visual Overview
+
+<kbd>![CaseText](/src/assets/documentation/caseText.png)</kbd>
+
+### Sample Config
+
+```json
+  "REACT_APP_caseText": {
+    "caseTextColumnLeft": {
+      "label": "Case Text",
+      "rightSectionTextLabel": "Text Label B",
+      "leftSectionTextLabel": "Text Label A",
+      "sectionButtonlabel": "Select Text"
+    },
+    "caseTextColumnRight": {
+      "title": "Your Text Answer",
+      "text": "Please select one of the Text Text to place it on top. The top Text Text is your preferred option for this case."
     }
   },
 ```

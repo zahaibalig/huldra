@@ -116,6 +116,12 @@ gallery
 |       └───image-sit-a.jpeg
 |       └───image-sit-b.jpeg
 |       └───image-sit.json
+│   └───text-lorem
+|       └───text-lorem-a.txt
+|       └───text-lorem-b.txt
+│   └───feedback-lorem
+|       └───feedback-lorem-a.mp3
+|       └───feedback-lorem-b.json
 ```
 
 For an image case, a json file is also necessary. The json file should contain the description of the image and the description will be used on the page for that image case. An example of the json file is as follows:
@@ -146,6 +152,9 @@ Refer to the [Directory Tree](#directory-tree) section about which assets are re
 image: ["jpg", "jpeg", "png", "gif"],
 audio: ["mp3", "wav", "ogg", "aac", "flac"],
 video: ["mp4", "webm", "mov"],
+text: ["txt"],
+feedback: ["jpg", "jpeg", "png", "gif","mp3", "wav", "ogg", "aac", "flac","mp4", "webm", "mov","txt","json"],
+
 ```
 
 The file extensions must be lowercase.
