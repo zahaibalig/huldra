@@ -10,8 +10,8 @@ const handlePreviousButton = (
   currentDemonstrationPageIndex,
   setCurrentDemonstrationPageIndex,
   setDemonstrationPageIndex,
-  setOpenDialog,
-  REACT_APP_demonstration
+  REACT_APP_demonstration,
+  setOpenDialog
 ) => {
   getCurrentPageIndex();
   if (history.location.pathname === "/survey/summary-and-feedback") {

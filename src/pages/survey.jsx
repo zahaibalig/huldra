@@ -25,11 +25,12 @@ import Header from "../minor-components/header";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
-import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
+import { handleFinalResponse } from "../utils/handleResponse";
 import { updateDegree } from "../utils/survey-utils/registration-utils";
 import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
+import { handleNextButton } from "../utils/survey-utils/handleNext";
 
 const Survey = ({
   history,
@@ -210,47 +211,21 @@ const Survey = ({
       setDisableNextButton(true);
     }
   });
+
   const handleNext = () => {
-    getCurrentPageIndex();
-
-    if (history.location.pathname === "/survey/background") {
-      logSessionEvent("Next", "Background", 0);
-      conditionalPushToBucket();
-      if (REACT_APP_demonstration.length === 0) {
-        setPageLocator(1);
-        history.push(`/survey/case1`);
-      } else {
-        setDemonstrationPageIndex(0);
-        setCurrentDemonstrationPageIndex(1);
-        history.push(`/survey/demonstration`);
-      }
-    } else if (history.location.pathname === "/survey/demonstration") {
-      logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
-      conditionalPushToBucket();
-
-      if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
-        setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
-        setPageLocator(1);
-        history.push(`/survey/case1`);
-      } else {
-        setDemonstrationPageIndex(currentDemonstrationPageIndex);
-        setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex + 1);
-        history.push(`/survey/demonstration`);
-      }
-    } else if (PageLocator < casesCount) {
-      logSessionEvent("Next", `Case${PageLocator}`, PageLocator);
-      conditionalPushToBucket();
-      const newPageNumber = PageLocator + 1;
-      setPageLocator(newPageNumber);
-      history.push(`/survey/case${newPageNumber}`);
-    } else if (PageLocator === casesCount) {
-      logSessionEvent("Next", `Case${casesCount}`, PageLocator);
-      conditionalPushToBucket();
-      history.push(`/survey/summary-and-feedback`);
-    } else {
-      return;
-    }
+    handleNextButton(
+      history,
+      getCurrentPageIndex,
+      PageLocator,
+      setPageLocator,
+      casesCount,
+      currentDemonstrationPageIndex,
+      setCurrentDemonstrationPageIndex,
+      setDemonstrationPageIndex,
+      REACT_APP_demonstration
+    );
   };
+
   const handlePrevious = () => {
     handlePreviousButton(
       history,
