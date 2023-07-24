@@ -238,7 +238,7 @@ The case assets were downloaded from [Pexels](https://www.pexels.com/), which al
 At the end of the survey, Huldra generates a file containing the responses of the participant.
 
 - The responses can be either be downloaded or pushed to the Firebase bucket[^2]. You can configure this in `config.json` under `REACT_APP_general` -> `storage` -> `responsesStorageType` (possible values for `responsesStorageType`: `"download"`, `"firebase"`).
-- By default, Huldra will prompt the participant to download the file containing their responses at the end of the survey (default value for `responsessStorageType`: `"download"`).
+- By default, Huldra will prompt the participant to download the file containing their responses at the end of the survey (default value for `responsesStorageType`: `"download"`).
 
 [^2]: If `responsesStorageType` is `"firebase"`, Huldra stores responses in the `<Firebase root>/responses` folder (`<Firebase root>` is set with `REACT_APP_FIREBASE_ROOT_DIRECTORY` in `.env`).
 
