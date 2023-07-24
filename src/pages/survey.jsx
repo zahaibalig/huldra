@@ -31,6 +31,7 @@ import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
 import { fetchCases } from "../utils/loadAssets";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
 import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
+import { updateDegree } from "../utils/survey-utils/registration-utils";
 
 const Survey = ({
   history,
@@ -133,14 +134,7 @@ const Survey = ({
     setFieldOfExpertise(e.currentTarget.value);
   };
   const handleDegreeChange = (option, state) => {
-    let newArray = Array.from(degree);
-    if (state) {
-      if (newArray.indexOf(option) < 0) {
-        setDegree([...newArray, option]);
-      }
-    } else {
-      setDegree(newArray.filter((item) => item !== option));
-    }
+    setDegree(updateDegree(option, state, degree));
   };
 
   const handleOtherDegreeChange = (value) => {
