@@ -28,6 +28,7 @@ import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
 import { updateDegree } from "../utils/survey-utils/registration-utils";
 import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
+import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 
 const Survey = ({
   history,
@@ -148,61 +149,6 @@ const Survey = ({
   const onCommentsChange = (e) => {
     setComments(e.currentTarget.value);
   };
-
-  let rightButtonLabel;
-  let onLeftButtonClick;
-  let onRightButtonClick;
-  let leftButtonClassName;
-  let rightButtonClassName;
-  let disableLeftButton;
-  let disableRightButton;
-  if (history.location.pathname === "/survey/home") {
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "hidden-button";
-  } else if (history.location.pathname === "/survey/registration") {
-    rightButtonLabel = "Start Survey";
-
-    onRightButtonClick = () => getParticipantId();
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "btn control";
-  } else if (
-    history.location.pathname === "/survey/background" ||
-    history.location.pathname === "/survey/demonstration"
-  ) {
-    rightButtonLabel = "Next";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleNext();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-  } else if (history.location.pathname.includes("/survey/case")) {
-    rightButtonLabel = "Next";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleNext();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-    disableRightButton = disableNextButton;
-  } else if (history.location.pathname === "/survey/summary-and-feedback") {
-    rightButtonLabel = "End Survey";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleEndSurvey();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-  } else if (history.location.pathname === "/survey/end") {
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "hidden-button";
-  }
-
-  // use configuration parameter to allow/disallow revisiting previous answers
-  const allowRevisitingAnswers = REACT_APP_general["allowRevisitingAnswers"];
-  // only works on case pages and the summary-and-feedback page
-  if (
-    history.location.pathname.startsWith("/survey/case") ||
-    history.location.pathname === "/survey/summary-and-feedback"
-  ) {
-    if (allowRevisitingAnswers === false) {
-      leftButtonClassName = "hidden-button";
-    }
-  }
 
   let pageIsRegistration = history.location.pathname === "/survey/registration";
   let pageIsEndPage = history.location.pathname === "/survey/end";
@@ -390,6 +336,24 @@ const Survey = ({
 
     await handleGetParticipantId(e, formInfo, history, Version);
   };
+
+  const {
+    rightButtonLabel,
+    onLeftButtonClick,
+    onRightButtonClick,
+    leftButtonClassName,
+    rightButtonClassName,
+    disableLeftButton,
+    disableRightButton,
+  } = getButtonProps(
+    history,
+    getParticipantId,
+    handlePrevious,
+    handleNext,
+    handleEndSurvey,
+    disableNextButton,
+    REACT_APP_general
+  );
 
   return (
     <div
