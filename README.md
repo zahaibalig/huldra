@@ -94,8 +94,7 @@ REACT_APP_warning={"warningMessage": "Please view this page on a device with a s
 REACT_APP_home={"title": "This is reading from .env","introText": "This is reading from .env","signupText": "This is reading from .env","additionalText": "This is reading from .env"}
 ```
 
-Note: The variables in `.env` are embedded during the build time (see [here](https://create-react-app.dev/docs/adding-custom-environment-variables/)
-), so if you change the `.env` file, you need to either redeploy the app, or restart the development server (if you are running locally).
+Note: The variables in `.env` are embedded during the build time (see [here](https://create-react-app.dev/docs/adding-custom-environment-variables/)), so if you change the `.env` file, you need to either redeploy the app, or restart the development server (if you are running locally).
 
 ### Storage
 
