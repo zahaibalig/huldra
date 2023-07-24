@@ -55,7 +55,7 @@ The value of the environment variable should be a JSON string with the same stru
 
 For example, the following `config.json`:
 
-```
+```json
 {
   "REACT_APP_warning": {
     "warningMessage": "Please view this page on a device with a screen resolution of at least 1200 x 800.",
@@ -66,8 +66,32 @@ For example, the following `config.json`:
 
 can be overridden with the following `.env`:
 
-```
+```dotenv
 REACT_APP_warning={"warningMessage": "Please view this page on a device with a screen resolution of at least 1200 x 800.","title": "This is reading from .env"}
+```
+
+Here is another example with two top level keys in `config.json`:
+
+```json
+{
+  "REACT_APP_warning": {
+    "warningMessage": "Please view this page on a device with a screen resolution of at least 1200 x 800.",
+    "title": "Huldra"
+  },
+  "REACT_APP_home": {
+    "title": "Huldra: Sample Title",
+    "introText": "This is a sample subtitle or introduction text.",
+    "signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
+    "additionalText": "Please view this application in full screen mode."
+  }
+}
+```
+
+The corresponding `.env`:
+
+```dotenv
+REACT_APP_warning={"warningMessage": "Please view this page on a device with a screen resolution of at least 1200 x 800.","title": "This is reading from .env"}
+REACT_APP_home={"title": "This is reading from .env","introText": "This is reading from .env","signupText": "This is reading from .env","additionalText": "This is reading from .env"}
 ```
 
 Note: The variables in `.env` are embedded during the build time (see [here](https://create-react-app.dev/docs/adding-custom-environment-variables/)
@@ -100,6 +124,9 @@ REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"
 
 - Don't use the values given as examples above because they are only dummy content. You should replace them with the Firebase connection parameters you get in the last step of setting up a Firebase project.
 - You can choose whichever directory you like for `REACT_APP_FIREBASE_ROOT_DIRECTORY`. However, make sure that your `gallery` folder is under it. For instance, if you would like to have a folder structure as `dev/gallery`, you should specify `REACT_APP_FIREBASE_ROOT_DIRECTORY="/dev"`. Don't forget to place a forward slash at the start of the path.
+
+The above variables are necessary for Huldra to connect to your Firebase project.
+The `.env` file can also optionally contain other variables that are used to override the values in `config.json` (see [Overriding Configuration Parameters with `.env`](#overriding-configuration-parameters-with-env) for details).
 
 ### Assets
 
@@ -149,7 +176,7 @@ gallery
 
 For an image case, a json file is also necessary. The json file should contain the description of the image and the description will be used on the page for that image case. An example of the json file is as follows:
 
-```
+```json
 {
   "description": "Write your description here."
 }
@@ -171,7 +198,7 @@ Refer to the [Directory Tree](#directory-tree) section about which assets are re
 
 #### Supported File Extensions
 
-```
+```js
 image: ["jpg", "jpeg", "png", "gif"],
 audio: ["mp3", "wav", "ogg", "aac", "flac"],
 video: ["mp4", "webm", "mov"],
