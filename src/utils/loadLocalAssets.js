@@ -71,7 +71,7 @@ const fetchCases = async () => {
     validCaseFiles = validCases.map((validCase) => validCase.files);
   }
 
-  localStorage.setItem("validCaseFiles", JSON.stringify(validCaseFiles));
+  localStorage.setItem("ValidCaseFiles", JSON.stringify(validCaseFiles));
 
   return validCaseNames;
 };

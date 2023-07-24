@@ -1,6 +1,6 @@
 import { fetchConfigVariable } from "./handleConfigVars";
-import getConfig from "../utils/handleStorageConfig";
-import { getStorageReference, getFirebaseApp, anonymousAuthentication } from "../utils/firebase";
+import { getConfig } from "../utils/handleStorageConfig";
+import { getStorageReference } from "../utils/firebase";
 
 /**
  * prepare the response to be pushed to the bucket; only items in the outputJson array will be contained in the response
@@ -31,7 +31,13 @@ const prepareResponse = () => {
     optionalItems = [];
   }
 
-  const itemsToPush = mandatoryItems.concat(optionalItems);
+  let itemsToPush = mandatoryItems.concat(optionalItems);
+
+  // if assetsStorageType is "local", we also push ValidCaseFiles to the bucket because it is needed in order to load the assets
+  const storageConfig = getConfig();
+  if (storageConfig.assetsStorageType === "local") {
+    itemsToPush.push("ValidCaseFiles");
+  }
 
   itemsToPush.map((prop) => {
     storeToBucket[prop] = JSON.parse(localStorage.getItem(prop));
@@ -115,15 +121,13 @@ const handleFinalResponse = () => {
 const fetchResponse = async (participantId) => {
   const storageConfig = getConfig();
 
-  // if assetsStorageType is "local", validCaseFiles is needed in localStorage, no matter what responsesStorageType is
-  if (storageConfig.assetsStorageType === "local") {
-    if (!localStorage.getItem("validCaseFiles")) {
-      return null;
-    }
-  }
-
   // for a valid saved response, all these items should be present in the respective storage
-  const neededItems = ["ParticipantInfo", "CaseOrder", "SessionInfo"];
+  let neededItems = ["ParticipantInfo", "CaseOrder", "SessionInfo"];
+
+  // if assetsStorageType is "local", ValidCaseFiles is also needed in the respective response storage
+  if (storageConfig.assetsStorageType === "local") {
+    neededItems.push("ValidCaseFiles");
+  }
 
   if (storageConfig.responsesStorageType === "firebase") {
     const storageRef = getStorageReference();
@@ -131,11 +135,11 @@ const fetchResponse = async (participantId) => {
     // for firebase, the file with the name of the participant id should exist in the bucket
     const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
     const fileRef = storageRef.child(`${rootDirectory}/responses/${participantId}.json`);
-    const response = await fileRef.getDownloadURL().catch((err) => {
+    const url = await fileRef.getDownloadURL().catch((err) => {
       console.log(err);
     });
-    if (response) {
-      const responseJson = await fetch(response).then((res) => res.json());
+    if (url) {
+      const responseJson = await fetch(url).then((res) => res.json());
       // check if the file from firebase contains all the needed items
       let validResponse = true;
       neededItems.map((item) => {
@@ -145,7 +149,11 @@ const fetchResponse = async (participantId) => {
         return null;
       });
 
-      return responseJson;
+      if (validResponse) {
+        return responseJson;
+      } else {
+        return null;
+      }
     }
     return null;
   } else if (storageConfig.responsesStorageType === "download") {

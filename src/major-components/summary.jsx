@@ -55,7 +55,7 @@ const Summary = ({
           const casePrefix = pagesOrder[item - 1].split("-")[0].toLowerCase();
 
           if (storageConfig.assetsStorageType === "local") {
-            const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+            const validCaseFiles = JSON.parse(localStorage.getItem("ValidCaseFiles"));
             if (validCaseFiles && validCaseFiles[item - 1]) {
               const caseFiles = validCaseFiles[item - 1];
               if (casePrefix === "image") {
