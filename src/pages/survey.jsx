@@ -16,9 +16,7 @@ import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
 import { toastError, toastInfo } from "../utils/toast";
-import { v4 as uuidv4 } from "uuid";
-import { generateTimeStamp } from "../utils/timestamp";
-import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
+import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import { copyToClipboard } from "../utils/text";
@@ -27,11 +25,9 @@ import Header from "../minor-components/header";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
-import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { fetchCases } from "../utils/loadAssets";
 import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
-import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 import { updateDegree } from "../utils/survey-utils/registration-utils";
+import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 
 const Survey = ({
   history,
@@ -72,7 +68,6 @@ const Survey = ({
     setDisableNextButton,
     getCurrentPageIndex,
     setPageLocator,
-    rootDirectory,
     casesCount,
     setCasesCount,
     REACT_APP_general,
@@ -153,9 +148,7 @@ const Survey = ({
   const onCommentsChange = (e) => {
     setComments(e.currentTarget.value);
   };
-  const validateEmail = (email) => {
-    return isValidEmail(email);
-  };
+
   let rightButtonLabel;
   let onLeftButtonClick;
   let onRightButtonClick;
@@ -380,95 +373,22 @@ const Survey = ({
       history.push(`/survey/case${newPageNumber}`);
     }
   };
+
   const getParticipantId = async (e) => {
-    e && e.preventDefault();
+    const formInfo = {
+      name,
+      country,
+      degree,
+      degreeOther,
+      fieldOfExpertise,
+      termsOfUse,
+      notifications,
+      email,
+      comments,
+      activeYears,
+    };
 
-    /* HANDLING INPUT ERRORS */
-
-    // for degree, if "Other" is not selected, one of the other options must be selected; if "Other" is selected, the text field must also be filled out
-    const degreeIsValid =
-      (!degree.includes("Other") && degree.length > 0) ||
-      (degree.includes("Other") && degreeOther !== "");
-
-    if (name && country && degreeIsValid && fieldOfExpertise.length > 0 && termsOfUse) {
-      if (
-        (notifications && !email) ||
-        (notifications && !validateEmail(email)) ||
-        (email && !validateEmail(email))
-      ) {
-        toastError("Please provide your email address.", "top-center", "email-error");
-      } else {
-        conditionalInitializeFirebase();
-
-        /* FETCH CASE IDS FROM STORAGE */
-        setRouteIsAllowed(true);
-        localStorage.clear();
-        let CaseOrder;
-
-        if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
-          CaseOrder = await fetchCases(
-            true,
-            null,
-            REACT_APP_general["caseOrder"]["cases"],
-            REACT_APP_general["caseOrder"]["shuffle"]
-          );
-        } else {
-          CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-        }
-        const uuid = uuidv4();
-
-        // the final degree info is the selected degree(s) (excluding "Other") + the text field if "Other" is selected
-        let degreeInfo;
-        if (degree.includes("Other")) {
-          degreeInfo = [...degree.filter((item) => item !== "Other"), degreeOther];
-        } else {
-          degreeInfo = degree;
-        }
-
-        const ParticipantInfo = {
-          ParticipantId: uuid,
-          Name: name,
-          EmailAddress: email,
-          Country: country,
-          Comments: comments,
-          Degree: degreeInfo,
-          FieldOfExpertise: fieldOfExpertise,
-          ActiveYears: parseInt(activeYears, 10),
-          Tickbox1: termsOfUse,
-          Tickbox2: notifications,
-        };
-        const SoftwareInfo = {
-          SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
-          Version: Version,
-          OperatingSystem: getOs(),
-          Browser: `${browserName} ${browserVersion}`,
-          ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
-        };
-        const SessionEvents = [
-          {
-            Location: "Registration",
-            ButtonType: "Get participant ID",
-            Timestamp: generateTimeStamp(),
-          },
-        ];
-        const SessionInfo = {
-          SessionComplete: false,
-        };
-
-        localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
-        setRouteIsAllowed(true);
-
-        localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-        localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
-        localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
-        localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
-
-        conditionalPushToBucket();
-        history.replace("/survey/background");
-      }
-    } else {
-      toastError("Please verify mandatory fields.", "top-center", "req-error");
-    }
+    await handleGetParticipantId(e, formInfo, history, Version);
   };
 
   return (

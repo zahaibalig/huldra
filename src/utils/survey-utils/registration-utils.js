@@ -4,7 +4,6 @@
  * @param {boolean} state true if the option is selected, false if the option is unselected
  * @param {array} degree the array holding the old state of the degree options
  * @returns {array} the updated degree array
- * @description
  */
 const updateDegree = (option, state, degree) => {
   let result;
