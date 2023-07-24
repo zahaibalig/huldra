@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add configuration parameter to conditionally display feedback form ([#99](https://github.com/simulamet-host/huldra-internal/issues/99))
+- Add support for `.env` file with nested configuration parameters to override `config.json` ([#114](https://github.com/simulamet-host/huldra-internal/issues/114))
 - Add support for using local responses folder ([#123](https://github.com/simulamet-host/huldra-internal/issues/123))
 - Add uniform logging utility ([#147](https://github.com/simulamet-host/huldra-internal/issues/147))
 - Add new case page type `caseText` ([#153](https://github.com/simulamet-host/huldra-internal/issues/153))
