@@ -337,15 +337,7 @@ const Survey = ({
     await handleGetParticipantId(e, formInfo, history, Version);
   };
 
-  const {
-    rightButtonLabel,
-    onLeftButtonClick,
-    onRightButtonClick,
-    leftButtonClassName,
-    rightButtonClassName,
-    disableLeftButton,
-    disableRightButton,
-  } = getButtonProps(
+  const footerButtonProps = getButtonProps(
     history,
     getParticipantId,
     handlePrevious,
@@ -629,14 +621,7 @@ const Survey = ({
           REACT_APP_general["footer"] &&
           REACT_APP_general["footer"]["icon2Url"]
         }
-        leftButtonLabel="Previous"
-        rightButtonLabel={rightButtonLabel}
-        onLeftButtonClick={onLeftButtonClick}
-        onRightButtonClick={onRightButtonClick}
-        leftButtonClassName={leftButtonClassName}
-        rightButtonClassName={rightButtonClassName}
-        disableLeftButton={disableLeftButton}
-        disableRightButton={disableRightButton}
+        {...footerButtonProps}
       />
     </div>
   );

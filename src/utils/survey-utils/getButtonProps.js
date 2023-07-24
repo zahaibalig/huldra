@@ -18,6 +18,7 @@ const getButtonProps = (
   disableNextButton,
   REACT_APP_general
 ) => {
+  const leftButtonLabel = "Previous";
   let rightButtonLabel;
   let onLeftButtonClick;
   let onRightButtonClick;
@@ -75,6 +76,7 @@ const getButtonProps = (
   }
 
   return {
+    leftButtonLabel,
     rightButtonLabel,
     onLeftButtonClick,
     onRightButtonClick,
