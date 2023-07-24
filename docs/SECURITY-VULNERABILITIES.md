@@ -7,7 +7,7 @@ Once Dependabot creates a PR, developers are advised to:
 - Check if any breaking changes are introduced 
 - Checkout the branch to a local environment, and thoroughly check if everything is working correctly (with special care if any major version changes are suggested)
 
-To enable/disable [Dependabot automation](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions): 
+To enable/disable [Dependabot security updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates): 
 - Go to repository "Settings"
 - Click "Code security and analysis"
 - Enable/disable "Dependabot security updates"
