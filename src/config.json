@@ -218,7 +218,7 @@
       "label": "Case Text",
       "rightSectionTextLabel": "Text Label B",
       "leftSectionTextLabel": "Text Label A",
-      "sectionButtonlabel": "Select Text"
+      "sectionButtonlabel": "Select"
     },
     "caseTextColumnRight": {
       "title": "Your Text Answer",
@@ -308,8 +308,8 @@
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
     "allowProceedingWithoutAnswering": false,
-    "caseImageViewDetailsMandatory": true,
-    "caseHybridViewDetailsMandatory": true,
+    "caseImageViewDetailsMandatory": false,
+    "caseHybridViewDetailsMandatory": false,
     "caseOrder": {
       "cases": ["audio-bird","text-sample","hybrid-flowerbird","image-flower","video-bird"],
       "shuffle": ""
