@@ -236,8 +236,8 @@ const Survey = ({
       currentDemonstrationPageIndex,
       setCurrentDemonstrationPageIndex,
       setDemonstrationPageIndex,
-      setOpenDialog,
-      REACT_APP_demonstration
+      REACT_APP_demonstration,
+      setOpenDialog
     );
   };
 
@@ -255,7 +255,7 @@ const Survey = ({
       activeYears,
     };
 
-    await handleGetParticipantId(e, formInfo, history, Version);
+    await handleGetParticipantId(e, formInfo, history, Version, setRouteIsAllowed);
   };
 
   const footerButtonProps = getButtonProps(
