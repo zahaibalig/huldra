@@ -268,6 +268,49 @@ const Survey = ({
     REACT_APP_general
   );
 
+  const CaseWrapper = (props) => {
+    let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
+      [PageLocator - 1].split("-")[0]
+      .toLowerCase();
+    return prefix === "text" ? (
+      <CaseText
+        {...props}
+        totalCases={casesCount}
+        caseId={PageLocator}
+        REACT_APP_caseText={REACT_APP_caseText}
+      />
+    ) : prefix === "audio" ? (
+      <CaseAudio
+        {...props}
+        totalCases={casesCount}
+        caseId={PageLocator}
+        REACT_APP_caseAudio={REACT_APP_caseAudio}
+      />
+    ) : prefix === "hybrid" ? (
+      <CaseHybrid
+        {...props}
+        totalCases={casesCount}
+        caseId={PageLocator}
+        REACT_APP_caseHybrid={REACT_APP_caseHybrid}
+      />
+    ) : prefix === "video" ? (
+      <CaseVideo
+        {...props}
+        totalCases={casesCount}
+        caseId={PageLocator}
+        REACT_APP_caseVideo={REACT_APP_caseVideo}
+      />
+    ) : (
+      <CaseImage
+        {...props}
+        totalCases={casesCount}
+        caseId={PageLocator}
+        REACT_APP_caseImage={REACT_APP_caseImage}
+        REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
+      />
+    );
+  };
+
   return (
     <div
       className={
@@ -416,46 +459,7 @@ const Survey = ({
           path={`/survey/case:id`}
           exact
           render={(props) => {
-            let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-              [PageLocator - 1].split("-")[0]
-              .toLowerCase();
-            return prefix === "text" ? (
-              <CaseText
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseText={REACT_APP_caseText}
-              />
-            ) : prefix === "audio" ? (
-              <CaseAudio
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseAudio={REACT_APP_caseAudio}
-              />
-            ) : prefix === "hybrid" ? (
-              <CaseHybrid
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseHybrid={REACT_APP_caseHybrid}
-              />
-            ) : prefix === "video" ? (
-              <CaseVideo
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseVideo={REACT_APP_caseVideo}
-              />
-            ) : (
-              <CaseImage
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-              />
-            );
+            return <CaseWrapper {...props} />;
           }}
         />
         <Route
