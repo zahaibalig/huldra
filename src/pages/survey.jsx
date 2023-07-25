@@ -31,7 +31,6 @@ import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
-import HeaderRightLabel from "../minor-components/headerRightLabel";
 
 const Survey = ({
   history,
@@ -330,7 +329,7 @@ const Survey = ({
           leftIcon2OnClick={() =>
             copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
           }
-          rightLabel={<HeaderRightLabel history={history} />}
+          history={history}
         />
       ) : (
         ""
