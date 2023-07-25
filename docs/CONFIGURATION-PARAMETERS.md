@@ -207,7 +207,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
           "title": "Sample Subsection Title",
           "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
           "className": "background-single-block",
-          "imagePath": "/gallery/sample-image.png",
+          "imagePath": "/gallery/image-sample.png",
           "imageClassName": "explanation-background-image",
           "imageAlternativeText": "sample-image",
           "descriptionClassName": "background-single-block-description-content",
@@ -218,7 +218,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
           "title": "Sample Subsection Title",
           "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
           "className": "background-single-block",
-          "imagePath": "/gallery/sample-image.png",
+          "imagePath": "/gallery/image-sample.png",
           "imageClassName": "explanation-background-image",
           "imageAlternativeText": "sample-image",
           "descriptionClassName": "background-single-block-description-content",
@@ -237,7 +237,7 @@ The `REACT_APP_warning` block contains the following elements for each section.
           "title": "Sample Subsection Title",
           "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce neque odio, tempus quis sapien id, accumsan aliquam nunc. Proin tincidunt, felis nec iaculis rutrum, ex quam condimentum ante, id sagittis elit odio sed risus. Maecenas nec ultrices nisi. Maecenas sapien nulla, porttitor vel facilisis et, fermentum ut massa. Vivamus molestie eros non quam dictum, vitae dapibus turpis viverra. Cras id mauris tempor, rhoncus tellus vel, dictum nisl. Vivamus orci ex, interdum non justo eget, fringilla auctor purus. Donec in elementum mi, id mattis mauris. Integer in tincidunt nunc. In hac habitasse platea dictumst. Pellentesque nec mi ornare, viverra lectus nec, egestas sapien.",
           "className": "background-single-block",
-          "imagePath": "/gallery/sample-image.png",
+          "imagePath": "/gallery/image-sample.png",
           "imageClassName": "explanation-background-image",
           "imageAlternativeText": "sample-image",
           "descriptionClassName": "background-single-block-description-content",
@@ -351,14 +351,14 @@ The `REACT_APP_demonstration` block contains the following elements for each dem
       "textBefore": "You can have a demonstration page with a single image.",
       "textAfter": "You can use this page to describe how the rest of the survey works.",
       "hasImage": true,
-      "imagePath": "/gallery/sample-image.png",
+      "imagePath": "/gallery/image-sample.png",
       "imageClassName": "demonstration-image"
     },
     {
       "textBefore": "You can have a demonstration page with a single video player (custom size).",
       "textAfter": "You can use this page to run a video check, or to display a tutorial video showing how the rest of the survey works.",
       "hasVideo": true,
-      "videoPath": "/gallery/countdown.mp4",
+      "videoPath": "/gallery/video-sample.mp4",
       "videoHeight": "300px",
       "videoWidth": "450px"
     },
@@ -711,7 +711,7 @@ The `feedbackForm` sub-block is used to configure the right column, and contains
       "label": "Case",
       "videoPlaceholderIconPath": "/gallery/video-placeholder.png",
       "audioPlaceholderIconPath": "/gallery/audio-placeholder.png",
-      "imagePlaceholderIconPath": "/gallery/empty.png"
+      "imagePlaceholderIconPath": "/gallery/image-placeholder.png"
     },
     "feedbackForm": {
       "title": "Overall feedback",
