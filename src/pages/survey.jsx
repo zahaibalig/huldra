@@ -16,9 +16,7 @@ import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
 import { toastError, toastInfo } from "../utils/toast";
-import { v4 as uuidv4 } from "uuid";
-import { generateTimeStamp } from "../utils/timestamp";
-import { isValidEmail, validateFeedbackForm } from "../utils/inputValidation";
+import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import { copyToClipboard } from "../utils/text";
@@ -27,10 +25,12 @@ import Header from "../minor-components/header";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
-import { getOs, browserName, browserVersion } from "../utils/clientMetadata";
-import { fetchCases } from "../utils/loadAssets";
-import { conditionalPushToBucket, handleFinalResponse } from "../utils/handleResponse";
-import { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
+import { handleFinalResponse } from "../utils/handleResponse";
+import { updateDegree } from "../utils/survey-utils/registration-utils";
+import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
+import { getButtonProps } from "../utils/survey-utils/getButtonProps";
+import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
+import { handleNextButton } from "../utils/survey-utils/handleNext";
 
 const Survey = ({
   history,
@@ -71,7 +71,6 @@ const Survey = ({
     setDisableNextButton,
     getCurrentPageIndex,
     setPageLocator,
-    rootDirectory,
     casesCount,
     setCasesCount,
     REACT_APP_general,
@@ -133,14 +132,7 @@ const Survey = ({
     setFieldOfExpertise(e.currentTarget.value);
   };
   const handleDegreeChange = (option, state) => {
-    let newArray = Array.from(degree);
-    if (state) {
-      if (newArray.indexOf(option) < 0) {
-        setDegree([...newArray, option]);
-      }
-    } else {
-      setDegree(newArray.filter((item) => item !== option));
-    }
+    setDegree(updateDegree(option, state, degree));
   };
 
   const handleOtherDegreeChange = (value) => {
@@ -159,63 +151,6 @@ const Survey = ({
   const onCommentsChange = (e) => {
     setComments(e.currentTarget.value);
   };
-  const validateEmail = (email) => {
-    return isValidEmail(email);
-  };
-  let rightButtonLabel;
-  let onLeftButtonClick;
-  let onRightButtonClick;
-  let leftButtonClassName;
-  let rightButtonClassName;
-  let disableLeftButton;
-  let disableRightButton;
-  if (history.location.pathname === "/survey/home") {
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "hidden-button";
-  } else if (history.location.pathname === "/survey/registration") {
-    rightButtonLabel = "Start Survey";
-
-    onRightButtonClick = () => getParticipantId();
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "btn control";
-  } else if (
-    history.location.pathname === "/survey/background" ||
-    history.location.pathname === "/survey/demonstration"
-  ) {
-    rightButtonLabel = "Next";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleNext();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-  } else if (history.location.pathname.includes("/survey/case")) {
-    rightButtonLabel = "Next";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleNext();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-    disableRightButton = disableNextButton;
-  } else if (history.location.pathname === "/survey/summary-and-feedback") {
-    rightButtonLabel = "End Survey";
-    onLeftButtonClick = () => handlePrevious();
-    onRightButtonClick = () => handleEndSurvey();
-    leftButtonClassName = "btn control";
-    rightButtonClassName = "btn control";
-  } else if (history.location.pathname === "/survey/end") {
-    leftButtonClassName = "hidden-button";
-    rightButtonClassName = "hidden-button";
-  }
-
-  // use configuration parameter to allow/disallow revisiting previous answers
-  const allowRevisitingAnswers = REACT_APP_general["allowRevisitingAnswers"];
-  // only works on case pages and the summary-and-feedback page
-  if (
-    history.location.pathname.startsWith("/survey/case") ||
-    history.location.pathname === "/survey/summary-and-feedback"
-  ) {
-    if (allowRevisitingAnswers === false) {
-      leftButtonClassName = "hidden-button";
-    }
-  }
 
   let pageIsRegistration = history.location.pathname === "/survey/registration";
   let pageIsEndPage = history.location.pathname === "/survey/end";
@@ -276,206 +211,62 @@ const Survey = ({
       setDisableNextButton(true);
     }
   });
+
   const handleNext = () => {
-    getCurrentPageIndex();
-
-    if (history.location.pathname === "/survey/background") {
-      logSessionEvent("Next", "Background", 0);
-      conditionalPushToBucket();
-      if (REACT_APP_demonstration.length === 0) {
-        setPageLocator(1);
-        history.push(`/survey/case1`);
-      } else {
-        setDemonstrationPageIndex(0);
-        setCurrentDemonstrationPageIndex(1);
-        history.push(`/survey/demonstration`);
-      }
-    } else if (history.location.pathname === "/survey/demonstration") {
-      logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
-      conditionalPushToBucket();
-
-      if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
-        setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
-        setPageLocator(1);
-        history.push(`/survey/case1`);
-      } else {
-        setDemonstrationPageIndex(currentDemonstrationPageIndex);
-        setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex + 1);
-        history.push(`/survey/demonstration`);
-      }
-    } else if (PageLocator < casesCount) {
-      logSessionEvent("Next", `Case${PageLocator}`, PageLocator);
-      conditionalPushToBucket();
-      const newPageNumber = PageLocator + 1;
-      setPageLocator(newPageNumber);
-      history.push(`/survey/case${newPageNumber}`);
-    } else if (PageLocator === casesCount) {
-      logSessionEvent("Next", `Case${casesCount}`, PageLocator);
-      conditionalPushToBucket();
-      history.push(`/survey/summary-and-feedback`);
-    } else {
-      return;
-    }
+    handleNextButton(
+      history,
+      getCurrentPageIndex,
+      PageLocator,
+      setPageLocator,
+      casesCount,
+      currentDemonstrationPageIndex,
+      setCurrentDemonstrationPageIndex,
+      setDemonstrationPageIndex,
+      REACT_APP_demonstration
+    );
   };
+
   const handlePrevious = () => {
-    getCurrentPageIndex();
-    if (history.location.pathname === "/survey/summary-and-feedback") {
-      logSessionEvent("Previous", `Summary and feedback`, PageLocator);
-      conditionalPushToBucket();
-      history.push(`/survey/case${casesCount}`);
-    } else if (history.location.pathname === "/survey/demonstration") {
-      logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, PageLocator);
-      conditionalPushToBucket();
-      switch (currentDemonstrationPageIndex) {
-        case 1:
-          setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex - 1);
-          history.push(`/survey/background`);
-          break;
-        case 2:
-          setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex - 1);
-          setDemonstrationPageIndex(0);
-          history.push(`/survey/demonstration`);
-          break;
-        case 3:
-          setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex - 1);
-          setDemonstrationPageIndex(1);
-          history.push(`/survey/demonstration`);
-          break;
-        default:
-          setCurrentDemonstrationPageIndex(3);
-          setDemonstrationPageIndex(2);
-          history.push(`/survey/demonstration`);
-          break;
-      }
-    } else if (history.location.pathname === "/survey/background") {
-      setOpenDialog(true);
-    } else if (history.location.pathname === "/survey/registration") {
-      history.push(`/`);
-    } else if (PageLocator === 1) {
-      logSessionEvent("Previous", `Case1`, PageLocator);
-      conditionalPushToBucket();
-      setCurrentDemonstrationPageIndex(Math.min(REACT_APP_demonstration.length, 3));
-      switch (REACT_APP_demonstration.length) {
-        case 0:
-          history.push(`/survey/background`);
-          break;
-
-        case 1:
-          setDemonstrationPageIndex(0);
-
-          history.push(`/survey/demonstration`);
-          break;
-        case 2:
-          setDemonstrationPageIndex(1);
-          history.push(`/survey/demonstration`);
-          break;
-        case 3:
-          setDemonstrationPageIndex(2);
-          history.push(`/survey/demonstration`);
-          break;
-        default:
-          setDemonstrationPageIndex(2);
-          history.push(`/survey/demonstration`);
-          break;
-      }
-    } else {
-      logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
-      conditionalPushToBucket();
-      const newPageNumber = PageLocator - 1;
-      setPageLocator(newPageNumber);
-      history.push(`/survey/case${newPageNumber}`);
-    }
+    handlePreviousButton(
+      history,
+      getCurrentPageIndex,
+      PageLocator,
+      setPageLocator,
+      casesCount,
+      currentDemonstrationPageIndex,
+      setCurrentDemonstrationPageIndex,
+      setDemonstrationPageIndex,
+      setOpenDialog,
+      REACT_APP_demonstration
+    );
   };
+
   const getParticipantId = async (e) => {
-    e && e.preventDefault();
+    const formInfo = {
+      name,
+      country,
+      degree,
+      degreeOther,
+      fieldOfExpertise,
+      termsOfUse,
+      notifications,
+      email,
+      comments,
+      activeYears,
+    };
 
-    /* HANDLING INPUT ERRORS */
-
-    // for degree, if "Other" is not selected, one of the other options must be selected; if "Other" is selected, the text field must also be filled out
-    const degreeIsValid =
-      (!degree.includes("Other") && degree.length > 0) ||
-      (degree.includes("Other") && degreeOther !== "");
-
-    if (name && country && degreeIsValid && fieldOfExpertise.length > 0 && termsOfUse) {
-      if (
-        (notifications && !email) ||
-        (notifications && !validateEmail(email)) ||
-        (email && !validateEmail(email))
-      ) {
-        toastError("Please provide your email address.", "top-center", "email-error");
-      } else {
-        conditionalInitializeFirebase();
-
-        /* FETCH CASE IDS FROM STORAGE */
-        setRouteIsAllowed(true);
-        localStorage.clear();
-        let CaseOrder;
-
-        if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
-          CaseOrder = await fetchCases(
-            true,
-            null,
-            REACT_APP_general["caseOrder"]["cases"],
-            REACT_APP_general["caseOrder"]["shuffle"]
-          );
-        } else {
-          CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
-        }
-        const uuid = uuidv4();
-
-        // the final degree info is the selected degree(s) (excluding "Other") + the text field if "Other" is selected
-        let degreeInfo;
-        if (degree.includes("Other")) {
-          degreeInfo = [...degree.filter((item) => item !== "Other"), degreeOther];
-        } else {
-          degreeInfo = degree;
-        }
-
-        const ParticipantInfo = {
-          ParticipantId: uuid,
-          Name: name,
-          EmailAddress: email,
-          Country: country,
-          Comments: comments,
-          Degree: degreeInfo,
-          FieldOfExpertise: fieldOfExpertise,
-          ActiveYears: parseInt(activeYears, 10),
-          Tickbox1: termsOfUse,
-          Tickbox2: notifications,
-        };
-        const SoftwareInfo = {
-          SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
-          Version: Version,
-          OperatingSystem: getOs(),
-          Browser: `${browserName} ${browserVersion}`,
-          ScreenResolution: `${window.innerWidth} x ${window.innerHeight}`,
-        };
-        const SessionEvents = [
-          {
-            Location: "Registration",
-            ButtonType: "Get participant ID",
-            Timestamp: generateTimeStamp(),
-          },
-        ];
-        const SessionInfo = {
-          SessionComplete: false,
-        };
-
-        localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
-        setRouteIsAllowed(true);
-
-        localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-        localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
-        localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
-        localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
-
-        conditionalPushToBucket();
-        history.replace("/survey/background");
-      }
-    } else {
-      toastError("Please verify mandatory fields.", "top-center", "req-error");
-    }
+    await handleGetParticipantId(e, formInfo, history, Version);
   };
+
+  const footerButtonProps = getButtonProps(
+    history,
+    getParticipantId,
+    handlePrevious,
+    handleNext,
+    handleEndSurvey,
+    disableNextButton,
+    REACT_APP_general
+  );
 
   return (
     <div
@@ -751,14 +542,7 @@ const Survey = ({
           REACT_APP_general["footer"] &&
           REACT_APP_general["footer"]["icon2Url"]
         }
-        leftButtonLabel="Previous"
-        rightButtonLabel={rightButtonLabel}
-        onLeftButtonClick={onLeftButtonClick}
-        onRightButtonClick={onRightButtonClick}
-        leftButtonClassName={leftButtonClassName}
-        rightButtonClassName={rightButtonClassName}
-        disableLeftButton={disableLeftButton}
-        disableRightButton={disableRightButton}
+        {...footerButtonProps}
       />
     </div>
   );
