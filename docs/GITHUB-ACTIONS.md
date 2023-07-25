@@ -1,4 +1,4 @@
-# Huldra Github Actions Workflow
+# Huldra GitHub Actions Workflow
 
 ## General Information
 

@@ -42,4 +42,4 @@ const conditionalInitializeFirebase = async () => {
 };
 
 export default getConfig;
-export { conditionalInitializeFirebase };
+export { getConfig, conditionalInitializeFirebase };

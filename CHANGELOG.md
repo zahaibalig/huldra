@@ -5,6 +5,36 @@ All notable changes to the `dev` branch will be documented in this file, per rel
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-29] - 2023-07-24
+
+### Added
+
+- Add configuration parameter to conditionally display feedback form ([#99](https://github.com/simulamet-host/huldra-internal/issues/99))
+- Add support for `.env` file with nested configuration parameters to override `config.json` ([#114](https://github.com/simulamet-host/huldra-internal/issues/114))
+- Add support for using local responses folder ([#123](https://github.com/simulamet-host/huldra-internal/issues/123))
+- Add uniform logging utility ([#147](https://github.com/simulamet-host/huldra-internal/issues/147))
+- Add new case page type `caseText` ([#153](https://github.com/simulamet-host/huldra-internal/issues/153))
+
+### Changed
+
+- Update documentation with information on assets and outputs ([#54](https://github.com/simulamet-host/huldra-internal/issues/54))
+- Handle fields to be written to the output dynamically ([#79](https://github.com/simulamet-host/huldra-internal/issues/79))
+- Update documentation with information on GitHub actions ([#237](https://github.com/simulamet-host/huldra-internal/issues/237))
+- Store the actual valid case list for each participant ID ([#264](https://github.com/simulamet-host/huldra-internal/issues/264))
+
+### Fixed
+
+- Fix "Other" box in the registration page ([#149](https://github.com/simulamet-host/huldra-internal/issues/149))
+- Resolve security vulnerabilities using Dependabot ([#232](https://github.com/simulamet-host/huldra-internal/issues/232))
+     - Bump tough-cookie from 4.1.2 to 4.1.3
+     - Bump webpack from 5.74.0 to 5.88.2
+     - Bump semver from 6.3.0 to 6.3.1
+     - Bump loader-utils from 2.0.3 to 2.0.4
+     - Bump ua-parser-js from 1.0.32 to 1.0.35
+     - Bump json5 from 1.0.1 to 1.0.2
+     - Bump word-wrap from 1.2.3 to 1.2.4
+
+
 ## [2.0.0-28] - 2023-07-18
 
 ### Added

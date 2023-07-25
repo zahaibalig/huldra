@@ -35,7 +35,7 @@ const CaseVideo = ({ REACT_APP_caseVideo, caseId, totalCases }) => {
 
   const storageConfig = getConfig();
   if (storageConfig.assetsStorageType === "local") {
-    const validCaseFiles = JSON.parse(localStorage.getItem("validCaseFiles"));
+    const validCaseFiles = JSON.parse(localStorage.getItem("ValidCaseFiles"));
     if (validCaseFiles && validCaseFiles[caseId - 1]) {
       const caseFiles = validCaseFiles[caseId - 1];
       choiceA = caseFiles[0];
