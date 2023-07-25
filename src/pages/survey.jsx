@@ -31,6 +31,7 @@ import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
+import HeaderRightLabel from "../minor-components/headerRightLabel";
 
 const Survey = ({
   history,
@@ -268,47 +269,6 @@ const Survey = ({
     REACT_APP_general
   );
 
-  const HeaderRightLabel = () => {
-    return (
-      history.location.pathname !== "/survey/end" && (
-        <div className="survey-header">
-          {history.location.pathname === "/survey/background" ? (
-            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-           ${
-             REACT_APP_general &&
-             REACT_APP_general["header"] &&
-             REACT_APP_general["header"]["labelBackground"]
-           }
-          `}</span>
-          ) : history.location.pathname === "/survey/demonstration" ? (
-            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-          ${
-            REACT_APP_general &&
-            REACT_APP_general["header"] &&
-            REACT_APP_general["header"]["labelDemonstration"]
-          }`}</span>
-          ) : history.location.pathname === "/survey/summary-and-feedback" ? (
-            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-          ${
-            REACT_APP_general &&
-            REACT_APP_general["header"] &&
-            REACT_APP_general["header"]["labelSummaryAndFeedback"]
-          }`}</span>
-          ) : history.location.pathname.includes("case") ? (
-            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-          ${
-            REACT_APP_general &&
-            REACT_APP_general["header"] &&
-            REACT_APP_general["header"]["labelCase"]
-          } | Case ${PageLocator}/${casesCount}`}</span>
-          ) : (
-            <span></span>
-          )}
-        </div>
-      )
-    );
-  };
-
   return (
     <div
       className={
@@ -370,7 +330,7 @@ const Survey = ({
           leftIcon2OnClick={() =>
             copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
           }
-          rightLabel={<HeaderRightLabel />}
+          rightLabel={<HeaderRightLabel history={history} />}
         />
       ) : (
         ""
