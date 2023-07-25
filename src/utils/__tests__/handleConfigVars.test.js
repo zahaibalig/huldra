@@ -24,7 +24,7 @@ jest.mock("../../config.json", () => ({
           title: "Sample Subsection Title",
           text: "some text",
           className: "background-single-block",
-          imagePath: "/gallery/sample-image.png",
+          imagePath: "/gallery/image-sample.png",
           imageClassName: "explanation-background-image",
           imageAlternativeText: "sample-image",
           descriptionClassName: "background-single-block-description-content",

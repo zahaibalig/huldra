@@ -89,7 +89,7 @@
       "demonstrationText": "Demo1 Image",
       "hasImage": true,
       "imagePath": "/gallery/demonstration/image1.jpg",
-      "videoPath": "/gallery/countdown.mp4",
+      "videoPath": "/gallery/video-sample.mp4",
       "videoHeight": "300px",
       "videoWidth": "450px",
       "imageClassName": "demonstration-image"
@@ -98,7 +98,7 @@
       "demonstrationText": "Demo2 Video",
       "hasImage": false,
       "imagePath": "/gallery/demonstration/image1.jpg",
-      "videoPath": "/gallery/countdown.mp4",
+      "videoPath": "/gallery/video-sample.mp4",
       "videoHeight": "300px",
       "videoWidth": "450px",
       "imageClassName": "demonstration-image"
