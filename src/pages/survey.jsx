@@ -268,6 +268,47 @@ const Survey = ({
     REACT_APP_general
   );
 
+  const HeaderRightLabel = () => {
+    return (
+      history.location.pathname !== "/survey/end" && (
+        <div className="survey-header">
+          {history.location.pathname === "/survey/background" ? (
+            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+           ${
+             REACT_APP_general &&
+             REACT_APP_general["header"] &&
+             REACT_APP_general["header"]["labelBackground"]
+           }
+          `}</span>
+          ) : history.location.pathname === "/survey/demonstration" ? (
+            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+          ${
+            REACT_APP_general &&
+            REACT_APP_general["header"] &&
+            REACT_APP_general["header"]["labelDemonstration"]
+          }`}</span>
+          ) : history.location.pathname === "/survey/summary-and-feedback" ? (
+            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+          ${
+            REACT_APP_general &&
+            REACT_APP_general["header"] &&
+            REACT_APP_general["header"]["labelSummaryAndFeedback"]
+          }`}</span>
+          ) : history.location.pathname.includes("case") ? (
+            <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
+          ${
+            REACT_APP_general &&
+            REACT_APP_general["header"] &&
+            REACT_APP_general["header"]["labelCase"]
+          } | Case ${PageLocator}/${casesCount}`}</span>
+          ) : (
+            <span></span>
+          )}
+        </div>
+      )
+    );
+  };
+
   return (
     <div
       className={
@@ -329,44 +370,7 @@ const Survey = ({
           leftIcon2OnClick={() =>
             copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
           }
-          rightLabel={
-            history.location.pathname !== "/survey/end" && (
-              <div className="survey-header">
-                {history.location.pathname === "/survey/background" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${
-                     REACT_APP_general &&
-                     REACT_APP_general["header"] &&
-                     REACT_APP_general["header"]["labelBackground"]
-                   }
-                  `}</span>
-                ) : history.location.pathname === "/survey/demonstration" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelDemonstration"]
-                  }`}</span>
-                ) : history.location.pathname === "/survey/summary-and-feedback" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelSummaryAndFeedback"]
-                  }`}</span>
-                ) : history.location.pathname.includes("case") ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelCase"]
-                  } | Case ${PageLocator}/${casesCount}`}</span>
-                ) : (
-                  <span></span>
-                )}
-              </div>
-            )
-          }
+          rightLabel={<HeaderRightLabel />}
         />
       ) : (
         ""
