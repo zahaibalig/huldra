@@ -14,8 +14,9 @@ import { getOs, browserName, browserVersion } from "../clientMetadata";
  * @param {Object} formInfo - object containing the form data
  * @param {Object} history - history object
  * @param {string} Version - version of the app
+ * @param {function} setRouteIsAllowed - function to set the routeIsAllowed state variable
  */
-const handleGetParticipantId = async (e, formInfo, history, Version) => {
+const handleGetParticipantId = async (e, formInfo, history, Version, setRouteIsAllowed) => {
   e && e.preventDefault();
 
   /* HANDLING INPUT ERRORS */
@@ -48,7 +49,7 @@ const handleGetParticipantId = async (e, formInfo, history, Version) => {
       conditionalInitializeFirebase();
 
       /* FETCH CASE IDS FROM STORAGE */
-      // setRouteIsAllowed(true);
+      setRouteIsAllowed(true);
       localStorage.clear();
       let CaseOrder;
 
@@ -106,7 +107,7 @@ const handleGetParticipantId = async (e, formInfo, history, Version) => {
       };
 
       localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
-      // setRouteIsAllowed(true);
+      setRouteIsAllowed(true);
 
       localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
       localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
