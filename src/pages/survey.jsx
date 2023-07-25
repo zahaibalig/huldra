@@ -4,11 +4,6 @@ import Home from "./home";
 import Registration from "./registration";
 import Background from "./background";
 import Demonstration from "./demonstration";
-import CaseImage from "./caseImage";
-import CaseVideo from "./caseVideo";
-import CaseHybrid from "./caseHybrid";
-import CaseAudio from "./caseAudio";
-import CaseText from "./caseText";
 import End from "./end";
 import Footer from "../minor-components/footer";
 import { Route, Switch } from "react-router-dom";
@@ -31,6 +26,7 @@ import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
+import CaseWrapper from "../minor-components/caseWrapper";
 
 const Survey = ({
   history,
@@ -38,11 +34,6 @@ const Survey = ({
   REACT_APP_registration,
   REACT_APP_background,
   REACT_APP_demonstration,
-  REACT_APP_caseImage,
-  REACT_APP_caseVideo,
-  REACT_APP_caseAudio,
-  REACT_APP_caseHybrid,
-  REACT_APP_caseText,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
@@ -267,49 +258,6 @@ const Survey = ({
     disableNextButton,
     REACT_APP_general
   );
-
-  const CaseWrapper = (props) => {
-    let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-      [PageLocator - 1].split("-")[0]
-      .toLowerCase();
-    return prefix === "text" ? (
-      <CaseText
-        {...props}
-        totalCases={casesCount}
-        caseId={PageLocator}
-        REACT_APP_caseText={REACT_APP_caseText}
-      />
-    ) : prefix === "audio" ? (
-      <CaseAudio
-        {...props}
-        totalCases={casesCount}
-        caseId={PageLocator}
-        REACT_APP_caseAudio={REACT_APP_caseAudio}
-      />
-    ) : prefix === "hybrid" ? (
-      <CaseHybrid
-        {...props}
-        totalCases={casesCount}
-        caseId={PageLocator}
-        REACT_APP_caseHybrid={REACT_APP_caseHybrid}
-      />
-    ) : prefix === "video" ? (
-      <CaseVideo
-        {...props}
-        totalCases={casesCount}
-        caseId={PageLocator}
-        REACT_APP_caseVideo={REACT_APP_caseVideo}
-      />
-    ) : (
-      <CaseImage
-        {...props}
-        totalCases={casesCount}
-        caseId={PageLocator}
-        REACT_APP_caseImage={REACT_APP_caseImage}
-        REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-      />
-    );
-  };
 
   return (
     <div
