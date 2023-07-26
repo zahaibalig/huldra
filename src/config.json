@@ -162,7 +162,7 @@
     },
     "caseImageColumnRight": {
       "title": "Your Answer",
-      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
+      "text": "Please click on one of the images (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
     }
   },
   "REACT_APP_caseHybrid": {
@@ -196,7 +196,7 @@
     },
     "caseHybridColumnRight": {
       "title": "Your Answer",
-      "text": "Please click on one of the thumbnails (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
+      "text": "Please click on one of the images (option A or B) to place it on top. Do not drag and drop the image. The top image is your preferred option for this case."
     }
   },
   "REACT_APP_caseVideo": {
@@ -215,14 +215,14 @@
   },
   "REACT_APP_caseText": {
     "caseTextColumnLeft": {
-      "label": "Case Text",
-      "rightSectionTextLabel": "Text Label B",
-      "leftSectionTextLabel": "Text Label A",
+      "label": "Case",
+      "rightSectionTextLabel": "Text B",
+      "leftSectionTextLabel": "Text A",
       "sectionButtonlabel": "Select"
     },
     "caseTextColumnRight": {
       "title": "Your Text Answer",
-      "text": "Please select one of the Text Text to place it on top. The top Text Text is your preferred option for this case."
+      "text": "Please select one of the texts to place it on top. The top text is your preferred option for this case."
     }
   },
   "REACT_APP_caseAudio": {
