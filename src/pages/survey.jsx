@@ -143,10 +143,6 @@ const Survey = ({
     setComments(e.currentTarget.value);
   };
 
-  let pageIsRegistration = history.location.pathname === "/survey/registration";
-  let pageIsEndPage = history.location.pathname === "/survey/end";
-  let pageIsHome = history.location.pathname === "/survey/home";
-
   /* let showControls = history.location.pathname !== "/survey/end";
   let pageIsFeedBack =
     history.location.pathname === "/survey/summary-and-feedback";
@@ -259,6 +255,35 @@ const Survey = ({
     REACT_APP_general
   );
 
+  const HeaderWrapper = () => {
+    const pageIsRegistration = history.location.pathname === "/survey/registration";
+    const pageIsEndPage = history.location.pathname === "/survey/end";
+    const pageIsHome = history.location.pathname === "/survey/home";
+
+    if (localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome) {
+      return (
+        <Header
+          leftLabel={`Participant ID: ${
+            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
+          }`}
+          leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
+          leftIcon2TooltipMessage=" Copy to clipboard"
+          leftIcon1ClassName="fa fa-info-circle form-tooltip"
+          leftIcon2ClassName="fa fa-clone ml-3 form-tooltip"
+          leftIcon1OnClick={() => {
+            return;
+          }}
+          leftIcon2OnClick={() =>
+            copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
+          }
+          history={history}
+        />
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <div
       className={
@@ -305,26 +330,7 @@ const Survey = ({
           }}
         />
       </Modal>
-      {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
-        <Header
-          leftLabel={`Participant ID: ${
-            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-          }`}
-          leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
-          leftIcon2TooltipMessage=" Copy to clipboard"
-          leftIcon1ClassName="fa fa-info-circle form-tooltip"
-          leftIcon2ClassName="fa fa-clone ml-3 form-tooltip"
-          leftIcon1OnClick={() => {
-            return;
-          }}
-          leftIcon2OnClick={() =>
-            copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
-          }
-          history={history}
-        />
-      ) : (
-        ""
-      )}
+      <HeaderWrapper />
       <ToastContainer
         position="top-center"
         autoClose={4000}
