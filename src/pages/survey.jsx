@@ -29,7 +29,6 @@ import HeaderWrapper from "../survey-components/headerWrapper";
 
 const Survey = ({
   history,
-  REACT_APP_home,
   REACT_APP_registration,
   REACT_APP_background,
   REACT_APP_demonstration,
@@ -386,22 +385,9 @@ const Survey = ({
             return <CaseWrapper {...props} />;
           }}
         />
-        <Route
-          path="/survey/home"
-          render={(props) => (
-            /*      <CaseHybrid
-              {...props}
-              REACT_APP_case={REACT_APP_case}
-              REACT_APP_home={REACT_APP_home}
-              setRouteIsAllowed={setRouteIsAllowed}
-            /> */
-            <Home
-              {...props}
-              REACT_APP_home={REACT_APP_home}
-              setRouteIsAllowed={setRouteIsAllowed}
-            />
-          )}
-        />
+        <Route path="/survey/home">
+          <Home setRouteIsAllowed={setRouteIsAllowed} />
+        </Route>
       </Switch>
 
       <Footer {...footerButtonProps} />
