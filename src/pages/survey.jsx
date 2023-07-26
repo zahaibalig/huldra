@@ -10,10 +10,9 @@ import { Route, Switch } from "react-router-dom";
 import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
-import { toastError, toastInfo } from "../utils/toast";
+import { toastError } from "../utils/toast";
 import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
-import useHotkeys from "@reecelucas/react-use-hotkeys";
 import ProtectedRoute from "../minor-components/protectedRoute";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
@@ -26,6 +25,7 @@ import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
 import CaseWrapper from "../survey-components/caseWrapper";
 import HeaderWrapper from "../survey-components/headerWrapper";
+import { useCustomHotkeys } from "../utils/survey-utils/useCustomHotkeys";
 
 const Survey = ({
   history,
@@ -98,24 +98,6 @@ const Survey = ({
     }
   }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
-  useHotkeys("Shift+f", () => {
-    if (history.location.pathname === "/survey/registration") {
-      setName("NA (Development)");
-      setEmail("huldra@simula.no");
-      setCountry("NA (Development)");
-      setDegree("NA (Development)");
-      setFieldOfExpertise("NA (Development)");
-      setActiveYears(999);
-      setComments("Form filled out as part of development.");
-      setTermsOfUse(true);
-      toastInfo("Form filled out as part of development.", "top-center", "req-error");
-    }
-    if (history.location.pathname === "/survey/summary-and-feedback") {
-      setOpenEndDialog(true);
-      localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
-    }
-  });
-
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);
   };
@@ -184,21 +166,6 @@ const Survey = ({
     }
   };
 
-  useHotkeys("Enter", () => {
-    if (disableNextButton === true) {
-      return;
-    } else {
-      handleNext();
-    }
-  });
-  useHotkeys("Shift+Enter", () => {
-    if (history.location.pathname.includes("/survey/case")) {
-      setDisableNextButton(false);
-      handleNext();
-      setDisableNextButton(true);
-    }
-  });
-
   const handleNext = () => {
     handleNextButton(
       history,
@@ -254,6 +221,21 @@ const Survey = ({
     disableNextButton,
     REACT_APP_general
   );
+
+  useCustomHotkeys({
+    disableNextButton,
+    setDisableNextButton,
+    handleNext,
+    setName,
+    setEmail,
+    setCountry,
+    setDegree,
+    setFieldOfExpertise,
+    setActiveYears,
+    setComments,
+    setTermsOfUse,
+    setOpenEndDialog,
+  });
 
   return (
     <div
