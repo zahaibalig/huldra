@@ -404,37 +404,7 @@ const Survey = ({
         />
       </Switch>
 
-      <Footer
-        label={
-          REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["label"]
-        }
-        icon1ClassName={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon1ClassName"]
-        }
-        icon2ClassName={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon2ClassName"]
-        }
-        footerIconUrl={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["footerIconUrl"]
-        }
-        icon1Url={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon1Url"]
-        }
-        icon2Url={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon2Url"]
-        }
-        {...footerButtonProps}
-      />
+      <Footer {...footerButtonProps} />
     </div>
   );
 };

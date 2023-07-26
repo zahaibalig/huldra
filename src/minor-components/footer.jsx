@@ -1,14 +1,11 @@
-import React from "react";
 import FooterFixedContent from "./footerFixedContent";
 import GenericButton from "./genericButton";
+import { useContext } from "react";
+import { AppContext } from "../context/appContext";
+
 const Footer = ({
   disableLeftButton,
   disableRightButton,
-  icon1ClassName,
-  icon2ClassName,
-  icon1Url,
-  icon2Url,
-  label,
   leftButtonClassName,
   leftButtonLabel,
   onLeftButtonClick,
@@ -16,6 +13,11 @@ const Footer = ({
   rightButtonClassName,
   rightButtonLabel,
 }) => {
+  // read the general config from the context; if it's not there, use empty strings
+  const { REACT_APP_general } = useContext(AppContext);
+  const { footer } = REACT_APP_general || {};
+  const { label, icon1ClassName, icon2ClassName, icon1Url, icon2Url } = footer || "";
+
   return (
     <footer>
       <div className="controls">
