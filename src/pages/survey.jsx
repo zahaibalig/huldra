@@ -38,21 +38,23 @@ const Survey = ({
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
   const [Version, setVersion] = useState("");
+  const [disableRegistration] = useState(false);
+  const [routeIsAllowed, setRouteIsAllowed] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
+  useState(0);
+
+  // states for the registration form
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [comments, setComments] = useState("");
   const [degree, setDegree] = useState([]);
-  const [fieldOfExpertise, setFieldOfExpertise] = useState([]);
   const [degreeOther, setDegreeOther] = useState("");
+  const [fieldOfExpertise, setFieldOfExpertise] = useState([]);
   const [activeYears, setActiveYears] = useState("");
-  const [disableRegistration] = useState(false);
   const [termsOfUse, setTermsOfUse] = useState(false);
   const [notifications, setNotifications] = useState(false);
-  const [routeIsAllowed, setRouteIsAllowed] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
-  useState(0);
 
   const {
     PageLocator,
