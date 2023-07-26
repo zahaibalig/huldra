@@ -26,7 +26,7 @@ import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
-import CaseWrapper from "../minor-components/caseWrapper";
+import CaseWrapper from "../survey-components/caseWrapper";
 
 const Survey = ({
   history,
