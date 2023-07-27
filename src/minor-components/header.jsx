@@ -11,7 +11,6 @@ const Header = ({
   leftIcon2ClassName,
   leftIcon1OnClick,
   leftIcon2OnClick,
-  history,
   rightIcon1TooltipMessage,
   rightIcon2TooltipMessage,
   rightIcon1ClassName,
@@ -47,7 +46,7 @@ const Header = ({
           className={rightIcon1ClassName}
           onClick={rightIcon1OnClick}
         />
-        <HeaderRightLabel history={history} />
+        <HeaderRightLabel />
         <Icon
           tooltipMessage={rightIcon2TooltipMessage}
           className={rightIcon2ClassName}

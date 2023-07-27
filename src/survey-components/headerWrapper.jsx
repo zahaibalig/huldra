@@ -1,12 +1,12 @@
 import { copyToClipboard } from "../utils/text";
 import Header from "../minor-components/header";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const HeaderWrapper = () => {
-  const history = useHistory();
-  const pageIsRegistration = history.location.pathname === "/survey/registration";
-  const pageIsEndPage = history.location.pathname === "/survey/end";
-  const pageIsHome = history.location.pathname === "/survey/home";
+  const location = useLocation();
+  const pageIsRegistration = location.pathname === "/survey/registration";
+  const pageIsEndPage = location.pathname === "/survey/end";
+  const pageIsHome = location.pathname === "/survey/home";
 
   if (localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome) {
     return (
@@ -24,7 +24,6 @@ const HeaderWrapper = () => {
         leftIcon2OnClick={() =>
           copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
         }
-        history={history}
       />
     );
   } else {
