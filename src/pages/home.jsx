@@ -1,15 +1,20 @@
-import React, { useState, useEffect, useContext } from "react";
-import { AppContext } from "../context/appContext";
+import { useState, useEffect } from "react";
 import { toastError } from "../utils/toast";
 import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
 import { conditionalPushToBucket, fetchResponse } from "../utils/handleResponse";
 import getConfig, { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
+import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
+import { useHistory } from "react-router-dom";
 
-const Home = ({ history, REACT_APP_home, setRouteIsAllowed }) => {
-  const { REACT_APP_general } = useContext(AppContext);
+const Home = ({ setRouteIsAllowed }) => {
   const [participantId, setParticipantId] = useState("");
+  const { REACT_APP_general, REACT_APP_home } = fetchConfigVariablesBatch([
+    "REACT_APP_general",
+    "REACT_APP_home",
+  ]);
+  const history = useHistory();
 
   useEffect(() => {
     if (localStorage.getItem("ParticipantInfo")) {

@@ -1,6 +1,8 @@
 import React from "react";
 import ReactTooltip from "react-tooltip";
 import Icon from "./icon";
+import HeaderRightLabel from "./headerRightLabel";
+
 const Header = ({
   leftLabel,
   leftIcon1TooltipMessage,
@@ -9,7 +11,7 @@ const Header = ({
   leftIcon2ClassName,
   leftIcon1OnClick,
   leftIcon2OnClick,
-  rightLabel,
+  history,
   rightIcon1TooltipMessage,
   rightIcon2TooltipMessage,
   rightIcon1ClassName,
@@ -45,7 +47,7 @@ const Header = ({
           className={rightIcon1ClassName}
           onClick={rightIcon1OnClick}
         />
-        {rightLabel}
+        <HeaderRightLabel history={history} />
         <Icon
           tooltipMessage={rightIcon2TooltipMessage}
           className={rightIcon2ClassName}

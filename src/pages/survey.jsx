@@ -4,24 +4,16 @@ import Home from "./home";
 import Registration from "./registration";
 import Background from "./background";
 import Demonstration from "./demonstration";
-import CaseImage from "./caseImage";
-import CaseVideo from "./caseVideo";
-import CaseHybrid from "./caseHybrid";
-import CaseAudio from "./caseAudio";
-import CaseText from "./caseText";
 import End from "./end";
 import Footer from "../minor-components/footer";
 import { Route, Switch } from "react-router-dom";
 import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
-import { toastError, toastInfo } from "../utils/toast";
+import { toastError } from "../utils/toast";
 import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
-import useHotkeys from "@reecelucas/react-use-hotkeys";
-import { copyToClipboard } from "../utils/text";
 import ProtectedRoute from "../minor-components/protectedRoute";
-import Header from "../minor-components/header";
 import { logSessionEvent } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
@@ -31,39 +23,38 @@ import { handleGetParticipantId } from "../utils/survey-utils/getParticipantId";
 import { getButtonProps } from "../utils/survey-utils/getButtonProps";
 import { handlePreviousButton } from "../utils/survey-utils/handlePrevious";
 import { handleNextButton } from "../utils/survey-utils/handleNext";
+import CaseWrapper from "../survey-components/caseWrapper";
+import HeaderWrapper from "../survey-components/headerWrapper";
+import { useCustomHotkeys } from "../utils/survey-utils/useCustomHotkeys";
 
 const Survey = ({
   history,
-  REACT_APP_home,
   REACT_APP_registration,
   REACT_APP_background,
   REACT_APP_demonstration,
-  REACT_APP_caseImage,
-  REACT_APP_caseVideo,
-  REACT_APP_caseAudio,
-  REACT_APP_caseHybrid,
-  REACT_APP_caseText,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openEndDialog, setOpenEndDialog] = useState(false);
   const [Version, setVersion] = useState("");
+  const [disableRegistration] = useState(false);
+  const [routeIsAllowed, setRouteIsAllowed] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
+  useState(0);
+
+  // states for the registration form
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [comments, setComments] = useState("");
   const [degree, setDegree] = useState([]);
-  const [fieldOfExpertise, setFieldOfExpertise] = useState([]);
   const [degreeOther, setDegreeOther] = useState("");
+  const [fieldOfExpertise, setFieldOfExpertise] = useState([]);
   const [activeYears, setActiveYears] = useState("");
-  const [disableRegistration] = useState(false);
   const [termsOfUse, setTermsOfUse] = useState(false);
   const [notifications, setNotifications] = useState(false);
-  const [routeIsAllowed, setRouteIsAllowed] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
-  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
-  useState(0);
 
   const {
     PageLocator,
@@ -107,24 +98,6 @@ const Survey = ({
     }
   }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
-  useHotkeys("Shift+f", () => {
-    if (history.location.pathname === "/survey/registration") {
-      setName("NA (Development)");
-      setEmail("huldra@simula.no");
-      setCountry("NA (Development)");
-      setDegree("NA (Development)");
-      setFieldOfExpertise("NA (Development)");
-      setActiveYears(999);
-      setComments("Form filled out as part of development.");
-      setTermsOfUse(true);
-      toastInfo("Form filled out as part of development.", "top-center", "req-error");
-    }
-    if (history.location.pathname === "/survey/summary-and-feedback") {
-      setOpenEndDialog(true);
-      localStorage.setItem("FeedbackFormAnswers", JSON.stringify("NA (Development)"));
-    }
-  });
-
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);
   };
@@ -151,10 +124,6 @@ const Survey = ({
   const onCommentsChange = (e) => {
     setComments(e.currentTarget.value);
   };
-
-  let pageIsRegistration = history.location.pathname === "/survey/registration";
-  let pageIsEndPage = history.location.pathname === "/survey/end";
-  let pageIsHome = history.location.pathname === "/survey/home";
 
   /* let showControls = history.location.pathname !== "/survey/end";
   let pageIsFeedBack =
@@ -196,21 +165,6 @@ const Survey = ({
       }
     }
   };
-
-  useHotkeys("Enter", () => {
-    if (disableNextButton === true) {
-      return;
-    } else {
-      handleNext();
-    }
-  });
-  useHotkeys("Shift+Enter", () => {
-    if (history.location.pathname.includes("/survey/case")) {
-      setDisableNextButton(false);
-      handleNext();
-      setDisableNextButton(true);
-    }
-  });
 
   const handleNext = () => {
     handleNextButton(
@@ -268,6 +222,21 @@ const Survey = ({
     REACT_APP_general
   );
 
+  useCustomHotkeys({
+    disableNextButton,
+    setDisableNextButton,
+    handleNext,
+    setName,
+    setEmail,
+    setCountry,
+    setDegree,
+    setFieldOfExpertise,
+    setActiveYears,
+    setComments,
+    setTermsOfUse,
+    setOpenEndDialog,
+  });
+
   return (
     <div
       className={
@@ -314,63 +283,7 @@ const Survey = ({
           }}
         />
       </Modal>
-      {localStorage.length > 0 && !pageIsRegistration && !pageIsEndPage && !pageIsHome ? (
-        <Header
-          leftLabel={`Participant ID: ${
-            JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"]
-          }`}
-          leftIcon1TooltipMessage="This is your participant ID. You can copy this ID to keep for later reference, as well as to be able to resume your survey in case of accidental exit before completion."
-          leftIcon2TooltipMessage=" Copy to clipboard"
-          leftIcon1ClassName="fa fa-info-circle form-tooltip"
-          leftIcon2ClassName="fa fa-clone ml-3 form-tooltip"
-          leftIcon1OnClick={() => {
-            return;
-          }}
-          leftIcon2OnClick={() =>
-            copyToClipboard(JSON.parse(localStorage.getItem("ParticipantInfo"))["ParticipantId"])
-          }
-          rightLabel={
-            history.location.pathname !== "/survey/end" && (
-              <div className="survey-header">
-                {history.location.pathname === "/survey/background" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                   ${
-                     REACT_APP_general &&
-                     REACT_APP_general["header"] &&
-                     REACT_APP_general["header"]["labelBackground"]
-                   }
-                  `}</span>
-                ) : history.location.pathname === "/survey/demonstration" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelDemonstration"]
-                  }`}</span>
-                ) : history.location.pathname === "/survey/summary-and-feedback" ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelSummaryAndFeedback"]
-                  }`}</span>
-                ) : history.location.pathname.includes("case") ? (
-                  <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
-                  ${
-                    REACT_APP_general &&
-                    REACT_APP_general["header"] &&
-                    REACT_APP_general["header"]["labelCase"]
-                  } | Case ${PageLocator}/${casesCount}`}</span>
-                ) : (
-                  <span></span>
-                )}
-              </div>
-            )
-          }
-        />
-      ) : (
-        ""
-      )}
+      <HeaderWrapper />
       <ToastContainer
         position="top-center"
         autoClose={4000}
@@ -453,97 +366,15 @@ const Survey = ({
           path={`/survey/case:id`}
           exact
           render={(props) => {
-            let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-              [PageLocator - 1].split("-")[0]
-              .toLowerCase();
-            return prefix === "text" ? (
-              <CaseText
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseText={REACT_APP_caseText}
-              />
-            ) : prefix === "audio" ? (
-              <CaseAudio
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseAudio={REACT_APP_caseAudio}
-              />
-            ) : prefix === "hybrid" ? (
-              <CaseHybrid
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseHybrid={REACT_APP_caseHybrid}
-              />
-            ) : prefix === "video" ? (
-              <CaseVideo
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseVideo={REACT_APP_caseVideo}
-              />
-            ) : (
-              <CaseImage
-                {...props}
-                totalCases={casesCount}
-                caseId={PageLocator}
-                REACT_APP_caseImage={REACT_APP_caseImage}
-                REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-              />
-            );
+            return <CaseWrapper {...props} />;
           }}
         />
-        <Route
-          path="/survey/home"
-          render={(props) => (
-            /*      <CaseHybrid
-              {...props}
-              REACT_APP_case={REACT_APP_case}
-              REACT_APP_home={REACT_APP_home}
-              setRouteIsAllowed={setRouteIsAllowed}
-            /> */
-            <Home
-              {...props}
-              REACT_APP_home={REACT_APP_home}
-              setRouteIsAllowed={setRouteIsAllowed}
-            />
-          )}
-        />
+        <Route path="/survey/home">
+          <Home setRouteIsAllowed={setRouteIsAllowed} />
+        </Route>
       </Switch>
 
-      <Footer
-        label={
-          REACT_APP_general && REACT_APP_general["footer"] && REACT_APP_general["footer"]["label"]
-        }
-        icon1ClassName={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon1ClassName"]
-        }
-        icon2ClassName={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon2ClassName"]
-        }
-        footerIconUrl={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["footerIconUrl"]
-        }
-        icon1Url={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon1Url"]
-        }
-        icon2Url={
-          REACT_APP_general &&
-          REACT_APP_general["footer"] &&
-          REACT_APP_general["footer"]["icon2Url"]
-        }
-        {...footerButtonProps}
-      />
+      <Footer {...footerButtonProps} />
     </div>
   );
 };
