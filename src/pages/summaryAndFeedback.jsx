@@ -3,8 +3,11 @@ import Summary from "../major-components/summary";
 import FeedbackForm from "../major-components/feedbackForm";
 import { generateFeedbackFormValidationScheme } from "../utils/inputValidation";
 import "../assets/css/summaryAndFeedback.css";
+import { logSessionInfo } from "../utils/localStorage";
 
 const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
+  logSessionInfo(false, "summaryAndFeedback");
+
   generateFeedbackFormValidationScheme(
     REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions
   );

@@ -1,4 +1,5 @@
 import { generateTimeStamp } from "./timestamp";
+
 const pushToLocalStorage = (content) => {
   content.forEach((item) => {
     for (const [key, value] of Object.entries(item)) {
@@ -9,9 +10,11 @@ const pushToLocalStorage = (content) => {
 
 const logSessionEvent = (ButtonType, Location, PageLocator) => {
   let SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
-  let SessionInfo = { PageLocator: PageLocator, SessionComplete: false };
-  let Timestamp = generateTimeStamp();
-  let tail = {
+  let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo"));
+  SessionInfo.PageLocator = PageLocator;
+
+  const Timestamp = generateTimeStamp();
+  const tail = {
     Location,
     ButtonType,
     Timestamp,
@@ -20,4 +23,14 @@ const logSessionEvent = (ButtonType, Location, PageLocator) => {
   localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
   localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 };
-export { pushToLocalStorage, logSessionEvent };
+
+const logSessionInfo = (SessionComplete, LastVisitedPage) => {
+  let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo"));
+
+  SessionInfo.SessionComplete = SessionComplete;
+  SessionInfo.LastVisitedPage = LastVisitedPage;
+
+  localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
+};
+
+export { pushToLocalStorage, logSessionEvent, logSessionInfo };

@@ -30,7 +30,6 @@ import { useCustomHotkeys } from "../utils/survey-utils/useCustomHotkeys";
 const Survey = ({
   history,
   REACT_APP_registration,
-  REACT_APP_background,
   REACT_APP_demonstration,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
@@ -325,9 +324,8 @@ const Survey = ({
           routeIsAllowed={routeIsAllowed}
           path="/survey/demonstration"
           exact
-          render={(props) => (
+          render={() => (
             <Demonstration
-              {...props}
               REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
             />
           )}

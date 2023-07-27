@@ -46,7 +46,10 @@ const Home = ({ setRouteIsAllowed }) => {
 
       logSessionEvent("Start survey", "Login page", 1);
       conditionalPushToBucket();
-      history.push("/survey/background");
+
+      // go to the last page the participant was on
+      const LastVisitedPage = response.SessionInfo.LastVisitedPage;
+      history.push(`/survey/${LastVisitedPage}`);
     }
   };
 

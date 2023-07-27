@@ -64,7 +64,6 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_background={configuration["REACT_APP_background"]}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
               />
             )}

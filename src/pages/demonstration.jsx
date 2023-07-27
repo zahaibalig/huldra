@@ -4,8 +4,11 @@ import RankedImage from "../minor-components/rankedImage";
 import RankedVideo from "../minor-components/rankedVideo";
 import RankedAudio from "../minor-components/rankedAudio";
 import "../assets/css/demonstration.css";
+import { logSessionInfo } from "../utils/localStorage";
 
 const Demonstration = ({ REACT_APP_demonstration }) => {
+  logSessionInfo(false, "demonstration");
+
   return (
     <div className="demonstration-wrapper">
       {(REACT_APP_demonstration["textBefore"] ||

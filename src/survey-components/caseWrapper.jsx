@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useParams } from "react-router-dom";
+import { logSessionInfo } from "../utils/localStorage";
 
 const CaseWrapper = () => {
   const { casesCount } = useContext(AppContext);
@@ -29,6 +30,8 @@ const CaseWrapper = () => {
   const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
     [CaseId - 1].split("-")[0]
     .toLowerCase();
+
+  logSessionInfo(false, `case${CaseId}`);
 
   return prefix === "text" ? (
     <CaseText totalCases={casesCount} caseId={CaseId} REACT_APP_caseText={REACT_APP_caseText} />

@@ -3,12 +3,15 @@ import "../assets/css/background.css";
 import GenericBackgroundSection from "../minor-components/genericBackgroundSection";
 import { fetchConfigVariable } from "../utils/handleConfigVars";
 import { useHistory } from "react-router-dom";
+import { logSessionInfo } from "../utils/localStorage";
 
 const Background = () => {
   const REACT_APP_background = fetchConfigVariable("REACT_APP_background");
   const history = useHistory();
 
   const [finishStatus, setfinishStatus] = useState(false);
+
+  logSessionInfo(false, "background");
 
   const onBackButtonEvent = useCallback(
     (e) => {
