@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 
-const CaseWrapper = (props) => {
+const CaseWrapper = () => {
   const { PageLocator, casesCount } = useContext(AppContext);
 
   const {
@@ -30,35 +30,30 @@ const CaseWrapper = (props) => {
 
   return prefix === "text" ? (
     <CaseText
-      {...props}
       totalCases={casesCount}
       caseId={PageLocator}
       REACT_APP_caseText={REACT_APP_caseText}
     />
   ) : prefix === "audio" ? (
     <CaseAudio
-      {...props}
       totalCases={casesCount}
       caseId={PageLocator}
       REACT_APP_caseAudio={REACT_APP_caseAudio}
     />
   ) : prefix === "hybrid" ? (
     <CaseHybrid
-      {...props}
       totalCases={casesCount}
       caseId={PageLocator}
       REACT_APP_caseHybrid={REACT_APP_caseHybrid}
     />
   ) : prefix === "video" ? (
     <CaseVideo
-      {...props}
       totalCases={casesCount}
       caseId={PageLocator}
       REACT_APP_caseVideo={REACT_APP_caseVideo}
     />
   ) : (
     <CaseImage
-      {...props}
       totalCases={casesCount}
       caseId={PageLocator}
       REACT_APP_caseImage={REACT_APP_caseImage}

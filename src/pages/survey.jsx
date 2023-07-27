@@ -365,8 +365,8 @@ const Survey = ({
           routeIsAllowed={routeIsAllowed}
           path={`/survey/case:id`}
           exact
-          render={(props) => {
-            return <CaseWrapper {...props} />;
+          render={() => {
+            return <CaseWrapper />;
           }}
         />
         <Route path="/survey/home">
