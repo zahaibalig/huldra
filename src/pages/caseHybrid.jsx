@@ -76,8 +76,6 @@ const CaseHybrid = ({
       setDisableNextButton(true);
     }
 
-    localStorage.setItem("PageLocator", caseId);
-
     return () => {
       setSubscribed(false);
     };

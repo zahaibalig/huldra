@@ -56,11 +56,8 @@ const Survey = ({
   const [notifications, setNotifications] = useState(false);
 
   const {
-    PageLocator,
     disableNextButton,
     setDisableNextButton,
-    getCurrentPageIndex,
-    setPageLocator,
     casesCount,
     setCasesCount,
     REACT_APP_general,
@@ -139,10 +136,9 @@ const Survey = ({
   const submitSurvey = () => {
     setOpenEndDialog(false);
 
-    logSessionEvent("End survey", "Summary and feedback", PageLocator);
+    logSessionEvent("End survey", "Summary and feedback");
 
     const SessionInfo = {
-      PageLocator: PageLocator,
       SessionComplete: true,
     };
     localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
@@ -172,8 +168,6 @@ const Survey = ({
   const handleNext = () => {
     handleNextButton({
       history,
-      getCurrentPageIndex,
-      setPageLocator,
       casesCount,
       currentDemonstrationPageIndex,
       setCurrentDemonstrationPageIndex,
@@ -186,8 +180,6 @@ const Survey = ({
   const handlePrevious = () => {
     handlePreviousButton({
       history,
-      getCurrentPageIndex,
-      setPageLocator,
       casesCount,
       currentDemonstrationPageIndex,
       setCurrentDemonstrationPageIndex,

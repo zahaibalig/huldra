@@ -63,7 +63,7 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
     const location = useLocation();
     React.useEffect(() => {
       action(location);
-    }, [location]);
+    }, [location, action]);
   };
 
   useLocationChange((location) => {
@@ -116,7 +116,6 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
       }
       setCaseDescription(await fetchJsonAttributeValue(jsonPath, "description"));
     })();
-    localStorage.setItem("PageLocator", caseId);
     return () => {
       setSubscribed(false);
     };
@@ -128,13 +127,14 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
     choiceAThumbnail,
     choiceBThumbnail,
     empty,
-    //pagesOrder,
+    pagesOrder,
     rootDirectory,
     openedChoiceA,
     openedChoiceB,
     setOpenedChoiceA,
     setOpenedChoiceB,
     setSubscribed,
+    storageConfig.assetsStorageType,
   ]);
 
   const selectAsFirst = (choice) => {

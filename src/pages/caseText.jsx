@@ -27,7 +27,6 @@ const CaseText = ({ REACT_APP_caseText, caseId, totalCases }) => {
   }
 
   useEffect(() => {
-    localStorage.setItem("PageLocator", caseId);
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);

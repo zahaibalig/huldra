@@ -3,8 +3,6 @@ import { conditionalPushToBucket } from "../handleResponse";
 
 const handleNextButton = ({
   history,
-  getCurrentPageIndex,
-  setPageLocator,
   casesCount,
   currentDemonstrationPageIndex,
   setCurrentDemonstrationPageIndex,
@@ -12,8 +10,6 @@ const handleNextButton = ({
   REACT_APP_demonstration,
   CaseId,
 }) => {
-  getCurrentPageIndex();
-
   // if (history.location.pathname === "/survey/home") {
   //   console.log("handleNextButton: history.location.pathname === /survey/home");
   // } else
@@ -21,7 +17,6 @@ const handleNextButton = ({
     logSessionEvent("Next", "Background", 0);
     conditionalPushToBucket();
     if (REACT_APP_demonstration.length === 0) {
-      setPageLocator(1);
       history.push(`/survey/case1`);
     } else {
       setDemonstrationPageIndex(0);
@@ -34,7 +29,6 @@ const handleNextButton = ({
 
     if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
       setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
-      setPageLocator(1);
       history.push(`/survey/case1`);
     } else {
       setDemonstrationPageIndex(currentDemonstrationPageIndex);
@@ -45,7 +39,6 @@ const handleNextButton = ({
     logSessionEvent("Next", `Case${CaseId}`, CaseId);
     conditionalPushToBucket();
     const newPageNumber = CaseId + 1;
-    setPageLocator(newPageNumber);
     history.push(`/survey/case${newPageNumber}`);
   } else if (CaseId === casesCount) {
     logSessionEvent("Next", `Case${casesCount}`, CaseId);

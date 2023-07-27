@@ -3,8 +3,6 @@ import { conditionalPushToBucket } from "../handleResponse";
 
 const handlePreviousButton = ({
   history,
-  getCurrentPageIndex,
-  setPageLocator,
   casesCount,
   currentDemonstrationPageIndex,
   setCurrentDemonstrationPageIndex,
@@ -13,7 +11,6 @@ const handlePreviousButton = ({
   setOpenDialog,
   CaseId,
 }) => {
-  getCurrentPageIndex();
   if (history.location.pathname === "/survey/summary-and-feedback") {
     logSessionEvent("Previous", `Summary and feedback`, CaseId);
     conditionalPushToBucket();
@@ -77,7 +74,6 @@ const handlePreviousButton = ({
     logSessionEvent("Previous", `Case${CaseId}`, CaseId);
     conditionalPushToBucket();
     const newPageNumber = CaseId - 1;
-    setPageLocator(newPageNumber);
     history.push(`/survey/case${newPageNumber}`);
   }
 };

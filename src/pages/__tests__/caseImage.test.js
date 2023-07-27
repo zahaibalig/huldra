@@ -17,9 +17,6 @@ beforeEach(() => {
   providerProps = {
     disableNextButton: [],
     setDisableNextButton: jest.fn(),
-    getCurrentPageIndex: [],
-    PageLocator: [],
-    setPageLocator: [],
     firebaseConfig: [],
     rootDirectory: [],
     clientUid: [],

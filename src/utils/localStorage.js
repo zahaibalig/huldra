@@ -8,10 +8,9 @@ const pushToLocalStorage = (content) => {
   });
 };
 
-const logSessionEvent = (ButtonType, Location, PageLocator) => {
+const logSessionEvent = (ButtonType, Location) => {
   let SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
   let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo"));
-  SessionInfo.PageLocator = PageLocator;
 
   const Timestamp = generateTimeStamp();
   const tail = {
