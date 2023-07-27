@@ -6,7 +6,7 @@ import Background from "./background";
 import Demonstration from "./demonstration";
 import End from "./end";
 import Footer from "../minor-components/footer";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
@@ -68,6 +68,10 @@ const Survey = ({
     currentDemonstrationPageIndex,
     setCurrentDemonstrationPageIndex,
   } = useContext(AppContext);
+
+  // get the case id from the url and convert it to an integer
+  const CaseId = parseInt(useParams().id, 10);
+
   const handleDialogClose = () => {
     setOpenDialog(false);
   };
@@ -166,32 +170,32 @@ const Survey = ({
   };
 
   const handleNext = () => {
-    handleNextButton(
+    handleNextButton({
       history,
       getCurrentPageIndex,
-      PageLocator,
-      setPageLocator,
-      casesCount,
-      currentDemonstrationPageIndex,
-      setCurrentDemonstrationPageIndex,
-      setDemonstrationPageIndex,
-      REACT_APP_demonstration
-    );
-  };
-
-  const handlePrevious = () => {
-    handlePreviousButton(
-      history,
-      getCurrentPageIndex,
-      PageLocator,
       setPageLocator,
       casesCount,
       currentDemonstrationPageIndex,
       setCurrentDemonstrationPageIndex,
       setDemonstrationPageIndex,
       REACT_APP_demonstration,
-      setOpenDialog
-    );
+      CaseId,
+    });
+  };
+
+  const handlePrevious = () => {
+    handlePreviousButton({
+      history,
+      getCurrentPageIndex,
+      setPageLocator,
+      casesCount,
+      currentDemonstrationPageIndex,
+      setCurrentDemonstrationPageIndex,
+      setDemonstrationPageIndex,
+      REACT_APP_demonstration,
+      setOpenDialog,
+      CaseId,
+    });
   };
 
   const getParticipantId = async (e) => {

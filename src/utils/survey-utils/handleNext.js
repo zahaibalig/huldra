@@ -1,19 +1,22 @@
 import { logSessionEvent } from "../localStorage";
 import { conditionalPushToBucket } from "../handleResponse";
 
-const handleNextButton = (
+const handleNextButton = ({
   history,
   getCurrentPageIndex,
-  PageLocator,
   setPageLocator,
   casesCount,
   currentDemonstrationPageIndex,
   setCurrentDemonstrationPageIndex,
   setDemonstrationPageIndex,
-  REACT_APP_demonstration
-) => {
+  REACT_APP_demonstration,
+  CaseId,
+}) => {
   getCurrentPageIndex();
 
+  // if (history.location.pathname === "/survey/home") {
+  //   console.log("handleNextButton: history.location.pathname === /survey/home");
+  // } else
   if (history.location.pathname === "/survey/background") {
     logSessionEvent("Next", "Background", 0);
     conditionalPushToBucket();
@@ -38,14 +41,14 @@ const handleNextButton = (
       setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex + 1);
       history.push(`/survey/demonstration`);
     }
-  } else if (PageLocator < casesCount) {
-    logSessionEvent("Next", `Case${PageLocator}`, PageLocator);
+  } else if (CaseId < casesCount) {
+    logSessionEvent("Next", `Case${CaseId}`, CaseId);
     conditionalPushToBucket();
-    const newPageNumber = PageLocator + 1;
+    const newPageNumber = CaseId + 1;
     setPageLocator(newPageNumber);
     history.push(`/survey/case${newPageNumber}`);
-  } else if (PageLocator === casesCount) {
-    logSessionEvent("Next", `Case${casesCount}`, PageLocator);
+  } else if (CaseId === casesCount) {
+    logSessionEvent("Next", `Case${casesCount}`, CaseId);
     conditionalPushToBucket();
     history.push(`/survey/summary-and-feedback`);
   } else {

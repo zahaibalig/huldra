@@ -1,25 +1,25 @@
 import { logSessionEvent } from "../localStorage";
 import { conditionalPushToBucket } from "../handleResponse";
 
-const handlePreviousButton = (
+const handlePreviousButton = ({
   history,
   getCurrentPageIndex,
-  PageLocator,
   setPageLocator,
   casesCount,
   currentDemonstrationPageIndex,
   setCurrentDemonstrationPageIndex,
   setDemonstrationPageIndex,
   REACT_APP_demonstration,
-  setOpenDialog
-) => {
+  setOpenDialog,
+  CaseId,
+}) => {
   getCurrentPageIndex();
   if (history.location.pathname === "/survey/summary-and-feedback") {
-    logSessionEvent("Previous", `Summary and feedback`, PageLocator);
+    logSessionEvent("Previous", `Summary and feedback`, CaseId);
     conditionalPushToBucket();
     history.push(`/survey/case${casesCount}`);
   } else if (history.location.pathname === "/survey/demonstration") {
-    logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, PageLocator);
+    logSessionEvent("Previous", `Demonstration${currentDemonstrationPageIndex}`, CaseId);
     conditionalPushToBucket();
     switch (currentDemonstrationPageIndex) {
       case 1:
@@ -46,8 +46,8 @@ const handlePreviousButton = (
     setOpenDialog(true);
   } else if (history.location.pathname === "/survey/registration") {
     history.push(`/`);
-  } else if (PageLocator === 1) {
-    logSessionEvent("Previous", `Case1`, PageLocator);
+  } else if (CaseId === 1) {
+    logSessionEvent("Previous", `Case1`, CaseId);
     conditionalPushToBucket();
     setCurrentDemonstrationPageIndex(Math.min(REACT_APP_demonstration.length, 3));
     switch (REACT_APP_demonstration.length) {
@@ -74,9 +74,9 @@ const handlePreviousButton = (
         break;
     }
   } else {
-    logSessionEvent("Previous", `Case${PageLocator}`, PageLocator);
+    logSessionEvent("Previous", `Case${CaseId}`, CaseId);
     conditionalPushToBucket();
-    const newPageNumber = PageLocator - 1;
+    const newPageNumber = CaseId - 1;
     setPageLocator(newPageNumber);
     history.push(`/survey/case${newPageNumber}`);
   }
