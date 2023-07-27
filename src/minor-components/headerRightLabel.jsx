@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const HeaderRightLabel = () => {
-  const { PageLocator, casesCount, REACT_APP_general } = useContext(AppContext);
+  const { casesCount, REACT_APP_general } = useContext(AppContext);
 
   const location = useLocation();
+  const CaseId = useParams().id;
 
   return (
     location.pathname !== "/survey/end" && (
@@ -38,7 +39,7 @@ const HeaderRightLabel = () => {
           REACT_APP_general &&
           REACT_APP_general["header"] &&
           REACT_APP_general["header"]["labelCase"]
-        } | Case ${PageLocator}/${casesCount}`}</span>
+        } | Case ${CaseId}/${casesCount}`}</span>
         ) : (
           <span></span>
         )}

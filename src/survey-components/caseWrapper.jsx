@@ -6,9 +6,11 @@ import CaseText from "../pages/caseText";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
+import { useParams } from "react-router-dom";
 
 const CaseWrapper = () => {
-  const { PageLocator, casesCount } = useContext(AppContext);
+  const { casesCount } = useContext(AppContext);
+  const CaseId = useParams().id;
 
   const {
     REACT_APP_caseImage,
@@ -24,40 +26,24 @@ const CaseWrapper = () => {
     "REACT_APP_caseText",
   ]);
 
-  let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-    [PageLocator - 1].split("-")[0]
+  const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
+    [CaseId - 1].split("-")[0]
     .toLowerCase();
 
   return prefix === "text" ? (
-    <CaseText
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseText={REACT_APP_caseText}
-    />
+    <CaseText totalCases={casesCount} caseId={CaseId} REACT_APP_caseText={REACT_APP_caseText} />
   ) : prefix === "audio" ? (
-    <CaseAudio
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseAudio={REACT_APP_caseAudio}
-    />
+    <CaseAudio totalCases={casesCount} caseId={CaseId} REACT_APP_caseAudio={REACT_APP_caseAudio} />
   ) : prefix === "hybrid" ? (
     <CaseHybrid
       totalCases={casesCount}
-      caseId={PageLocator}
+      caseId={CaseId}
       REACT_APP_caseHybrid={REACT_APP_caseHybrid}
     />
   ) : prefix === "video" ? (
-    <CaseVideo
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseVideo={REACT_APP_caseVideo}
-    />
+    <CaseVideo totalCases={casesCount} caseId={CaseId} REACT_APP_caseVideo={REACT_APP_caseVideo} />
   ) : (
-    <CaseImage
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseImage={REACT_APP_caseImage}
-    />
+    <CaseImage totalCases={casesCount} caseId={CaseId} REACT_APP_caseImage={REACT_APP_caseImage} />
   );
 };
 
