@@ -319,13 +319,7 @@ const Survey = ({
           routeIsAllowed={routeIsAllowed}
           path="/survey/background"
           exact
-          render={(props) => (
-            <Background
-              {...props}
-              totalPages={casesCount}
-              REACT_APP_background={REACT_APP_background}
-            />
-          )}
+          render={() => <Background />}
         />
         <ProtectedRoute
           routeIsAllowed={routeIsAllowed}
@@ -365,9 +359,7 @@ const Survey = ({
           routeIsAllowed={routeIsAllowed}
           path={`/survey/case:id`}
           exact
-          render={() => {
-            return <CaseWrapper />;
-          }}
+          render={() => <CaseWrapper />}
         />
         <Route path="/survey/home">
           <Home setRouteIsAllowed={setRouteIsAllowed} />
