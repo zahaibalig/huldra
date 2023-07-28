@@ -21,11 +21,23 @@ const logSessionEvent = (ButtonType, Location) => {
   localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
 };
 
-const logSessionInfo = (SessionComplete, LastVisitedPage) => {
+/**
+ * save session info to local storage
+ * @param {boolean} SessionComplete
+ * @param {string} LastVisitedPage
+ * @param {number} MaxCaseNumber optional
+ */
+const logSessionInfo = (SessionComplete, LastVisitedPage, MaxCaseNumber) => {
   let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo")) || {};
 
   SessionInfo.SessionComplete = SessionComplete;
   SessionInfo.LastVisitedPage = LastVisitedPage;
+
+  // only update if the new value is greater than the old value
+  const oldMaxCaseNumber = parseInt(SessionInfo.MaxCaseNumber, 10) || 0;
+  if (MaxCaseNumber && MaxCaseNumber > oldMaxCaseNumber) {
+    SessionInfo.MaxCaseNumber = MaxCaseNumber;
+  }
 
   localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 };

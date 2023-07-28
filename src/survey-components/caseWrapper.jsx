@@ -31,7 +31,7 @@ const CaseWrapper = () => {
     [caseId - 1].split("-")[0]
     .toLowerCase();
 
-  logSessionInfo(false, `case${caseId}`);
+  logSessionInfo(false, `case${caseId}`, caseId);
 
   return prefix === "text" ? (
     <CaseText totalCases={casesCount} caseId={caseId} REACT_APP_caseText={REACT_APP_caseText} />
