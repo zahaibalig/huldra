@@ -6,11 +6,11 @@ const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demo
   const REACT_APP_demonstration = fetchConfigVariable("REACT_APP_demonstration");
 
   if (history.location.pathname === "/survey/summary-and-feedback") {
-    logSessionEvent("Previous", `Summary and feedback`, caseId);
+    logSessionEvent("Previous", `Summary and feedback`);
     conditionalPushToBucket();
     history.push(`/survey/case${casesCount}`);
   } else if (history.location.pathname.startsWith("/survey/case")) {
-    logSessionEvent("Previous", `Case${caseId}`, caseId);
+    logSessionEvent("Previous", `Case${caseId}`);
     conditionalPushToBucket();
     if (caseId > 1) {
       const newCaseId = caseId - 1;
@@ -20,7 +20,7 @@ const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demo
       history.push(`/survey/demonstration${newDemoId}`);
     }
   } else if (history.location.pathname.startsWith("/survey/demonstration")) {
-    logSessionEvent("Previous", `Demonstration${demoId}`, caseId);
+    logSessionEvent("Previous", `Demonstration${demoId}`);
     conditionalPushToBucket();
     if (demoId > 1) {
       const newDemoId = demoId - 1;

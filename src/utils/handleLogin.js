@@ -25,7 +25,7 @@ const handleLogin = async (participantId, history, setRouteIsAllowed) => {
       pushToLocalStorage(new Array(response));
     }
 
-    logSessionEvent("Start survey", "Login page", 1);
+    logSessionEvent("Start survey", "Login page");
     conditionalPushToBucket();
 
     // go to the last page the participant was on

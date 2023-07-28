@@ -4,10 +4,10 @@ import { fetchConfigVariable } from "../handleConfigVars";
 
 const handleNextButton = ({ history, casesCount, caseId, demoId }) => {
   const REACT_APP_demonstration = fetchConfigVariable("REACT_APP_demonstration");
+  conditionalPushToBucket();
 
   if (history.location.pathname === "/survey/background") {
-    logSessionEvent("Next", "Background", 0);
-    conditionalPushToBucket();
+    logSessionEvent("Next", "Background");
 
     if (REACT_APP_demonstration.length === 0) {
       history.push(`/survey/case1`);
@@ -15,8 +15,7 @@ const handleNextButton = ({ history, casesCount, caseId, demoId }) => {
       history.push(`/survey/demonstration1`);
     }
   } else if (history.location.pathname.startsWith("/survey/demonstration")) {
-    logSessionEvent("Next", `Demonstration${demoId}`, 0);
-    conditionalPushToBucket();
+    logSessionEvent("Next", `Demonstration${demoId}`);
 
     if (demoId < REACT_APP_demonstration.length) {
       const newDemoId = demoId + 1;
@@ -25,8 +24,7 @@ const handleNextButton = ({ history, casesCount, caseId, demoId }) => {
       history.push(`/survey/case1`);
     }
   } else if (history.location.pathname.startsWith("/survey/case")) {
-    logSessionEvent("Next", `Case${caseId}`, caseId);
-    conditionalPushToBucket();
+    logSessionEvent("Next", `Case${caseId}`);
 
     if (caseId < casesCount) {
       const newCaseId = caseId + 1;
