@@ -445,6 +445,7 @@ const Survey = ({
               onNameChange={onNameChange}
               onEmailChange={onEmailChange}
               REACT_APP_registration={REACT_APP_registration}
+              blur={false}
             />
           )}
         />
