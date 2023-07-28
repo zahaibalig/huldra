@@ -69,7 +69,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/survey/demonstration"
+            path="/survey/demonstration:demoId"
             render={(props) => (
               <Survey
                 {...props}
@@ -78,7 +78,7 @@ const App = () => {
             )}
           />
           <Route
-            path="/survey/case:id"
+            path="/survey/case:caseId"
             render={(props) => (
               <Survey
                 {...props}

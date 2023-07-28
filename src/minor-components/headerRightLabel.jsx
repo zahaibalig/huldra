@@ -6,7 +6,7 @@ const HeaderRightLabel = () => {
   const { casesCount, REACT_APP_general } = useContext(AppContext);
 
   const location = useLocation();
-  const CaseId = useParams().id;
+  const caseId = useParams().caseId;
 
   return (
     location.pathname !== "/survey/end" && (
@@ -39,7 +39,7 @@ const HeaderRightLabel = () => {
           REACT_APP_general &&
           REACT_APP_general["header"] &&
           REACT_APP_general["header"]["labelCase"]
-        } | Case ${CaseId}/${casesCount}`}</span>
+        } | Case ${caseId}/${casesCount}`}</span>
         ) : (
           <span></span>
         )}

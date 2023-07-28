@@ -1,46 +1,39 @@
 import { logSessionEvent } from "../localStorage";
 import { conditionalPushToBucket } from "../handleResponse";
+import { fetchConfigVariable } from "../handleConfigVars";
 
-const handleNextButton = ({
-  history,
-  casesCount,
-  currentDemonstrationPageIndex,
-  setCurrentDemonstrationPageIndex,
-  setDemonstrationPageIndex,
-  REACT_APP_demonstration,
-  CaseId,
-}) => {
+const handleNextButton = ({ history, casesCount, caseId, demoId }) => {
+  const REACT_APP_demonstration = fetchConfigVariable("REACT_APP_demonstration");
+
   if (history.location.pathname === "/survey/background") {
     logSessionEvent("Next", "Background", 0);
     conditionalPushToBucket();
+
     if (REACT_APP_demonstration.length === 0) {
       history.push(`/survey/case1`);
     } else {
-      setDemonstrationPageIndex(0);
-      setCurrentDemonstrationPageIndex(1);
-      history.push(`/survey/demonstration`);
+      history.push(`/survey/demonstration1`);
     }
-  } else if (history.location.pathname === "/survey/demonstration") {
-    logSessionEvent("Next", `Demonstration${currentDemonstrationPageIndex}`, 0);
+  } else if (history.location.pathname.startsWith("/survey/demonstration")) {
+    logSessionEvent("Next", `Demonstration${demoId}`, 0);
     conditionalPushToBucket();
 
-    if (currentDemonstrationPageIndex >= REACT_APP_demonstration.length) {
-      setCurrentDemonstrationPageIndex(REACT_APP_demonstration.length);
-      history.push(`/survey/case1`);
+    if (demoId < REACT_APP_demonstration.length) {
+      const newDemoId = demoId + 1;
+      history.push(`/survey/demonstration${newDemoId}`);
     } else {
-      setDemonstrationPageIndex(currentDemonstrationPageIndex);
-      setCurrentDemonstrationPageIndex(currentDemonstrationPageIndex + 1);
-      history.push(`/survey/demonstration`);
+      history.push(`/survey/case1`);
     }
-  } else if (CaseId < casesCount) {
-    logSessionEvent("Next", `Case${CaseId}`, CaseId);
+  } else if (history.location.pathname.startsWith("/survey/case")) {
+    logSessionEvent("Next", `Case${caseId}`, caseId);
     conditionalPushToBucket();
-    const newPageNumber = CaseId + 1;
-    history.push(`/survey/case${newPageNumber}`);
-  } else if (CaseId === casesCount) {
-    logSessionEvent("Next", `Case${casesCount}`, CaseId);
-    conditionalPushToBucket();
-    history.push(`/survey/summary-and-feedback`);
+
+    if (caseId < casesCount) {
+      const newCaseId = caseId + 1;
+      history.push(`/survey/case${newCaseId}`);
+    } else {
+      history.push(`/survey/summary-and-feedback`);
+    }
   } else {
     return;
   }

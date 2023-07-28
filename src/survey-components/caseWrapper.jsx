@@ -11,7 +11,7 @@ import { logSessionInfo } from "../utils/localStorage";
 
 const CaseWrapper = () => {
   const { casesCount } = useContext(AppContext);
-  const CaseId = useParams().id;
+  const caseId = useParams().caseId;
 
   const {
     REACT_APP_caseImage,
@@ -28,25 +28,25 @@ const CaseWrapper = () => {
   ]);
 
   const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-    [CaseId - 1].split("-")[0]
+    [caseId - 1].split("-")[0]
     .toLowerCase();
 
-  logSessionInfo(false, `case${CaseId}`);
+  logSessionInfo(false, `case${caseId}`);
 
   return prefix === "text" ? (
-    <CaseText totalCases={casesCount} caseId={CaseId} REACT_APP_caseText={REACT_APP_caseText} />
+    <CaseText totalCases={casesCount} caseId={caseId} REACT_APP_caseText={REACT_APP_caseText} />
   ) : prefix === "audio" ? (
-    <CaseAudio totalCases={casesCount} caseId={CaseId} REACT_APP_caseAudio={REACT_APP_caseAudio} />
+    <CaseAudio totalCases={casesCount} caseId={caseId} REACT_APP_caseAudio={REACT_APP_caseAudio} />
   ) : prefix === "hybrid" ? (
     <CaseHybrid
       totalCases={casesCount}
-      caseId={CaseId}
+      caseId={caseId}
       REACT_APP_caseHybrid={REACT_APP_caseHybrid}
     />
   ) : prefix === "video" ? (
-    <CaseVideo totalCases={casesCount} caseId={CaseId} REACT_APP_caseVideo={REACT_APP_caseVideo} />
+    <CaseVideo totalCases={casesCount} caseId={caseId} REACT_APP_caseVideo={REACT_APP_caseVideo} />
   ) : (
-    <CaseImage totalCases={casesCount} caseId={CaseId} REACT_APP_caseImage={REACT_APP_caseImage} />
+    <CaseImage totalCases={casesCount} caseId={caseId} REACT_APP_caseImage={REACT_APP_caseImage} />
   );
 };
 

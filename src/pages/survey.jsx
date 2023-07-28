@@ -30,7 +30,6 @@ import { useCustomHotkeys } from "../utils/survey-utils/useCustomHotkeys";
 const Survey = ({
   history,
   REACT_APP_registration,
-  REACT_APP_demonstration,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
@@ -71,8 +70,9 @@ const Survey = ({
     setCurrentDemonstrationPageIndex,
   } = useContext(AppContext);
 
-  // get the case id from the url and convert it to an integer
-  const CaseId = parseInt(useParams().id, 10);
+  // get the case id / demo id from the url and convert it to an integer
+  const caseId = parseInt(useParams().caseId, 10);
+  const demoId = parseInt(useParams().demoId, 10);
 
   const handleDialogClose = () => {
     setOpenDialog(false);
@@ -171,11 +171,8 @@ const Survey = ({
     handleNextButton({
       history,
       casesCount,
-      currentDemonstrationPageIndex,
-      setCurrentDemonstrationPageIndex,
-      setDemonstrationPageIndex,
-      REACT_APP_demonstration,
-      CaseId,
+      caseId,
+      demoId,
     });
   };
 
@@ -186,9 +183,9 @@ const Survey = ({
       currentDemonstrationPageIndex,
       setCurrentDemonstrationPageIndex,
       setDemonstrationPageIndex,
-      REACT_APP_demonstration,
       setOpenDialog,
-      CaseId,
+      caseId,
+      demoId,
     });
   };
 
@@ -323,13 +320,9 @@ const Survey = ({
         />
         <ProtectedRoute
           routeIsAllowed={routeIsAllowed}
-          path="/survey/demonstration"
+          path={`/survey/demonstration:demoId`}
           exact
-          render={() => (
-            <Demonstration
-              REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-            />
-          )}
+          render={() => <Demonstration />}
         />
         <Route
           path="/survey/registration"
@@ -356,7 +349,7 @@ const Survey = ({
         />
         <ProtectedRoute
           routeIsAllowed={routeIsAllowed}
-          path={`/survey/case:id`}
+          path={`/survey/case:caseId`}
           exact
           render={() => <CaseWrapper />}
         />
