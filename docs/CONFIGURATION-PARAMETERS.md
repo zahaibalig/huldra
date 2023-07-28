@@ -738,20 +738,23 @@ The `caseFeedbackQuestions` sub-block is used to configure the questions on the 
 
 ### Visual Overview
 
-<kbd>![CaseText](/src/assets/documentation/caseText.png)</kbd>
+<kbd>![CaseFeedback](/src/assets/documentation/caseFeedback.png)</kbd>
 
 ### Sample Config
 
+
 ```json
- "REACT_APP_caseFeedback": {
+  "REACT_APP_caseFeedback":  // you only need to provide this line if you are setting config.json. You do not need this line if you are configuring case-by-case, i.e., creating a `feedback-casename-config.json` under `/feedback-casename`
+  
+  {
     "caseFeedbackColumnLeft": {
       "label": "Case feedback label config",
       "text":"some text config here"
 
     },
     "caseFeedbackColumnRight": {
-      "title": "Config Feedback Answer",
-      "text": "Please select one of the config Feedback Text to place it on top. The top Feedback Feedback is your preferred option for this case."
+      "title": "Config Feedback Title",
+      "text": "Config Feedback Text"
     },
     "caseFeedbackQuestions": [
       {
@@ -767,16 +770,7 @@ The `caseFeedbackQuestions` sub-block is used to configure the questions on the 
         "label": "Example config question block.",
         "optional": false,
         "likertQuestions": [
-          {
-            "question": "Example likert question 1.",
-            "size": 10,
-            "label": "Likert_Question_1"
-          },
-          {
-            "question": "Example likert question 2.",
-            "size": 10,
-            "label": "Likert_Question_2"
-          },
+         
           {
             "question": "Example likert question 3.",
             "size": 10,
