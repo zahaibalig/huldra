@@ -14,7 +14,7 @@ import { toastError } from "../utils/toast";
 import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import ProtectedRoute from "../minor-components/protectedRoute";
-import { logSessionEvent } from "../utils/localStorage";
+import { logSessionEvent, logSessionInfo } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { handleFinalResponse } from "../utils/handleResponse";
@@ -138,10 +138,7 @@ const Survey = ({
 
     logSessionEvent("End survey", "Summary and feedback");
 
-    const SessionInfo = {
-      SessionComplete: true,
-    };
-    localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
+    logSessionInfo(true, "summary-and-feedback");
 
     handleFinalResponse();
 

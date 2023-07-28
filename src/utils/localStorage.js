@@ -10,7 +10,6 @@ const pushToLocalStorage = (content) => {
 
 const logSessionEvent = (ButtonType, Location) => {
   let SessionEvents = JSON.parse(localStorage.getItem("SessionEvents"));
-  let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo"));
 
   const Timestamp = generateTimeStamp();
   const tail = {
@@ -20,11 +19,10 @@ const logSessionEvent = (ButtonType, Location) => {
   };
   SessionEvents = SessionEvents !== null ? [...SessionEvents, tail] : new Array(tail);
   localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-  localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
 };
 
 const logSessionInfo = (SessionComplete, LastVisitedPage) => {
-  let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo"));
+  let SessionInfo = JSON.parse(localStorage.getItem("SessionInfo")) || {};
 
   SessionInfo.SessionComplete = SessionComplete;
   SessionInfo.LastVisitedPage = LastVisitedPage;
