@@ -8,6 +8,7 @@ import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useParams } from "react-router-dom";
 import { logSessionInfo } from "../utils/localStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const CaseWrapper = () => {
   const { casesCount } = useContext(AppContext);
@@ -32,6 +33,7 @@ const CaseWrapper = () => {
     .toLowerCase();
 
   logSessionInfo(false, `case${caseId}`, caseId);
+  conditionalPushToBucket();
 
   return prefix === "text" ? (
     <CaseText totalCases={casesCount} caseId={caseId} REACT_APP_caseText={REACT_APP_caseText} />

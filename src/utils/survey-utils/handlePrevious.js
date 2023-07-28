@@ -1,5 +1,4 @@
 import { logSessionEvent } from "../localStorage";
-import { conditionalPushToBucket } from "../handleResponse";
 import { fetchConfigVariable } from "../handleConfigVars";
 
 const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demoId }) => {
@@ -7,11 +6,9 @@ const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demo
 
   if (history.location.pathname === "/survey/summary-and-feedback") {
     logSessionEvent("Previous", `Summary and feedback`);
-    conditionalPushToBucket();
     history.push(`/survey/case${casesCount}`);
   } else if (history.location.pathname.startsWith("/survey/case")) {
     logSessionEvent("Previous", `Case${caseId}`);
-    conditionalPushToBucket();
     if (caseId > 1) {
       const newCaseId = caseId - 1;
       history.push(`/survey/case${newCaseId}`);
@@ -21,7 +18,6 @@ const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demo
     }
   } else if (history.location.pathname.startsWith("/survey/demonstration")) {
     logSessionEvent("Previous", `Demonstration${demoId}`);
-    conditionalPushToBucket();
     if (demoId > 1) {
       const newDemoId = demoId - 1;
       history.push(`/survey/demonstration${newDemoId}`);

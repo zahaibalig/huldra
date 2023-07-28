@@ -1,10 +1,8 @@
 import { logSessionEvent } from "../localStorage";
-import { conditionalPushToBucket } from "../handleResponse";
 import { fetchConfigVariable } from "../handleConfigVars";
 
 const handleNextButton = ({ history, casesCount, caseId, demoId }) => {
   const REACT_APP_demonstration = fetchConfigVariable("REACT_APP_demonstration");
-  conditionalPushToBucket();
 
   if (history.location.pathname === "/survey/background") {
     logSessionEvent("Next", "Background");

@@ -97,7 +97,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
-  }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
+  }, [history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);

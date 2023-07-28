@@ -4,6 +4,7 @@ import GenericBackgroundSection from "../minor-components/genericBackgroundSecti
 import { fetchConfigVariable } from "../utils/handleConfigVars";
 import { useHistory } from "react-router-dom";
 import { logSessionInfo } from "../utils/localStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const Background = () => {
   const REACT_APP_background = fetchConfigVariable("REACT_APP_background");
@@ -12,6 +13,7 @@ const Background = () => {
   const [finishStatus, setfinishStatus] = useState(false);
 
   logSessionInfo(false, "background");
+  conditionalPushToBucket();
 
   const onBackButtonEvent = useCallback(
     (e) => {
