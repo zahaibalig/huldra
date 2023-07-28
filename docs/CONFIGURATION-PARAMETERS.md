@@ -694,6 +694,112 @@ The `caseTextColumnRight` sub-block is used to configure the right column, and c
   },
 ```
 
+## REACT_APP_caseFeedback
+
+The caseFeedback page is a main questionnaire page which displays a _caseFeedback_ type survey question.
+
+<!--- where an asset is diplayed with a feedback form to the user -->
+
+All case pages identified as being of type _caseFeedback_ are configured using the `REACT_APP_caseFeedback` block in the `config.json` file, or the cases can be individually configured by creating a `feedback-casename-config.json` under `/feedback-casename`. If there is no feedback-casename-config.json under /feedback-casename, the case will be rendered according to the `REACT_APP_caseFeedback` block in the `config.json`.
+
+### Parameters
+
+The `REACT_APP_caseFeedback` block contains 3 sub-blocks.
+
+The `caseFeedbackColumnLeft` sub-block is used to configure the left column, and contains the following elements.
+
+- `label`: This element is used to configure the heading on the left column of case feedback page.
+- `text`: This element is used to configure the text under the heading on the left column of case feedback page.
+
+The `caseFeedbackColumnRight` sub-block is used to configure the right column, and contains the following elements.
+
+- `title`: This element is used to configure the heading on the right column of case feedback page.
+- `text`: This element is used to configure the text description on the right column of case feedback page.
+
+The `caseFeedbackQuestions` sub-block is used to configure the questions on the right column.  It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `caseFeedbackQuestions` can contain as many questions as desired, where each question is configured using the following elements.
+
+  - `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
+  - `id`: The unique identifier of the question. Can be understood as question number.
+  - `label`: The question can be defined/written with this label.
+  - `optional`: A bool value. When set to false, the question becomes mandatory to answer.
+  - `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
+  - `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
+  - `commentBoxLabel`[^2]: The heading of the comment box is defined by this field.
+  - `showToolTip`[^3]
+  - `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
+    - `question`: As the name suggest the questions is defined here.
+    - `size`: The size of the likert scale, corresponding to the question is defined by this element.
+    - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
+
+[^2]: Only for multiple choice type questions.
+[^3]: Only for text type questions.
+[^4]: Only for likert type questions.
+
+
+### Visual Overview
+
+<kbd>![CaseText](/src/assets/documentation/caseText.png)</kbd>
+
+### Sample Config
+
+```json
+ "REACT_APP_caseFeedback": {
+    "caseFeedbackColumnLeft": {
+      "label": "Case feedback label config",
+      "text":"some text config here"
+
+    },
+    "caseFeedbackColumnRight": {
+      "title": "Config Feedback Answer",
+      "text": "Please select one of the config Feedback Text to place it on top. The top Feedback Feedback is your preferred option for this case."
+    },
+    "caseFeedbackQuestions": [
+      {
+        "questionType": "text",
+        "id": "Q1",
+        "label": "Example config question.",
+        "optional": false,
+        "showTooltip": false
+      },
+      {
+        "questionType": "likert",
+        "id": "Q2",
+        "label": "Example config question block.",
+        "optional": false,
+        "likertQuestions": [
+          {
+            "question": "Example likert question 1.",
+            "size": 10,
+            "label": "Likert_Question_1"
+          },
+          {
+            "question": "Example likert question 2.",
+            "size": 10,
+            "label": "Likert_Question_2"
+          },
+          {
+            "question": "Example likert question 3.",
+            "size": 10,
+            "label": "Likert_Question_3"
+          }
+        ]
+      },
+      {
+        "questionType": "mc",
+        "id": "Q3",
+        "label": "Example multiple choice question.",
+        "optional": false,
+        "choices": ["Example choice 1.", "Example choice 2."],
+        "hasCommentBox": true,
+        "commentBoxLabel": "Comment to the multiple choice question Q3."
+      }
+    ]
+  
+
+  }
+```
+
+
 ## REACT_APP_summaryAndFeedback
 
 The summary and feedback page used to display the summary of the questions (and optionally responses) in the survey, and a customizable feedback form.
