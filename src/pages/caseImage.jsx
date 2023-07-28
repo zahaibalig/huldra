@@ -8,7 +8,6 @@ import CaseImageColumnleft from "../major-components/caseImageColumnLeft";
 import CaseImageColumnRight from "../major-components/caseImageColumnRight";
 import Modal from "@mui/material/Modal";
 import Popup from "../minor-components/popup";
-import { useLocation } from "react-router-dom";
 import "../assets/css/caseImage.css";
 import "../assets/css/common.css";
 import getConfig from "../utils/handleStorageConfig";
@@ -58,21 +57,6 @@ const CaseImage = ({ caseId, totalCases, REACT_APP_caseImage }) => {
     originalThumbnail = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
     originalHighRes = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.png`;
   }
-
-  const useLocationChange = (action) => {
-    const location = useLocation();
-    React.useEffect(() => {
-      action(location);
-    }, [location, action]);
-  };
-
-  useLocationChange((location) => {
-    setOpenChoiceA(false);
-    setOpenedChoiceA(false);
-
-    setOpenChoiceB(false);
-    setOpenedChoiceB(false);
-  });
 
   useEffect(() => {
     setDisableNextButton(true);

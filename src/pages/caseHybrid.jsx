@@ -9,13 +9,7 @@ import "../assets/css/caseHybrid.css";
 import { toastInfo } from "../utils/toast";
 import getConfig from "../utils/handleStorageConfig";
 
-const CaseHybrid = ({
-  caseId = 5,
-  totalCases,
-
-  REACT_APP_outputJson,
-  REACT_APP_caseHybrid,
-}) => {
+const CaseHybrid = ({ caseId, totalCases, REACT_APP_caseHybrid }) => {
   const [subscribed, setSubscribed] = useState(false);
   const [openedChoiceA, setOpenedChoiceA] = useState(false);
   const [openedChoiceB, setOpenedChoiceB] = useState(false);
