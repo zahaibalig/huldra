@@ -11,7 +11,6 @@ export const AppProvider = (props) => {
 
   const [disableNextButton, setDisableNextButton] = useState(false);
   const [casesCount, setCasesCount] = useState(0);
-  const [currentDemonstrationPageIndex, setCurrentDemonstrationPageIndex] = useState(0);
 
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
 
@@ -23,8 +22,6 @@ export const AppProvider = (props) => {
     REACT_APP_general,
     setCasesCount,
     getCasesCount,
-    currentDemonstrationPageIndex,
-    setCurrentDemonstrationPageIndex,
   };
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
 };

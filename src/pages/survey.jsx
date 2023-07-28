@@ -39,8 +39,6 @@ const Survey = ({
   const [disableRegistration] = useState(false);
   const [routeIsAllowed, setRouteIsAllowed] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
-  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
-  useState(0);
 
   // states for the registration form
   const [name, setName] = useState("");
@@ -66,8 +64,6 @@ const Survey = ({
     setCasesCount,
     REACT_APP_general,
     getCasesCount,
-    currentDemonstrationPageIndex,
-    setCurrentDemonstrationPageIndex,
   } = useContext(AppContext);
 
   // get the case id / demo id from the url and convert it to an integer
@@ -180,9 +176,6 @@ const Survey = ({
     handlePreviousButton({
       history,
       casesCount,
-      currentDemonstrationPageIndex,
-      setCurrentDemonstrationPageIndex,
-      setDemonstrationPageIndex,
       setOpenDialog,
       caseId,
       demoId,

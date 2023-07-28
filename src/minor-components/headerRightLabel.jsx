@@ -19,7 +19,7 @@ const HeaderRightLabel = () => {
            REACT_APP_general["header"]["labelBackground"]
          }
 				`}</span>
-        ) : location.pathname === "/survey/demonstration" ? (
+        ) : location.pathname.startsWith("/survey/demonstration") ? (
           <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
 				${
           REACT_APP_general &&

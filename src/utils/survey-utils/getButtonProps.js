@@ -38,7 +38,7 @@ const getButtonProps = (
     rightButtonClassName = "btn control";
   } else if (
     history.location.pathname === "/survey/background" ||
-    history.location.pathname === "/survey/demonstration"
+    history.location.pathname.startsWith("/survey/demonstration")
   ) {
     rightButtonLabel = "Next";
     onLeftButtonClick = () => handlePrevious();

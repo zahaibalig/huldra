@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
