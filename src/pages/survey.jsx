@@ -199,15 +199,15 @@ const Survey = ({
     await handleGetParticipantId(e, formInfo, history, Version, setRouteIsAllowed);
   };
 
-  const footerButtonProps = getButtonProps(
+  const footerButtonProps = getButtonProps({
     history,
     getParticipantId,
     handlePrevious,
     handleNext,
     handleEndSurvey,
     disableNextButton,
-    REACT_APP_general
-  );
+    REACT_APP_general,
+  });
 
   useCustomHotkeys({
     disableNextButton,
@@ -225,6 +225,7 @@ const Survey = ({
     participantId,
     history,
     setRouteIsAllowed,
+    getParticipantId,
   });
 
   return (

@@ -1,23 +1,24 @@
 /**
  * generate the props for the left and right buttons, e.g. the label, onClick function, class name, etc.
- * @param {object} history - The history object from react-router-dom
- * @param {function} getParticipantId - The function that gets the participant id
- * @param {function} handlePrevious - The function that handles the previous button click event
- * @param {function} handleNext - The function that handles the next button click event
- * @param {function} handleEndSurvey - The function that handles the end survey button click event
- * @param {boolean} disableNextButton - True if the next button should be disabled, false otherwise
- * @param {object} REACT_APP_general - The general configuration object
+ * @param {object} params - The parameters object
+ * @param {object} params.history - the history object from react-router-dom
+ * @param {function} params.getParticipantId - The function that gets the participant id
+ * @param {function} params.handlePrevious - The function that handles the previous button click event
+ * @param {function} params.handleNext - The function that handles the next button click event
+ * @param {function} params.handleEndSurvey - The function that handles the end survey button click event
+ * @param {boolean} params.disableNextButton - True if the next button should be disabled, false otherwise
+ * @param {object} params.REACT_APP_general - The general configuration object
  * @returns {object} An object containing the props for the left and right buttons
  */
-const getButtonProps = (
+const getButtonProps = ({
   history,
   getParticipantId,
   handlePrevious,
   handleNext,
   handleEndSurvey,
   disableNextButton,
-  REACT_APP_general
-) => {
+  REACT_APP_general,
+}) => {
   const leftButtonLabel = "Previous";
   let rightButtonLabel;
   let onLeftButtonClick;

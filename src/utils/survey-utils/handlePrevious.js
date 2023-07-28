@@ -30,8 +30,6 @@ const handlePreviousButton = ({ history, casesCount, setOpenDialog, caseId, demo
     }
   } else if (history.location.pathname === "/survey/background") {
     setOpenDialog(true);
-  } else if (history.location.pathname === "/survey/registration") {
-    history.push(`/`);
   } else {
     return;
   }

@@ -19,6 +19,7 @@ const useCustomHotkeys = ({
   participantId,
   history,
   setRouteIsAllowed,
+  getParticipantId,
 }) => {
   const location = useLocation();
 
@@ -46,6 +47,8 @@ const useCustomHotkeys = ({
     } else {
       if (location.pathname === "/survey/home") {
         handleLogin(participantId, history, setRouteIsAllowed);
+      } else if (location.pathname === "/survey/registration") {
+        getParticipantId();
       } else {
         handleNext();
       }
