@@ -1,6 +1,7 @@
 import useHotkeys from "@reecelucas/react-use-hotkeys";
 import { toastInfo } from "../toast";
 import { useLocation } from "react-router-dom";
+import { handleLogin } from "../handleLogin";
 
 const useCustomHotkeys = ({
   disableNextButton,
@@ -15,6 +16,9 @@ const useCustomHotkeys = ({
   setComments,
   setTermsOfUse,
   setOpenEndDialog,
+  participantId,
+  history,
+  setRouteIsAllowed,
 }) => {
   const location = useLocation();
 
@@ -40,7 +44,11 @@ const useCustomHotkeys = ({
     if (disableNextButton === true) {
       return;
     } else {
-      handleNext();
+      if (location.pathname === "/survey/home") {
+        handleLogin(participantId, history, setRouteIsAllowed);
+      } else {
+        handleNext();
+      }
     }
   });
 

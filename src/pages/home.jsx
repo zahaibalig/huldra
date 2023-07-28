@@ -5,12 +5,7 @@ import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useHistory } from "react-router-dom";
 import { handleLogin } from "../utils/handleLogin";
 
-const Home = ({ setRouteIsAllowed }) => {
-  const savedParticipantId =
-    JSON.parse(localStorage.getItem("ParticipantInfo"))?.ParticipantId || "";
-
-  const [participantId, setParticipantId] = useState(savedParticipantId);
-
+const Home = ({ setRouteIsAllowed, participantId, setParticipantId }) => {
   const { REACT_APP_general, REACT_APP_home } = fetchConfigVariablesBatch([
     "REACT_APP_general",
     "REACT_APP_home",

@@ -55,6 +55,11 @@ const Survey = ({
   const [termsOfUse, setTermsOfUse] = useState(false);
   const [notifications, setNotifications] = useState(false);
 
+  // state for the home page
+  const savedParticipantId =
+    JSON.parse(localStorage.getItem("ParticipantInfo"))?.ParticipantId || "";
+  const [participantId, setParticipantId] = useState(savedParticipantId);
+
   const {
     disableNextButton,
     setDisableNextButton,
@@ -227,6 +232,9 @@ const Survey = ({
     setComments,
     setTermsOfUse,
     setOpenEndDialog,
+    participantId,
+    history,
+    setRouteIsAllowed,
   });
 
   return (
@@ -353,7 +361,11 @@ const Survey = ({
           render={() => <CaseWrapper />}
         />
         <Route path="/survey/home">
-          <Home setRouteIsAllowed={setRouteIsAllowed} />
+          <Home
+            setRouteIsAllowed={setRouteIsAllowed}
+            participantId={participantId}
+            setParticipantId={setParticipantId}
+          />
         </Route>
       </Switch>
 

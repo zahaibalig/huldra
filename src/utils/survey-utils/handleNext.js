@@ -10,9 +10,6 @@ const handleNextButton = ({
   REACT_APP_demonstration,
   CaseId,
 }) => {
-  // if (history.location.pathname === "/survey/home") {
-  //   console.log("handleNextButton: history.location.pathname === /survey/home");
-  // } else
   if (history.location.pathname === "/survey/background") {
     logSessionEvent("Next", "Background", 0);
     conditionalPushToBucket();
