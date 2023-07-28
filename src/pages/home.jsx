@@ -1,56 +1,24 @@
-import { useState, useEffect } from "react";
-import { toastError } from "../utils/toast";
-import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
+import { useState } from "react";
 import GenericButton from "../minor-components/genericButton";
 import "../assets/css/home.css";
-import { conditionalPushToBucket, fetchResponse } from "../utils/handleResponse";
-import getConfig, { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useHistory } from "react-router-dom";
+import { handleLogin } from "../utils/handleLogin";
 
 const Home = ({ setRouteIsAllowed }) => {
-  const [participantId, setParticipantId] = useState("");
+  const savedParticipantId =
+    JSON.parse(localStorage.getItem("ParticipantInfo"))?.ParticipantId || "";
+
+  const [participantId, setParticipantId] = useState(savedParticipantId);
+
   const { REACT_APP_general, REACT_APP_home } = fetchConfigVariablesBatch([
     "REACT_APP_general",
     "REACT_APP_home",
   ]);
   const history = useHistory();
 
-  useEffect(() => {
-    if (localStorage.getItem("ParticipantInfo")) {
-      const data = JSON.parse(localStorage.getItem("ParticipantInfo"));
-      setParticipantId(data.ParticipantId);
-    }
-  }, []);
-
   const handleRedirectToRegistration = () => {
     history.push("/survey/registration");
-  };
-
-  const handleLogin = async () => {
-    conditionalInitializeFirebase();
-
-    const response = await fetchResponse(participantId);
-    if (!response) {
-      toastError(`The participant ID you entered is invalid.`, "top-center", "error");
-      return;
-    } else if (response.SessionInfo.SessionComplete) {
-      toastError(`The participant ID you entered has completed the survey.`, "top-center", "error");
-    } else {
-      setRouteIsAllowed(true);
-
-      // if fetching from firebase, update local storage with the response from firebase
-      if (getConfig().responsesStorageType === "firebase") {
-        pushToLocalStorage(new Array(response));
-      }
-
-      logSessionEvent("Start survey", "Login page", 1);
-      conditionalPushToBucket();
-
-      // go to the last page the participant was on
-      const LastVisitedPage = response.SessionInfo.LastVisitedPage;
-      history.push(`/survey/${LastVisitedPage}`);
-    }
   };
 
   return (
@@ -73,12 +41,14 @@ const Home = ({ setRouteIsAllowed }) => {
               type="text"
               name="login"
               id="login"
-              defaultValue={participantId}
+              value={participantId}
               placeholder="Participant ID"
             />
           </div>
           <GenericButton
-            onClick={handleLogin}
+            onClick={() => {
+              handleLogin(participantId, history, setRouteIsAllowed);
+            }}
             hasIcon={true}
             className={"btn"}
             id="start-survey-button"
