@@ -316,7 +316,7 @@
     },
     "storage": {
       "assetsStorageType": "local",
-      "responsesStorageType": "firebase"
+      "responsesStorageType": "download"
     },
     "outputJson": [
       "SoftwareInfo",
