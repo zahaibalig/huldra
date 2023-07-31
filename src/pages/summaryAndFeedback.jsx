@@ -3,8 +3,13 @@ import Summary from "../major-components/summary";
 import FeedbackForm from "../major-components/feedbackForm";
 import { generateFeedbackFormValidationScheme } from "../utils/inputValidation";
 import "../assets/css/summaryAndFeedback.css";
+import { logSessionInfo } from "../utils/localStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const SummaryAndFeedback = ({ REACT_APP_summaryAndFeedback }) => {
+  logSessionInfo(false, "summary-and-feedback");
+  conditionalPushToBucket();
+
   generateFeedbackFormValidationScheme(
     REACT_APP_summaryAndFeedback["feedbackForm"].feedbackFormQuestions
   );

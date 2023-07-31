@@ -1,13 +1,17 @@
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
+import { useLocation, useParams } from "react-router-dom";
 
-const HeaderRightLabel = ({ history }) => {
-  const { PageLocator, casesCount, REACT_APP_general } = useContext(AppContext);
+const HeaderRightLabel = () => {
+  const { casesCount, REACT_APP_general } = useContext(AppContext);
+
+  const location = useLocation();
+  const caseId = useParams().caseId;
 
   return (
-    history.location.pathname !== "/survey/end" && (
+    location.pathname !== "/survey/end" && (
       <div className="survey-header">
-        {history.location.pathname === "/survey/background" ? (
+        {location.pathname === "/survey/background" ? (
           <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
 				 ${
            REACT_APP_general &&
@@ -15,27 +19,27 @@ const HeaderRightLabel = ({ history }) => {
            REACT_APP_general["header"]["labelBackground"]
          }
 				`}</span>
-        ) : history.location.pathname === "/survey/demonstration" ? (
+        ) : location.pathname.startsWith("/survey/demonstration") ? (
           <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
 				${
           REACT_APP_general &&
           REACT_APP_general["header"] &&
           REACT_APP_general["header"]["labelDemonstration"]
         }`}</span>
-        ) : history.location.pathname === "/survey/summary-and-feedback" ? (
+        ) : location.pathname === "/survey/summary-and-feedback" ? (
           <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
 				${
           REACT_APP_general &&
           REACT_APP_general["header"] &&
           REACT_APP_general["header"]["labelSummaryAndFeedback"]
         }`}</span>
-        ) : history.location.pathname.includes("case") ? (
+        ) : location.pathname.includes("case") ? (
           <span>{`${REACT_APP_general && REACT_APP_general["appName"]} |
 				${
           REACT_APP_general &&
           REACT_APP_general["header"] &&
           REACT_APP_general["header"]["labelCase"]
-        } | Case ${PageLocator}/${casesCount}`}</span>
+        } | Case ${caseId}/${casesCount}`}</span>
         ) : (
           <span></span>
         )}

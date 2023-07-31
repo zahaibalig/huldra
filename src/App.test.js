@@ -31,9 +31,6 @@ describe("if window.innerWidth = 1200", () => {
     providerProps = {
       disableNextButton: [],
       setDisableNextButton: [],
-      getCurrentPageIndex: [],
-      PageLocator: [],
-      setPageLocator: [],
       firebaseConfig: [],
       rootDirectory: [],
       clientUid: [],

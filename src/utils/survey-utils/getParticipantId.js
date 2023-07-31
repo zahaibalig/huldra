@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { fetchConfigVariable } from "../handleConfigVars";
 import { generateTimeStamp } from "../timestamp";
 import { getOs, browserName, browserVersion } from "../clientMetadata";
+import { logSessionInfo } from "../localStorage";
 
 /**
  * handles the "Get participant ID" button click event.
@@ -102,15 +103,12 @@ const handleGetParticipantId = async (e, formInfo, history, Version, setRouteIsA
           Timestamp: generateTimeStamp(),
         },
       ];
-      const SessionInfo = {
-        SessionComplete: false,
-      };
 
       localStorage.setItem("ParticipantInfo", JSON.stringify(ParticipantInfo));
       setRouteIsAllowed(true);
 
       localStorage.setItem("SessionEvents", JSON.stringify(SessionEvents));
-      localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
+      logSessionInfo("false", "registration");
       localStorage.setItem("SoftwareInfo", JSON.stringify(SoftwareInfo));
       localStorage.setItem("CaseOrder", JSON.stringify(CaseOrder));
 

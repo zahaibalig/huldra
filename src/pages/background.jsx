@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "../assets/css/background.css";
 import GenericBackgroundSection from "../minor-components/genericBackgroundSection";
-const Background = ({ history, REACT_APP_background }) => {
+import { fetchConfigVariable } from "../utils/handleConfigVars";
+import { useHistory } from "react-router-dom";
+import { logSessionInfo } from "../utils/localStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
+
+const Background = () => {
+  const REACT_APP_background = fetchConfigVariable("REACT_APP_background");
+  const history = useHistory();
+
   const [finishStatus, setfinishStatus] = useState(false);
+
+  logSessionInfo(false, "background");
+  conditionalPushToBucket();
 
   const onBackButtonEvent = useCallback(
     (e) => {

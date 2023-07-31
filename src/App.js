@@ -16,14 +16,9 @@ const App = () => {
         "REACT_APP_background",
         "REACT_APP_demonstration",
         "REACT_APP_registration",
-        "REACT_APP_caseImage",
-        "REACT_APP_caseVideo",
-        "REACT_APP_caseText",
-        "REACT_APP_caseAudio",
         "REACT_APP_summaryAndFeedback",
         "REACT_APP_end",
         "REACT_APP_survey",
-        "REACT_APP_caseHybrid",
         "REACT_APP_general",
       ])
     );
@@ -64,13 +59,12 @@ const App = () => {
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_background={configuration["REACT_APP_background"]}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
               />
             )}
           />
           <Route
-            path="/survey/demonstration"
+            path="/survey/demonstration:demoId"
             render={(props) => (
               <Survey
                 {...props}
@@ -79,15 +73,10 @@ const App = () => {
             )}
           />
           <Route
-            path="/survey/case:id"
+            path="/survey/case:caseId"
             render={(props) => (
               <Survey
                 {...props}
-                REACT_APP_caseText={configuration["REACT_APP_caseText"]}
-                REACT_APP_caseImage={configuration["REACT_APP_caseImage"]}
-                REACT_APP_caseVideo={configuration["REACT_APP_caseVideo"]}
-                REACT_APP_caseAudio={configuration["REACT_APP_caseAudio"]}
-                REACT_APP_caseHybrid={configuration["REACT_APP_caseHybrid"]}
                 REACT_APP_demonstration={configuration["REACT_APP_demonstration"]}
               />
             )}

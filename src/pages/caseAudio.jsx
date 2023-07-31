@@ -11,7 +11,6 @@ const CaseAudio = ({ REACT_APP_caseAudio, caseId, totalCases }) => {
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   useEffect(() => {
-    localStorage.setItem("PageLocator", caseId);
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
     if (CaseStudyAnswers && CaseStudyAnswers[caseId]) {
       setDisableNextButton(false);

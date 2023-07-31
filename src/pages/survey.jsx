@@ -6,7 +6,7 @@ import Background from "./background";
 import Demonstration from "./demonstration";
 import End from "./end";
 import Footer from "../minor-components/footer";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useParams } from "react-router-dom";
 import { AppContext } from "../context/appContext";
 import { useBeforeunload } from "react-beforeunload";
 import { ToastContainer } from "react-toastify";
@@ -14,7 +14,7 @@ import { toastError } from "../utils/toast";
 import { validateFeedbackForm } from "../utils/inputValidation";
 import version from "../VERSION.md";
 import ProtectedRoute from "../minor-components/protectedRoute";
-import { logSessionEvent } from "../utils/localStorage";
+import { logSessionEvent, logSessionInfo } from "../utils/localStorage";
 import Modal from "@mui/material/Modal";
 import ConfirmationDialog from "../minor-components/confirmationDialog";
 import { handleFinalResponse } from "../utils/handleResponse";
@@ -30,8 +30,6 @@ import { useCustomHotkeys } from "../utils/survey-utils/useCustomHotkeys";
 const Survey = ({
   history,
   REACT_APP_registration,
-  REACT_APP_background,
-  REACT_APP_demonstration,
   REACT_APP_summaryAndFeedback,
   REACT_APP_end,
 }) => {
@@ -41,8 +39,6 @@ const Survey = ({
   const [disableRegistration] = useState(false);
   const [routeIsAllowed, setRouteIsAllowed] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
-  const [demonstrationPageIndex, setDemonstrationPageIndex] = useState(0);
-  useState(0);
 
   // states for the registration form
   const [name, setName] = useState("");
@@ -56,19 +52,24 @@ const Survey = ({
   const [termsOfUse, setTermsOfUse] = useState(false);
   const [notifications, setNotifications] = useState(false);
 
+  // state for the home page
+  const savedParticipantId =
+    JSON.parse(localStorage.getItem("ParticipantInfo"))?.ParticipantId || "";
+  const [participantId, setParticipantId] = useState(savedParticipantId);
+
   const {
-    PageLocator,
     disableNextButton,
     setDisableNextButton,
-    getCurrentPageIndex,
-    setPageLocator,
     casesCount,
     setCasesCount,
     REACT_APP_general,
     getCasesCount,
-    currentDemonstrationPageIndex,
-    setCurrentDemonstrationPageIndex,
   } = useContext(AppContext);
+
+  // get the case id / demo id from the url and convert it to an integer
+  const caseId = parseInt(useParams().caseId, 10);
+  const demoId = parseInt(useParams().demoId, 10);
+
   const handleDialogClose = () => {
     setOpenDialog(false);
   };
@@ -96,7 +97,7 @@ const Survey = ({
         setDisableNextButton(false);
       }
     }
-  }, [disableNextButton, history.location.pathname, REACT_APP_general, setDisableNextButton]);
+  }, [history.location.pathname, REACT_APP_general, setDisableNextButton]);
 
   const onActiveYearsChange = (e) => {
     setActiveYears(e.currentTarget.value);
@@ -136,13 +137,9 @@ const Survey = ({
   const submitSurvey = () => {
     setOpenEndDialog(false);
 
-    logSessionEvent("End survey", "Summary and feedback", PageLocator);
+    logSessionEvent("End survey", "Summary and feedback");
 
-    const SessionInfo = {
-      PageLocator: PageLocator,
-      SessionComplete: true,
-    };
-    localStorage.setItem("SessionInfo", JSON.stringify(SessionInfo));
+    logSessionInfo(true, "summary-and-feedback");
 
     handleFinalResponse();
 
@@ -167,32 +164,22 @@ const Survey = ({
   };
 
   const handleNext = () => {
-    handleNextButton(
+    handleNextButton({
       history,
-      getCurrentPageIndex,
-      PageLocator,
-      setPageLocator,
       casesCount,
-      currentDemonstrationPageIndex,
-      setCurrentDemonstrationPageIndex,
-      setDemonstrationPageIndex,
-      REACT_APP_demonstration
-    );
+      caseId,
+      demoId,
+    });
   };
 
   const handlePrevious = () => {
-    handlePreviousButton(
+    handlePreviousButton({
       history,
-      getCurrentPageIndex,
-      PageLocator,
-      setPageLocator,
       casesCount,
-      currentDemonstrationPageIndex,
-      setCurrentDemonstrationPageIndex,
-      setDemonstrationPageIndex,
-      REACT_APP_demonstration,
-      setOpenDialog
-    );
+      setOpenDialog,
+      caseId,
+      demoId,
+    });
   };
 
   const getParticipantId = async (e) => {
@@ -212,15 +199,15 @@ const Survey = ({
     await handleGetParticipantId(e, formInfo, history, Version, setRouteIsAllowed);
   };
 
-  const footerButtonProps = getButtonProps(
+  const footerButtonProps = getButtonProps({
     history,
     getParticipantId,
     handlePrevious,
     handleNext,
     handleEndSurvey,
     disableNextButton,
-    REACT_APP_general
-  );
+    REACT_APP_general,
+  });
 
   useCustomHotkeys({
     disableNextButton,
@@ -235,6 +222,10 @@ const Survey = ({
     setComments,
     setTermsOfUse,
     setOpenEndDialog,
+    participantId,
+    history,
+    setRouteIsAllowed,
+    getParticipantId,
   });
 
   return (
@@ -319,24 +310,13 @@ const Survey = ({
           routeIsAllowed={routeIsAllowed}
           path="/survey/background"
           exact
-          render={(props) => (
-            <Background
-              {...props}
-              totalPages={casesCount}
-              REACT_APP_background={REACT_APP_background}
-            />
-          )}
+          render={() => <Background />}
         />
         <ProtectedRoute
           routeIsAllowed={routeIsAllowed}
-          path="/survey/demonstration"
+          path={`/survey/demonstration:demoId`}
           exact
-          render={(props) => (
-            <Demonstration
-              {...props}
-              REACT_APP_demonstration={REACT_APP_demonstration[demonstrationPageIndex]}
-            />
-          )}
+          render={() => <Demonstration />}
         />
         <Route
           path="/survey/registration"
@@ -363,14 +343,16 @@ const Survey = ({
         />
         <ProtectedRoute
           routeIsAllowed={routeIsAllowed}
-          path={`/survey/case:id`}
+          path={`/survey/case:caseId`}
           exact
-          render={(props) => {
-            return <CaseWrapper {...props} />;
-          }}
+          render={() => <CaseWrapper />}
         />
         <Route path="/survey/home">
-          <Home setRouteIsAllowed={setRouteIsAllowed} />
+          <Home
+            setRouteIsAllowed={setRouteIsAllowed}
+            participantId={participantId}
+            setParticipantId={setParticipantId}
+          />
         </Route>
       </Switch>
 

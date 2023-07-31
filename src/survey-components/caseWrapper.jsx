@@ -6,9 +6,13 @@ import CaseText from "../pages/caseText";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
+import { useParams } from "react-router-dom";
+import { logSessionInfo } from "../utils/localStorage";
+import { conditionalPushToBucket } from "../utils/handleResponse";
 
-const CaseWrapper = (props) => {
-  const { PageLocator, casesCount } = useContext(AppContext);
+const CaseWrapper = () => {
+  const { casesCount } = useContext(AppContext);
+  const caseId = useParams().caseId;
 
   const {
     REACT_APP_caseImage,
@@ -24,45 +28,27 @@ const CaseWrapper = (props) => {
     "REACT_APP_caseText",
   ]);
 
-  let prefix = JSON.parse(localStorage.getItem("CaseOrder"))
-    [PageLocator - 1].split("-")[0]
+  const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
+    [caseId - 1].split("-")[0]
     .toLowerCase();
 
+  logSessionInfo(false, `case${caseId}`, caseId);
+  conditionalPushToBucket();
+
   return prefix === "text" ? (
-    <CaseText
-      {...props}
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseText={REACT_APP_caseText}
-    />
+    <CaseText totalCases={casesCount} caseId={caseId} REACT_APP_caseText={REACT_APP_caseText} />
   ) : prefix === "audio" ? (
-    <CaseAudio
-      {...props}
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseAudio={REACT_APP_caseAudio}
-    />
+    <CaseAudio totalCases={casesCount} caseId={caseId} REACT_APP_caseAudio={REACT_APP_caseAudio} />
   ) : prefix === "hybrid" ? (
     <CaseHybrid
-      {...props}
       totalCases={casesCount}
-      caseId={PageLocator}
+      caseId={caseId}
       REACT_APP_caseHybrid={REACT_APP_caseHybrid}
     />
   ) : prefix === "video" ? (
-    <CaseVideo
-      {...props}
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseVideo={REACT_APP_caseVideo}
-    />
+    <CaseVideo totalCases={casesCount} caseId={caseId} REACT_APP_caseVideo={REACT_APP_caseVideo} />
   ) : (
-    <CaseImage
-      {...props}
-      totalCases={casesCount}
-      caseId={PageLocator}
-      REACT_APP_caseImage={REACT_APP_caseImage}
-    />
+    <CaseImage totalCases={casesCount} caseId={caseId} REACT_APP_caseImage={REACT_APP_caseImage} />
   );
 };
 
