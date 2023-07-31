@@ -33,7 +33,7 @@
 3. Check and update `VERSION.md`
 4. Check and update `CHANGELOG.md`
 5. Update internal notes on dependencies and/or installation and/or configuration if necessary
-6. Check Github actions and see if all workflows are completed successfully (if any workflow fails, resolve the errors and push again)
+6. Check GitHub actions and see if all workflows are completed successfully (if any workflow fails, resolve the errors and push again)
 7. Confirm that both local and cloud deployment works for the `dev` branch
 8. [If source branch is `main`] Merge `dev` into `main`[^3]
 9. Make the release from the source branch using an appropriate version tag
