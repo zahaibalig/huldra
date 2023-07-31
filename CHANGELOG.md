@@ -5,6 +5,16 @@ All notable changes to the `dev` branch will be documented in this file, per rel
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0-30] - 2023-07-31
+
+### Changed
+
+- Refactor `survey.jsx` ([#78](https://github.com/simulamet-host/huldra-internal/issues/78))
+- Clean up page routing ([#125](https://github.com/simulamet-host/huldra-internal/issues/125))
+- Change default values of `caseImageViewDetailsMandatory` and `caseHybridViewDetailsMandatory` to false ([#129](https://github.com/simulamet-host/huldra-internal/issues/129))
+- Update assets ([#285](https://github.com/simulamet-host/huldra-internal/issues/285))
+
+
 ## [2.0.0-29] - 2023-07-24
 
 ### Added
