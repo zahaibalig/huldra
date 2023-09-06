@@ -171,6 +171,12 @@ gallery
 |       └───image-sit-a.jpeg
 |       └───image-sit-b.jpeg
 |       └───image-sit.json
+│   └───text-lorem
+|       └───text-lorem-a.txt
+|       └───text-lorem-b.txt
+│   └───feedback-lorem
+|       └───feedback-lorem.mp3
+|       └───feedback-lorem-config.json
 ```
 
 For an image case, a json file is also necessary. The json file should contain the description of the image and the description will be used on the page for that image case. An example of the json file is as follows:
@@ -191,7 +197,7 @@ The assets have to adhere to the following naming convention:
 - Option B: `<type>-<label>-b.<extension>`
 - JSON file: `<type>-<label>.json`
 
-`<type>` has to be one of the following: `audio`, `video`, `image`, or `hybrid`.
+`<type>` has to be one of the following: `audio`, `video`, `image`, `hybrid`, `text`, or `feedback`.
 
 Refer to the [Directory Tree](#directory-tree) section about which assets are required for each type.
 
@@ -201,6 +207,9 @@ Refer to the [Directory Tree](#directory-tree) section about which assets are re
 image: ["jpg", "jpeg", "png", "gif"],
 audio: ["mp3", "wav", "ogg", "aac", "flac"],
 video: ["mp4", "webm", "mov"],
+text: ["txt"],
+feedback: ["jpg", "jpeg", "png", "gif","mp3", "wav", "ogg", "aac", "flac","mp4", "webm", "mov","txt"],
+
 ```
 
 The file extensions must be lowercase.
@@ -220,7 +229,7 @@ The `shuffle` parameter under `caseOrder` has the following effects:
 
 - If `cases` is empty: categorized shuffle
 - If `cases` is not empty:
-  - `"shuffle": "categorized"`: the order of the cases is shuffled within each case type, but the order of the types is hardcoded (image, hybrid, video, and audio)
+  - `"shuffle": "categorized"`: the order of the cases is shuffled within each case type, but the order of the types is hardcoded (image, hybrid, video, audio, text, and feedback)
   - `"shuffle": "full"`: all the cases are shuffled
   - If `shuffle` is not specified: the app uses the order specified in `cases`
 
