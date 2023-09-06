@@ -13,6 +13,7 @@ const InputTextArea = ({
   tooltipMessage,
   type = "text",
   className = "feedback-text-input",
+  blur,
 }) => {
   /**
    * get the saved answer from local storage, so as to repopulate the answer
@@ -36,6 +37,14 @@ const InputTextArea = ({
     return text;
   };
 
+  const handleOnBlur = () => {
+    if (blur === false) {
+      return;
+    } else {
+      conditionalPushToBucket();
+    }
+  };
+
   return (
     <div className={className}>
       <label htmlFor={id} className="radio-question">
@@ -50,7 +59,7 @@ const InputTextArea = ({
         id={id}
         onChange={onChange}
         defaultValue={getSavedAnswer(id)}
-        onBlur={conditionalPushToBucket}
+        onBlur={handleOnBlur}
       />
     </div>
   );

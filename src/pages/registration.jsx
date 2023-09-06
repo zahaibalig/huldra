@@ -17,6 +17,7 @@ const Registration = ({
   setTermsOfUse,
   setNotifications,
   REACT_APP_registration,
+  blur,
 }) => {
   return (
     <div className="registration-form-wrapper">
@@ -49,6 +50,7 @@ const Registration = ({
               label={REACT_APP_registration && REACT_APP_registration["Q4"].label}
               onChange={(e) => onCommentsChange(e)}
               optional={true}
+              blur={blur}
             />
           </div>
           <div className="vertical-section">
