@@ -353,6 +353,7 @@ const Survey = ({
             setRouteIsAllowed={setRouteIsAllowed}
             participantId={participantId}
             setParticipantId={setParticipantId}
+            Version={Version}
           />
         </Route>
       </Switch>
