@@ -1,5 +1,5 @@
 import { logSessionEvent, pushToLocalStorage } from "../utils/localStorage";
-import { conditionalPushToBucket, fetchResponse } from "../utils/handleResponse";
+import { conditionalPushToBucket, fetchResponse, fetchUUIDs } from "../utils/handleResponse";
 import getConfig, { conditionalInitializeFirebase } from "../utils/handleStorageConfig";
 import { toastError } from "../utils/toast";
 import { fetchConfigVariablesBatch } from "./handleConfigVars";
@@ -10,7 +10,6 @@ import { v4 as uuidv4 } from "uuid";
 const handleLogin = async (participantId, history, setRouteIsAllowed, Version) => {
   const { REACT_APP_home } = fetchConfigVariablesBatch(["REACT_APP_home"]);
   let validUUID = false;
-
   if (participantId === "") {
     toastError("Please enter a valid participant ID", "top-center", "error");
     return;
@@ -18,11 +17,15 @@ const handleLogin = async (participantId, history, setRouteIsAllowed, Version) =
 
   // Check for Alternative 2: non-anonymous
   if (REACT_APP_home?.loginOption === "non-anonymous") {
-    const userIDs = preApprovedUserIDs && preApprovedUserIDs.preApprovedUserIDs;
-    if (userIDs) {
-      validUUID = userIDs.includes(participantId);
-    } else {
-      /*fetch the pre-approved id list from firestore and then check if user id exists for login non-anonymously */
+    let userIDs = [];
+    // CHECK THE LOCAL PRE-APPROVED ID LIST
+    if (preApprovedUserIDs && preApprovedUserIDs.preApprovedUserIDs) {
+      validUUID = preApprovedUserIDs.preApprovedUserIDs.includes(participantId);
+    }
+    // FETCH THE UUIDS FROM FIREBASE
+    else {
+      userIDs = await fetchUUIDs("preApprovedIDList");
+      validUUID = userIDs.preApprovedUserIDs.includes(participantId);
     }
 
     if (!validUUID) {

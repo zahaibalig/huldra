@@ -8,7 +8,7 @@
     "introText": "This is a sample subtitle or introduction text.",
     "signupText": "If you don't have a participant ID, you can have one by clicking the button below.",
     "additionalText": "Please view this application in full screen mode.", 
-    "loginOption":"anonymousWithID" 
+    "loginOption":"non-anonymous" 
   },
   "REACT_APP_registration": {
     "Q1": {
