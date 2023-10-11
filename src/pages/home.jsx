@@ -9,7 +9,7 @@ const Home = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) =
     "REACT_APP_home",
   ]);
   let pageToRender;
-  switch (REACT_APP_home?.loginOption) {
+  switch (REACT_APP_general?.loginOption) {
     case "anonymousWithID":
       pageToRender = (
         /*Alternative 1: Anonymous Login With ID*/

@@ -8,15 +8,15 @@ import preApprovedUserIDs from "../config-pre-approvedIDList.json";
 import { v4 as uuidv4 } from "uuid";
 
 const handleLogin = async (participantId, history, setRouteIsAllowed, Version) => {
-  const { REACT_APP_home } = fetchConfigVariablesBatch(["REACT_APP_home"]);
+  const { REACT_APP_general } = fetchConfigVariablesBatch(["REACT_APP_general"]);
   let validUUID = false;
-  if (participantId === "") {
+  if (participantId === "" && REACT_APP_general?.loginOption !== "anonymousWithoutID") {
     toastError("Please enter a valid participant ID", "top-center", "error");
     return;
   }
 
   // Check for Alternative 2: non-anonymous
-  if (REACT_APP_home?.loginOption === "non-anonymous") {
+  if (REACT_APP_general?.loginOption === "non-anonymous") {
     let userIDs = [];
     // CHECK THE LOCAL PRE-APPROVED ID LIST
     if (preApprovedUserIDs && preApprovedUserIDs.preApprovedUserIDs) {
@@ -35,7 +35,7 @@ const handleLogin = async (participantId, history, setRouteIsAllowed, Version) =
   }
 
   //Check for Alternative 3: anonymousWithouID
-  if (REACT_APP_home?.loginOption === "anonymousWithoutID") {
+  if (REACT_APP_general?.loginOption === "anonymousWithoutID") {
     const uuid = uuidv4();
     // Handle anonymous login without ID
     const ParticipantInfo = {

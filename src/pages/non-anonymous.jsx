@@ -9,7 +9,7 @@ const NonAnonymous = ({ setRouteIsAllowed, participantId, setParticipantId, Vers
   const history = useHistory();
 
   /* RESET THE PARTICIPANT ID FOR ALTERNATIVE 2: NON-ANONYMOUS LOGIN, 
-    pARTICIPANT MUST ENTER THE PARTICIPANT ID TO START THE SURVEY */
+    PARTICIPANT MUST ENTER THE PARTICIPANT ID TO START THE SURVEY */
   useEffect(() => {
     setParticipantId("");
   }, []);
