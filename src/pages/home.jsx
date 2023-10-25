@@ -20,7 +20,7 @@ const Home = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) =
         />
       );
       break;
-    case "non-anonymous":
+    case "nonAnonymous":
       pageToRender = (
         /*Alternative 2: non-anonymous*/
         <NonAnonymous
