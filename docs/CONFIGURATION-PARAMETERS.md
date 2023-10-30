@@ -949,7 +949,7 @@ The `REACT_APP_homepage` block contains 3 elements.
 
 ## REACT_APP_general
 
-This component is a general component which configures various properties of the Huldra framework. This component is used to alter Huldra's behviour and working.
+This is a general configuration component which allows to adjust various shared properties of the Huldra framework.
 
 ### Parameters
 
@@ -987,10 +987,7 @@ The `REACT_APP_general` block contains the following elements.
   - 'teal': $\color{#2b6777}{■}$ (#2b6777);
   - 'yellow': $\color{#f9e45b}{■}$ (#f9e45b);
 
-- `footer`:
-
-  The footer component is common to all pages in the survey (except warning page).
-  The footer is configured using the `footer` block under `REACT_APP_general` in the `config.json` file.
+- `footer`: The footer component is common to all pages in the survey (except warning page). The footer is configured using the `footer` block under `REACT_APP_general` in the `config.json` file.
 
   #### Parameters
 
@@ -1006,10 +1003,7 @@ The `REACT_APP_general` block contains the following elements.
 
 <kbd>![Footer](/src/assets/documentation/footer.png)</kbd>
 
-- #### `header`
-
-  The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page).
-  The header is configured using the `header` block under `REACT_APP_general` in the `config.json` file.
+- `header`: The header component is common to all pages in the survey (except warning page, homepage, registration page, and end page). The header is configured using the `header` block under `REACT_APP_general` in the `config.json` file.
 
   #### Parameters
 
@@ -1027,11 +1021,13 @@ The `REACT_APP_general` block contains the following elements.
 <kbd>![Header (Case)](/src/assets/documentation/header_case.png)</kbd>
 <kbd>![Header (Summary and Feedback)](/src/assets/documentation/header_summaryAndFeedback.png)</kbd>
 
+- `loginOption`: This parameter defines which type of login is supported. It expects a string. The following values are allowed: 'anonymousWithID' (participants remain anonymous, but get assigned a random UUID string at registration, which they can use to login again and continue their incomplete submission), 'anonymousWithoutID' (participants remain anonymous, and do not get assigned any identification, and cannot continue their incomplete submission), and 'nonAnonymous' (participants need to enter a predefined string to be able to login, list of accepted strings can be provided locally in `config.json`-see below-, or from the Firebase file `config-login.json`).
+- `approvedParticipantIDs`: If the `nonAnonymous` login option is selected, this parameter can be used to list all approved participant IDs.
+
 ### Sample Config
 
-```
-
-     "REACT_APP_general": {
+```json
+    "REACT_APP_general": {
     "softwareInfoTag": "NA (Development)",
     "appName": "Huldra",
     "allowRevisitingAnswers": true,
@@ -1039,7 +1035,7 @@ The `REACT_APP_general` block contains the following elements.
     "caseImageViewDetailsMandatory": true,
     "caseHybridViewDetailsMandatory": true,
     "caseOrder": {
-      "cases": [],
+      "cases": ["audio-bird", "text-sample", "hybrid-flowerbird", "image-flower", "video-bird"],
       "shuffle": "categorized"
     },
     "outputJson": [
@@ -1062,5 +1058,8 @@ The `REACT_APP_general` block contains the following elements.
       "labelDemonstration": "Demonstration",
       "labelCase": "Questionnaire",
       "labelSummaryAndFeedback": "Summary and Feedback"
+    },
+    "loginOption": "anonymousWithID",
+    "approvedParticipantIDs": ["sample-participant-id-1", "sample-participant-id-2"]
     }
 ```
