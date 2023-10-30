@@ -4,8 +4,7 @@ import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useHistory } from "react-router-dom";
 import { handleLogin } from "../utils/handleLogin";
 
-/** ALTERNATIVE 1: ANONYMOUS LOGIN WITH ID */
-const AnonymousWithID = ({ setRouteIsAllowed, participantId, setParticipantId }) => {
+const LoginAnonymousWithID = ({ setRouteIsAllowed, participantId, setParticipantId }) => {
   const { REACT_APP_home } = fetchConfigVariablesBatch(["REACT_APP_home"]);
   const history = useHistory();
 
@@ -55,4 +54,4 @@ const AnonymousWithID = ({ setRouteIsAllowed, participantId, setParticipantId })
   );
 };
 
-export default AnonymousWithID;
+export default LoginAnonymousWithID;

@@ -3,8 +3,7 @@ import "../assets/css/home.css";
 import { useHistory } from "react-router-dom";
 import { handleLogin } from "../utils/handleLogin";
 
-/* ALTERNATIVE 3: ANONYMOUS WITHOUT ID BOX */
-const AnonymousWithoutID = ({ participantId, setRouteIsAllowed, Version }) => {
+const LoginAnonymousWithoutID = ({ participantId, setRouteIsAllowed, Version }) => {
   const history = useHistory();
   return (
     <div className="home-registration-wrapper">
@@ -24,4 +23,4 @@ const AnonymousWithoutID = ({ participantId, setRouteIsAllowed, Version }) => {
   );
 };
 
-export default AnonymousWithoutID;
+export default LoginAnonymousWithoutID;

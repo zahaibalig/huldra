@@ -113,7 +113,8 @@
   width: 144px;
 }
 
-.case-image .summary-scaled-image, .case-audio .summary-scaled-image {
+.case-image .summary-scaled-image,
+.case-audio .summary-scaled-image {
   height: 108px;
 }
 

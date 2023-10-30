@@ -2,8 +2,8 @@ name: Build on Push
 on:
   push:
     branches:
-      - 'dev'
-      - 'main'
+      - "dev"
+      - "main"
 
 jobs:
   build:
@@ -20,4 +20,3 @@ jobs:
         run: npm run build
         env:
           CI: false
-        

@@ -4,11 +4,10 @@ import { useHistory } from "react-router-dom";
 import { handleLogin } from "../utils/handleLogin";
 import { useEffect } from "react";
 
-/* ALTERNATIVE 2: NON-ANONYMOUS LOGIN */
-const NonAnonymous = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) => {
+const LoginNonAnonymous = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) => {
   const history = useHistory();
 
-  /* RESET THE PARTICIPANT ID FOR ALTERNATIVE 2: NON-ANONYMOUS LOGIN, 
+  /* RESET THE PARTICIPANT ID FOR ALTERNATIVE: NON-ANONYMOUS LOGIN, 
     PARTICIPANT MUST ENTER THE PARTICIPANT ID TO START THE SURVEY */
   useEffect(() => {
     setParticipantId("");
@@ -44,4 +43,4 @@ const NonAnonymous = ({ setRouteIsAllowed, participantId, setParticipantId, Vers
   );
 };
 
-export default NonAnonymous;
+export default LoginNonAnonymous;

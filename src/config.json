@@ -311,17 +311,14 @@
     "caseImageViewDetailsMandatory": false,
     "caseHybridViewDetailsMandatory": false,
     "caseOrder": {
-      "cases": ["audio-bird","text-sample","hybrid-flowerbird","image-flower","video-bird"],
+      "cases": ["audio-bird", "text-sample", "hybrid-flowerbird", "image-flower", "video-bird"],
       "shuffle": ""
     },
     "storage": {
       "assetsStorageType": "local",
       "responsesStorageType": "download"
     },
-    "outputJson": [
-      "SoftwareInfo",
-      "SessionEvents"
-    ],
+    "outputJson": ["SoftwareInfo", "SessionEvents"],
     "color": {
       "themeColor": "blue",
       "buttonColor": "yellow"
@@ -338,7 +335,8 @@
       "labelDemonstration": "Demonstration",
       "labelCase": "Questionnaire",
       "labelSummaryAndFeedback": "Summary and Feedback"
-    }, 
-    "loginOption":"anonymousWithID"
+    },
+    "loginOption": "anonymousWithID",
+    "approvedParticipantIDs": ["sample-participant-id-1", "sample-participant-id-2"]
   }
 }

@@ -1,8 +1,9 @@
 import "../assets/css/home.css";
-import AnonymousWithID from "./anonymousWithID";
-import NonAnonymous from "./non-anonymous";
-import AnonymousWithoutID from "./anonymousWithoutID";
+import LoginAnonymousWithID from "../major-components/loginAnonymousWithID";
+import LoginNonAnonymous from "../major-components/loginNonAnonymous";
+import LoginAnonymousWithoutID from "../major-components/loginAnonymousWithoutID";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
+
 const Home = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) => {
   const { REACT_APP_general, REACT_APP_home } = fetchConfigVariablesBatch([
     "REACT_APP_general",
@@ -12,18 +13,7 @@ const Home = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) =
   switch (REACT_APP_general?.loginOption) {
     case "anonymousWithID":
       pageToRender = (
-        /*Alternative 1: Anonymous Login With ID*/
-        <AnonymousWithID
-          setRouteIsAllowed={setRouteIsAllowed}
-          participantId={participantId}
-          setParticipantId={setParticipantId}
-        />
-      );
-      break;
-    case "nonAnonymous":
-      pageToRender = (
-        /*Alternative 2: non-anonymous*/
-        <NonAnonymous
+        <LoginAnonymousWithID
           setRouteIsAllowed={setRouteIsAllowed}
           participantId={participantId}
           setParticipantId={setParticipantId}
@@ -32,18 +22,26 @@ const Home = ({ setRouteIsAllowed, participantId, setParticipantId, Version }) =
       break;
     case "anonymousWithoutID":
       pageToRender = (
-        /* Anonymous without ID */
-        <AnonymousWithoutID
+        <LoginAnonymousWithoutID
           setRouteIsAllowed={setRouteIsAllowed}
           participantId={participantId}
           Version={Version}
         />
       );
       break;
+    case "nonAnonymous":
+      pageToRender = (
+        <LoginNonAnonymous
+          setRouteIsAllowed={setRouteIsAllowed}
+          participantId={participantId}
+          setParticipantId={setParticipantId}
+        />
+      );
+      break;
+
     default:
       pageToRender = (
-        /* Default case: Anonymous With ID */
-        <AnonymousWithID
+        <LoginAnonymousWithID
           setRouteIsAllowed={setRouteIsAllowed}
           participantId={participantId}
           setParticipantId={setParticipantId}

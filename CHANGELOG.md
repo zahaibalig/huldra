@@ -14,7 +14,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Change default values of `caseImageViewDetailsMandatory` and `caseHybridViewDetailsMandatory` to false ([#129](https://github.com/simulamet-host/huldra-internal/issues/129))
 - Update assets ([#285](https://github.com/simulamet-host/huldra-internal/issues/285))
 
-
 ## [2.0.0-29] - 2023-07-24
 
 ### Added
@@ -36,14 +35,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix "Other" box in the registration page ([#149](https://github.com/simulamet-host/huldra-internal/issues/149))
 - Resolve security vulnerabilities using Dependabot ([#232](https://github.com/simulamet-host/huldra-internal/issues/232))
-     - Bump tough-cookie from 4.1.2 to 4.1.3
-     - Bump webpack from 5.74.0 to 5.88.2
-     - Bump semver from 6.3.0 to 6.3.1
-     - Bump loader-utils from 2.0.3 to 2.0.4
-     - Bump ua-parser-js from 1.0.32 to 1.0.35
-     - Bump json5 from 1.0.1 to 1.0.2
-     - Bump word-wrap from 1.2.3 to 1.2.4
-
+  - Bump tough-cookie from 4.1.2 to 4.1.3
+  - Bump webpack from 5.74.0 to 5.88.2
+  - Bump semver from 6.3.0 to 6.3.1
+  - Bump loader-utils from 2.0.3 to 2.0.4
+  - Bump ua-parser-js from 1.0.32 to 1.0.35
+  - Bump json5 from 1.0.1 to 1.0.2
+  - Bump word-wrap from 1.2.3 to 1.2.4
 
 ## [2.0.0-28] - 2023-07-18
 

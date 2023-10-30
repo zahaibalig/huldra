@@ -716,25 +716,24 @@ The `caseFeedbackColumnRight` sub-block is used to configure the right column, a
 - `title`: This element is used to configure the heading on the right column of case feedback page.
 - `text`: This element is used to configure the text description on the right column of case feedback page.
 
-The `caseFeedbackQuestions` sub-block is used to configure the questions on the right column.  It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `caseFeedbackQuestions` can contain as many questions as desired, where each question is configured using the following elements.
+The `caseFeedbackQuestions` sub-block is used to configure the questions on the right column. It is an array. The number of objects added in this array will correspond to the the number of questions shown to the user. The `caseFeedbackQuestions` can contain as many questions as desired, where each question is configured using the following elements.
 
-  - `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
-  - `id`: The unique identifier of the question. Can be understood as question number.
-  - `label`: The question can be defined/written with this label.
-  - `optional`: A bool value. When set to false, the question becomes mandatory to answer.
-  - `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
-  - `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
-  - `commentBoxLabel`[^2]: The heading of the comment box is defined by this field.
-  - `showToolTip`[^3]
-  - `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
-    - `question`: As the name suggest the questions is defined here.
-    - `size`: The size of the likert scale, corresponding to the question is defined by this element.
-    - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
+- `questionType`: The type of question that you intend to add in the feeback form. The question types can be - text: where the answer is expected as a text input, likert - where the answer is expected to be a value on likert scale, and mc - where the answer is expected to be a selection of multipule choices.
+- `id`: The unique identifier of the question. Can be understood as question number.
+- `label`: The question can be defined/written with this label.
+- `optional`: A bool value. When set to false, the question becomes mandatory to answer.
+- `choices`[^2]: If the questionType is 'mc', i.e., multipule choice. The options of the multipule choice can be defined in this array.
+- `hasCommentBox`[^2]: A bool field. Set it to true to display a comment box to take textual input from the user.
+- `commentBoxLabel`[^2]: The heading of the comment box is defined by this field.
+- `showToolTip`[^3]
+- `likertQuestions`[^4]: if the questionType field is set as 'likert', then the likert scale can be configured with this array. The number of objects in this array is equivalent to the number of likert questions displayed to the user. `likertQuestions` includes the following elements per question.
+  - `question`: As the name suggest the questions is defined here.
+  - `size`: The size of the likert scale, corresponding to the question is defined by this element.
+  - `label`: The text over the likert scale which can be used to describe or give instructions to the user is written here.
 
 [^2]: Only for multiple choice type questions.
 [^3]: Only for text type questions.
 [^4]: Only for likert type questions.
-
 
 ### Visual Overview
 
@@ -742,10 +741,9 @@ The `caseFeedbackQuestions` sub-block is used to configure the questions on the 
 
 ### Sample Config
 
-
 ```json
   "REACT_APP_caseFeedback":  // you only need to provide this line if you are setting config.json. You do not need this line if you are configuring case-by-case, i.e., creating a `feedback-casename-config.json` under `/feedback-casename`
-  
+
   {
     "caseFeedbackColumnLeft": {
       "label": "Case feedback label config",
@@ -770,7 +768,7 @@ The `caseFeedbackQuestions` sub-block is used to configure the questions on the 
         "label": "Example config question block.",
         "optional": false,
         "likertQuestions": [
-         
+
           {
             "question": "Example likert question 3.",
             "size": 10,
@@ -788,11 +786,10 @@ The `caseFeedbackQuestions` sub-block is used to configure the questions on the 
         "commentBoxLabel": "Comment to the multiple choice question Q3."
       }
     ]
-  
+
 
   }
 ```
-
 
 ## REACT_APP_summaryAndFeedback
 
@@ -964,12 +961,12 @@ The `REACT_APP_general` block contains the following elements.
 - `allowProceedingWithoutAnswering`: This tag can take 2 values, i.e., True or False. Setting the value to True will let users move on to another question without answering it, basically making the questions optional to answer.
 - `caseImageViewDetailsMandatory`: In _caseImage_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
 - `caseHybridViewDetailsMandatory`: In _caseHybrid_ type survey question, there is a button where users can view more details about a particular image. With this tag it can be set if it is mandatory for user to view the details of the images or not. Set this value to True, if you want to make it mandatory for the user to view the details.
-- `caseOrder`: This parameter defines the order of the cases shown to the user. 
+- `caseOrder`: This parameter defines the order of the cases shown to the user.
 
   #### Parameters
 
   - `cases:` This is where you write the list of cases (folder names in local/firebase directory) that you want to show to the user.
-  - `shuffle:` This where you define if/how the cases should be shuffled when shown to the user. 
+  - `shuffle:` This where you define if/how the cases should be shuffled when shown to the user.
 
   **NB:** See [README.md](/README.md#case-order) for more details about `caseOrder`, `cases`, and shuffle.
 
@@ -980,7 +977,7 @@ The `REACT_APP_general` block contains the following elements.
 
   - `themeColor:` Here you can define the theme color of the app, this is mostly observed at the header and footer of the app. The default themeColor is `blue`.
   - `buttonColor:` Here you can define the color of buttons in the app. The default buttonColor is `yellow`.
-  
+
   **NB:** Supported values are `blue`, `green`, `orange`, `purple`, `teal`, and `yellow` (you can pick from the following lists of colors only):
 
   - 'blue': $\color{#38c3f2}{■}$ (#38c3f2)

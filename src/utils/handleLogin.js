@@ -4,7 +4,6 @@ import getConfig, { conditionalInitializeFirebase } from "../utils/handleStorage
 import { toastError } from "../utils/toast";
 import { fetchConfigVariablesBatch } from "./handleConfigVars";
 import { handleSessionInfo } from "./survey-utils/getParticipantId";
-import preApprovedUserIDs from "../config-pre-approvedIDList.json";
 import { v4 as uuidv4 } from "uuid";
 
 const handleLogin = async (participantId, history, setRouteIsAllowed, Version) => {
@@ -16,16 +15,16 @@ const handleLogin = async (participantId, history, setRouteIsAllowed, Version) =
   }
 
   // Check for Alternative 2: non-anonymous
-  if (REACT_APP_general?.loginOption === "non-anonymous") {
+  if (REACT_APP_general?.loginOption === "nonAnonymous") {
     let userIDs = [];
     // CHECK THE LOCAL PRE-APPROVED ID LIST
-    if (preApprovedUserIDs && preApprovedUserIDs.preApprovedUserIDs) {
-      validUUID = preApprovedUserIDs.preApprovedUserIDs.includes(participantId);
+    if ("approvedParticipantIDs" in REACT_APP_general) {
+      validUUID = REACT_APP_general.approvedParticipantIDs.includes(participantId);
     }
     // FETCH THE UUIDS FROM FIREBASE
     else {
-      userIDs = await fetchUUIDs("preApprovedIDList");
-      validUUID = userIDs.preApprovedUserIDs.includes(participantId);
+      userIDs = await fetchUUIDs("config-login");
+      validUUID = userIDs.approvedParticipantIDs.includes(participantId);
     }
 
     if (!validUUID) {
@@ -34,7 +33,7 @@ const handleLogin = async (participantId, history, setRouteIsAllowed, Version) =
     }
   }
 
-  //Check for Alternative 3: anonymousWithouID
+  //Check for Alternative 3: anonymousWithoutID
   if (REACT_APP_general?.loginOption === "anonymousWithoutID") {
     const uuid = uuidv4();
     // Handle anonymous login without ID

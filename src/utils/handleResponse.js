@@ -190,15 +190,16 @@ const fetchResponse = async (participantId) => {
 
 /**
  * fetch the pre-approved UUID list for non-anonymous login
- * @param {string} preApprovedIDList the file name
+ * @param {string} configLogin the file name
  * @returns {List|null} the UUIDs list or null if there is no saved UUIDs
  */
-const fetchUUIDs = async (preApprovedIDList) => {
-  let neededItems = ["preApprovedUserIDs"];
+const fetchUUIDs = async (configLogin) => {
+  let neededItems = ["approvedParticipantIDs"];
   getFirebaseApp();
   const storageRef = getStorageReference();
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
-  const fileRef = storageRef.child(`${rootDirectory}/UUIDs/${preApprovedIDList}.json`);
+  const fileRef = storageRef.child(`${rootDirectory}/${configLogin}.json`);
+  console.log(`${rootDirectory}/${configLogin}.json`);
   const url = await fileRef.getDownloadURL().catch((err) => {
     console.log(err);
   });

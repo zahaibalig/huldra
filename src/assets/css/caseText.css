@@ -5,7 +5,6 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  
 }
 
 /* Main class name was 'survey-box-text-left' which is used in the files 'caseAudio, caseVideo' */
@@ -26,7 +25,7 @@
 .text-background-content {
   text-align: justify;
 }
-.section-class{
+.section-class {
   width: 25em;
 }
 /* Main class name was 'text' and it should be a generic class which is used in the files 'caseAudio, caseVideo' */
@@ -36,8 +35,8 @@
   flex-direction: column;
   align-items: center;
 }
-.scroll-text{
-  overflow-y:scroll;
+.scroll-text {
+  overflow-y: scroll;
   overflow-x: hidden;
   height: 22em;
   width: 22em;
@@ -45,11 +44,9 @@
   text-align: justify;
   margin: 0em;
   padding-right: 4%;
-  
-  
 }
 
-/* Main class name was 'survey-box-text-right', used files 'caseAudio, caseVideo'   */ 
+/* Main class name was 'survey-box-text-right', used files 'caseAudio, caseVideo'   */
 .text-survey-box-right {
   width: 430px;
   height: 560px;
@@ -119,11 +116,11 @@
 }
 
 ::-webkit-scrollbar {
-  -webkit-appearance:none;
+  -webkit-appearance: none;
   width: 7px;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   /* -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5); */
 }
