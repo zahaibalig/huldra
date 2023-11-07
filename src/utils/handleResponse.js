@@ -1,6 +1,6 @@
 import { fetchConfigVariable } from "./handleConfigVars";
 import { getConfig } from "../utils/handleStorageConfig";
-import { getStorageReference } from "../utils/firebase";
+import { getFirebaseApp, getStorageReference } from "../utils/firebase";
 
 /**
  * prepare the response to be pushed to the bucket; only items in the outputJson array will be contained in the response
@@ -188,4 +188,38 @@ const fetchResponse = async (participantId) => {
   }
 };
 
-export { conditionalPushToBucket, handleFinalResponse, fetchResponse };
+/**
+ * fetch the pre-approved UUID list for non-anonymous login
+ * @param {string} configLogin the file name
+ * @returns {List|null} the UUIDs list or null if there is no saved UUIDs
+ */
+const fetchUUIDs = async (configLogin) => {
+  let neededItems = ["approvedParticipantIDs"];
+  getFirebaseApp();
+  const storageRef = getStorageReference();
+  const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
+  const fileRef = storageRef.child(`${rootDirectory}/${configLogin}.json`);
+  console.log(`${rootDirectory}/${configLogin}.json`);
+  const url = await fileRef.getDownloadURL().catch((err) => {
+    console.log(err);
+  });
+  if (url) {
+    const responseJson = await fetch(url).then((res) => res.json());
+    // check if the file from firebase contains all the needed items
+    let validResponse = true;
+    neededItems.map((item) => {
+      if (!responseJson[item]) {
+        validResponse = false;
+      }
+      return null;
+    });
+
+    if (validResponse) {
+      return responseJson;
+    } else {
+      return null;
+    }
+  }
+};
+
+export { conditionalPushToBucket, handleFinalResponse, fetchResponse, fetchUUIDs };
