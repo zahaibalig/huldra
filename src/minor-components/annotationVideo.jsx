@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { getAsset } from "../utils/loadAssets";
@@ -25,29 +24,29 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
     return () => setSubscribed(false);
   }, [url, subscribed]);
   const handleSubmit = () => {
-    if(comments !== ""){
-    const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
-    if (previousAnnotations?.length > 0) {
-      let newAnnotations = [
-        ...previousAnnotations,
-        {
-          timeStamp: timeStamps,
-          comment: comments,
-        },
-      ];
-      localStorage.setItem("annotations", JSON.stringify(newAnnotations));
-    } else {
-      let firstAnnotations = [
-        {
-          timeStamp: timeStamps,
-          comment: comments,
-        },
-      ];
-      localStorage.setItem("annotations", JSON.stringify(firstAnnotations));
+    if (comments !== "") {
+      const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
+      if (previousAnnotations?.length > 0) {
+        let newAnnotations = [
+          ...previousAnnotations,
+          {
+            timeStamp: timeStamps,
+            comment: comments,
+          },
+        ];
+        localStorage.setItem("annotations", JSON.stringify(newAnnotations));
+      } else {
+        let firstAnnotations = [
+          {
+            timeStamp: timeStamps,
+            comment: comments,
+          },
+        ];
+        localStorage.setItem("annotations", JSON.stringify(firstAnnotations));
+      }
+      setAnnotations(JSON.parse(localStorage.getItem("annotations")));
+      setComments("");
     }
-    setAnnotations(JSON.parse(localStorage.getItem("annotations")));
-    setComments("");
-    };
   };
   const deleteAnnotation = (index) => {
     const filtered = annotations.filter((_, annotationIndex) => annotationIndex !== index);
