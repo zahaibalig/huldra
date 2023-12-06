@@ -35,6 +35,7 @@ const fetchCases = async () => {
       video: [],
       audio: [],
       text: [],
+      annotation: [],
     };
 
     validCases.forEach((validCase) => {
@@ -53,6 +54,7 @@ const fetchCases = async () => {
       ...casesByType.video.map((validCase) => validCase.name),
       ...casesByType.audio.map((validCase) => validCase.name),
       ...casesByType.text.map((validCase) => validCase.name),
+      ...casesByType.annotation.map((validCase) => validCase.name),
     ];
 
     validCaseFiles = [
@@ -61,6 +63,7 @@ const fetchCases = async () => {
       ...casesByType.video.map((validCase) => validCase.files),
       ...casesByType.audio.map((validCase) => validCase.files),
       ...casesByType.text.map((validCase) => validCase.files),
+      ...casesByType.annotation.map((validCase) => validCase.files),
     ];
   } else if (shuffle === "full") {
     validCases = _.shuffle(validCases);
@@ -145,6 +148,14 @@ const validateCase = async (caseName) => {
       extensions.video.map((ext) => `${fileNameBase}-a.${ext}`),
       extensions.video.map((ext) => `${fileNameBase}-b.${ext}`),
     ];
+    const group = await getFileNameGroup(fileNameArrayArray, "video");
+    if (!group) {
+      return false;
+    }
+
+    files = group;
+  } else if (type === "annotation") {
+    const fileNameArrayArray = [extensions.video.map((ext) => `${fileNameBase}.${ext}`)];
     const group = await getFileNameGroup(fileNameArrayArray, "video");
     if (!group) {
       return false;

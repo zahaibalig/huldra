@@ -239,6 +239,14 @@
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
     }
   },
+  "REACT_APP_caseAnnotation": {
+    "caseAnnotationColumn": {
+      "label": "Case",
+      "text": "This is sample a video clip.",
+      "sectionVideoHeight": "225px",
+      "sectionVideoWidth": "400px"
+    }
+  },
   "REACT_APP_summaryAndFeedback": {
     "summary": {
       "display": true,
@@ -311,7 +319,14 @@
     "caseImageViewDetailsMandatory": false,
     "caseHybridViewDetailsMandatory": false,
     "caseOrder": {
-      "cases": ["audio-bird", "text-sample", "hybrid-flowerbird", "image-flower", "video-bird"],
+      "cases": [
+        "audio-bird",
+        "text-sample",
+        "hybrid-flowerbird",
+        "image-flower",
+        "video-bird",
+        "annotation-bird"
+      ],
       "shuffle": ""
     },
     "storage": {
