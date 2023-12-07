@@ -1,6 +1,6 @@
 import React from "react";
 import AnnotationVideoSection from "../minor-components/annotationVideoSection";
-const CaseAnnotationColumn = ({ className, title, text, textClassName, sectionVideoUrl }) => {
+const CaseAnnotationColumnLeft = ({ className, title, text, textClassName, sectionVideoUrl }) => {
   return (
     <div className={className}>
       <h4>{title}</h4>
@@ -19,4 +19,4 @@ const CaseAnnotationColumn = ({ className, title, text, textClassName, sectionVi
   );
 };
 
-export default CaseAnnotationColumn;
+export default CaseAnnotationColumnLeft;

@@ -30,7 +30,7 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
         let newAnnotations = [
           ...previousAnnotations,
           {
-            timeStamp: timeStamps,
+            timeStamp: timeStamps.toFixed(2),
             comment: comments,
           },
         ];
@@ -38,7 +38,7 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
       } else {
         let firstAnnotations = [
           {
-            timeStamp: timeStamps,
+            timeStamp: timeStamps.toFixed(2),
             comment: comments,
           },
         ];
@@ -47,11 +47,6 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
       setAnnotations(JSON.parse(localStorage.getItem("annotations")));
       setComments("");
     }
-  };
-  const deleteAnnotation = (index) => {
-    const filtered = annotations.filter((_, annotationIndex) => annotationIndex !== index);
-    setAnnotations(filtered);
-    localStorage.setItem("annotations", JSON.stringify(filtered));
   };
   return (
     <div className={className}>
@@ -86,37 +81,8 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
       >
         Submit
       </Button>
-      <div className="Annotations-list">
-        {annotations.map((entry, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "flex-start" }}>
-            <div>
-              {entry.timeStamp} : {entry.comment}
-            </div>
-            <button
-              onClick={() => {
-                deleteAnnotation(index);
-              }}
-              style={{
-                // position: "absolute",
-                backgroundColor: "white",
-                border: "0px solid #000",
-                paddingRight: "20px",
-                marginTop: "-10px",
-                fontSize: "25px",
-              }}
-            >
-              x
-            </button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
 
 export default AnnotationVideo;
-
-// CSS for delete button
-// Fix the summery page
-// Push it to git. create new branch : issue 312 or :issue asset annotation feature
-// Litrature Review

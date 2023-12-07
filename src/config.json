@@ -240,11 +240,14 @@
     }
   },
   "REACT_APP_caseAnnotation": {
-    "caseAnnotationColumn": {
+    "caseAnnotationColumnLeft": {
       "label": "Case",
       "text": "This is sample a video clip.",
       "sectionVideoHeight": "225px",
       "sectionVideoWidth": "400px"
+    },
+    "caseAnnotationColumnRight": {
+      "label": "Answers"
     }
   },
   "REACT_APP_summaryAndFeedback": {
