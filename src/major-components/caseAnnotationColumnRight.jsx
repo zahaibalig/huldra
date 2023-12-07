@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 
-const CaseAnnotationColumnRight = ({ className, title, text, textClassName, sectionVideoUrl }) => {
+const CaseAnnotationColumnRight = ({
+  className,
+  title,
+  text,
+  textClassName,
+  sectionVideoUrl,
+  annotations,
+  deleteAnnotation,
+}) => {
   const [subscribed, setSubscribed] = useState(false);
-  const [annotations, setAnnotations] = useState([]);
   useEffect(() => {
     setSubscribed(true);
     (async () => {})();
-    const storedAnnotations = JSON.parse(localStorage.getItem("annotations"));
-    if (storedAnnotations) {
-      setAnnotations(storedAnnotations);
-    }
     return () => setSubscribed(false);
-  }, [subscribed, annotations]);
-
-  const deleteAnnotation = (index) => {
-    const filtered = annotations.filter((_, annotationIndex) => annotationIndex !== index);
-    setAnnotations(filtered);
-    localStorage.setItem("annotations", JSON.stringify(filtered));
-  };
+  }, [subscribed]);
 
   return (
     <div className={className}>

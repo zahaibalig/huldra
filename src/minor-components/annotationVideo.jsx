@@ -4,12 +4,11 @@ import { getAsset } from "../utils/loadAssets";
 import { Input } from "@mui/material";
 import { Button } from "reactstrap";
 
-const AnnotationVideo = ({ url, width, height, className, label }) => {
+const AnnotationVideo = ({ url, width, height, className, label, handleSubmit }) => {
   const [videoUrl, setVideoUrl] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [timeStamps, setTimeStamps] = useState(0);
   const [comments, setComments] = useState("");
-  const [annotations, setAnnotations] = useState([]);
 
   useEffect(() => {
     setSubscribed(true);
@@ -17,37 +16,9 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
       const videoUrl = await getAsset(url);
       setVideoUrl(videoUrl);
     })();
-    const storedAnnotations = JSON.parse(localStorage.getItem("annotations"));
-    if (storedAnnotations) {
-      setAnnotations(storedAnnotations);
-    }
     return () => setSubscribed(false);
   }, [url, subscribed]);
-  const handleSubmit = () => {
-    if (comments !== "") {
-      const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
-      if (previousAnnotations?.length > 0) {
-        let newAnnotations = [
-          ...previousAnnotations,
-          {
-            timeStamp: timeStamps.toFixed(2),
-            comment: comments,
-          },
-        ];
-        localStorage.setItem("annotations", JSON.stringify(newAnnotations));
-      } else {
-        let firstAnnotations = [
-          {
-            timeStamp: timeStamps.toFixed(2),
-            comment: comments,
-          },
-        ];
-        localStorage.setItem("annotations", JSON.stringify(firstAnnotations));
-      }
-      setAnnotations(JSON.parse(localStorage.getItem("annotations")));
-      setComments("");
-    }
-  };
+
   return (
     <div className={className}>
       <span className="video-label">{label}</span>
@@ -71,7 +42,8 @@ const AnnotationVideo = ({ url, width, height, className, label }) => {
       />
       <Button
         onClick={() => {
-          handleSubmit();
+          setComments("");
+          handleSubmit(timeStamps, comments);
         }}
         style={{
           margin: "10px",

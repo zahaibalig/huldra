@@ -8,8 +8,40 @@ import getConfig from "../utils/handleStorageConfig";
 const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
   const [subscribed, setSubscribed] = useState(false);
   const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
+  const [annotation, setAnnotations] = useState([]);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
 
+  const handleSubmit = (timestamp, comment) => {
+    if (comment !== "") {
+      const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
+      if (previousAnnotations?.length > 0) {
+        let newAnnotations = [
+          ...previousAnnotations,
+          {
+            timeStamp: timestamp.toFixed(2),
+            comment,
+          },
+        ];
+        setAnnotations(newAnnotations);
+        localStorage.setItem("annotations", JSON.stringify(newAnnotations));
+      } else {
+        let firstAnnotations = [
+          {
+            timeStamp: timestamp.toFixed(2),
+            comment,
+          },
+        ];
+        localStorage.setItem("annotations", JSON.stringify(firstAnnotations));
+      }
+      setAnnotations(JSON.parse(localStorage.getItem("annotations")));
+    }
+  };
+
+  const deleteAnnotation = (index) => {
+    const filtered = annotation.filter((_, annotationIndex) => annotationIndex !== index);
+    setAnnotations(filtered);
+    localStorage.setItem("annotations", JSON.stringify(filtered));
+  };
   let videoUrl = "";
   const storageConfig = getConfig();
   if (storageConfig.assetsStorageType === "local") {
@@ -26,6 +58,11 @@ const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
   useEffect(() => {
     setDisableNextButton(false);
     setSubscribed(true);
+    //get annotations
+    const storedAnnotation = JSON.parse(localStorage.getItem("annotations"));
+    if (storedAnnotation) {
+      setAnnotations(storedAnnotation);
+    }
 
     const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
 
@@ -44,12 +81,19 @@ const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
         sectionVideoUrl={videoUrl}
         sectionImageClassName="case-hybrid-image-wrapper"
         sectionButtonClassName="btn control"
+        handleSubmit={handleSubmit}
       />
       <CaseAnnotationColumnRight
-      // title={`${REACT_APP_caseAnnotation["caseAnnotationColumnRight"].label}`}
+        annotations={annotation}
+        deleteAnnotation={deleteAnnotation}
+        // title={`${REACT_APP_caseAnnotation["caseAnnotationColumnRight"].label}`}
       />
     </div>
   );
 };
 
 export default CaseAnnotation;
+
+// fix the title of the answers section
+// add slider in the right side section
+// update the classes name used in the component

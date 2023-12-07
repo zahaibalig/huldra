@@ -32,6 +32,7 @@ const AnnotationVideoSection = ({
   videoHeight,
   videoWidth,
   videoLabel,
+  handleSubmit,
 }) => {
   return (
     <div className={className}>
@@ -47,6 +48,7 @@ const AnnotationVideoSection = ({
         hasRank={imageHasRank}
         onClick={imageOnClick}
         label={videoLabel}
+        handleSubmit={handleSubmit}
       />
       {hasButton && (
         <div className="generic-video-section-button">

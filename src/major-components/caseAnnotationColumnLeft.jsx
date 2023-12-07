@@ -1,6 +1,13 @@
 import React from "react";
 import AnnotationVideoSection from "../minor-components/annotationVideoSection";
-const CaseAnnotationColumnLeft = ({ className, title, text, textClassName, sectionVideoUrl }) => {
+const CaseAnnotationColumnLeft = ({
+  className,
+  title,
+  text,
+  textClassName,
+  sectionVideoUrl,
+  handleSubmit,
+}) => {
   return (
     <div className={className}>
       <h4>{title}</h4>
@@ -13,6 +20,7 @@ const CaseAnnotationColumnLeft = ({ className, title, text, textClassName, secti
           videoUrl={sectionVideoUrl}
           videoWidth="400px"
           videoHeight="225px"
+          handleSubmit={handleSubmit}
         />
       </div>
     </div>
