@@ -239,14 +239,25 @@
       "text": "Please select one of the audio clips to place it on top. The top audio clip is your preferred option for this case."
     }
   },
-  "REACT_APP_caseAnnotation": {
-    "caseAnnotationColumnLeft": {
+  "REACT_APP_caseVideoAnnotation": {
+    "caseVideoAnnotationColumnLeft": {
       "label": "Case",
-      "text": "This is sample a video clip.",
+      "text": "This is a sample video clip.",
       "sectionVideoHeight": "225px",
       "sectionVideoWidth": "400px"
     },
-    "caseAnnotationColumnRight": {
+    "caseVideoAnnotationColumnRight": {
+      "label": "Answers"
+    }
+  },
+  "REACT_APP_caseAudioAnnotation": {
+    "caseAudioAnnotationColumnLeft": {
+      "label": "Case",
+      "text": "This is a sample audio clip.",
+      "sectionVideoHeight": "225px",
+      "sectionVideoWidth": "400px"
+    },
+    "caseAudioAnnotationColumnRight": {
       "label": "Answers"
     }
   },
@@ -328,7 +339,8 @@
         "hybrid-flowerbird",
         "image-flower",
         "video-bird",
-        "annotation-bird"
+        "videoannotation-bird",
+        "audioannotation-bird"
       ],
       "shuffle": ""
     },

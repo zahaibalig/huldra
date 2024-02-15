@@ -3,7 +3,8 @@ import CaseVideo from "../pages/caseVideo";
 import CaseHybrid from "../pages/caseHybrid";
 import CaseAudio from "../pages/caseAudio";
 import CaseText from "../pages/caseText";
-import CaseAnnotation from "../pages/caseAnnotation";
+import CaseVideoAnnotation from "../pages/caseVideoAnnotation";
+import CaseAudioAnnotation from "../pages/caseAudioAnnotation";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
@@ -21,14 +22,16 @@ const CaseWrapper = () => {
     REACT_APP_caseAudio,
     REACT_APP_caseHybrid,
     REACT_APP_caseText,
-    REACT_APP_caseAnnotation,
+    REACT_APP_caseVideoAnnotation,
+    REACT_APP_caseAudioAnnotation,
   } = fetchConfigVariablesBatch([
     "REACT_APP_caseImage",
     "REACT_APP_caseVideo",
     "REACT_APP_caseAudio",
     "REACT_APP_caseHybrid",
     "REACT_APP_caseText",
-    "REACT_APP_caseAnnotation",
+    "REACT_APP_caseVideoAnnotation",
+    "REACT_APP_caseAudioAnnotation",
   ]);
 
   const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
@@ -50,11 +53,17 @@ const CaseWrapper = () => {
     />
   ) : prefix === "video" ? (
     <CaseVideo totalCases={casesCount} caseId={caseId} REACT_APP_caseVideo={REACT_APP_caseVideo} />
-  ) : prefix === "annotation" ? (
-    <CaseAnnotation
+  ) : prefix === "audioannotation" ? (
+    <CaseAudioAnnotation
       totalCases={casesCount}
       caseId={caseId}
-      REACT_APP_caseAnnotation={REACT_APP_caseAnnotation}
+      REACT_APP_caseAudioAnnotation={REACT_APP_caseAudioAnnotation}
+    />
+  ) : prefix === "videoannotation" ? (
+    <CaseVideoAnnotation
+      totalCases={casesCount}
+      caseId={caseId}
+      REACT_APP_caseVideoAnnotation={REACT_APP_caseVideoAnnotation}
     />
   ) : (
     <CaseImage totalCases={casesCount} caseId={caseId} REACT_APP_caseImage={REACT_APP_caseImage} />

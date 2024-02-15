@@ -1,0 +1,68 @@
+import React from "react";
+import AnnotationAudioSection from "../minor-components/annotationAudioSection";
+const CaseAudioColumnLeft = ({
+  className,
+  title,
+  text,
+  textClassName,
+  sectionClassName,
+  sectionText,
+  sectionTextClassName,
+  sectionImageUrl,
+  sectionImageAlternativeText,
+  sectionAudioClassName,
+  sectionTitle,
+  sectionButtonClassName,
+  sectionButtonDisabled,
+  sectionButtonHasIcon,
+  sectionButtonIconClassName,
+  sectionButtonId,
+  sectionButtonlabel,
+  sectionHasButton,
+  sectionImageRank,
+  sectionImageHasRank,
+  sectionAudioBUrl,
+  sectionAudioAUrl,
+  sectionAudioHeight,
+  sectionAudioWidth,
+  rightSectionAudioLabel,
+  leftSectionAudioLabel,
+  rightSectionButtonOnClick,
+  leftSectionButtonOnClick,
+  handleSubmit,
+}) => {
+  return (
+    <div className={className}>
+      <h4>{title}</h4>
+      <p className={textClassName}>{text}</p>
+      <div className="audio-generic-section">
+        <AnnotationAudioSection
+          hasButton={sectionHasButton}
+          className={sectionClassName}
+          text={sectionText}
+          textClassName={sectionTextClassName}
+          imageUrl={sectionImageUrl}
+          imageAlternativeText={sectionImageAlternativeText}
+          audioClassName={sectionAudioClassName}
+          title={sectionTitle}
+          buttonClassName={sectionButtonClassName}
+          buttonDisabled={sectionButtonDisabled}
+          buttonHasIcon={sectionButtonHasIcon}
+          buttonIconclassName={sectionButtonIconClassName}
+          buttonId={sectionButtonId}
+          buttonLabel={sectionButtonlabel}
+          buttonOnClick={leftSectionButtonOnClick}
+          imageHasRank={sectionImageHasRank}
+          imageRank={sectionImageRank}
+          audioUrl={sectionAudioAUrl}
+          audioHeight={sectionAudioHeight}
+          audioWidth={sectionAudioWidth}
+          audioLabel={leftSectionAudioLabel}
+          handleSubmit={handleSubmit}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default CaseAudioColumnLeft;

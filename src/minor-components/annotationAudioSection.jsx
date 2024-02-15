@@ -1,13 +1,13 @@
 import React from "react";
-import AnnotationVideo from "./annotationVideo";
+import AnnotationAudio from "./annotationAudio";
 
-const AnnotationVideoSection = ({
+const AnnotationAudioSection = ({
   className,
   text,
   textClassName,
-  videoUrl,
+  audioUrl,
   imageAlternativeText,
-  videoClassName,
+  audioClassName,
   title,
   buttonClassName,
   buttonDisabled,
@@ -27,29 +27,29 @@ const AnnotationVideoSection = ({
   textWithIconsRightIconClassName,
   textWithIconsClassName,
   showTextWithIcons = false,
-  videoHeight,
-  videoWidth,
-  videoLabel,
+  audioHeight,
+  audioWidth,
+  audioLabel,
   handleSubmit,
 }) => {
   return (
     <div className={className}>
       <h5>{title}</h5>
       {text && <p className={textClassName}>{text}</p>}{" "}
-      <AnnotationVideo
-        url={videoUrl}
-        width={videoWidth}
-        height={videoHeight}
+      <AnnotationAudio
+        url={audioUrl}
+        width={audioWidth}
+        height={audioHeight}
         alternativeText={imageAlternativeText}
-        className={videoClassName}
+        className={audioClassName}
         rank={imageRank}
         hasRank={imageHasRank}
         onClick={imageOnClick}
-        label={videoLabel}
+        label={audioLabel}
         handleSubmit={handleSubmit}
       />
     </div>
   );
 };
 
-export default AnnotationVideoSection;
+export default AnnotationAudioSection;

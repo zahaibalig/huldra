@@ -1,16 +1,15 @@
 import React, { useEffect, useContext, useState } from "react";
 import { AppContext } from "../context/appContext";
-import CaseAnnotationColumnLeft from "../major-components/caseAnnotationColumnLeft";
-import CaseAnnotationColumnRight from "../major-components/caseAnnotationColumnRight";
+import CaseVideoAnnotationColumnLeft from "../major-components/caseVideoAnnotationColumnLeft";
+import CaseVideoAnnotationColumnRight from "../major-components/caseVideoAnnotationColumnRight";
 import "../assets/css/caseHybrid.css";
 import getConfig from "../utils/handleStorageConfig";
 
-const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
+const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation }) => {
   const [subscribed, setSubscribed] = useState(false);
-  const { disableNextButton, setDisableNextButton, REACT_APP_general } = useContext(AppContext);
+  const { disableNextButton, setDisableNextButton } = useContext(AppContext);
   const [annotation, setAnnotations] = useState([]);
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
-
   const handleSubmit = (timestamp, comment) => {
     if (comment !== "") {
       const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
@@ -54,18 +53,13 @@ const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
     // the following file extensions will actually be overwritten in firebase.js
     videoUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp4`;
   }
-  console.log(videoUrl);
   useEffect(() => {
     setDisableNextButton(false);
     setSubscribed(true);
-    //get annotations
     const storedAnnotation = JSON.parse(localStorage.getItem("annotations"));
     if (storedAnnotation) {
       setAnnotations(storedAnnotation);
     }
-
-    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
-
     return () => {
       setSubscribed(false);
     };
@@ -73,9 +67,9 @@ const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
 
   return (
     <div className="case-hybrid-section-wrapper">
-      <CaseAnnotationColumnLeft
-        title={`${REACT_APP_caseAnnotation["caseAnnotationColumnLeft"].label} ${caseId}/${totalCases}`}
-        text={`${REACT_APP_caseAnnotation["caseAnnotationColumnLeft"].text}`}
+      <CaseVideoAnnotationColumnLeft
+        title={`${REACT_APP_caseVideoAnnotation["caseVideoAnnotationColumnLeft"].label} ${caseId}/${totalCases}`}
+        text={`${REACT_APP_caseVideoAnnotation["caseVideoAnnotationColumnLeft"].text}`}
         className="case-hybrid-column"
         textClassName="case-hybrid-text-content-left"
         sectionVideoUrl={videoUrl}
@@ -83,17 +77,15 @@ const CaseAnnotation = ({ caseId, totalCases, REACT_APP_caseAnnotation }) => {
         sectionButtonClassName="btn control"
         handleSubmit={handleSubmit}
       />
-      <CaseAnnotationColumnRight
+      <CaseVideoAnnotationColumnRight
+        title={`${REACT_APP_caseVideoAnnotation["caseVideoAnnotationColumnRight"].label}`}
+        className="case-hybrid-column"
+        textClassName="case-hybrid-text-content-right"
         annotations={annotation}
         deleteAnnotation={deleteAnnotation}
-        // title={`${REACT_APP_caseAnnotation["caseAnnotationColumnRight"].label}`}
       />
     </div>
   );
 };
 
-export default CaseAnnotation;
-
-// fix the title of the answers section
-// add slider in the right side section
-// update the classes name used in the component
+export default CaseVideoAnnotation;

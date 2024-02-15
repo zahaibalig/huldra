@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { getAsset } from "../utils/loadAssets";

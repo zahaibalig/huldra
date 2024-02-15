@@ -35,7 +35,8 @@ const fetchCases = async () => {
       video: [],
       audio: [],
       text: [],
-      annotation: [],
+      videoannotation: [],
+      audioannotation: [],
     };
 
     validCases.forEach((validCase) => {
@@ -54,7 +55,8 @@ const fetchCases = async () => {
       ...casesByType.video.map((validCase) => validCase.name),
       ...casesByType.audio.map((validCase) => validCase.name),
       ...casesByType.text.map((validCase) => validCase.name),
-      ...casesByType.annotation.map((validCase) => validCase.name),
+      ...casesByType.videoannotation.map((validCase) => validCase.name),
+      ...casesByType.audioannotation.map((validCase) => validCase.name),
     ];
 
     validCaseFiles = [
@@ -63,7 +65,8 @@ const fetchCases = async () => {
       ...casesByType.video.map((validCase) => validCase.files),
       ...casesByType.audio.map((validCase) => validCase.files),
       ...casesByType.text.map((validCase) => validCase.files),
-      ...casesByType.annotation.map((validCase) => validCase.files),
+      ...casesByType.videoannotation.map((validCase) => validCase.files),
+      ...casesByType.audioannotation.map((validCase) => validCase.files),
     ];
   } else if (shuffle === "full") {
     validCases = _.shuffle(validCases);
@@ -154,9 +157,17 @@ const validateCase = async (caseName) => {
     }
 
     files = group;
-  } else if (type === "annotation") {
+  } else if (type === "videoannotation") {
     const fileNameArrayArray = [extensions.video.map((ext) => `${fileNameBase}.${ext}`)];
     const group = await getFileNameGroup(fileNameArrayArray, "video");
+    if (!group) {
+      return false;
+    }
+
+    files = group;
+  } else if (type === "audioannotation") {
+    const fileNameArrayArray = [extensions.audio.map((ext) => `${fileNameBase}.${ext}`)];
+    const group = await getFileNameGroup(fileNameArrayArray, "audio");
     if (!group) {
       return false;
     }
