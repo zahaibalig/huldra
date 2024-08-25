@@ -6,7 +6,7 @@ import CaseText from "../pages/caseText";
 import CaseVideoAnnotation from "../pages/caseVideoAnnotation";
 import CaseAudioAnnotation from "../pages/caseAudioAnnotation";
 import CaseMultiRanking from "../pages/caseMultiRanking";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
 import { useParams } from "react-router-dom";
@@ -14,8 +14,13 @@ import { logSessionInfo } from "../utils/localStorage";
 import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const CaseWrapper = () => {
-  const { casesCount } = useContext(AppContext);
+  const { casesCount, getCasesCount,setCasesCount } = useContext(AppContext);
   const caseId = useParams().caseId;
+  
+  useEffect(() => {
+    setCasesCount(getCasesCount());
+  }, [casesCount]); 
+  
 
   const {
     REACT_APP_caseImage,
