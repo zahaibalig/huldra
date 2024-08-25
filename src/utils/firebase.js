@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/storage";
 /************/
+// import { useEffect, useState } from 'react';
 import axios from "axios";
 import _ from "lodash";
 
@@ -25,38 +26,27 @@ const firebaseConfig = {
   messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
   appId: REACT_APP_FIREBASE_APP_ID,
 };
+
 /* INITIALIZE A FIREBASE APP */
 const getFirebaseApp = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
+    console.log("Firebase initialized"); // Debugging line
   } else {
-    /* IF ALREADY INITIALIZED USE THE CURRENT INSTANCE. */
     firebase.app();
   }
 };
-/* ANONYMOUSLY AUTHENTICATE THE WEB APP TO INTERACT WITH PRIVATE FIREBASE STORAGE */
+getFirebaseApp();
+/* AUTHENTICATE FIREBASE ANONYMOUSLY */
 const anonymousAuthentication = async () => {
   let user = await firebase.auth().signInAnonymously();
   return user.user.uid;
 };
-
-/* RETURN A REFERENCE TO FIREBASE STORAGE */
+/* GET A REFERENCE TO THEK STORAGE BUCET */
 const getStorageReference = () => {
   return firebase.storage().ref();
 };
-/* GIVEN A PATH,RETURN AN ARRAY CONTAINING THE
-   FOLDERS INSIDE THE CORRESPONDING DIRECTORY */
 
-/* EXAMPLE */
-
-/* --root
-     -----folder1
-     -----folder2
-     -----folder3
-*/
-/* INPUT: "root" */
-
-/* output: ["folder1","folder2","folder3"] */
 const listfolders = async (path) => {
   let folders = [];
   let response = await (await getFolderReference(path).listAll()).prefixes;
@@ -75,38 +65,41 @@ const listFiles = async (path, substring) => {
       galleryItems.push(`/${fullPath.join("/")}`);
       return null;
     });
+  console.log("list files gallery items: " + result);
   return galleryItems;
 };
 
-/* GIVEN A PATH, RETURN A REFERENCE TO THE CORRESPONDING FOLDER */
 const getFolderReference = (path) => {
   return getStorageReference().child(path);
 };
-const getAssetDownloadUrl = async (path) => {
-  let appendedPath = REACT_APP_FIREBASE_ROOT_DIRECTORY.concat(path);
-  let imagePath;
-  let split = appendedPath.split("/");
-  split.pop();
-  let newPath = split.join("/");
-  let test = await getStorageReference().child(newPath).listAll();
-  test = test._delegate.items.filter(
-    (item) => item._location.path_.split(".")[0] === appendedPath.split(".")[0].substring(1)
-  );
 
-  if (test[0] !== undefined) {
-    imagePath = test[0]._location.path_;
-    return getStorageReference()
-      .child(imagePath)
-      .getDownloadURL()
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
+const getAssetDownloadUrl = async (path) => {
+  try {
+    let appendedPath = `${REACT_APP_FIREBASE_ROOT_DIRECTORY}${path}`;
+    let split = appendedPath.split("/");
+    let fileName = split.pop();
+    let newPath = split.join("/");
+    let test = await getStorageReference().child(newPath).listAll();
+    test = test._delegate.items.filter((item) => item._location.path_.endsWith(fileName));
+
+    if (test.length > 0) {
+      let imagePath = test[0]._location.path_;
+      try {
+        let url = await getStorageReference().child(imagePath).getDownloadURL();
+        return url;
+      } catch (downloadError) {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  } catch (error) {
     return null;
   }
 };
 
 const getFileDownloadUrl = async (path) => {
+  console.log("Downloaded URL:", path);
   return getStorageReference()
     .child(path)
     .getDownloadURL()
@@ -122,7 +115,7 @@ const fetchJsonAttributeValue = async (jsonPath, attributeName) => {
   return attributeValue;
 };
 
-const checkAssets = async (folderPath, caseType) => {
+const checkAssets = async (folderPath, caseType, validExtensions) => {
   let result;
   switch (caseType) {
     case "image": {
@@ -152,35 +145,59 @@ const checkAssets = async (folderPath, caseType) => {
       result = assets.length >= 3;
       break;
     }
-    default:
+    case "videoannotation": {
+      let assets = await listFiles(folderPath, "");
+      result = assets.some((asset) => validExtensions.includes(asset.split(".").pop()));
       break;
+    }
+    case "audioannotation": {
+      let assets = await listFiles(folderPath, "");
+      result = assets.some((asset) => validExtensions.includes(asset.split(".").pop()));
+      break;
+    }
+    case "multiranking": {
+      let assets = await listFiles(folderPath, "");
+      result =
+        assets.filter((asset) => validExtensions.includes(asset.split(".").pop())).length >= 4;
+      break;
+    }
+    default:
+      result = false;
   }
   return result;
 };
+
 const validateCases = async (cases) => {
   let lookup = {
     audio: "audio",
     video: "video",
     hybrid: "hybrid",
     text: "text",
+    videoannotation: "videoannotation",
+    audioannotation: "audioannotation",
+    multiranking: "multiranking",
   };
   return Promise.all(
     cases.map(async (e) => {
       return (
         (await checkAssets(
-          `/gallery/cases/${e}`,
+          `zohaib-study/gallery/cases/${e}`,
           lookup[e.split("-").shift().toLowerCase()] || "image"
         )) === true
       );
     })
   );
 };
+
 const fetchCases = async (configExists, path, cases, shuffle) => {
   let videoCases = [];
   let imageCases = [];
   let audioCases = [];
   let hybridCases = [];
   let textCases = [];
+  let videoannotationCases = [];
+  let audioannotationcCases = [];
+  let multirankingCases = [];
   let check;
   let validCases;
 
@@ -195,6 +212,12 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ? audioCases.push(element)
         : prefix === "hybrid"
         ? hybridCases.push(element)
+        : prefix === "audioannotation"
+        ? audioannotationcCases.push(element)
+        : prefix === "videoannotation"
+        ? videoannotationCases.push(element)
+        : prefix === "multiranking"
+        ? multirankingCases.push(element)
         : prefix === "text"
         ? textCases.push(element)
         : imageCases.push(element);
@@ -206,7 +229,9 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ..._.shuffle(hybridCases),
         ..._.shuffle(videoCases),
         ..._.shuffle(audioCases),
-        ..._.shuffle(textCases),
+        ..._.shuffle(videoannotationCases),
+        ..._.shuffle(audioannotationcCases),
+        ..._.shuffle(multirankingCases),
       ];
       return res;
     } else if (shuffle === "full") {
@@ -224,19 +249,28 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
         ? videoCases.push(element)
         : prefix === "audio"
         ? audioCases.push(element)
+        : prefix === "audioannotation"
+        ? audioannotationcCases.push(element)
+        : prefix === "videoannotation"
+        ? videoannotationCases.push(element)
+        : prefix === "multiranking"
+        ? multirankingCases.push(element)
         : prefix === "text"
         ? textCases.push(element)
         : prefix === "hybrid"
         ? hybridCases.push(element)
         : imageCases.push(element);
     });
-
+    localStorage.setItem("ValidCaseFiles", JSON.stringify(validCases));
     return [
       ..._.shuffle(imageCases),
       ..._.shuffle(hybridCases),
       ..._.shuffle(videoCases),
       ..._.shuffle(audioCases),
       ..._.shuffle(textCases),
+      ..._.shuffle(videoannotationCases),
+      ..._.shuffle(audioannotationcCases),
+      ..._.shuffle(multirankingCases),
     ];
   }
 };

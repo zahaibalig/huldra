@@ -1,0 +1,115 @@
+/* caseMultiRanking.css */
+.case-multi-ranking-section-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.multi-ranking-slot-container,
+.multi-ranking-slot,
+.multi-ranking-slot-pic,
+.multi-ranking-slot-index-label {
+  box-sizing: border-box;
+}
+
+/* caseMultiRankingContainer Styles */
+.case-multi-ranking-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.case-multi-ranking-column {
+  width: 430px;
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em;
+  margin: 1em;
+  outline: solid var(--primary-color) 5px;
+  border-radius: 0.2em;
+  box-shadow: 0px 0px 10px grey;
+}
+
+.case-multi-ranking-column-middle{
+  display: grid;
+  grid-Template-Columns: repeat(2, 1fr);
+  grid-Gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.case-multi-ranking-column-right-grid{
+  display: grid;
+  grid-Template-Columns: repeat(2, 1fr);
+  grid-Gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.case-multi-ranking-column-right-vertical{
+  margin: -37px 0px 0px 220px;
+}
+
+/* MultiRankingSlot Styles */
+.multi-ranking-slot-container{
+  /* If grid */
+  /* width: 100%;
+  height: 100%; */
+
+  /* If vertical  */
+  height: 130px;
+  width: 150px;
+
+  border: 2px solid white;
+  display: flex;  
+  margin: 1%;
+}
+
+.multi-ranking-slot {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  border:1px solid black;
+}
+
+.multi-ranking-slot-pic {
+    height: 100%;
+    width: 100%;
+  }
+
+.multi-ranking-slot-index-label {
+  background-color: lightgrey;
+  height: 100%;
+  width: 20px;
+  align-content: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.multi-ranking-slot.can-drop {
+  background-color: lightgreen;
+}
+
+.multi-ranking-slot.dragging {
+  opacity: 0.4;
+}
+
+/* Image Section styles*/
+.image-section {
+  height: 100%;
+  opacity: 1; 
+}
+
+.image-section.dragging {
+  opacity: 0.4;
+}
+
+.image-section img {
+  width: 100%;
+  height: 100%;
+  /* height: 130px;
+  width: 150px; */
+}

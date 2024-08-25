@@ -12,7 +12,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const handleSubmit = (timestamp, comment) => {
     if (comment !== "") {
-      const previousAnnotations = JSON.parse(localStorage.getItem("annotations"));
+      const previousAnnotations = JSON.parse(localStorage.getItem("videoannotations"));
       if (previousAnnotations?.length > 0) {
         let newAnnotations = [
           ...previousAnnotations,
@@ -22,7 +22,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
           },
         ];
         setAnnotations(newAnnotations);
-        localStorage.setItem("annotations", JSON.stringify(newAnnotations));
+        localStorage.setItem("videoannotations", JSON.stringify(newAnnotations));
       } else {
         let firstAnnotations = [
           {
@@ -30,16 +30,16 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
             comment,
           },
         ];
-        localStorage.setItem("annotations", JSON.stringify(firstAnnotations));
+        localStorage.setItem("videoannotations", JSON.stringify(firstAnnotations));
       }
-      setAnnotations(JSON.parse(localStorage.getItem("annotations")));
+      setAnnotations(JSON.parse(localStorage.getItem("videoannotations")));
     }
   };
 
   const deleteAnnotation = (index) => {
     const filtered = annotation.filter((_, annotationIndex) => annotationIndex !== index);
     setAnnotations(filtered);
-    localStorage.setItem("annotations", JSON.stringify(filtered));
+    localStorage.setItem("videoannotations", JSON.stringify(filtered));
   };
   let videoUrl = "";
   const storageConfig = getConfig();
@@ -56,7 +56,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
   useEffect(() => {
     setDisableNextButton(false);
     setSubscribed(true);
-    const storedAnnotation = JSON.parse(localStorage.getItem("annotations"));
+    const storedAnnotation = JSON.parse(localStorage.getItem("videoannotations"));
     if (storedAnnotation) {
       setAnnotations(storedAnnotation);
     }

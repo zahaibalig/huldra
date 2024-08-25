@@ -11,6 +11,7 @@ import {
   getAsset as getAssetLocal,
   fetchJsonAttributeValue as fetchJsonLocal,
 } from "../utils/loadLocalAssets";
+import { get } from "lodash";
 
 // fetch cases at the start of the app
 const fetchCases = async (configExists, path, cases, shuffle) => {
@@ -30,13 +31,14 @@ const fetchCases = async (configExists, path, cases, shuffle) => {
 
 const getAsset = async (path) => {
   const config = getConfig();
-
   let url;
 
   if (config.assetsStorageType === "local") {
     url = getAssetLocal(path);
   } else if (config.assetsStorageType === "firebase") {
+    console.log("Fetching Firebase asset:", path); // Debugging line
     url = await getAssetFirebase(path);
+    console.log("Fetching Firebase asset:", url); // Debugging line
   }
 
   return url;

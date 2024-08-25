@@ -247,7 +247,7 @@
       "sectionVideoWidth": "400px"
     },
     "caseVideoAnnotationColumnRight": {
-      "label": "Answers"
+      "label": "Your Answer"
     }
   },
   "REACT_APP_caseAudioAnnotation": {
@@ -258,7 +258,18 @@
       "sectionVideoWidth": "400px"
     },
     "caseAudioAnnotationColumnRight": {
-      "label": "Answers"
+      "label": "Your Answer"
+    }
+  },
+  "REACT_APP_caseMultiRanking": {
+    "caseMultiRankingColumnLeft": {
+      "label": "Case",
+      "text": "These are sample images.",
+      "sectionVideoHeight": "225px",
+      "sectionVideoWidth": "400px"
+    },
+    "caseMultiRankingColumnRight": {
+      "label": "Your Answer"
     }
   },
   "REACT_APP_summaryAndFeedback": {
@@ -339,13 +350,14 @@
         "hybrid-flowerbird",
         "image-flower",
         "video-bird",
-        "videoannotation-bird",
-        "audioannotation-bird"
+        "videoannotation",
+        "audioannotation",
+        "multiranking"
       ],
       "shuffle": ""
     },
     "storage": {
-      "assetsStorageType": "local",
+      "assetsStorageType": "firebase",
       "responsesStorageType": "download"
     },
     "outputJson": ["SoftwareInfo", "SessionEvents"],

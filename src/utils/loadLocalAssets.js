@@ -37,6 +37,7 @@ const fetchCases = async () => {
       text: [],
       videoannotation: [],
       audioannotation: [],
+      multiranking: [],
     };
 
     validCases.forEach((validCase) => {
@@ -57,6 +58,7 @@ const fetchCases = async () => {
       ...casesByType.text.map((validCase) => validCase.name),
       ...casesByType.videoannotation.map((validCase) => validCase.name),
       ...casesByType.audioannotation.map((validCase) => validCase.name),
+      ...casesByType.multiranking.map((validCase) => validCase.name),
     ];
 
     validCaseFiles = [
@@ -67,6 +69,7 @@ const fetchCases = async () => {
       ...casesByType.text.map((validCase) => validCase.files),
       ...casesByType.videoannotation.map((validCase) => validCase.files),
       ...casesByType.audioannotation.map((validCase) => validCase.files),
+      ...casesByType.multiranking.map((validCase) => validCase.files),
     ];
   } else if (shuffle === "full") {
     validCases = _.shuffle(validCases);
@@ -78,7 +81,6 @@ const fetchCases = async () => {
   }
 
   localStorage.setItem("ValidCaseFiles", JSON.stringify(validCaseFiles));
-
   return validCaseNames;
 };
 
@@ -172,6 +174,18 @@ const validateCase = async (caseName) => {
       return false;
     }
 
+    files = group;
+  } else if (type === "multiranking") {
+    const fileNameArrayArray = [
+      extensions.image.map((ext) => `${fileNameBase}-a.${ext}`),
+      extensions.image.map((ext) => `${fileNameBase}-b.${ext}`),
+      extensions.image.map((ext) => `${fileNameBase}-c.${ext}`),
+      extensions.image.map((ext) => `${fileNameBase}-d.${ext}`),
+    ];
+    const group = await getFileNameGroup(fileNameArrayArray, "image");
+    if (!group) {
+      return false;
+    }
     files = group;
   } else if (type === "hybrid") {
     const fileName1ArrayArray = [extensions.video.map((ext) => `${fileNameBase}.${ext}`)];

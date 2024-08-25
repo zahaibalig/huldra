@@ -5,6 +5,7 @@ import CaseAudio from "../pages/caseAudio";
 import CaseText from "../pages/caseText";
 import CaseVideoAnnotation from "../pages/caseVideoAnnotation";
 import CaseAudioAnnotation from "../pages/caseAudioAnnotation";
+import CaseMultiRanking from "../pages/caseMultiRanking";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { fetchConfigVariablesBatch } from "../utils/handleConfigVars";
@@ -24,6 +25,7 @@ const CaseWrapper = () => {
     REACT_APP_caseText,
     REACT_APP_caseVideoAnnotation,
     REACT_APP_caseAudioAnnotation,
+    REACT_APP_caseMultiRanking,
   } = fetchConfigVariablesBatch([
     "REACT_APP_caseImage",
     "REACT_APP_caseVideo",
@@ -32,6 +34,7 @@ const CaseWrapper = () => {
     "REACT_APP_caseText",
     "REACT_APP_caseVideoAnnotation",
     "REACT_APP_caseAudioAnnotation",
+    "REACT_APP_caseMultiRanking",
   ]);
 
   const prefix = JSON.parse(localStorage.getItem("CaseOrder"))
@@ -64,6 +67,12 @@ const CaseWrapper = () => {
       totalCases={casesCount}
       caseId={caseId}
       REACT_APP_caseVideoAnnotation={REACT_APP_caseVideoAnnotation}
+    />
+  ) : prefix === "multiranking" ? (
+    <CaseMultiRanking
+      totalCases={casesCount}
+      caseId={caseId}
+      REACT_APP_caseMultiRanking={REACT_APP_caseMultiRanking}
     />
   ) : (
     <CaseImage totalCases={casesCount} caseId={caseId} REACT_APP_caseImage={REACT_APP_caseImage} />

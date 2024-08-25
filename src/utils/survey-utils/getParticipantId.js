@@ -8,6 +8,9 @@ import { fetchConfigVariable, fetchConfigVariablesBatch } from "../handleConfigV
 import { generateTimeStamp } from "../timestamp";
 import { getOs, browserName, browserVersion } from "../clientMetadata";
 import { logSessionInfo } from "../localStorage";
+import firebase from "firebase/app";
+import "firebase/storage";
+import { get } from "lodash";
 
 /**
  * handles the "Get participant ID" button click event.
@@ -98,8 +101,14 @@ const handleSessionInfo = async (
 
   const REACT_APP_general = fetchConfigVariable("REACT_APP_general");
   const rootDirectory = fetchConfigVariable("REACT_APP_FIREBASE_ROOT_DIRECTORY");
-
-  if (REACT_APP_general?.caseOrder?.cases?.length !== 0) {
+  /* GET A REFERENCE TO THEK STORAGE BUCET */
+  const getStorageReference = () => {
+    return firebase.storage().ref();
+  };
+  if (
+    REACT_APP_general?.caseOrder?.cases?.length !== 0 &&
+    REACT_APP_general?.storage?.assetsStorageType === "local"
+  ) {
     CaseOrder = await fetchCases(
       true,
       null,
@@ -107,7 +116,11 @@ const handleSessionInfo = async (
       REACT_APP_general["caseOrder"]["shuffle"]
     );
   } else {
-    CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+    // CaseOrder = await fetchCases(false, `${rootDirectory}/gallery/cases/`, null, null);
+    const casesRef = getStorageReference().child("zohaib-study/gallery/cases");
+    const result = await casesRef.listAll();
+    const caseFolders = result.prefixes.map((folderRef) => folderRef.name);
+    CaseOrder = caseFolders;
   }
   const SoftwareInfo = {
     SoftwareInfoTag: REACT_APP_general["softwareInfoTag"],
