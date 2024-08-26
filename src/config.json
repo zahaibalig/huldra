@@ -358,7 +358,7 @@
     },
     "storage": {
       "assetsStorageType": "firebase",
-      "responsesStorageType": "download"
+      "responsesStorageType": "firebase"
     },
     "outputJson": ["SoftwareInfo", "SessionEvents"],
     "color": {

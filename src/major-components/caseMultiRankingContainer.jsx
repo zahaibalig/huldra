@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import MultiRankingSlot from "../minor-components/MultiRankingSlot";
 import ImageSection from "../minor-components/MultiRankingImageSection";
@@ -21,6 +21,18 @@ const CaseMultiRankingContainer = ({
     }, {});
     localStorage.setItem("userRanking", JSON.stringify(ranking));
     console.log("Ranking saved:", ranking);
+  }, []);
+
+  const getranking = useCallback(() => {
+    const ranking = JSON.parse(localStorage.getItem("userRanking"));
+    if (ranking) {
+      const newRankedImages = images.map((_, index) => ranking[`choice${index + 1}`]);
+      setRankedImages(newRankedImages);
+    }
+  }, []);
+
+  useEffect(() => {
+    getranking();
   }, []);
 
   const moveImageToSlot = useCallback(

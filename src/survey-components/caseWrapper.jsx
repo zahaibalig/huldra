@@ -14,13 +14,12 @@ import { logSessionInfo } from "../utils/localStorage";
 import { conditionalPushToBucket } from "../utils/handleResponse";
 
 const CaseWrapper = () => {
-  const { casesCount, getCasesCount,setCasesCount } = useContext(AppContext);
+  const { casesCount, getCasesCount, setCasesCount } = useContext(AppContext);
   const caseId = useParams().caseId;
   
   useEffect(() => {
     setCasesCount(getCasesCount());
-  }, [casesCount]); 
-  
+  }, [casesCount]);
 
   const {
     REACT_APP_caseImage,

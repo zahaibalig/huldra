@@ -4,10 +4,10 @@ import "../assets/css/caseMultiRanking.css";
 import getConfig from "../utils/handleStorageConfig";
 
 const CaseRankingMulti = ({ caseId, totalCases, REACT_APP_caseMultiRanking }) => {
-  let choiceA = "";
-  let choiceB = "";
-  let choiceC = "";
-  let choiceD = "";
+  let choiceA = "-a";
+  let choiceB = "-b";
+  let choiceC = "-c";
+  let choiceD = "-d";
   const storageConfig = getConfig();
   if (storageConfig.assetsStorageType === "local") {
     const validCaseFiles = JSON.parse(localStorage.getItem("ValidCaseFiles"));
@@ -18,6 +18,12 @@ const CaseRankingMulti = ({ caseId, totalCases, REACT_APP_caseMultiRanking }) =>
       choiceC = caseFiles[2];
       choiceD = caseFiles[3];
     }
+  } else if (storageConfig.assetsStorageType === "firebase") {
+    //TODO::dynamic path
+    choiceA = `/gallery/cases/multiranking/multiranking${choiceA}.jpg`;
+    choiceB = `/gallery/cases/multiranking/multiranking${choiceB}.jpg`;
+    choiceC = `/gallery/cases/multiranking/multiranking${choiceC}.jpg`;
+    choiceD = `/gallery/cases/multiranking/multiranking${choiceD}.jpg`;
   }
   return (
     <div className="case-multi-ranking-section-wrapper">
