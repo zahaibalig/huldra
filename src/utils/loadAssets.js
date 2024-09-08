@@ -36,9 +36,7 @@ const getAsset = async (path) => {
   if (config.assetsStorageType === "local") {
     url = getAssetLocal(path);
   } else if (config.assetsStorageType === "firebase") {
-    console.log("Fetching Firebase asset:", path); // Debugging line
     url = await getAssetFirebase(path);
-    console.log("Fetching Firebase asset:", url); // Debugging line
   }
 
   return url;

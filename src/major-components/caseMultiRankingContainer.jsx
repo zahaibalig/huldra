@@ -4,6 +4,7 @@ import MultiRankingSlot from "../minor-components/MultiRankingSlot";
 import ImageSection from "../minor-components/MultiRankingImageSection";
 
 const CaseMultiRankingContainer = ({
+  caseId,
   choiceA,
   choiceB,
   choiceC,
@@ -14,22 +15,36 @@ const CaseMultiRankingContainer = ({
 }) => {
   const images = [choiceA, choiceB, choiceC, choiceD];
   const [rankedImages, setRankedImages] = useState([null, null, null, null]);
+
   const saveRanking = useCallback((newRankedImages) => {
-    const ranking = newRankedImages.reduce((acc, item, index) => {
+    const userRanking = newRankedImages.reduce((acc, item, index) => {
       acc[`choice${index + 1}`] = item;
       return acc;
     }, {});
-    localStorage.setItem("userRanking", JSON.stringify(ranking));
-    console.log("Ranking saved:", ranking);
+
+    const userAnswer = newRankedImages.reduce((acc, item, index) => {
+      if (item) {
+        const letter = item.slice(-5, -4).toUpperCase();
+        acc[`choice${index + 1}`] = letter;
+      }
+      return acc;
+    }, {});
+
+    localStorage.setItem("UserRanking", JSON.stringify(userRanking));
+
+    const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
+    const newAnswers = { ...CaseStudyAnswers };
+    newAnswers[caseId] = userAnswer;
+    localStorage.setItem("CaseStudyAnswers", JSON.stringify(newAnswers));
   }, []);
 
   const getranking = useCallback(() => {
-    const ranking = JSON.parse(localStorage.getItem("userRanking"));
+    const ranking = JSON.parse(localStorage.getItem("UserRanking"));
     if (ranking) {
       const newRankedImages = images.map((_, index) => ranking[`choice${index + 1}`]);
       setRankedImages(newRankedImages);
     }
-  }, []);
+  }, [images]);
 
   useEffect(() => {
     getranking();
@@ -70,6 +85,7 @@ const CaseMultiRankingContainer = ({
   }));
 
   const availableImages = images.filter((img) => !rankedImages.includes(img));
+
   return (
     <div>
       <div className="case-multi-ranking-container">

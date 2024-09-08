@@ -12,7 +12,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
   const pagesOrder = JSON.parse(localStorage.getItem("CaseOrder"));
   const handleSubmit = (timestamp, comment) => {
     if (comment !== "") {
-      const previousAnnotations = JSON.parse(localStorage.getItem("videoannotations"));
+      const previousAnnotations = JSON.parse(localStorage.getItem("VideoAnnotations"));
       if (previousAnnotations?.length > 0) {
         let newAnnotations = [
           ...previousAnnotations,
@@ -22,7 +22,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
           },
         ];
         setAnnotations(newAnnotations);
-        localStorage.setItem("videoannotations", JSON.stringify(newAnnotations));
+        localStorage.setItem("VideoAnnotations", JSON.stringify(newAnnotations));
       } else {
         let firstAnnotations = [
           {
@@ -30,16 +30,16 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
             comment,
           },
         ];
-        localStorage.setItem("videoannotations", JSON.stringify(firstAnnotations));
+        localStorage.setItem("VideoAnnotations", JSON.stringify(firstAnnotations));
       }
-      setAnnotations(JSON.parse(localStorage.getItem("videoannotations")));
+      setAnnotations(JSON.parse(localStorage.getItem("VideoAnnotations")));
     }
   };
 
   const deleteAnnotation = (index) => {
     const filtered = annotation.filter((_, annotationIndex) => annotationIndex !== index);
     setAnnotations(filtered);
-    localStorage.setItem("videoannotations", JSON.stringify(filtered));
+    localStorage.setItem("VideoAnnotations", JSON.stringify(filtered));
   };
   let videoUrl = "";
   const storageConfig = getConfig();
@@ -56,7 +56,7 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
   useEffect(() => {
     setDisableNextButton(false);
     setSubscribed(true);
-    const storedAnnotation = JSON.parse(localStorage.getItem("videoannotations"));
+    const storedAnnotation = JSON.parse(localStorage.getItem("VideoAnnotations"));
     if (storedAnnotation) {
       setAnnotations(storedAnnotation);
     }
@@ -64,6 +64,12 @@ const CaseVideoAnnotation = ({ caseId, totalCases, REACT_APP_caseVideoAnnotation
       setSubscribed(false);
     };
   }, [caseId, disableNextButton, setDisableNextButton, setSubscribed]);
+
+  const storedAnnotations = JSON.parse(localStorage.getItem("VideoAnnotations"));
+  const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
+  const newAnswers = { ...CaseStudyAnswers };
+  newAnswers[caseId] = storedAnnotations;
+  localStorage.setItem("CaseStudyAnswers", JSON.stringify(newAnswers));
 
   return (
     <div className="case-hybrid-section-wrapper">

@@ -9,7 +9,7 @@ const CaseAudioAnnotation = ({ REACT_APP_caseAudioAnnotation, caseId, totalCases
   const [annotation, setAnnotations] = useState([]);
   const handleSubmit = (timestamp, comment) => {
     if (comment !== "") {
-      const previousAnnotations = JSON.parse(localStorage.getItem("audioAnnotations"));
+      const previousAnnotations = JSON.parse(localStorage.getItem("AudioAnnotations"));
       if (previousAnnotations?.length > 0) {
         let newAnnotations = [
           ...previousAnnotations,
@@ -19,7 +19,7 @@ const CaseAudioAnnotation = ({ REACT_APP_caseAudioAnnotation, caseId, totalCases
           },
         ];
         setAnnotations(newAnnotations);
-        localStorage.setItem("audioAnnotations", JSON.stringify(newAnnotations));
+        localStorage.setItem("AudioAnnotations", JSON.stringify(newAnnotations));
       } else {
         let firstAnnotations = [
           {
@@ -27,15 +27,15 @@ const CaseAudioAnnotation = ({ REACT_APP_caseAudioAnnotation, caseId, totalCases
             comment,
           },
         ];
-        localStorage.setItem("audioAnnotations", JSON.stringify(firstAnnotations));
+        localStorage.setItem("AudioAnnotations", JSON.stringify(firstAnnotations));
       }
-      setAnnotations(JSON.parse(localStorage.getItem("audioAnnotations")));
+      setAnnotations(JSON.parse(localStorage.getItem("AudioAnnotations")));
     }
   };
   const deleteAnnotation = (index) => {
     const filtered = annotation.filter((_, annotationIndex) => annotationIndex !== index);
     setAnnotations(filtered);
-    localStorage.setItem("audioAnnotations", JSON.stringify(filtered));
+    localStorage.setItem("AudioAnnotations", JSON.stringify(filtered));
   };
 
   let audioUrl = "";
@@ -51,11 +51,18 @@ const CaseAudioAnnotation = ({ REACT_APP_caseAudioAnnotation, caseId, totalCases
     audioUrl = `/gallery/cases/${pagesOrder[caseId - 1]}/${pagesOrder[caseId - 1]}.mp3`;
   }
   useEffect(() => {
-    const storedAnnotations = JSON.parse(localStorage.getItem("audioAnnotations"));
+    const storedAnnotations = JSON.parse(localStorage.getItem("AudioAnnotations"));
     if (storedAnnotations) {
       setAnnotations(storedAnnotations);
     }
   }, []);
+
+  const storedAnnotations = JSON.parse(localStorage.getItem("AudioAnnotations"));
+  const CaseStudyAnswers = JSON.parse(localStorage.getItem("CaseStudyAnswers"));
+  const newAnswers = { ...CaseStudyAnswers };
+  newAnswers[caseId] = storedAnnotations;
+  localStorage.setItem("CaseStudyAnswers", JSON.stringify(newAnswers));
+
   return (
     <div className="case-hybrid-section-wrapper">
       <CaseAudioAnnotationColumnLeft
